@@ -6,6 +6,12 @@ This file is written in
 [markdown](https://guides.github.com/features/mastering-markdown/).  Markdown
 is a suitable format for documents stored in git repositories.
 
+# Blogs
+Gavin Boyle - https://blogs.computing.dcu.ie/wordpress/boyleg8/
+
+
+
+
 ## Instructions
 
 You *must* do the following:
