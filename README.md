@@ -7,7 +7,8 @@ This file is written in
 is a suitable format for documents stored in git repositories.
 
 # Blogs
-Gavin Boyle - https://blogs.computing.dcu.ie/wordpress/boyleg8/
+Gavin Boyle - https://blogs.computing.dcu.ie/wordpress/boyleg8/  
+
 Conor Ward - https://blogs.computing.dcu.ie/wordpress/wardc27/
 
 
