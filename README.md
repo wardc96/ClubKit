@@ -1,6 +1,6 @@
-# My Project Title
+# ClubKit
 
-This is a template for CA400 projects.  Please read these instructions carefully.
+This is the repo for our final year project. The project is a sports club admin tool.
 
 This file is written in
 [markdown](https://guides.github.com/features/mastering-markdown/).  Markdown
