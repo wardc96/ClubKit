@@ -13,9 +13,24 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
+from django.conf.urls import url, include
+from rest_framework import routers
+from clubkit.api import views
 
+router = routers.DefaultRouter()
+router.register(r'users', views.UserViewSet)
+
+# Wire up our API using automatic URL routing.
+# Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    url(r'^', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
+'''
+Because we're using viewsets instead of views, we can automatically generate the URL conf for our API, 
+by simply registering the viewsets with a router class.
+Again, if we need more control over the API URLs we can simply drop down to using regular class-based views, 
+and writing the URL conf explicitly.
+Finally, we're including default login and logout views for use with the browsable API. That's optional,
+but useful if your API requires authentication and you want to use the browsable API.
+'''
