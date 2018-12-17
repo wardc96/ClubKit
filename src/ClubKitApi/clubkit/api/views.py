@@ -83,3 +83,10 @@ def user_login(request):
             return HttpResponse("Invalid login details given")
     else:
         return render(request, 'login.html', {})
+
+    '''
+    def password_reset(request):
+    return render(request, 'password_reset_form.html')
+    '''
+
+
