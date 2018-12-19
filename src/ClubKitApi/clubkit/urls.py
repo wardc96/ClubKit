@@ -31,7 +31,6 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^special/', views.special, name='special'),
     url(r'^account/', include('clubkit.api.urls')),
-    url(r'^logout/$', views.user_logout, name='logout'),
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
     path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('password_reset/confirm/<uidb64>/<token>/',

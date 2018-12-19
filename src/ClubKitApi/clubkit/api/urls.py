@@ -11,5 +11,10 @@ app_name = 'api'
 urlpatterns = [
     url(r'^register/$', views.register, name='register'),
     url(r'^user_login/$', views.user_login, name='user_login'),
-    url(r'^profile/$', views.profile, name='profile'),
+    url(r'^logout/$', views.user_logout, name='logout'),
+    url(r'^profile/$', views.view_profile, name='view_profile'),
+    url(r'^profile/edit/$', views.edit_profile, name='edit_profile'),
+    url(r'^change-password/$', views.change_password, name='change_password'),
+    url(r'^club_home/$', views.club_home, name='club_home'),
+
 ]

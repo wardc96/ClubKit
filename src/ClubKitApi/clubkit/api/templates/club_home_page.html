@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Profile</title>
+{% endblock %}
+
+{% block body_block %}
+<div class="container">
+    <h3>Club Details</h3>
+    <p>
+        {% csrf_token %}
+
+        {% for club in model %}
+    <li>{{ club.club_name }}</li>
+    <li><img src="{{ club.club_logo }}" height="50px" width="50px"/></li>
+    <li>{{ club.club_address1 }}</li>
+    <li>{{ club.club_address2 }}</li>
+    <li>{{ club.club_address3 }}</li>
+    <li>{{ club.club_town }}</li>
+    <li>{{ club.club_county }}</li>
+    <li>{{ club.club_country }}</li>
+
+
+
+        {% endfor %}
+
+    </p>
+</div>
+
+{% endblock %}

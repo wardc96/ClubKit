@@ -1,12 +1,18 @@
 from django.contrib.auth.models import User
 from rest_framework import viewsets
 from clubkit.api.serializers import UserSerializer
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from clubkit.api.forms import UserForm, ClubInfoForm
+from clubkit.api.models import ClubInfo
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+from django.core.files.storage import FileSystemStorage
+
+profile_pics = FileSystemStorage(location='clubkit/media/profile_pics')
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -74,7 +80,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse('index'))
+                return render(request, 'club_home_page.html', {})
             else:
                 return HttpResponse("Your account was inactive.")
         else:
@@ -84,17 +90,62 @@ def user_login(request):
     else:
         return render(request, 'login.html', {})
 
+
+def view_profile(request):
+    args = {'user': request.user}
+    return render(request, 'profile.html', args)
+
+
+def club_home(request):
+    model = ClubInfo.objects.all
+    # photo = model.club_logo.ImageField(storage=profile_pics)
+    args = {'model': model,
+            # 'photo': photo
+                            }
+    return render(request, 'club_home_page.html', args)
+
+
+def edit_profile(request):
+    if request.method == 'POST':
+        form = UserChangeForm(request.POST, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            return redirect('/account/profile')
+    else:
+        form = UserChangeForm(instance=request.user)
+        args = {'form': form}
+        return render(request, 'edit_profile.html', args)
+
+
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(data=request.POST, user=request.user)
+
+        if form.is_valid():
+            form.save()
+            return redirect('/account/profile')
+
+    else:
+        form = PasswordChangeForm(user=request.user)
+        args = {'form': form}
+        return render(request, 'change_password.html', args)
+
+
+
+
 '''
 def password_reset(request):
         email = UserForm.email
         return render(request, 'password_reset_form.html',
                       {'email': email})
-'''
-'''
+
+
 def password_reset_done(request):
     return render(request, 'password_reset_done.html')
-'''
-'''
+
+
 def password_reset_confirm(request):
         return render(request, 'password_reset_confirm.html')
 
@@ -102,11 +153,4 @@ def password_reset_confirm(request):
 def password_reset_complete(request):
     return render(request, 'password_reset_complete.html')
 '''
-
-
-def profile(request):
-    args = {'user': request.user}
-    return render(request, 'profile.html', args)
-
-
 
