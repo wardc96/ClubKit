@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from rest_framework import viewsets
 from clubkit.api.serializers import UserSerializer
 from django.shortcuts import render
-from clubkit.api.forms import UserForm, UserProfileInfoForm
+from clubkit.api.forms import UserForm, ClubInfoForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
@@ -42,7 +42,7 @@ def register(request):
     registered = False
     if request.method == 'POST':
         user_form = UserForm(data=request.POST)
-        profile_form = UserProfileInfoForm(data=request.POST)
+        profile_form = ClubInfoForm(data=request.POST)
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
             user.set_password(user.password)
@@ -58,7 +58,7 @@ def register(request):
             print(user_form.errors, profile_form.errors)
     else:
         user_form = UserForm()
-        profile_form = UserProfileInfoForm()
+        profile_form = ClubInfoForm()
     return render(request,
                   'registration.html',
                   {'user_form': user_form,
@@ -84,9 +84,29 @@ def user_login(request):
     else:
         return render(request, 'login.html', {})
 
-    '''
-    def password_reset(request):
-    return render(request, 'password_reset_form.html')
-    '''
+'''
+def password_reset(request):
+        email = UserForm.email
+        return render(request, 'password_reset_form.html',
+                      {'email': email})
+'''
+'''
+def password_reset_done(request):
+    return render(request, 'password_reset_done.html')
+'''
+'''
+def password_reset_confirm(request):
+        return render(request, 'password_reset_confirm.html')
+
+
+def password_reset_complete(request):
+    return render(request, 'password_reset_complete.html')
+'''
+
+
+def profile(request):
+    args = {'user': request.user}
+    return render(request, 'profile.html', args)
+
 
 

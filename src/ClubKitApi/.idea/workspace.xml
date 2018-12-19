@@ -2,11 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db52fa26-b7a5-4dd8-b5c8-7ba962dd3903" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/clubkit/api/templates/password_reset_form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/clubkit/api/templates/password_reset_complete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/clubkit/api/templates/password_reset_confirm.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/clubkit/api/templates/password_reset_done.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/clubkit/api/templates/profile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/ClubKitApi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ClubKitApi.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/api/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/api/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clubkit/api/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/api/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clubkit/api/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/api/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clubkit/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/api/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clubkit/api/templates/password_reset_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/api/templates/password_reset_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clubkit/api/templates/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/api/templates/registration.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/clubkit/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/api/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/clubkit/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/api/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/clubkit/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/settings.py" afterDir="false" />
@@ -22,15 +29,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/clubkit/api/templates/password_reset_form.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
@@ -39,48 +37,45 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/requirements2.txt">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/clubkit/api/apps.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="102">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/clubkit/api/templates/login.html">
+        <entry file="file://$PROJECT_DIR$/clubkit/api/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/clubkit/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="35" column="35" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
+            <state relative-caret-position="374">
+              <caret line="22" column="19" lean-forward="true" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
               <folding>
-                <element signature="e#631#672#0" expanded="true" />
+                <element signature="e#0#24#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/clubkit/settings.py">
+        <entry file="file://$PROJECT_DIR$/clubkit/api/serializers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="31" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
+            <state>
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sent_emails/20181217-192952-87739216.log">
-          <provider selected="true" editor-type-id="text-editor" />
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sent_emails/20181219-133704-81637168.log">
+          <provider selected="true" editor-type-id="LogFileEditorProvider">
+            <state relative-caret-position="425">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -103,7 +98,6 @@
         <option value="$PROJECT_DIR$/clubkit/api/templates/registration.html" />
         <option value="$PROJECT_DIR$/requirements2.txt" />
         <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/clubkit/api/forms.py" />
         <option value="$PROJECT_DIR$/clubkit/api/models.py" />
         <option value="$PROJECT_DIR$/clubkit/api/admin.py" />
         <option value="$PROJECT_DIR$/clubkit/api/urls.py" />
@@ -113,12 +107,13 @@
         <option value="$PROJECT_DIR$/clubkit/api/templates/base.html" />
         <option value="$PROJECT_DIR$/clubkit/api/templates/login.html" />
         <option value="$PROJECT_DIR$/clubkit/urls.py" />
+        <option value="$PROJECT_DIR$/clubkit/api/forms.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
+    <option name="x" value="835" />
+    <option name="width" value="1092" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectView">
@@ -126,6 +121,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -141,32 +137,56 @@
             <path>
               <item name="ClubKitApi" type="b2602c69:ProjectViewProjectNode" />
               <item name="ClubKitApi" type="462c0819:PsiDirectoryNode" />
-              <item name="clubkit" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="env" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ClubKitApi" type="b2602c69:ProjectViewProjectNode" />
               <item name="ClubKitApi" type="462c0819:PsiDirectoryNode" />
-              <item name="clubkit" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="env" type="462c0819:PsiDirectoryNode" />
+              <item name="Lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClubKitApi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClubKitApi" type="462c0819:PsiDirectoryNode" />
+              <item name="env" type="462c0819:PsiDirectoryNode" />
+              <item name="Lib" type="462c0819:PsiDirectoryNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClubKitApi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClubKitApi" type="462c0819:PsiDirectoryNode" />
+              <item name="env" type="462c0819:PsiDirectoryNode" />
+              <item name="Lib" type="462c0819:PsiDirectoryNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+              <item name="django" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClubKitApi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClubKitApi" type="462c0819:PsiDirectoryNode" />
+              <item name="env" type="462c0819:PsiDirectoryNode" />
+              <item name="Lib" type="462c0819:PsiDirectoryNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+              <item name="django" type="462c0819:PsiDirectoryNode" />
+              <item name="conf" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../2019-ca472-boyleg8-Update/src/ClubKitApi" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\gboyle\Desktop\2019-ca472-boyleg8\src\ClubKitApi" />
+      <recent name="C:\Users\gboyle\Desktop\2019-ca472-boyleg8\src\ClubKitApi\clubkit" />
+      <recent name="C:\Users\gboyle\Desktop\2019-ca472-boyleg8\src\ClubKitApi\clubkit\api" />
+      <recent name="C:\Users\gboyle\Desktop\2019-ca472-boyleg8\src\ClubKitApi\clubkit\api\templates" />
       <recent name="$PROJECT_DIR$/clubkit/api/templates" />
-      <recent name="$PROJECT_DIR$/clubkit/api" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -197,7 +217,7 @@
   <component name="ToolWindowManager">
     <frame x="953" y="0" width="974" height="1047" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22329059" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3386752" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -208,7 +228,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.19693655" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.19693655" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -248,23 +268,6 @@
     <entry file="file://$PROJECT_DIR$/clubkit/api/migrations/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/clubkit/api/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="17" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/clubkit/api/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/clubkit/api/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -279,26 +282,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/clubkit/api/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/clubkit/api/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -326,26 +309,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sent_emails/20181217-191944-86798032.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sent_emails/20181217-192442-72166480.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sent_emails/20181217-184452-74135568.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sent_emails/20181217-192952-87739216.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/sent_emails/20181217-191944-86798032.log" />
+    <entry file="file://$PROJECT_DIR$/sent_emails/20181217-192442-72166480.log" />
+    <entry file="file://$PROJECT_DIR$/sent_emails/20181217-184452-74135568.log" />
     <entry file="file://$PROJECT_DIR$/sent_emails/20181217-192951-81993584.log">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -353,10 +319,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clubkit/settings.py">
+    <entry file="file://$PROJECT_DIR$/clubkit/api/templates/password_reset_form.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="31" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
+        <state relative-caret-position="238">
+          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements2.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
@@ -370,6 +343,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/clubkit/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="31" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sent_emails/20181217-192952-87739216.log">
+      <provider selected="true" editor-type-id="LogFileEditorProvider" />
+      <provider editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/clubkit/api/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -377,10 +361,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clubkit/api/templates/password_reset_form.html">
+    <entry file="file://$PROJECT_DIR$/clubkit/api/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+        <state relative-caret-position="187">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -391,10 +378,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/requirements2.txt">
+    <entry file="file://$PROJECT_DIR$/clubkit/api/apps.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="102">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clubkit/api/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="19" lean-forward="true" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clubkit/api/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clubkit/api/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sent_emails/20181219-133704-81637168.log">
+      <provider selected="true" editor-type-id="LogFileEditorProvider">
+        <state relative-caret-position="425">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>

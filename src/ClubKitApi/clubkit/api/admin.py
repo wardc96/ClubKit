@@ -1,5 +1,5 @@
 from django.contrib import admin
-from clubkit.api.models import UserProfileInfo
+from clubkit.api.models import ClubInfo
 
 # Register your models here.
-admin.site.register(UserProfileInfo)
+admin.site.register(ClubInfo)

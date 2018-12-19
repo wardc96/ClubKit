@@ -10,7 +10,9 @@
         <h3>Just fill out the form.</h3>
 <form enctype="multipart/form-data" method="POST">
           {% csrf_token %}
+    <h4>Personal Details </h4>
           {{ user_form.as_p }}
+    <h4>Club Details</h4>
           {{ profile_form.as_p }}
           <input type="submit" name="" value="Register">
         </form>

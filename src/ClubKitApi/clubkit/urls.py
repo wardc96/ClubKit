@@ -30,15 +30,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', views.index, name='index'),
     url(r'^special/', views.special, name='special'),
-    url(r'^clubkit/', include('clubkit.api.urls')),
+    url(r'^account/', include('clubkit.api.urls')),
     url(r'^logout/$', views.user_logout, name='logout'),
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
     path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('password_reset/confirm/<uidb64>/<token>/',
          auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('password_reset/complete/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
-
-
 ]
 '''
 Because we're using viewsets instead of views, we can automatically generate the URL conf for our API, 
