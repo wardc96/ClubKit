@@ -11,13 +11,15 @@
       <div class="container">
         <ul class="nav navbar-nav">
 {# Django Home Link / Profile Link / Club Link / Admin Link / Register Link #}
-          <li><a class="navbar-brand" href="{% url 'index' %}">DJANGO</a></li>
+          <li><a class="navbar-brand" href="{% url 'index' %}">ClubKit</a></li>
             {% if user.is_authenticated %}
-            <li><a class="navbar-brand" href="{% url 'api:view_profile' %}">Profile</a></li>.
-            <li><a class="navbar-brand" href="{% url 'api:club_home' %}">Club</a></li>
+            <li><a class="navbar-link" href="{% url 'api:view_profile' %}">Profile</a></li>.
+            <li><a class="navbar-link" href="{% url 'api:club_home' %}">Club</a></li>
             {% endif %}
           <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
+            {% if user.is_anonymous %}
           <li><a class="navbar-link" href="{% url 'api:register' %}">Register</a></li>
+            {% endif %}
           {# Some logic on what to display for last item#}
           {% if user.is_authenticated %}
             <li><a href="{% url 'api:logout' %}">Logout</a></li>

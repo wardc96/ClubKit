@@ -16,5 +16,6 @@ urlpatterns = [
     url(r'^profile/edit/$', views.edit_profile, name='edit_profile'),
     url(r'^change-password/$', views.change_password, name='change_password'),
     url(r'^club_home/$', views.club_home, name='club_home'),
+    url(r'^club_home/edit/$', views.edit_club, name='edit_club'),
 
 ]

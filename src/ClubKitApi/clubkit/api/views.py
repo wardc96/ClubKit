@@ -35,7 +35,7 @@ def index(request):
 
 @login_required
 def special():
-    return HttpResponse("You are logged in !")
+    return redirect('/account/club_home')
 
 
 @login_required
@@ -91,18 +91,23 @@ def user_login(request):
         return render(request, 'login.html', {})
 
 
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(data=request.POST, user=request.user)
+
+        if form.is_valid():
+            form.save()
+            return redirect('/account/profile')
+
+    else:
+        form = PasswordChangeForm(user=request.user)
+        args = {'form': form}
+        return render(request, 'change_password.html', args)
+
+
 def view_profile(request):
     args = {'user': request.user}
     return render(request, 'profile.html', args)
-
-
-def club_home(request):
-    model = ClubInfo.objects.all
-    # photo = model.club_logo.ImageField(storage=profile_pics)
-    args = {'model': model,
-            # 'photo': photo
-                            }
-    return render(request, 'club_home_page.html', args)
 
 
 def edit_profile(request):
@@ -119,18 +124,29 @@ def edit_profile(request):
         return render(request, 'edit_profile.html', args)
 
 
-def change_password(request):
+def club_home(request):
+    model = ClubInfo.objects.filter(user=request.user)
+    # photo = model.club_logo.ImageField(storage=profile_pics)
+    args = {'model': model,
+            }
+    return render(request, 'club_home_page.html', args)
+
+
+def edit_club(request):
     if request.method == 'POST':
-        form = PasswordChangeForm(data=request.POST, user=request.user)
+        form = ClubInfoForm(data=request.POST, instance=request.kwargs)
 
         if form.is_valid():
             form.save()
-            return redirect('/account/profile')
-
+            update_session_auth_hash(request, form.kwargs)
+            return redirect('/account/club_home')
     else:
-        form = PasswordChangeForm(user=request.user)
+        form = ClubInfoForm(instance=request.user)
         args = {'form': form}
-        return render(request, 'change_password.html', args)
+        return render(request, 'edit_club.html', args)
+
+
+
 
 
 

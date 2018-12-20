@@ -30,4 +30,9 @@ class ClubInfoForm(forms.ModelForm):
         fields = ('club_name', 'club_logo', 'club_address1', 'club_address2',
                   'club_address3', 'club_town', 'club_county', 'club_country',)
 
+    def get_form_kwargs(self):
+        kwargs = super(ClubInfoForm, self).get_form_kwargs()
+        return kwargs
+
+
 
