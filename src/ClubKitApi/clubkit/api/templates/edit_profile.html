@@ -11,6 +11,9 @@
         {{ form.as_p}}
         <button type="submit">Submit</button>
     </form>
+    <form action="{% url 'password_reset' %}">
+    <input type="submit" value="Reset Password" />
+    </form>
 
 </div>
 

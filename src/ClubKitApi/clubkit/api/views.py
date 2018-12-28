@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from rest_framework import viewsets
 from clubkit.api.serializers import UserSerializer
 from django.shortcuts import render, redirect
-from clubkit.api.forms import UserForm, ClubInfoForm
+from clubkit.api.forms import UserForm, ClubInfoForm, EditProfileForm
 from clubkit.api.models import ClubInfo
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.core.files.storage import FileSystemStorage
+from django.views.generic import TemplateView
 
 profile_pics = FileSystemStorage(location='clubkit/media/profile_pics')
 
@@ -112,14 +113,14 @@ def view_profile(request):
 
 def edit_profile(request):
     if request.method == 'POST':
-        form = UserChangeForm(request.POST, instance=request.user)
+        form = EditProfileForm(request.POST, instance=request.user)
 
         if form.is_valid():
             form.save()
-            update_session_auth_hash(request, form.user)
             return redirect('/account/profile')
+
     else:
-        form = UserChangeForm(instance=request.user)
+        form = EditProfileForm(instance=request.user)
         args = {'form': form}
         return render(request, 'edit_profile.html', args)
 
@@ -133,23 +134,52 @@ def club_home(request):
 
 
 def edit_club(request):
-    if request.method == 'POST':
-        form = ClubInfoForm(data=request.POST, instance=request.kwargs)
+        form = ClubInfoForm(request.POST or None, request.FILES or None)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user.username = request.user
+            instance.save()
+            return redirect('/account/club_home')
+        context = {
+            'form': form,
+        }
+        return render(request, 'edit_club.html', context)
+
+
+
+
+'''
+class EditClub(TemplateView):
+    template_name = 'edit_club.html'
+
+    def get(self, request):
+        form = ClubInfoForm()
+        return render(request, self.template_name, {'form': form})
+
+    def put(self, request):
+        form = ClubInfoForm(request.PUT)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = request.user
+            post.save()
+            form = ClubInfoForm()
+        context = {'form': form}
+        return render(request, self.template_name, context)
+
+'''
+
+'''
+if request.method == 'POST':
+        form = ClubInfoForm(request.POST, instance=request.user)
 
         if form.is_valid():
             form.save()
-            update_session_auth_hash(request, form.kwargs)
             return redirect('/account/club_home')
+
     else:
         form = ClubInfoForm(instance=request.user)
         args = {'form': form}
-        return render(request, 'edit_club.html', args)
-
-
-
-
-
-
+        return render(request, 'edit_club.html', args)'''
 
 '''
 def password_reset(request):

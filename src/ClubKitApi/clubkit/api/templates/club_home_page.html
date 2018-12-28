@@ -23,6 +23,10 @@
         {% endfor %}
 
     </p>
+
+    <form action="{% url 'api:edit_club' %}">
+    <input type="submit" value="Edit Club" />
+  </form>
 </div>
 
 {% endblock %}
