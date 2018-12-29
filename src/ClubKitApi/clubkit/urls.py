@@ -28,7 +28,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
 
     path('admin/', admin.site.urls),
-    url(r'^$', views.index, name='index'),
+    url(r'^$', views.Index.as_view(), name='index'),
     url(r'^special/', views.special, name='special'),
     url(r'^account/', include('clubkit.api.urls')),
     path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),

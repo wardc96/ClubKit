@@ -8,6 +8,18 @@
     {% else %}
         <h2>Register or Login if you'd like to</h2>
     {% endif %}
+
+    <h2>Our Clubs</h2>
+        {% for club in clubs %}
+        <a href="{% url 'api:club_home_with_pk' pk=club.pk %}">
+            <li>{{ club.club_name }}</li>
+        </a>
+      {% endfor %}
+</div>
   </div>
 </div>
 {% endblock %}
+
+
+
+

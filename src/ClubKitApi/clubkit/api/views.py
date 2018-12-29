@@ -30,8 +30,16 @@ class UserViewSet(viewsets.ModelViewSet):
     '''
 
 
-def index(request):
-    return render(request, 'index.html')
+class Index(TemplateView):
+    template_name = 'index.html'
+
+    def get(self, request):
+        users = User.objects.all()
+        clubs = ClubInfo.objects.all()
+
+        args = {'users': users,
+                'clubs': clubs}
+        return render(request, self.template_name, args)
 
 
 @login_required
@@ -106,8 +114,12 @@ def change_password(request):
         return render(request, 'change_password.html', args)
 
 
-def view_profile(request):
-    args = {'user': request.user}
+def view_profile(request, pk=None):
+    if pk:
+        user = User.objects.get(pk=pk)
+    else:
+        user = request.user
+    args = {'user': user}
     return render(request, 'profile.html', args)
 
 
@@ -125,16 +137,22 @@ def edit_profile(request):
         return render(request, 'edit_profile.html', args)
 
 
-def club_home(request):
-    model = ClubInfo.objects.filter(user=request.user)
+def club_home(request, pk=None):
+    if pk:
+        club = ClubInfo.objects.filter(pk=pk)
+        user = request.user
+    else:
+        club = ClubInfo.objects.filter(user=request.user)
+        user = request.user
     # photo = model.club_logo.ImageField(storage=profile_pics)
-    args = {'model': model,
+    args = {'club': club,
+            'user': user
             }
     return render(request, 'club_home_page.html', args)
 
 
 def edit_club(request):
-        form = ClubInfoForm(request.POST or None, request.FILES or None)
+        form = ClubInfoForm(request.POST or None, instance=request.user)
         if form.is_valid():
             instance = form.save(commit=False)
             instance.user.username = request.user
