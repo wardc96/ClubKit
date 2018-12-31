@@ -1,8 +1,8 @@
 from django.contrib.auth.models import User
 from rest_framework import viewsets
-from clubkit.api.serializers import UserSerializer
+from clubkit.api.serializers import UserSerializer, PlayerRegistrationSerializer
 from django.shortcuts import render, redirect
-from clubkit.api.forms import UserForm, ClubInfoForm, EditProfileForm
+from clubkit.api.forms import UserForm, ClubInfoForm, EditProfileForm, PlayerRegistrationForm
 from clubkit.api.models import ClubInfo
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
@@ -12,6 +12,8 @@ from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.core.files.storage import FileSystemStorage
 from django.views.generic import TemplateView
+from rest_framework.renderers import TemplateHTMLRenderer
+from rest_framework.views import APIView
 
 profile_pics = FileSystemStorage(location='clubkit/media/profile_pics')
 
@@ -79,6 +81,19 @@ def register(request):
                   {'user_form': user_form,
                    'profile_form': profile_form,
                    'registered': registered})
+
+
+'''
+class RegisterPlayer(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'player_registration.html'
+
+    def post(self, request):
+        serializer = PlayerRegistrationSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return redirect('club_home_with_pk', {'serializer': serializer})
+'''
 
 
 def user_login(request):
@@ -163,6 +178,22 @@ def edit_club(request):
         }
         return render(request, 'edit_club.html', context)
 
+
+def player_register(request):
+    registered = False
+    if request.method == 'POST':
+        player_form = PlayerRegistrationForm(data=request.POST)
+        if player_form.is_valid():
+            player_form.save(commit=False)
+            registered = True
+        else:
+            print(player_form.errors,)
+    else:
+        player_form = PlayerRegistrationForm()
+    return render(request,
+                  'player_registration.html',
+                  {'player_form': player_form,
+                   'registered': registered})
 
 
 
