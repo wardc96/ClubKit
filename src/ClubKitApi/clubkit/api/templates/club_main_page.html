@@ -12,12 +12,12 @@
         <ul class="nav navbar-nav">
 {# Django Home Link / Profile Link / Club Link / Admin Link / Register Link #}
           <li><a class="navbar-brand" href="{% url 'index' %}">ClubKit</a></li>
-            <li><a class="navbar-link" href="">Our Clubs</a></li>
-            <li><a class="navbar-link" href="">Packages</a></li>
-            <li><a class="navbar-link" href="">Pricing</a></li>
-            <li><a class="navbar-link" href="">About Us</a></li>
+            <li><a class="navbar-link" href="{% url 'api:club_home' %}">Home</a></li>
+            <li><a class="navbar-link" href="">Player Register</a></li>
+            <li><a class="navbar-link" href="">Roster</a></li>
+            <li><a class="navbar-link" href="">Rent-a-Pitch</a></li>
+            <li><a class="navbar-link" href="">Shop</a></li>
             <li><a class="navbar-link" href="">Contact Us</a></li>
-
 
           {% if user.is_authenticated %}
             <li><a class="navbar-link" href="{% url 'api:view_profile' %}">Profile</a></li>

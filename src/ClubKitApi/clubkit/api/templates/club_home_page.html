@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'club_main_page.html' %}
 
 {% block head %}
 <title>Profile</title>
@@ -13,6 +13,7 @@
         {% for info in club %}
     <li>{{ info.pk }}</li>
     <li>{{ info.user }}</li>
+    <li>{{ info.user.pk }}</li>
     <li>{{ info.club_name }}</li>
     <li><img src="{{ info.club_logo }}" height="50px" width="50px"/></li>
     <li>{{ info.club_address1 }}</li>
@@ -26,7 +27,7 @@
         {% endfor %}
 
     </p>
-    {% if user.user == club.user %}
+    {% if user.is_authenticated  %}
     <form action="{% url 'api:edit_club' %}">
     <input type="submit" value="Edit Club" />
     {% endif %}

@@ -17,7 +17,7 @@ urlpatterns = [
     url(r'^profile/edit/$', views.edit_profile, name='edit_profile'),
     url(r'^change-password/$', views.change_password, name='change_password'),
     url(r'^club_home/$', views.club_home, name='club_home'),
-    re_path(r'^club_home/(?P<pk>\d+)/$', views.club_home, name='club_home_with_pk'),
+    url(r'^club_home/(?P<pk>\d+)/$', views.club_home, name='club_home_with_pk'),
     url(r'^club_home/edit/$', views.edit_club, name='edit_club'),
 
 ]

@@ -31,7 +31,7 @@ class ClubInfoForm(forms.ModelForm):
                   'club_address3', 'club_town', 'club_county', 'club_country',)
 
 
-class EditProfileForm(UserChangeForm):
+class EditProfileForm(forms.ModelForm):
 
     class Meta:
         model = User
@@ -39,5 +39,3 @@ class EditProfileForm(UserChangeForm):
             'email',
             'first_name',
             'last_name')
-
-
