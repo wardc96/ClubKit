@@ -18,7 +18,7 @@ urlpatterns = [
     url(r'^change-password/$', views.change_password, name='change_password'),
     url(r'^club_home/$', views.club_home, name='club_home'),
     url(r'^club_home/(?P<pk>\d+)/$', views.club_home, name='club_home_with_pk'),
-    url(r'^club_home/player_registration/$', views.player_register, name='player_register'),
+    url(r'^club_home/player_registration/$', views.RegisterPlayer.as_view(), name='player_register'),
     url(r'^club_home/edit/$', views.edit_club, name='edit_club'),
 
 ]

@@ -27,6 +27,9 @@ class PlayerRegistrationSerializer(serializers.ModelSerializer):
             'dob': DateInput(attrs={'type': 'date'})
         }
 
+
+'''
     def create(self, validated_data):
         return PlayerRegistration.objects.create(**validated_data)
 
+'''
