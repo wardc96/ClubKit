@@ -172,17 +172,30 @@ def club_home(request, pk=None):
 
 
 def edit_club(request):
+    instance = ClubInfo.objects.filter(user=request.user).first()
+    if request.method == 'POST':
+        form = ClubInfoForm(request.POST, instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+        else:
+            return redirect('/')
+    else:
+        form = ClubInfoForm(instance=instance)
+        return render(request, 'edit_club.html', {'form': form})
+
+    '''
         form = ClubInfoForm(request.POST or None, instance=request.user)
         if form.is_valid():
             instance = form.save(commit=False)
-            instance.user.username = request.user
+            instance.user = request.user
             instance.save()
             return redirect('/account/club_home')
         context = {
             'form': form,
         }
         return render(request, 'edit_club.html', context)
-
+'''
 
 
 '''

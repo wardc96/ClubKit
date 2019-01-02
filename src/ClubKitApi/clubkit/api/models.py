@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from clubkit.api.utils import unique_slug_generator
+from django.db.models.signals import pre_save
+
 
 # Club information model
 
@@ -15,9 +18,20 @@ class ClubInfo(models.Model):
     club_town = models.CharField(max_length=30)
     club_county = models.CharField(max_length=30)
     club_country = models.CharField(max_length=30)
+    # slug = models.SlugField(max_length=150, unique=True)
 
     def __str__(self):
         return self.club_name
+
+
+'''
+link to video: https://www.youtube.com/watch?v=bQHqG-LMWPY
+def slug_save(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = unique_slug_generator(instance, instance.club_name, instance.slug)
+
+pre_save.connect(slug_save, sender=ClubInfo)
+'''
 
 
 class PlayerRegistration(models.Model):

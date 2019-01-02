@@ -11,9 +11,7 @@
         {% csrf_token %}
 
         {% for info in club %}
-    <li>{{ info.pk }}</li>
-    <li>{{ info.user }}</li>
-    <li>{{ info.user.pk }}</li>
+
     <li>{{ info.club_name }}</li>
     <li><img src="{{ info.club_logo }}" height="50px" width="50px"/></li>
     <li>{{ info.club_address1 }}</li>
@@ -22,16 +20,17 @@
     <li>{{ info.club_town }}</li>
     <li>{{ info.club_county }}</li>
     <li>{{ info.club_country }}</li>
-     <li>{{ user.pk }}</li>
 
-        {% endfor %}
+
+
 
     </p>
-    {% if user.is_authenticated  %}
+    {% if info.user.pk  ==  user.pk    %}
     <form action="{% url 'api:edit_club' %}">
     <input type="submit" value="Edit Club" />
     {% endif %}
+
   </form>
 </div>
-
+{% endfor %}
 {% endblock %}
