@@ -1,5 +1,5 @@
 from django import forms
-from clubkit.api.models import ClubInfo, PlayerRegistration
+from clubkit.api.models import ClubInfo, Player
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.forms.widgets import DateInput
@@ -45,7 +45,7 @@ class EditProfileForm(forms.ModelForm):
 class PlayerRegistrationForm(forms.ModelForm):
 
     class Meta:
-        model = PlayerRegistration
+        model = Player
         fields = '__all__'
         labels = {
             'dob': ('D.O.B'),

@@ -1,9 +1,9 @@
 from django.contrib.auth.models import User
 from rest_framework import viewsets
-from clubkit.api.serializers import UserSerializer, PlayerRegistrationSerializer
+from clubkit.api.serializers import UserSerializer, PlayerRegistrationSerializer, ClubRosterSerializer, TeamSerializer
 from django.shortcuts import render, redirect
 from clubkit.api.forms import UserForm, ClubInfoForm, EditProfileForm, PlayerRegistrationForm
-from clubkit.api.models import ClubInfo
+from clubkit.api.models import ClubInfo, Team, Pitch, RosterId
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
@@ -16,7 +16,6 @@ from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-
 
 profile_pics = FileSystemStorage(location='clubkit/media/profile_pics')
 
@@ -92,13 +91,50 @@ class RegisterPlayer(APIView):
 
     def get(self, request):
         serializer = PlayerRegistrationSerializer()
-        return Response({'serializer': serializer})
+        return Response({'serializer': serializer,
+                         })
 
     def post(self, request):
         serializer = PlayerRegistrationSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response({'serializer': serializer})
+            return Response(template_name='player_registration_complete.html')
+
+
+class ClubRoster(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'edit_club_roster.html'
+
+    def get(self, request):
+        serializer = ClubRosterSerializer()
+        roster = RosterId.objects.all()
+        return Response({'serializer': serializer,
+                         'roster': roster})
+
+    def post(self, request):
+        serializer = ClubRosterSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(template_name='roster_saved.html')
+
+
+'''
+class TeamInfo(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'edit_club_roster.html'
+
+    def get(self, request):
+        serializer = TeamSerializer()
+        return Response({'serializer': serializer,
+                         })
+
+    def post(self, request):
+        serializer = TeamSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'serializer': serializer,
+                             })
+'''
 
 
 def user_login(request):
@@ -166,7 +202,7 @@ def club_home(request, pk=None):
         user = request.user
     # photo = model.club_logo.ImageField(storage=profile_pics)
     args = {'club': club,
-            'user': user
+            'user': user,
             }
     return render(request, 'club_home_page.html', args)
 
