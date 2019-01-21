@@ -10,7 +10,7 @@ def change_password(request):
 
         if form.is_valid():
             form.save()
-            return redirect('/account/profile')
+            return redirect('/profile/')
 
     else:
         form = PasswordChangeForm(user=request.user)
@@ -33,7 +33,7 @@ def edit_profile(request):
 
         if form.is_valid():
             form.save()
-            return redirect('/account/profile')
+            return redirect('/profile/')
 
     else:
         form = EditProfileForm(instance=request.user)

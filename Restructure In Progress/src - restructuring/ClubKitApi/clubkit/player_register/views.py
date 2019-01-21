@@ -2,6 +2,7 @@ from clubkit.player_register.serializers import PlayerRegistrationSerializer
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.urls import reverse
 
 
 class RegisterPlayer(APIView):

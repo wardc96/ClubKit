@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from clubkit.player_register import views
+from django.urls import path
 
 # SET THE NAMESPACE!
 app_name = 'player_register'
@@ -7,6 +8,6 @@ app_name = 'player_register'
 
 
 urlpatterns = [
-    url(r'^player_registration/$', views.RegisterPlayer.as_view(), name='player_registration'),
+    path('register/', views.RegisterPlayer.as_view(), name='player_register'),
 
 ]

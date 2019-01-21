@@ -27,6 +27,8 @@ urlpatterns = [
     url(r'^account/', include('clubkit.main.urls'), name='account'),
     url(r'^profile/', include('clubkit.profiles.urls'), name='profiles'),
     url(r'^club_home/', include('clubkit.clubs.urls'), name='clubs'),
+    url(r'^player/', include('clubkit.player_register.urls'), name='player_register'),
+    url(r'^roster/', include('clubkit.roster.urls'), name='roster'),
 
 ]
 

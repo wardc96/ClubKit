@@ -7,12 +7,14 @@
 <div class="container">
     <form method="post">
         {% csrf_token %}
-       <li> {{ form.email}}</li>
-       <li> {{ form.first_name}}</li>
-       <li> {{ form.last_name}}</li>
+        <ul style="list-style: none;">
+       <li>Email: {{ form.email}}</li>
+       <li>First Name: {{ form.first_name}}</li>
+       <li>Last Name: {{ form.last_name}}</li>
+        </ul>
         <button type="submit">Submit</button>
     </form>
-    <form action="{% url 'change_password' %}">
+    <form action="{% url 'profiles:change_password' %}">
     <input type="submit" value="Change Password" />
     </form>
 
