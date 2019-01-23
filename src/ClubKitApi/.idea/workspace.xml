@@ -3,25 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="db52fa26-b7a5-4dd8-b5c8-7ba962dd3903" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/clubs/templates/club_main_page.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/clubs/templates/club_main_page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/clubs/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/clubs/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/main/templates/password_reset_complete.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/main/templates/password_reset_complete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/main/templates/password_reset_confirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/main/templates/password_reset_confirm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/main/templates/password_reset_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/main/templates/password_reset_done.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/main/templates/password_reset_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/main/templates/password_reset_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/player_register/templates/club_main_page.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/player_register/templates/player_registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/player_register/templates/player_registration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/player_register/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/player_register/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/player_register/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/player_register/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/profiles/templates/club_main_page.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/profiles/templates/edit_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/profiles/templates/edit_profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/profiles/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/profiles/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/profiles/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/profiles/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/roster/templates/club_main_page.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/clubkit/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../../Restructure In Progress/src - restructuring/ClubKitApi/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,7 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -103,7 +85,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -120,6 +101,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -212,7 +194,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17544784" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
