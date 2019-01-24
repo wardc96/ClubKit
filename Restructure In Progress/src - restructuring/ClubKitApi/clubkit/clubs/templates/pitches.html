@@ -1,0 +1,31 @@
+{% extends 'club_main_page.html' %}
+{% load rest_framework %}
+{% load staticfiles %}
+{% block body_block %}
+
+  <div class="addpitch">
+      <h3>Just fill out the form.</h3>
+<form action="{% url 'clubs:pitches' %}" method="POST">
+          {% csrf_token %}
+         {% render_form serializer %}
+    <input type="submit" name="" value="Add">
+</form>
+
+<div class="pitch">
+    <h3>Pitch Details</h3>
+    <p>
+        {% csrf_token %}
+        {% for info in pitch %}
+    <li>{{ info.club_id }}</li>
+    <li>{{ info.pitch_name }}</li>
+    <li>{{ info.get_pitch_size_display }}</li>
+    <li>{{ info.get_pitch_type_display }}</li>
+    <li>{{ info.open_time }}</li>
+    <li>{{ info.close_time }}</li>
+
+
+    </p>
+    </div>
+  </div>
+{% endfor %}
+{% endblock %}

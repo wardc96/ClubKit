@@ -1,0 +1,27 @@
+{% extends 'club_main_page.html' %}
+{% load rest_framework %}
+{% load staticfiles %}
+{% block body_block %}
+
+  <div class="addteam">
+      <h3>Just fill out the form.</h3>
+<form action="{% url 'clubs:teams' %}" method="POST">
+          {% csrf_token %}
+         {% render_form serializer %}
+    <input type="submit" name="" value="Add">
+</form>
+
+<div class="team">
+    <h3>Team Details</h3>
+    <p>
+        {% csrf_token %}
+        {% for info in teams %}
+    <li>{{ info.club_id }}</li>
+    <li>{{ info.team_name }}</li>
+    <li>{{ info.manager_name }}</li>
+
+    </p>
+    </div>
+  </div>
+{% endfor %}
+{% endblock %}
