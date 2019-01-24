@@ -1,10 +1,11 @@
 from django.db import models
-from clubkit.clubs.models import ClubInfo
+from clubkit.clubs.models import ClubInfo, Team
 
 
 class Player(models.Model):
 
     club_id = models.ForeignKey(ClubInfo, on_delete=models.CASCADE)
+    # team_id = models.ForeignKey(Team, on_delete=models.CASCADE, default='')
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     dob = models.DateField(max_length=8)

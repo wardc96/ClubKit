@@ -27,7 +27,7 @@ class Team(models.Model):
     club_id = models.ForeignKey(ClubInfo, on_delete=models.CASCADE)
     team_name = models.CharField(max_length=30)
     manager_name = models.CharField(max_length=20)
-    # player_id = models.ManyToManyField(Player, on_delete=models.CASCADE)
+    # player_id = models.ManyToManyField(Player, default='')
 
     def __str__(self):
         return self.team_name
