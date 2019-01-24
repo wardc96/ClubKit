@@ -12,7 +12,9 @@ urlpatterns = [
     path('', views.club_home, name='club_home'),
     path('<int:pk>/', views.club_home, name='club_home_with_pk'),
     # path('<int:pk>/', include('clubkit.player_register.urls', namespace='player_registration'), name='club_player_register'),
-    path('edit/', views.edit_club, name='edit_club'),
+    path('edit_club/', views.edit_club, name='edit_club'),
+    path('teams/', views.TeamInfo.as_view(), name='teams'),
+    path('pitches/', views.PitchInfo.as_view(), name='pitches'),
 ]
 
 # url(r'^(?P<pk>\d+)/', include('clubkit.player_register.urls'), name='club_player_register'),

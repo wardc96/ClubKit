@@ -13,6 +13,8 @@
 {# Django Home Link / Profile Link / Club Link / Admin Link / Register Link #}
           <li><a class="navbar-brand" href="{% url 'index' %}">ClubKit</a></li>
             <li><a class="navbar-link" href="{% url 'clubs:club_home' %}">Home</a></li>
+            <li><a class="navbar-link" href="{% url 'clubs:teams' %}">Team</a></li>
+            <li><a class="navbar-link" href="{% url 'clubs:pitches' %}">Pitches</a></li>
             <li><a class="navbar-link" href="{% url 'player_register:player_register' %}">Player Register</a></li>
             <li><a class="navbar-link" href="{% url 'roster:club_roster' %}">Roster</a></li>
             <li><a class="navbar-link" href="">Rent-a-Pitch</a></li>
