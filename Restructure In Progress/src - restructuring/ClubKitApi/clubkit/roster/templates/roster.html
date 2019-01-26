@@ -1,0 +1,38 @@
+{% extends 'club_main_page.html' %}
+{% load rest_framework %}
+{% load staticfiles %}
+{% block body_block %}
+
+  <div class="addroster">
+      {% if user.is_authenticated %}
+      <h3>Add Roster To Club.</h3>
+<form action="{% url 'roster:club_roster' %}" method="POST">
+          {% csrf_token %}
+         {% render_form serializer %}
+    <input type="submit" name="" value="Add">
+</form>
+ {% endif %}
+<div class="roster">
+    <h3>Roster Details</h3>
+    <p>
+        {% csrf_token %}
+        {% for id in roster %}
+        <li>{{ id.club_id }}</li>
+        <li>{{ id.pitch_id }}</li>
+        <li>{{ id.team_id }}</li>
+        <li>{{ id.date }}</li>
+        <li>{{ id.start_time }}</li>
+        <li>{{ id.finish_time }}</li>
+        {% if user.is_authenticated %}
+<form action="{% url 'roster:delete_roster' id.pk %}">
+    <input type="submit" value="Delete">
+</form>
+    <form action="{% url 'roster:edit_roster' id.pk %}">
+    <input type="submit" value="Edit">
+</form>
+ {% endif %}
+    </p>
+    </div>
+  </div>
+{% endfor %}
+{% endblock %}

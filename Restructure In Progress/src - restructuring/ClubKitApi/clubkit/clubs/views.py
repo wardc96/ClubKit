@@ -77,7 +77,10 @@ def edit_team(request, pk):
             return redirect('/')
     else:
         serializer = TeamSerializer(instance=instance)
-        return render(request, 'edit_team.html', {'serializer': serializer})
+        return render(
+            request,
+            'edit_team.html',
+            {'serializer': serializer, 'instance': instance})
 
 
 class PitchInfo(APIView):
