@@ -5,7 +5,10 @@ from clubkit.clubs.serializers import TeamSerializer, PitchSerializer
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import status
 from rest_framework import serializers
+from django.http import HttpResponse
+from django.template import loader
 
 
 def club_home(request, pk=None):
@@ -57,6 +60,26 @@ class TeamInfo(APIView):
                              })
 
 
+def delete_team(request, pk):
+    team = Team.objects.filter(pk=pk)
+    team.delete()
+    return redirect('clubs:teams')
+
+
+def edit_team(request, pk):
+    instance = Team.objects.filter(pk=pk)
+    if request.method == 'POST':
+        serializer = TeamSerializer(request.POST, instance=instance)
+        if serializer.is_valid():
+            serializer.save()
+            return redirect('/')
+        else:
+            return redirect('/')
+    else:
+        serializer = TeamSerializer(instance=instance)
+        return render(request, 'edit_team.html', {'serializer': serializer})
+
+
 class PitchInfo(APIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'pitches.html'
@@ -79,4 +102,25 @@ class PitchInfo(APIView):
             return Response({'serializer': serializer,
                              'pitch': pitch
                              })
+
+
+def delete_pitch(request, pk):
+    pitch = Pitch.objects.filter(pk=pk)
+    pitch.delete()
+    return redirect('clubs:pitches')
+
+
+def edit_pitch(request, pk):
+    instance = Pitch.objects.filter(pk=pk)
+    if request.method == 'POST':
+        serializer = PitchSerializer(request.POST, instance=instance)
+        if serializer.is_valid():
+            serializer.save()
+            return redirect('/')
+        else:
+            return redirect('/')
+    else:
+        serializer = PitchSerializer(instance=instance)
+        return render(request, 'edit_pitch.html', {'serializer': serializer})
+
 

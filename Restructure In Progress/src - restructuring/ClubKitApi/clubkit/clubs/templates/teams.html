@@ -4,7 +4,7 @@
 {% block body_block %}
 
   <div class="addteam">
-      <h3>Just fill out the form.</h3>
+      <h3>Add Teams To Club.</h3>
 <form action="{% url 'clubs:teams' %}" method="POST">
           {% csrf_token %}
          {% render_form serializer %}
@@ -19,6 +19,12 @@
     <li>{{ info.club_id }}</li>
     <li>{{ info.team_name }}</li>
     <li>{{ info.manager_name }}</li>
+<form action="{% url 'clubs:delete_team' info.pk %}">
+    <input type="submit" value="Delete">
+</form>
+    <form action="{% url 'clubs:edit_team' info.pk %}">
+    <input type="submit" value="Edit">
+</form>
 
     </p>
     </div>

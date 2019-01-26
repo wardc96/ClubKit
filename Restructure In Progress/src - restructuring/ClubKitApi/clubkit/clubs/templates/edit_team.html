@@ -1,0 +1,15 @@
+{% extends 'club_main_page.html' %}
+{% load rest_framework %}
+{% load staticfiles %}
+{% block body_block %}
+
+  <div class="editteam">
+      <h3>Edit Team</h3>
+<form action="{% url 'clubs:edit_team' pk=instance.pk %}" method="POST">
+          {% csrf_token %}
+         {% render_form serializer %}
+    <input type="submit" name="" value="Update">
+</form>
+
+  </div>
+{% endblock %}

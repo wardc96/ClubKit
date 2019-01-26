@@ -3,26 +3,31 @@
 {% load staticfiles %}
 {% block body_block %}
 
-  <div class="addpitch">
-      <h3>Just fill out the form.</h3>
+  <div class="addteam">
+      <h3>Add Pitches To Club.</h3>
 <form action="{% url 'clubs:pitches' %}" method="POST">
           {% csrf_token %}
          {% render_form serializer %}
     <input type="submit" name="" value="Add">
 </form>
 
-<div class="pitch">
+<div class="team">
     <h3>Pitch Details</h3>
     <p>
         {% csrf_token %}
         {% for info in pitch %}
     <li>{{ info.club_id }}</li>
     <li>{{ info.pitch_name }}</li>
-    <li>{{ info.get_pitch_size_display }}</li>
-    <li>{{ info.get_pitch_type_display }}</li>
+    <li>{{ info.pitch_size }}</li>
+    <li>{{ info.pitch_type }}</li>
     <li>{{ info.open_time }}</li>
     <li>{{ info.close_time }}</li>
-
+<form action="{% url 'clubs:delete_pitch' info.pk %}">
+    <input type="submit" value="Delete">
+</form>
+    <form action="{% url 'clubs:edit_pitch' info.pk %}">
+    <input type="submit" value="Edit">
+</form>
 
     </p>
     </div>
