@@ -3,6 +3,7 @@
 {% load staticfiles %}
 {% block body_block %}
 
+{% if info.user.club_id  ==  user.club_id %}
   <div class="addteam">
       <h3>Add Pitches To Club.</h3>
 <form action="{% url 'clubs:pitches' %}" method="POST">
@@ -10,7 +11,7 @@
          {% render_form serializer %}
     <input type="submit" name="" value="Add">
 </form>
-
+{% endif %}
 <div class="team">
     <h3>Pitch Details</h3>
     <p>
@@ -18,17 +19,18 @@
         {% for info in pitch %}
     <li>{{ info.club_id }}</li>
     <li>{{ info.pitch_name }}</li>
-    <li>{{ info.pitch_size }}</li>
-    <li>{{ info.pitch_type }}</li>
+    <li>{{ info.get_pitch_size_display }}</li>
+    <li>{{ info.get_pitch_type_display }}</li>
     <li>{{ info.open_time }}</li>
     <li>{{ info.close_time }}</li>
+    {% if info.user.club_id  ==  user.club_id %}
 <form action="{% url 'clubs:delete_pitch' info.pk %}">
     <input type="submit" value="Delete">
 </form>
     <form action="{% url 'clubs:edit_pitch' info.pk %}">
     <input type="submit" value="Edit">
 </form>
-
+{% endif %}
     </p>
     </div>
   </div>

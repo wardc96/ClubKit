@@ -3,6 +3,7 @@
 {% load staticfiles %}
 {% block body_block %}
 
+{% if info.user.club_id  ==  user.club_id %}
   <div class="addteam">
       <h3>Add Teams To Club.</h3>
 <form action="{% url 'clubs:teams' %}" method="POST">
@@ -10,7 +11,7 @@
          {% render_form serializer %}
     <input type="submit" name="" value="Add">
 </form>
-
+{% endif %}
 <div class="team">
     <h3>Team Details</h3>
     <p>
@@ -19,13 +20,14 @@
     <li>{{ info.club_id }}</li>
     <li>{{ info.team_name }}</li>
     <li>{{ info.manager_name }}</li>
+    {% if info.user.club_id  ==  user.club_id %}
 <form action="{% url 'clubs:delete_team' info.pk %}">
     <input type="submit" value="Delete">
 </form>
     <form action="{% url 'clubs:edit_team' info.pk %}">
     <input type="submit" value="Edit">
 </form>
-
+{% endif %}
     </p>
     </div>
   </div>

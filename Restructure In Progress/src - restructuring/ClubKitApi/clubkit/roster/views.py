@@ -1,5 +1,6 @@
 from clubkit.roster.models import RosterId, ClubInfo
 from clubkit.roster.serializers import ClubRosterSerializer
+from clubkit.roster.forms import RosterForm
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -37,6 +38,20 @@ def delete_roster(request, pk):
 
 
 def edit_roster(request, pk):
+    instance = RosterId.objects.filter(pk=pk).first()
+    if request.method == 'POST':
+        form = RosterForm(request.POST, instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect('roster:club_roster')
+        else:
+            return redirect('roster:club_roster')
+    else:
+        form = RosterForm(instance=instance)
+        return render(request, 'edit_roster.html', {'form': form,
+                                                    'instance': instance})
+'''
+def edit_roster(request, pk):
     instance = RosterId.objects.filter(pk=pk)
     if request.method == 'POST':
         serializer = ClubRosterSerializer(request.POST, instance=instance)
@@ -49,4 +64,4 @@ def edit_roster(request, pk):
         serializer = ClubRosterSerializer(instance=instance)
         return render(request, 'edit_roster.html', {'serializer': serializer})
 
-
+'''

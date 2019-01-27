@@ -68,7 +68,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return render(request, 'index.html', {})
+                return redirect('index')
             else:
                 return HttpResponse("Your account was inactive.")
         else:
