@@ -16,6 +16,10 @@ class TeamForm(forms.ModelForm):
         model = Team
         fields = ('club_id', 'team_name', 'manager_name')
 
+    def __init__(self, *args, **kwargs):
+        super(TeamForm, self).__init__(*args, **kwargs)
+        self.fields['club_id'].widget = forms.HiddenInput()
+
 
 class PitchForm(forms.ModelForm):
 
@@ -23,4 +27,8 @@ class PitchForm(forms.ModelForm):
         model = Pitch
         fields = ('club_id', 'pitch_name', 'pitch_size', 'pitch_type', 'open_time',
                   'close_time')
+
+    def __init__(self, *args, **kwargs):
+        super(PitchForm, self).__init__(*args, **kwargs)
+        self.fields['club_id'].widget = forms.HiddenInput()
 
