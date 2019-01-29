@@ -26,8 +26,37 @@
     {% endif %}
      {% endfor %}
 
-
   </form>
 </div>
+<div class="posts">
+    <h3>Club Posts</h3>
+    <p>    {% if posts.club_id == user.club_id %}
+    <form action="{% url 'clubs:club_post' %}">
+    <input type="submit" value="Add New Post" />
+    </form>
+    {% endif %}
+    </p>
+    <p>
+        {% csrf_token %}
+
+        {% for info in club_posts %}
+
+    <li>{{ info.title }}</li>
+    <li><img src="{{ info.photo }}" height="50px" width="50px"/></li>
+    <li>{{ info.text }}</li>
+    <li>{{ info.created_date }}</li>
+    <li>{{ info.published_date }}</li>
+    {% if club_post.club_id == user.club_id %}
+    <form action="{% url 'clubs:delete_post' info.pk %}">
+    <input type="submit" value="Delete">
+</form>
+     <form action="{% url 'clubs:edit_post' info.pk %}">
+    <input type="submit" value="Edit">
+</form>
+    {% endif %}
+    </p>
+    {% endfor %}
+</div>
+
 
 {% endblock %}

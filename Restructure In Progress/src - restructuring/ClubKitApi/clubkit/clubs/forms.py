@@ -1,5 +1,5 @@
 from django import forms
-from clubkit.clubs.models import ClubInfo, Team, Pitch
+from clubkit.clubs.models import ClubInfo, Team, Pitch, ClubPosts
 
 
 class ClubInfoForm(forms.ModelForm):
@@ -31,4 +31,15 @@ class PitchForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(PitchForm, self).__init__(*args, **kwargs)
         self.fields['club_id'].widget = forms.HiddenInput()
+
+
+class ClubPostForm(forms.ModelForm):
+
+    class Meta():
+        model = ClubPosts
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(ClubPostForm, self).__init__(*args, **kwargs)
+        self.fields['created_date'].widget = forms.HiddenInput()
 

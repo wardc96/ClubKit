@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 from django.urls import reverse
 # from clubkit.player_register.models import Player
 
@@ -52,6 +53,21 @@ class Pitch(models.Model):
 
     def __str__(self):
         return self.pitch_name
+
+
+class ClubPosts(models.Model):
+    club_id = models.ForeignKey(ClubInfo, on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    photo = models.ImageField(upload_to='club_post_pics', blank=True, null=True)
+    text = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+
+    def created(self):
+        self.created_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return self.title
 
 
 
