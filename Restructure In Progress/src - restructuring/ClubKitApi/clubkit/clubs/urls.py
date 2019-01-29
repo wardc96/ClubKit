@@ -19,6 +19,7 @@ urlpatterns = [
     path('pitches/', views.PitchInfo.as_view(), name='pitches'),
     path('delete_pitch/<int:pk>/', views.delete_pitch, name='delete_pitch'),
     path('edit_pitch/<int:pk>/', views.edit_pitch, name='edit_pitch'),
+    path('add_post/', views.ClubAddPosts.as_view(), name='club_post'),
 ]
 
 # url(r'^(?P<pk>\d+)/', include('clubkit.player_register.urls'), name='club_player_register'),
