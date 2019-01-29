@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="db52fa26-b7a5-4dd8-b5c8-7ba962dd3903" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/clubs/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/clubs/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/clubs/templates/edit_team.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/clubs/templates/edit_team.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/roster/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/roster/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,8 +15,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/clubkit/clubs/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="59" lean-forward="true" selection-start-line="16" selection-start-column="17" selection-end-line="20" selection-end-column="59" />
+            <state relative-caret-position="323">
+              <caret line="20" column="59" selection-start-line="16" selection-start-column="17" selection-end-line="20" selection-end-column="59" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -43,8 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/clubkit/roster/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="59" lean-forward="true" selection-start-line="13" selection-start-column="59" selection-end-line="13" selection-end-column="59" />
+            <state relative-caret-position="204">
+              <caret line="13" column="59" selection-start-line="13" selection-start-column="59" selection-end-line="13" selection-end-column="59" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -55,8 +51,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/clubkit/clubs/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="73" column="23" lean-forward="true" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
+            <state relative-caret-position="1071">
+              <caret line="73" column="23" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
@@ -179,25 +175,6 @@
               <item name="ClubKitApi" type="b2602c69:ProjectViewProjectNode" />
               <item name="ClubKitApi" type="462c0819:PsiDirectoryNode" />
               <item name="clubkit" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ClubKitApi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ClubKitApi" type="462c0819:PsiDirectoryNode" />
-              <item name="clubkit" type="462c0819:PsiDirectoryNode" />
-              <item name="clubs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ClubKitApi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ClubKitApi" type="462c0819:PsiDirectoryNode" />
-              <item name="clubkit" type="462c0819:PsiDirectoryNode" />
-              <item name="clubs" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ClubKitApi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ClubKitApi" type="462c0819:PsiDirectoryNode" />
-              <item name="clubkit" type="462c0819:PsiDirectoryNode" />
-              <item name="roster" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -347,7 +324,14 @@
       <option name="project" value="LOCAL" />
       <updated>1548592756332</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Updating forms to hide unnecessary fields">
+      <created>1548600862582</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1548600862582</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView">
@@ -372,9 +356,9 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49789253" weight="0.32827735" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="7" sideWeight="0.4272919" visible="true" weight="0.23726977" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.5237092" weight="0.27843988" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.57270813" side_tool="true" visible="true" weight="0.23726977" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.4272919" weight="0.23726977" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.5226554" visible="true" weight="0.27843988" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.47734457" side_tool="true" visible="true" weight="0.27843988" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49894625" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -414,7 +398,8 @@
     <MESSAGE value="Delete api added for team / pitch. Work started on update." />
     <MESSAGE value="Delete api added for Roster. Work started on update." />
     <MESSAGE value="Update api for pitch, team and roster finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update api for pitch, team and roster finished" />
+    <MESSAGE value="Updating forms to hide unnecessary fields" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updating forms to hide unnecessary fields" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -786,20 +771,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clubkit/clubs/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="73" column="23" lean-forward="true" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/clubkit/clubs/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="59" lean-forward="true" selection-start-line="16" selection-start-column="17" selection-end-line="20" selection-end-column="59" />
+        <state relative-caret-position="323">
+          <caret line="20" column="59" selection-start-line="16" selection-start-column="17" selection-end-line="20" selection-end-column="59" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
           </folding>
@@ -808,10 +783,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/clubkit/roster/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="59" lean-forward="true" selection-start-line="13" selection-start-column="59" selection-end-line="13" selection-end-column="59" />
+        <state relative-caret-position="204">
+          <caret line="13" column="59" selection-start-line="13" selection-start-column="59" selection-end-line="13" selection-end-column="59" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clubkit/clubs/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1071">
+          <caret line="73" column="23" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
