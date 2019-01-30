@@ -18,9 +18,31 @@ class ClubInfo(models.Model):
     club_town = models.CharField(max_length=30)
     club_county = models.CharField(max_length=30)
     club_country = models.CharField(max_length=30)
+    created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.club_name
+
+
+class ClubPackages(models.Model):
+
+    club_id = models.ForeignKey(ClubInfo, on_delete=models.CASCADE)
+    player_register_package = models.IntegerField(default=0)
+    player_register_expiry = models.DateTimeField(default=timezone.now)
+    roster_package = models.IntegerField(default=0)
+    roster_expiry = models.DateTimeField(default=timezone.now)
+    rent_a_pitch_package = models.IntegerField(default=0)
+    rent_a_pitch_expiry = models.DateTimeField(default=timezone.now)
+    shop_package = models.IntegerField(default=0)
+    shop_expiry = models.DateTimeField(default=timezone.now)
+
+
+class ClubMemberships(models.Model):
+
+    club_id = models.ForeignKey(ClubInfo, on_delete=models.CASCADE)
+    title = models.CharField(max_length=30, default='')
+    price = models.DecimalField(default=0.00, max_digits=6, decimal_places=2)
+    description = models.TextField()
 
 
 class Team(models.Model):
@@ -28,7 +50,7 @@ class Team(models.Model):
     club_id = models.ForeignKey(ClubInfo, on_delete=models.CASCADE)
     team_name = models.CharField(max_length=30)
     manager_name = models.CharField(max_length=20)
-    # player_id = models.ManyToManyField(Player, default='')
+    # player_id = models.ManyToManyField(Player, null=True)
 
     def __str__(self):
         return self.team_name
@@ -50,6 +72,13 @@ class Pitch(models.Model):
     pitch_type = models.CharField(max_length=1, choices=PITCH_TYPE)
     open_time = models.TimeField(default='09:00')
     close_time = models.TimeField(default='22:00')
+    RENT_TYPE = (
+        ('0', 'Not Available To Rent'),
+        ('1', 'Available To Rent'),
+    )
+    rental = models.IntegerField(default=0, choices=RENT_TYPE)
+    rental_price = models.DecimalField(default=0.00, max_digits=6, decimal_places=2)
+    max_people = models.IntegerField(null=True)
 
     def __str__(self):
         return self.pitch_name
