@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="db52fa26-b7a5-4dd8-b5c8-7ba962dd3903" name="Default Changelist" comment="Merge branch 'master' of https://gitlab.computing.dcu.ie/boyleg8/2019-ca472-boyleg8&#10;&#10;# Conflicts:&#10;#&#9;Restructure In Progress/src - restructuring/ClubKitApi/.idea/workspace.xml">
-      <change afterPath="$PROJECT_DIR$/clubkit/clubs/migrations/0002_clubpackages_clubposts.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clubkit/clubs/migrations/0003_auto_20190130_1624.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clubkit/clubs/migrations/0004_auto_20190130_1702.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clubkit/clubs/migrations/0005_auto_20190130_1706.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="db52fa26-b7a5-4dd8-b5c8-7ba962dd3903" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/player_register/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/player_register/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,10 +14,46 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/clubkit/clubs/forms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="417">
+              <caret line="42" column="59" selection-start-line="42" selection-start-column="59" selection-end-line="42" selection-end-column="59" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/clubkit/clubs/serializers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+              <folding>
+                <element signature="e#0#55#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/clubkit/clubs/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="490">
+              <caret line="78" column="59" selection-start-line="78" selection-start-column="49" selection-end-line="78" selection-end-column="59" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/clubkit/clubs/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="50" column="38" lean-forward="true" selection-start-line="50" selection-start-column="38" selection-end-line="50" selection-end-column="38" />
+            <state relative-caret-position="-195">
+              <caret line="58" column="27" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="27" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
               </folding>
@@ -31,22 +62,20 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/clubkit/urls.py">
+        <entry file="file://$PROJECT_DIR$/clubkit/clubs/templates/add_post.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
-              <folding>
-                <element signature="e#0#630#1" />
-                <element signature="e#631#672#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/clubkit/settings.py">
+        <entry file="file://$PROJECT_DIR$/clubkit/clubs/templates/club_home_page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2040" />
+            <state relative-caret-position="363">
+              <caret line="40" column="33" selection-start-line="40" selection-start-column="33" selection-end-line="40" selection-end-column="33" />
+            </state>
           </provider>
         </entry>
       </file>
@@ -171,14 +200,7 @@
               <item name="ClubKitApi" type="b2602c69:ProjectViewProjectNode" />
               <item name="ClubKitApi" type="462c0819:PsiDirectoryNode" />
               <item name="clubkit" type="462c0819:PsiDirectoryNode" />
-              <item name="roster" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ClubKitApi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ClubKitApi" type="462c0819:PsiDirectoryNode" />
-              <item name="clubkit" type="462c0819:PsiDirectoryNode" />
-              <item name="roster" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="clubs" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -189,23 +211,23 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../bootcamp" />
+    <property name="last_opened_file_path" value="$USER_HOME$/bootcamp" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\gboyle\Desktop\2019-ca472-boyleg8\src\ClubKitApi\clubkit\clubs\templates" />
-      <recent name="C:\Users\gboyle\Desktop\2019-ca472-boyleg8\src\ClubKitApi\clubkit" />
-      <recent name="C:\Users\gboyle\Desktop\2019-ca472-boyleg8\src\ClubKitApi" />
-      <recent name="C:\Users\gboyle\Desktop\2019-ca472-boyleg8\src\ClubKitApi\clubkit\api" />
-      <recent name="C:\Users\gboyle\Desktop\2019-ca472-boyleg8\src\ClubKitApi\clubkit\api\templates" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\gboyle\Desktop\2019-ca472-boyleg8\Restructure In Progress\src - restructuring\ClubKitApi\clubkit\clubs\templates" />
       <recent name="$PROJECT_DIR$/clubkit/clubs/templates" />
       <recent name="C:\Users\gboyle\Desktop\2019-ca472-boyleg8\Restructure In Progress\src - restructuring\ClubKitApi\clubkit\roster\templates" />
       <recent name="C:\Users\gboyle\Desktop\2019-ca472-boyleg8\src\ClubKitApi\clubkit\roster\templates" />
       <recent name="C:\Users\gboyle\Desktop\2019-ca472-boyleg8\src\ClubKitApi\clubkit\profiles\templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\gboyle\Desktop\2019-ca472-boyleg8\src\ClubKitApi\clubkit\clubs\templates" />
+      <recent name="C:\Users\gboyle\Desktop\2019-ca472-boyleg8\src\ClubKitApi\clubkit" />
+      <recent name="C:\Users\gboyle\Desktop\2019-ca472-boyleg8\src\ClubKitApi" />
+      <recent name="C:\Users\gboyle\Desktop\2019-ca472-boyleg8\src\ClubKitApi\clubkit\api" />
+      <recent name="C:\Users\gboyle\Desktop\2019-ca472-boyleg8\src\ClubKitApi\clubkit\api\templates" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -349,9 +371,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13119073" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18534179" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -361,8 +383,8 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49736565" weight="0.32827735" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.42465752" weight="0.23510292" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.52107483" visible="true" weight="0.27735645" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" sideWeight="0.42465752" visible="true" weight="0.23493975" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.52107483" weight="0.27831325" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.4789252" side_tool="true" weight="0.27735645" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49894625" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -467,20 +489,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clubkit/clubs/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="e#0#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/clubkit/clubs/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="20" column="59" selection-start-line="20" selection-start-column="59" selection-end-line="20" selection-end-column="59" />
+        <state relative-caret-position="417">
+          <caret line="42" column="59" selection-start-line="42" selection-start-column="59" selection-end-line="42" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -524,13 +539,7 @@
     <entry file="file://$PROJECT_DIR$/clubkit/clubs/migrations/0001_initial.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/clubkit/clubs/migrations/0006_auto_20190130_1722.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/clubkit/clubs/migrations/0006_auto_20190130_1722.py" />
     <entry file="file://$PROJECT_DIR$/clubkit/roster/migrations/0001_initial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -545,16 +554,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clubkit/clubs/migrations/0007_auto_20190130_1726.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="49" lean-forward="true" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
-          <folding>
-            <element signature="e#47#87#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/clubkit/clubs/migrations/0007_auto_20190130_1726.py" />
     <entry file="file://$PROJECT_DIR$/clubkit/main/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -574,8 +574,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/clubkit/clubs/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="64" selection-start-line="23" selection-start-column="64" selection-end-line="23" selection-end-column="64" />
+        <state relative-caret-position="165">
+          <caret line="11" column="45" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="45" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
@@ -592,16 +592,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clubkit/clubs/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-612">
-          <caret line="39" column="21" selection-start-line="39" selection-start-column="6" selection-end-line="39" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/clubkit/main/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -609,17 +599,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clubkit/clubs/templates/add_post.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/clubkit/clubs/templates/club_home_page.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="49" column="31" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
+        <state relative-caret-position="363">
+          <caret line="40" column="33" selection-start-line="40" selection-start-column="33" selection-end-line="40" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -649,7 +632,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/clubkit/clubs/templates/edit_team.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="195">
           <caret line="13" column="11" lean-forward="true" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
         </state>
       </provider>
@@ -715,13 +698,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clubkit/clubs/templates/teams.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="33" lean-forward="true" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/clubkit/player_register/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -758,8 +734,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/clubkit/clubs/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="50" column="38" lean-forward="true" selection-start-line="50" selection-start-column="38" selection-end-line="50" selection-end-column="38" />
+        <state relative-caret-position="-195">
+          <caret line="58" column="27" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="27" />
           <folding>
             <element signature="e#0#45#0" expanded="true" />
           </folding>
@@ -774,6 +750,40 @@
             <element signature="e#0#630#1" />
             <element signature="e#631#672#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clubkit/clubs/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="78" column="59" selection-start-line="78" selection-start-column="49" selection-end-line="78" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clubkit/clubs/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clubkit/clubs/templates/teams.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clubkit/clubs/templates/add_post.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
         </state>
       </provider>
     </entry>
