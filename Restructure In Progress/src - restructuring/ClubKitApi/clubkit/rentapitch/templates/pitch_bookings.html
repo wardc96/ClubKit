@@ -1,0 +1,37 @@
+{% extends 'club_main_page.html' %}
+{% load rest_framework %}
+{% load staticfiles %}
+{% block body_block %}
+
+<div class="team">
+    <h3>Booking Details</h3>
+    <p>
+        {% csrf_token %}
+
+        {% for info in bookings %}
+    {% if info.user.club_id  ==  user.club_id %}
+    <li>{{ info.club_id }}</li>
+    <li>{{ info.pitch_id }}</li>
+    <li>{{ info.rental_cost }}</li>
+    <li>{{ info.name }}</li>
+    <li>{{ info.email }}</li>
+    <li>{{ info.mobile }}</li>
+    <li>{{ info.date }}</li>
+    <li>{{ info.start_time }}</li>
+    <li>{{ info.finish_time }}</li>
+    <li>{{ info.payment_type }}</li>
+    <li>{{ info.is_cancelled }}</li>
+    <form action="{% url 'rentapitch:cancel_booking' info.pk %}">
+    <input type="submit" value="Delete">
+</form>
+    <form action="{% url 'rentapitch:edit_booking' info.pk %}">
+    <input type="submit" value="Edit">
+</form>
+
+{% endif %}
+    </p>
+    </div>
+  </div>
+{% endfor %}
+{% endblock %}
+

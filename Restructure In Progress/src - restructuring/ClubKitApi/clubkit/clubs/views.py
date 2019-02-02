@@ -5,6 +5,7 @@ from clubkit.clubs.serializers import TeamSerializer, PitchSerializer, ClubPosts
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.urls import reverse
 from rest_framework import status
 from rest_framework import serializers
 from django.http import HttpResponse
@@ -91,12 +92,11 @@ class TeamInfo(APIView):
     template_name = 'teams.html'
 
     def get(self, request):
-
         serializer = TeamSerializer()
         user = ClubInfo.objects.filter(user=request.user).first()
         teams = Team.objects.filter(club_id=user.pk)
         return Response({'serializer': serializer,
-                         'teams': teams
+                         'teams': teams,
                          })
 
     def post(self, request):
