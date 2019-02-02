@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^player/', include('clubkit.player_register.urls'), name='player_register'),
     url(r'^roster/', include('clubkit.roster.urls'), name='roster'),
     url(r'^shop/', include('clubkit.shop.urls'), name='shop'),
+    url(r'^rent_a_pitch/', include('clubkit.rentapitch.urls'), name='rentapitch'),
 
 ]
 

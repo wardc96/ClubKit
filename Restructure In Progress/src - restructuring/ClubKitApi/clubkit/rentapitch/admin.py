@@ -1,3 +1,4 @@
 from django.contrib import admin
+from clubkit.rentapitch.models import RentPitch
 
-# Register your models here.
+admin.site.register(RentPitch)

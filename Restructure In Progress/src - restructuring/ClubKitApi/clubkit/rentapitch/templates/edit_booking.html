@@ -1,0 +1,18 @@
+{% extends 'club_main_page.html' %}
+
+{% block head %}
+<title>Edit Booking</title>
+{% endblock %}
+<h3>Edit Booking</h3>
+{% block body_block %}
+
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit">Submit</button>
+    </form>
+
+</div>
+
+{% endblock %}
