@@ -19,7 +19,9 @@
             <li><a class="navbar-link" href="{% url 'roster:club_roster' %}">Roster</a></li>
             <li><a class="navbar-link" href="{% url 'rentapitch:pitch_rental' %}">Rent-a-Pitch</a></li>
             <li><a class="navbar-link" href="{% url 'rentapitch:pitch_bookings' %}">Pitch Bookings</a></li>
-            <li><a class="navbar-link" href="">Shop</a></li>
+            <li><a class="navbar-link" href="{% url 'shop:club_shop' %}">Shop</a></li>
+            <li><a class="navbar-link" href="{% url 'shop:club_shop_products' %}">Shop Products</a></li>
+            <li><a class="navbar-link" href="{% url 'shop:club_shop_categories' %}">Shop Categories</a></li>
             <li><a class="navbar-link" href="">Contact Us</a></li>
 
           {% if user.is_authenticated %}

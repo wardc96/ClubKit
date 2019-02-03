@@ -1,0 +1,37 @@
+{% extends 'club_main_page.html' %}
+{% load rest_framework %}
+{% load staticfiles %}
+{% block body_block %}
+
+{% if info.user.club_id  ==  user.club_id %}
+  <div class="addteam">
+      <h3>Add Category For Shop Items</h3>
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit">Submit</button>
+    </form>
+
+</div>
+{% endif %}
+<div class="category">
+    <h3>Category List</h3>
+    <p>
+        {% csrf_token %}
+        {% for info in category_types %}
+    <li>{{ info.club_id }}</li>
+    <li>{{ info.name }}</li>
+    {% if info.user.club_id  ==  user.club_id %}
+<form action="{% url 'shop:delete_category' info.pk %}">
+    <input type="submit" value="Delete">
+</form>
+    <form action="{% url 'shop:edit_category' info.pk %}">
+    <input type="submit" value="Edit">
+</form>
+{% endif %}
+    </p>
+    </div>
+  </div>
+{% endfor %}
+{% endblock %}

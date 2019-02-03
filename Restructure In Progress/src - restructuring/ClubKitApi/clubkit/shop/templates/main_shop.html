@@ -1,0 +1,25 @@
+{% extends 'club_main_page.html' %}
+{% load rest_framework %}
+{% load staticfiles %}
+{% block body_block %}
+
+<div class="product">
+    <h3>Shop</h3>
+    <p>
+        {% csrf_token %}
+        {% for info in products %}
+    <li>{{ info.club_id }}</li>
+    <li>{{ info.category }}</li>
+    <li>{{ info.name }}</li>
+    <li>{{ info.image }}</li>
+    <li>{{ info.description }}</li>
+    <li>{{ info.price }}</li>
+    <li>{{ info.size }}</li>
+    <li>{{ info.stock }}</li>
+    <li>{{ info.available }}</li>
+
+    </p>
+    </div>
+  </div>
+{% endfor %}
+{% endblock %}
