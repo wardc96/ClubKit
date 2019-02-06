@@ -1,5 +1,6 @@
 from django import forms
 from clubkit.rentapitch.models import RentPitch
+from clubkit.clubs.models import Pitch
 
 
 class RentalForm(forms.ModelForm):
@@ -11,7 +12,7 @@ class RentalForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(RentalForm, self).__init__(*args, **kwargs)
-        self.fields['club_id'].widget = forms.HiddenInput()
+        # self.fields['club_id'] = forms.HiddenInput()
 
 
 

@@ -4,11 +4,11 @@
 {% block body_block %}
 
 {% if info.user.club_id  ==  user.club_id %}
-  <div class="addteam">
+  <div class="AddPitches">
       <h3>Add Pitches To Club.</h3>
 <form action="{% url 'clubs:pitches' %}" method="POST">
-          {% csrf_token %}
-         {% render_form serializer %}
+        {% csrf_token %}
+        {{ form.as_p}}
     <input type="submit" name="" value="Add">
 </form>
 {% endif %}
@@ -23,6 +23,10 @@
     <li>{{ info.get_pitch_type_display }}</li>
     <li>{{ info.open_time }}</li>
     <li>{{ info.close_time }}</li>
+    <li>{{ info.get_rental_display }}</li>
+    <li>{{ info.rental_price }}</li>
+    <li>{{ info.max_people }}</li>
+
     {% if info.user.club_id  ==  user.club_id %}
 <form action="{% url 'clubs:delete_pitch' info.pk %}">
     <input type="submit" value="Delete">

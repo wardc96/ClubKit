@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from clubkit.clubs.forms import ClubInfoForm, TeamForm, PitchForm, ClubPostForm
-from clubkit.clubs.models import ClubInfo, Team, Pitch, ClubPosts
+from clubkit.clubs.forms import ClubInfoForm, TeamForm, PitchForm, ClubPostForm, MembershipsForm
+from clubkit.clubs.models import ClubInfo, Team, Pitch, ClubPosts, ClubMemberships
 from clubkit.clubs.serializers import TeamSerializer, PitchSerializer, ClubPostsSerializer
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
@@ -92,20 +92,20 @@ class TeamInfo(APIView):
     template_name = 'teams.html'
 
     def get(self, request):
-        serializer = TeamSerializer()
+        form = TeamForm()
         user = ClubInfo.objects.filter(user=request.user).first()
         teams = Team.objects.filter(club_id=user.pk)
-        return Response({'serializer': serializer,
+        return Response({'form': form,
                          'teams': teams,
                          })
 
     def post(self, request):
-        serializer = TeamSerializer(data=request.data)
+        form = TeamForm(data=request.data)
         user = ClubInfo.objects.filter(user=request.user).first()
         teams = Team.objects.filter(club_id=user.pk)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({'serializer': serializer,
+        if form.is_valid():
+            form.save()
+            return Response({'form': form,
                              'teams': teams
                              })
 
@@ -137,20 +137,20 @@ class PitchInfo(APIView):
 
     def get(self, request):
 
-        serializer = PitchSerializer()
+        form = PitchForm()
         user = ClubInfo.objects.filter(user=request.user).first()
         pitch = Pitch.objects.filter(club_id=user.pk)
-        return Response({'serializer': serializer,
+        return Response({'form': form,
                          'pitch': pitch
                          })
 
     def post(self, request):
-        serializer = PitchSerializer(data=request.data)
+        form = PitchForm(data=request.data)
         user = ClubInfo.objects.filter(user=request.user).first()
         pitch = Pitch.objects.filter(club_id=user.pk)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({'serializer': serializer,
+        if form.is_valid():
+            form.save()
+            return Response({'form': form,
                              'pitch': pitch
                              })
 
@@ -174,4 +174,52 @@ def edit_pitch(request, pk):
         form = PitchForm(instance=instance)
         return render(request, 'edit_pitch.html', {'form': form,
                                                    'instance': instance})
+
+
+class Memberships(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'memberships.html'
+
+    def get(self, request):
+
+        form = MembershipsForm()
+        user = ClubInfo.objects.filter(user=request.user).first()
+        memberships = ClubMemberships.objects.filter(club_id=user.pk)
+        return Response({'form': form,
+                         'memberships': memberships
+                         })
+
+    def post(self, request):
+        form = MembershipsForm(data=request.data)
+        user = ClubInfo.objects.filter(user=request.user).first()
+        new_membership = ClubMemberships.objects.filter(club_id=user.pk)
+        if form.is_valid():
+            form.save()
+            return redirect('clubs:memberships')
+        else:
+            return Response({'form': form,
+                             'new_membership': new_membership
+                             })
+
+
+def delete_membership(request, pk):
+    memberships = ClubMemberships.objects.filter(pk=pk)
+    memberships.delete()
+    return redirect('clubs:memberships')
+
+
+def edit_membership(request, pk):
+    instance = ClubMemberships.objects.filter(pk=pk).first()
+    if request.method == 'POST':
+        form = MembershipsForm(request.POST, instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect('clubs:memberships')
+        else:
+            return redirect('clubs:memberships')
+    else:
+        form = MembershipsForm(instance=instance)
+        return render(request, 'edit_membership.html', {'form': form,
+                                                        'instance': instance})
+
 

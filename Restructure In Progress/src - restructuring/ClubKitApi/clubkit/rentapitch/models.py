@@ -4,7 +4,7 @@ from clubkit.clubs.models import ClubInfo, Pitch
 
 class RentPitch(models.Model):
     club_id = models.ForeignKey(ClubInfo, on_delete=models.CASCADE)
-    pitch_id = models.OneToOneField(Pitch, on_delete=models.CASCADE, related_name="pitches", unique=True)
+    pitch_id = models.ForeignKey(Pitch, on_delete=models.CASCADE, related_name="pitches")
     rental_cost = models.DecimalField(max_digits=6, decimal_places=2)
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)

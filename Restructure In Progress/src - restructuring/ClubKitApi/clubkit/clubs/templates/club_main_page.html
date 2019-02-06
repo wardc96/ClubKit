@@ -11,10 +11,11 @@
       <div class="container">
         <ul class="nav navbar-nav">
 {# Django Home Link / Profile Link / Club Link / Admin Link / Register Link #}
-          <li><a class="navbar-brand" href="{% url 'index' %}">ClubKit</a></li>
+            <li><a class="navbar-brand" href="{% url 'index' %}">ClubKit</a></li>
             <li><a class="navbar-link" href="{% url 'clubs:club_home' %}">Home</a></li>
             <li><a class="navbar-link" href="{% url 'clubs:teams' %}">Team</a></li>
             <li><a class="navbar-link" href="{% url 'clubs:pitches' %}">Pitches</a></li>
+            <li><a class="navbar-link" href="{% url 'clubs:memberships' %}">Memberships</a></li>
             <li><a class="navbar-link" href="{% url 'player_register:player_register' %}">Player Register</a></li>
             <li><a class="navbar-link" href="{% url 'roster:club_roster' %}">Roster</a></li>
             <li><a class="navbar-link" href="{% url 'rentapitch:pitch_rental' %}">Rent-a-Pitch</a></li>

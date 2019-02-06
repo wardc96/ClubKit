@@ -1,5 +1,5 @@
 from django import forms
-from clubkit.clubs.models import ClubInfo, Team, Pitch, ClubPosts
+from clubkit.clubs.models import ClubInfo, Team, Pitch, ClubPosts, ClubMemberships
 
 
 class ClubInfoForm(forms.ModelForm):
@@ -18,7 +18,7 @@ class TeamForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(TeamForm, self).__init__(*args, **kwargs)
-        self.fields['club_id'].widget = forms.HiddenInput()
+        # self.fields['club_id'].widget = forms.HiddenInput()
 
 
 class PitchForm(forms.ModelForm):
@@ -26,11 +26,11 @@ class PitchForm(forms.ModelForm):
     class Meta():
         model = Pitch
         fields = ('club_id', 'pitch_name', 'pitch_size', 'pitch_type', 'open_time',
-                  'close_time')
+                  'close_time', 'rental', 'rental_price', 'max_people')
 
     def __init__(self, *args, **kwargs):
         super(PitchForm, self).__init__(*args, **kwargs)
-        self.fields['club_id'].widget = forms.HiddenInput()
+        # self.fields['club_id'].widget = forms.HiddenInput()
 
 
 class ClubPostForm(forms.ModelForm):
@@ -43,3 +43,12 @@ class ClubPostForm(forms.ModelForm):
         super(ClubPostForm, self).__init__(*args, **kwargs)
         self.fields['created_date'].widget = forms.HiddenInput()
 
+
+class MembershipsForm(forms.ModelForm):
+
+    class Meta():
+        model = ClubMemberships
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(MembershipsForm, self).__init__(*args, **kwargs)

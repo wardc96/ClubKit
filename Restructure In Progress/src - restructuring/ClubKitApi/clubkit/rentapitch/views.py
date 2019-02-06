@@ -14,15 +14,18 @@ class PitchRental(APIView):
     template_name = 'pitch_rental.html'
 
     def get(self, request):
-        serializer = RentalSerializer()
-        return Response({'serializer': serializer,
+        form = RentalForm()
+        return Response({'form': form,
                          })
 
     def post(self, request):
-        serializer = RentalSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
+        form = RentalForm(data=request.data)
+        if form.is_valid():
+            form.save()
             return Response(template_name='booking_complete.html')
+        else:
+            return Response({'form': form,
+                             })
 
 
 class PitchBookings(APIView):

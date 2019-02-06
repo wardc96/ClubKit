@@ -27,14 +27,18 @@ class ClubInfo(models.Model):
 class ClubPackages(models.Model):
 
     club_id = models.ForeignKey(ClubInfo, on_delete=models.CASCADE)
-    player_register_package = models.IntegerField(default=0)
-    player_register_expiry = models.DateTimeField(default=timezone.now)
-    roster_package = models.IntegerField(default=0)
-    roster_expiry = models.DateTimeField(default=timezone.now)
-    rent_a_pitch_package = models.IntegerField(default=0)
-    rent_a_pitch_expiry = models.DateTimeField(default=timezone.now)
-    shop_package = models.IntegerField(default=0)
-    shop_expiry = models.DateTimeField(default=timezone.now)
+    PACKAGE_STATUS = (
+        ('0', 'Active'),
+        ('1', 'Not Active')
+    )
+    player_register_package = models.CharField(max_length=1, choices=PACKAGE_STATUS)
+    player_register_expiry = models.DateField(default=timezone.now)
+    roster_package = models.CharField(max_length=1, choices=PACKAGE_STATUS)
+    roster_expiry = models.DateField(default=timezone.now)
+    rent_a_pitch_package = models.CharField(max_length=1, choices=PACKAGE_STATUS)
+    rent_a_pitch_expiry = models.DateField(default=timezone.now)
+    shop_package = models.CharField(max_length=1, choices=PACKAGE_STATUS)
+    shop_expiry = models.DateField(default=timezone.now)
 
 
 class ClubMemberships(models.Model):
@@ -43,6 +47,9 @@ class ClubMemberships(models.Model):
     title = models.CharField(max_length=30, default='')
     price = models.DecimalField(default=0.00, max_digits=6, decimal_places=2)
     description = models.TextField()
+
+    def __str__(self):
+        return self.title
 
 
 class Team(models.Model):
@@ -76,7 +83,7 @@ class Pitch(models.Model):
         ('0', 'Not Available To Rent'),
         ('1', 'Available To Rent'),
     )
-    rental = models.IntegerField(default=0, choices=RENT_TYPE)
+    rental = models.CharField(max_length=1, choices=RENT_TYPE)
     rental_price = models.DecimalField(default=0.00, max_digits=6, decimal_places=2)
     max_people = models.IntegerField(null=True)
 

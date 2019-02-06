@@ -1,4 +1,5 @@
 from clubkit.player_register.serializers import PlayerRegistrationSerializer
+from clubkit.player_register.forms import PlayerRegistrationForm
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -10,12 +11,12 @@ class RegisterPlayer(APIView):
     template_name = 'player_registration.html'
 
     def get(self, request):
-        serializer = PlayerRegistrationSerializer()
-        return Response({'serializer': serializer,
+        form = PlayerRegistrationForm()
+        return Response({'form': form,
                          })
 
     def post(self, request):
-        serializer = PlayerRegistrationSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
+        form = PlayerRegistrationForm(data=request.data)
+        if form.is_valid():
+            form.save()
             return Response(template_name='player_registration_complete.html')

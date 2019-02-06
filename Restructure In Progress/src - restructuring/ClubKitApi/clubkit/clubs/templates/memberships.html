@@ -3,27 +3,28 @@
 {% block body_block %}
 
 {% if info.user.club_id  ==  user.club_id %}
-  <div class="addteam">
-      <h3>Add Teams To Club.</h3>
-<form action="{% url 'clubs:teams' %}" method="POST">
+  <div class="AddMembership">
+      <h3>Add Membership To Club.</h3>
+<form action="{% url 'clubs:memberships' %}" method="POST">
         {% csrf_token %}
         {{ form.as_p}}
     <input type="submit" name="" value="Add">
 </form>
 {% endif %}
-<div class="team">
-    <h3>Team Details</h3>
+<div class="memberships">
+    <h3>Membership Details</h3>
     <p>
         {% csrf_token %}
-        {% for info in teams %}
+        {% for info in memberships %}
     <li>{{ info.club_id }}</li>
-    <li>{{ info.team_name }}</li>
-    <li>{{ info.manager_name }}</li>
+    <li>{{ info.title }}</li>
+    <li>{{ info.price }}</li>
+    <li>{{ info.description }}</li>
     {% if info.user.club_id  ==  user.club_id %}
-<form action="{% url 'clubs:delete_team' info.pk %}">
+<form action="{% url 'clubs:delete_membership' info.pk %}">
     <input type="submit" value="Delete">
 </form>
-    <form action="{% url 'clubs:edit_team' info.pk %}">
+    <form action="{% url 'clubs:edit_membership' info.pk %}">
     <input type="submit" value="Edit">
 </form>
 {% endif %}

@@ -13,3 +13,5 @@ class RosterForm(forms.ModelForm):
         super(RosterForm, self).__init__(*args, **kwargs)
         self.fields['club_id'].widget = forms.HiddenInput()
 
+
+

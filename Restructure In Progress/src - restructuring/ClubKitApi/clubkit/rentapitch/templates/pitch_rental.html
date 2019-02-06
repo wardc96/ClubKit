@@ -1,5 +1,4 @@
 {% extends 'club_main_page.html' %}
-{% load rest_framework %}
 {% load staticfiles %}
 {% block body_block %}
   <div class="container">
@@ -7,10 +6,9 @@
         <h3>Just fill out the form.</h3>
 <form action="{% url 'rentapitch:pitch_rental' %}" method="POST">
           {% csrf_token %}
-         {% render_form serializer %}
-    <input type="submit" name="" value="Book">
+        {{ form.as_p}}
+    <input type="submit" name="" value="Add">
 </form>
-
     </div>
   </div>
 {% endblock %}
