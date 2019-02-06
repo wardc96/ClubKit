@@ -7,10 +7,6 @@ import django.utils.timezone
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('clubs', '0010_auto_20190202_1217'),
-    ]
-
     operations = [
         migrations.CreateModel(
             name='ClubPosts',
