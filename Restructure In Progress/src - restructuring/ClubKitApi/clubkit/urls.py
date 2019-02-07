@@ -19,21 +19,23 @@ from django.urls import path
 from clubkit.main import views
 from django.conf import settings
 from django.conf.urls.static import static
+from clubkit import main
 
 
 urlpatterns = [
 
     url('admin/', admin.site.urls),
-    url(r'^', views.Index.as_view(), name='index'),
+    url(r'^$', views.Index.as_view(), name='index'),
+    path('', include('clubkit.main.urls'), name=''),
     url(r'^special/', views.special, name='special'),
-    path('test/', include('clubkit.main.urls', namespace='main_site'), name='main_site'),
-    url(r'^account/', include('clubkit.main.urls'), name='account'),
     url(r'^profile/', include('clubkit.profiles.urls'), name='profiles'),
     url(r'^club_home/', include('clubkit.clubs.urls'), name='clubs'),
     url(r'^player/', include('clubkit.player_register.urls'), name='player_register'),
     url(r'^roster/', include('clubkit.roster.urls'), name='roster'),
     url(r'^shop/', include('clubkit.shop.urls'), name='shop'),
     url(r'^rent_a_pitch/', include('clubkit.rentapitch.urls'), name='rentapitch'),
+
+
 
 ]
 

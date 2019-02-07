@@ -10,7 +10,9 @@
 
     <!-- Custom styles-->
     <link rel="stylesheet" href="{% static 'styles.css' %}">
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
 </head>
 <body class="bg-white">
@@ -20,17 +22,19 @@
       <header class="masthead mb-auto">
         <div class="inner">
 
-		<a href="#"><img class="masthead-brand" src="{% static 'logo.png' %}" alt="Coford Logo" style="height:72px;"></a>
+		<a href="#"><img class="masthead-brand" src="{% static 'logo.png' %}" alt="Logo" style="height:72px;"></a>
 
-          <button class="navbar-toggler d-md-none" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-              </button>
+          <button class="hamburger hamburger--spring d-md-none" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+		<span class="hamburger-box">
+		<span class="hamburger-inner"></span>
+		</span>
+		</button>
           <nav class="nav nav-masthead navbar navbar-expand-md">
               <div class="container">
 
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav">
-              <li><a class="nav-link" href="{% url 'main_site:our_clubs' %}">Our Clubs</a></li>
+              <li><a class="nav-link" href="{% url 'main:our_clubs' %}">Our Clubs</a></li>
                       <li><a class="nav-link" href="">Packages</a></li>
                       <li><a class="nav-link" href="">Pricing</a></li>
                       <li><a class="nav-link" href="">About Us</a></li>
@@ -60,7 +64,8 @@
       <main role="main" class="inner cover" style="margin-top: 16vh;">
         <h1 class="cover-heading bold">ClubKit</h1>
 
-        <p class="lead">We need a motto</p>
+        <p class="lead">ClubKit, innovate your club<br><br>
+        <button type="button" class="btn btn-success mr-2 rounded-pill">More Info</button><button type="button" class="ml-2 btn btn-primary rounded-pill">Register Now</button></p>
 
 
 		<a class="scroll-link" href="#content">
@@ -83,7 +88,7 @@
 
 
 </div> <!--##End of large Home Image##-->
-
+<!--
 <div class="content container" style="" id="content">
 
 <hr class="featurette-divider">
@@ -104,10 +109,56 @@
             <li>{{ club.club_name }}</li>
         </a>
       {% endfor %}
-
+--->
 <h5><a class="navbar-link" href="{% url 'main:register' %}">Sign-up For ClubKit</a></h5>
 </div>
   </div>
+
+<div class="content container" style="" id="content">
+
+
+
+         <div class="row featurette justify-content-between">
+          <div class="col-md-7">
+           <h3 class="featurette-heading"><a href="#">Rent-a-Pitch</a></h3>
+            <p class="lead">We rent da pitches</p>
+
+<a class="btn btn-lg btn-coford float-right mb-1 shadow-sm" href="/toolsservices/" role="button">Learn more</a>		 </div>
+          <div class="col-md-4 my-auto">
+         <a href="#"> <img class="featurette-image img-fluid mx-auto rounded" src="https://shortlist.imgix.net/app/uploads/2017/08/24175310/359e08cae257bc28409e81d1c3ecf708-495x330.jpg?w=1200&h=1&fit=max&auto=format%2Ccompress" alt=""></a>
+          </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+    <div class="test">
+        <div class="row featurette justify-content-between" id="test">
+          <div class="col-md-7 order-md-2">
+            <h3 class="featurette-heading">Rosters</h3>
+            <p class="lead">We do the rosters</p>
+          </div>
+          <div class="col-md-4 order-md-1">
+            <a href="#"><img class="featurette-image rounded img-fluid mx-auto" src="https://shortlist.imgix.net/app/uploads/2017/08/24175310/359e08cae257bc28409e81d1c3ecf708-495x330.jpg?w=1200&h=1&fit=max&auto=format%2Ccompress" alt=""></a>
+          </div>
+        </div>
+    </div>
+        <hr class="featurette-divider">
+
+        <div class="row featurette justify-content-between">
+          <div class="col-md-7">
+            <h3 class="featurette-heading">Shop</h3>
+            <p class="lead">Sell your club gear here</p>
+          </div>
+          <div class="col-md-4">
+            <a href="#"><img class="featurette-image img-fluid mx-auto" src="https://shortlist.imgix.net/app/uploads/2017/08/24175310/359e08cae257bc28409e81d1c3ecf708-495x330.jpg?w=1200&h=1&fit=max&auto=format%2Ccompress" alt=""></a>
+          </div>
+        </div>
+
+<hr class="featurette-divider">
+
+      </div><!-- /.container -->
+</div>
+
 
 
 <hr class="featurette-divider">
@@ -154,12 +205,18 @@
       </footer>
 
 
-
-
-
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+
+<script>
+  var $hamburger = $(".hamburger");
+  $hamburger.on("click", function(e) {
+    $hamburger.toggleClass("is-active");
+    // Menu opens throughb data-target tag but adds animation thorugh this function
+  });
+</script>
 
 </body>
 </html>
