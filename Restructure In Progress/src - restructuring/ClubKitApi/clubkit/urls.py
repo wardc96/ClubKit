@@ -24,8 +24,9 @@ from django.conf.urls.static import static
 urlpatterns = [
 
     url('admin/', admin.site.urls),
-    url(r'^$', views.Index.as_view(), name='index'),
+    url(r'^', views.Index.as_view(), name='index'),
     url(r'^special/', views.special, name='special'),
+    path('test/', include('clubkit.main.urls', namespace='main_site'), name='main_site'),
     url(r'^account/', include('clubkit.main.urls'), name='account'),
     url(r'^profile/', include('clubkit.profiles.urls'), name='profiles'),
     url(r'^club_home/', include('clubkit.clubs.urls'), name='clubs'),
