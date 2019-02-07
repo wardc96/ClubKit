@@ -305,8 +305,8 @@ a:hover {
   font: inherit;
   color: inherit;
   text-transform: none;
-  background-color: transparent;
-  border: 1px solid black;
+  background-color: white;
+  border: 0;
   margin: 0;
   overflow: visible; }
   .hamburger:hover {

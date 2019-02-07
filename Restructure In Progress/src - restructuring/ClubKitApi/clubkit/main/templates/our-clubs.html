@@ -2,18 +2,26 @@
 {% block content %}
 
 
-<div class="container">
-  <div class="our_clubs">
+<div class="card-deck">
 
-    <h2>Our Clubs</h2>
-        {% for club in all_clubs %}
-        <a href="{% url 'clubs:club_home_with_pk' pk=club.pk %}">
-            <li>{{ club.club_name }}</li>
-        </a>
-      {% endfor %}
-
-
+    {% for club in all_clubs %}
+    <a href="{% url 'clubs:club_home_with_pk' pk=club.pk %}">
+  <div class="card">
+    <img src="https://pbs.twimg.com/profile_images/673560564895846400/eOjzhHQl_400x400.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{ club.club_name }}</h5>
+      <p class="">{{ club.club_county }}, {{ club.club_country }}</p>
+      <p class="card-text"><small class="text-muted">Joined {{ club.created_date }}</small></p>
+    </div>
   </div>
-  </div>
+    </a>
+
+
+{% endfor %}
+
+</div>
+
+
+
 
 {% endblock %}

@@ -22,7 +22,7 @@
 
                   <div class="collapse navbar-collapse  nav-masthead" id="navbarCollapse">
                     <ul class="navbar-nav nav-masthead">
-                      <li><a class="nav-link" href="">Our Clubs</a></li>
+                      <li><a class="nav-link" href="{% url 'main:our_clubs' %}">Our Clubs</a></li>
                       <li><a class="nav-link" href="">Packages</a></li>
                       <li><a class="nav-link" href="">Pricing</a></li>
                       <li><a class="nav-link" href="">About Us</a></li>
@@ -47,5 +47,40 @@
     {% block content %}
     {% endblock %}
     </div>
+
+  <footer class="container">
+        <hr class="featurette-divider">
+        <ul class="float-right list-unstyled">
+        <li><i class="fas fa-address-book"></i> Contact Us: <br><p>Project Test<br>Project Test<br>Dublin 2</p></li>
+    <li><i class="fas fa-envelope"></i> Email: <a href="mailto:"></a></li>
+		<li><i class="fas fa-mobile"></i> Phone:  <a href="tel:">+353 (0)123456</a></li><br>
+        </ul>
+
+        <p> <a href="https://www.agriculture.gov.ie/legalnotices/copyright/">&copy; 2017-2018 PROJECT</a> &middot; Newsletter</p>
+
+
+    <p>Get the latest update from us by subscribing to our newsletter.</p>
+		<form class="form-inline">
+  <div class="form-group  mb-2">
+    <input type="email" class="form-control rounded-pill" id="email1" placeholder="name@example.com">
+  </div>
+  <button type="submit" class="btn btn-primary rounded-pill mb-2 ml-2" data-toggle="tooltip" data-placement="top" title="This button will subscribe you to our newsletter">Subscribe</button>
+</form>
+      </footer>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+
+<script>
+  var $hamburger = $(".hamburger");
+  $hamburger.on("click", function(e) {
+    $hamburger.toggleClass("is-active");
+    // Menu opens throughb data-target tag but adds animation thorugh this function
+  });
+</script>
+
   </body>
 </html>
