@@ -11,7 +11,7 @@ app_name = 'clubs'
 urlpatterns = [
     path('', views.club_home, name='club_home'),
     path('<int:pk>/', views.club_home, name='club_home_with_pk'),
-    # path('<int:pk>/', include('clubkit.player_register.urls', namespace='player_registration'), name='club_player_register'),
+    # path('<int:pk>/', include('clubkit.roster.urls', namespace='club_pk'), name='club_pk'),
     path('edit_club/', views.edit_club, name='edit_club'),
     path('teams/', views.TeamInfo.as_view(), name='teams'),
     path('delete_team/<int:pk>/', views.delete_team, name='delete_team'),

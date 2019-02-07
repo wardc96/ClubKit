@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from clubkit.roster import views
+from clubkit.clubs import views as club_views
 from django.urls import path
 
 # SET THE NAMESPACE!

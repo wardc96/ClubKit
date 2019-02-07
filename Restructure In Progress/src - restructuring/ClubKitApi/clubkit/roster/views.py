@@ -18,7 +18,7 @@ class ClubRoster(APIView):
         roster = RosterId.objects.filter(club_id=user.pk)
         return Response({'serializer': serializer,
                          'roster': roster
-                         })
+                     })
 
     def post(self, request):
         serializer = ClubRosterSerializer(data=request.data)
