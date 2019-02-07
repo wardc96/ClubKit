@@ -79,3 +79,12 @@ def user_login(request):
         return render(request, 'login.html', {})
 
 
+class OurClubs(TemplateView):
+    template_name = 'our_clubs.html'
+
+    def get(self, request):
+        all_clubs = ClubInfo.objects.all()
+        args = {'all_clubs': all_clubs}
+        return render(request, self.template_name, args)
+
+
