@@ -10,9 +10,9 @@
 </head>
   <body>
 
-    <nav class="nav navbar navbar-expand-md bg-dark text-white">
+    <nav class="nav navbar navbar-expand-md bg-clubkit text-white border-bottom shadow p-1">
                 <div class="container">
-                <a href="{% url 'index' %}"><img class="masthead-brand" src="{% static 'logo.png' %}" alt="Logo" style="height:72px;"></a>
+                <a href="{% url 'index' %}"><img class="masthead-brand" src="{% static 'logo.png' %}" alt="Logo" style="height:60px;"></a>
 
                   <button class="navbar-toggler d-md-none" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon"></span>
@@ -22,10 +22,9 @@
 
                   <div class="collapse navbar-collapse  nav-masthead" id="navbarCollapse">
                     <ul class="navbar-nav nav-masthead">
-                      <li><a class="nav-link" href="{% url 'main_site:our_clubs' %}">Our Clubs</a></li>
+                      <li><a class="nav-link" href="">Our Clubs</a></li>
                       <li><a class="nav-link" href="">Packages</a></li>
                       <li><a class="nav-link" href="">Pricing</a></li>
-                      <li><a class="nav-link" href="/shop/">Shop</a></li>
                       <li><a class="nav-link" href="">About Us</a></li>
                       <li><a class="nav-link" href="">Contact Us</a></li>
 
@@ -44,8 +43,8 @@
 
 
 
-    <div class="container">
-    {% block body_block %}
+    <div class="container mt-3">
+    {% block content %}
     {% endblock %}
     </div>
   </body>
