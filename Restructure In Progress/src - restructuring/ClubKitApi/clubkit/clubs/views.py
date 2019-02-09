@@ -32,9 +32,9 @@ def edit_club(request):
         form = ClubInfoForm(request.POST, instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('clubs:club_home')
         else:
-            return redirect('/')
+            return redirect('clubs:club_home')
     else:
         form = ClubInfoForm(instance=instance)
         return render(request, 'edit_club.html', {'form': form})
