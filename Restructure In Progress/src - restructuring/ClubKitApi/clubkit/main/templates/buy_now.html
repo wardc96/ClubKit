@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<title>Purchase Packages</title>
+
+
+<h3>Purchase Packages</h3>
+
+
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+         {{ form.as_p}}
+        <button type="submit">Submit</button>
+    </form>
+
+</div>
+
+{% endblock %}

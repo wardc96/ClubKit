@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from clubkit.clubs.models import ClubInfo, Team, Pitch, ClubPosts, ClubMemberships
+from clubkit.clubs.models import ClubInfo, Team, Pitch, ClubPosts, ClubMemberships, ClubPackages
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
@@ -70,3 +70,13 @@ class MembershipsForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(MembershipsForm, self).__init__(*args, **kwargs)
+
+
+class ClubPackagesForm(forms.ModelForm):
+
+    class Meta():
+        model = ClubPackages
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(ClubPackagesForm, self).__init__(*args, **kwargs)

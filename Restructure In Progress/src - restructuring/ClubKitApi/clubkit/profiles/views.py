@@ -10,7 +10,7 @@ def change_password(request):
 
         if form.is_valid():
             form.save()
-            return redirect('/profile/')
+            return redirect('profiles:view_profile')
 
     else:
         form = PasswordChangeForm(user=request.user)
@@ -18,22 +18,18 @@ def change_password(request):
         return render(request, 'change_password.html', args)
 
 
-def view_profile(request, pk=None):
-    if pk:
-        user = User.objects.get(pk=pk)
-    else:
+def view_profile(request):
         user = request.user
-    args = {'user': user}
-    return render(request, 'profile.html', args)
+        args = {'user': user}
+        return render(request, 'profile.html', args)
 
 
 def edit_profile(request):
     if request.method == 'POST':
         form = EditProfileForm(request.POST, instance=request.user)
-
         if form.is_valid():
             form.save()
-            return redirect('/profile/')
+            return redirect('profiles:view_profile')
 
     else:
         form = EditProfileForm(instance=request.user)

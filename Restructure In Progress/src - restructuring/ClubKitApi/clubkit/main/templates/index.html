@@ -1,5 +1,5 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,8 +35,8 @@
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav">
               <li><a class="nav-link" href="{% url 'main:our_clubs' %}">Our Clubs</a></li>
-                      <li><a class="nav-link" href="">Packages</a></li>
-                      <li><a class="nav-link" href="">Pricing</a></li>
+                      <li><a class="nav-link" href="{% url 'main:our_packages' %}">Packages</a></li>
+                      <li><a class="nav-link" href="{% url 'main:buy_packages' %}">Buy Now</a></li>
                       <li><a class="nav-link" href="">About Us</a></li>
                       <li><a class="nav-link" href="">Contact Us</a></li>
 
@@ -50,15 +50,8 @@
       </ul>
           </div>
               </div>
-
         </nav>
-
-
-
         </div>
-
-
-
       </header>
 
       <main role="main" class="inner cover" style="margin-top: 16vh;">
@@ -69,7 +62,6 @@
                         Because We Care About Your Volunteers<br><br>
             <button type="button" class="btn btn-success mr-2 rounded-pill">More Info</button><a href="{% url 'main:register' %}"><button type="button" class="ml-2 btn btn-primary rounded-pill">Register Now</button></a></p>
 
-
 		<a class="scroll-link" href="#content">
 		<svg class="mouse" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 130" preserveAspectRatio="xMidYmid meet">
 		 <g fill="none" fill-rule="evenodd">
@@ -78,15 +70,8 @@
 		</g>
 	    </svg>
 	    </a>
-
-
       </main>
-
-
-
     </div>
-
-
 
 
 </div> <!--##End of large Home Image##-->
@@ -170,15 +155,11 @@
       </div><!-- /.container -->
 </div>
 
-
-
-
 <div class="bgimg-2">
   <div class="caption">
     <span class="border" style="background-color:transparent;font-size:35px;color: #f7f7f7;">CLUBKIT</span>
   </div>
 </div>
-
 
 <!-- <div class="bgimg-1 mh-25">
   <div class="caption">
