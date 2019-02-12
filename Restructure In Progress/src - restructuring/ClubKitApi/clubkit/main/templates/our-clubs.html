@@ -3,11 +3,11 @@
 
 
 
-<div class="card-deck">
+<div class="card-deck justify-content-between container">
 
     {% for club in all_clubs %}
     <a href="{% url 'clubs:club_home_with_pk' pk=club.pk %}">
-  <div class="card">
+  <div class="card mx-3 mb-4 shadow">
     <img src="https://pbs.twimg.com/profile_images/673560564895846400/eOjzhHQl_400x400.png" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">{{ club.club_name }}</h5>

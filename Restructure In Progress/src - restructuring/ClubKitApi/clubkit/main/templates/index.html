@@ -22,7 +22,7 @@
       <header class="masthead mb-auto">
         <div class="inner">
 
-		<a href="#"><img class="masthead-brand" src="{% static 'logo.png' %}" alt="Logo" style="height:72px;"></a>
+		<a href="#"><img class="masthead-brand" src="{% static 'clubkitlogo.png' %}" alt="Logo" style="height:72px;"></a>
 
           <button class="hamburger hamburger--spring d-md-none" type="button" data-toggle="collapse" data-target="#navbarCollapse">
 		<span class="hamburger-box">
@@ -37,8 +37,8 @@
               <li><a class="nav-link" href="{% url 'main:our_clubs' %}">Our Clubs</a></li>
                       <li><a class="nav-link" href="{% url 'main:our_packages' %}">Packages</a></li>
                       <li><a class="nav-link" href="{% url 'main:buy_packages' %}">Buy Now</a></li>
-                      <li><a class="nav-link" href="">About Us</a></li>
-                      <li><a class="nav-link" href="">Contact Us</a></li>
+                      <li><a class="nav-link" href="{% url 'main:about_us' %}">About Us</a></li>
+                      <li><a class="nav-link" href="{% url 'main:contact_us' %}">Contact Us</a></li>
 
           {% if user.is_authenticated %}
             <li><a class="nav-link" href="{% url 'profiles:view_profile' %}">Profile</a></li>
@@ -103,7 +103,7 @@
 
 <div class="content container" style="" id="content">
 
-
+    <hr class="featurette-divider">
 
          <div class="row featurette justify-content-between">
           <div class="col-md-7">

@@ -140,7 +140,11 @@ def purchase_packages(request):
         return render(request, 'buy_now.html', {'form': form})
 
 
+def about_us(request):
+    return render(request, 'about-us.html')
 
 
+def contact_us(request):
+    return render(request, 'contact-us.html')
 
 
