@@ -138,10 +138,12 @@ class PitchInfo(APIView):
     def get(self, request):
 
         form = PitchForm()
+        # club_id = self.kwargs['pk']
         user = ClubInfo.objects.filter(user=request.user).first()
         pitch = Pitch.objects.filter(club_id=user.pk)
         return Response({'form': form,
-                         'pitch': pitch
+                         'pitch': pitch,
+                         # 'club_id': club_id
                          })
 
     def post(self, request):

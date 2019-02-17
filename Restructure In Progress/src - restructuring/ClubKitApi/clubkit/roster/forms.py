@@ -20,7 +20,7 @@ class RosterForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(RosterForm, self).__init__(*args, **kwargs)
-        self.fields['club_id'].widget = forms.HiddenInput()
+        # self.fields['club_id'].widget = forms.HiddenInput()
 
 
 

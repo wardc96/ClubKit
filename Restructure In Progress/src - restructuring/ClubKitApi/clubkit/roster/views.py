@@ -5,6 +5,8 @@ from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 
 class ClubRoster(APIView):
@@ -13,20 +15,20 @@ class ClubRoster(APIView):
 
     def get(self, request):
 
-        serializer = ClubRosterSerializer()
+        form = RosterForm()
         user = ClubInfo.objects.filter(user=request.user).first()
         roster = RosterId.objects.filter(club_id=user.pk)
-        return Response({'serializer': serializer,
+        return Response({'form': form,
                          'roster': roster
                          })
 
     def post(self, request):
-        serializer = ClubRosterSerializer(data=request.data)
+        form = RosterForm(data=request.data)
         user = ClubInfo.objects.filter(user=request.user).first()
         roster = RosterId.objects.filter(club_id=user.pk)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({'serializer': serializer,
+        if form.is_valid():
+            form.save()
+            return Response({'form': form,
                              'roster': roster
                              })
 
@@ -49,6 +51,7 @@ def edit_roster(request, pk):
     else:
         form = RosterForm(instance=instance)
         return render(request, 'edit_roster.html', {'form': form,
+
                                                     'instance': instance})
 '''
 def edit_roster(request, pk):
