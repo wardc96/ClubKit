@@ -14,12 +14,13 @@ from django.template import loader
 
 def club_home(request, pk=None):
     if pk:
+        request.session['pk'] = pk
         club = ClubInfo.objects.filter(pk=pk)
         club_posts = ClubPosts.objects.filter(club_id=club[0])
-    elif request.user.is_authenticated:
-        club = ClubInfo.objects.filter(user=request.user)
+    else:
+        club_pk = request.session.get('pk')
+        club = ClubInfo.objects.filter(pk=club_pk)
         club_posts = ClubPosts.objects.filter(club_id=club[0])
-    # photo = model.club_logo.ImageField(storage=profile_pics)
     args = {'club': club,
             'club_posts': club_posts
             }
@@ -45,10 +46,10 @@ class ClubAddPosts(APIView):
     template_name = 'add_post.html'
 
     def get(self, request):
-
+        club_pk = request.session.get('pk')
         form = ClubPostForm()
-        user = ClubInfo.objects.filter(user=request.user).first()
-        club_post = ClubPosts.objects.filter(club_id=user.pk)
+        # user = ClubInfo.objects.filter(user=request.user).first()
+        club_post = ClubPosts.objects.filter(club_id=club_pk)
         return Response({'form': form,
                          'club_post': club_post
                          })
@@ -92,11 +93,13 @@ class TeamInfo(APIView):
     template_name = 'teams.html'
 
     def get(self, request):
+        club_pk = request.session.get('pk')
         form = TeamForm()
-        user = ClubInfo.objects.filter(user=request.user).first()
-        teams = Team.objects.filter(club_id=user.pk)
+        # user = ClubInfo.objects.filter(user=request.user).first()
+        teams = Team.objects.filter(club_id=club_pk)
         return Response({'form': form,
                          'teams': teams,
+
                          })
 
     def post(self, request):
@@ -136,11 +139,11 @@ class PitchInfo(APIView):
     template_name = 'pitches.html'
 
     def get(self, request):
-
+        club_pk = request.session.get('pk')
         form = PitchForm()
         # club_id = self.kwargs['pk']
-        user = ClubInfo.objects.filter(user=request.user).first()
-        pitch = Pitch.objects.filter(club_id=user.pk)
+        # user = ClubInfo.objects.filter(user=request.user).first()
+        pitch = Pitch.objects.filter(club_id=club_pk)
         return Response({'form': form,
                          'pitch': pitch,
                          # 'club_id': club_id
@@ -183,10 +186,10 @@ class Memberships(APIView):
     template_name = 'memberships.html'
 
     def get(self, request):
-
+        club_pk = request.session.get('pk')
         form = MembershipsForm()
-        user = ClubInfo.objects.filter(user=request.user).first()
-        memberships = ClubMemberships.objects.filter(club_id=user.pk)
+        # user = ClubInfo.objects.filter(user=request.user).first()
+        memberships = ClubMemberships.objects.filter(club_id=club_pk)
         return Response({'form': form,
                          'memberships': memberships
                          })
