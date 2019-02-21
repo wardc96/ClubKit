@@ -4739,7 +4739,7 @@ input[type="button"].btn-block {
     -ms-flex-direction: column;
     flex-direction: column;
     margin-right: 15px;
-    margin-bottom: 0;
+    margin-bottom: 15px;
     margin-left: 15px;
   }
 }

@@ -11,7 +11,8 @@ app_name = 'clubs'
 urlpatterns = [
     path('', views.club_home, name='club_home'),
     path('<int:pk>/', views.club_home, name='club_home_with_pk'),
-    # path('<int:pk>/', include('clubkit.roster.urls', namespace='club_pk'), name='club_pk'),
+    # path('<int:pk>/roster/', include('clubkit.roster.urls', namespace='roster_info')),
+    # path('<int:pk>/', include('clubkit.player_register.urls', namespace='player_registration'), name='club_player_register'),
     path('edit_club/', views.edit_club, name='edit_club'),
     path('teams/', views.TeamInfo.as_view(), name='teams'),
     path('delete_team/<int:pk>/', views.delete_team, name='delete_team'),
@@ -25,7 +26,13 @@ urlpatterns = [
     path('memberships/', views.Memberships.as_view(), name='memberships'),
     path('delete_membership/<int:pk>/', views.delete_membership, name='delete_membership'),
     path('edit_membership/<int:pk>/', views.edit_membership, name='edit_membership'),
-]
 
-# url(r'^(?P<pk>\d+)/', include('clubkit.player_register.urls'), name='club_player_register'),
-# url(r'^(?P<pk>\d+)/', include('clubkit.roster.urls'), name='club_roster'),
+    ]
+
+'''    path('<int:pk>/', include([
+        path('home/', views.club_home, name='club_home_with_pk'),
+        path('teams/', views.TeamInfo.as_view(), name='teams'),
+        # path('pitches/', views.PitchInfo.as_view(), name='pitches'),
+    ])),
+'''
+

@@ -35,8 +35,6 @@ urlpatterns = [
     url(r'^shop/', include('clubkit.shop.urls'), name='shop'),
     url(r'^rent_a_pitch/', include('clubkit.rentapitch.urls'), name='rentapitch'),
 
-
-
 ]
 
 if settings.DEBUG:

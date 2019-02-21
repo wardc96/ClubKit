@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<H3> Our Packages</H3>
+<br><br><br><br>
+    {% for info in packages %}
+  <div class="card my-4 p-4 shadow-lg">
+  <h5>{{ info.title }}</h5>
+  <p>Description: {{ info.description }}</p>
+  <p>Price:{{ info.price }}</p>
+
+    <input type="submit" value="Buy Now">
+  <br><br><br><br>
+ </div>
+{% endfor %}
+
+{% endblock %}

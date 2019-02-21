@@ -32,12 +32,16 @@ class ClubPackages(models.Model):
         ('1', 'Not Active')
     )
     player_register_package = models.CharField(max_length=1, choices=PACKAGE_STATUS)
+    player_register_price = models.DecimalField(max_digits=8, decimal_places=2)
     player_register_expiry = models.DateField(default=timezone.now)
     roster_package = models.CharField(max_length=1, choices=PACKAGE_STATUS)
+    roster_price = models.DecimalField(max_digits=8, decimal_places=2)
     roster_expiry = models.DateField(default=timezone.now)
     rent_a_pitch_package = models.CharField(max_length=1, choices=PACKAGE_STATUS)
+    rent_a_pitch_price = models.DecimalField(max_digits=8, decimal_places=2)
     rent_a_pitch_expiry = models.DateField(default=timezone.now)
     shop_package = models.CharField(max_length=1, choices=PACKAGE_STATUS)
+    shop_price = models.DecimalField(max_digits=8, decimal_places=2)
     shop_expiry = models.DateField(default=timezone.now)
 
 

@@ -1,5 +1,5 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,7 +22,7 @@
       <header class="masthead mb-auto">
         <div class="inner">
 
-		<a href="#"><img class="masthead-brand" src="{% static 'logo.png' %}" alt="Logo" style="height:72px;"></a>
+		<a href="#"><img class="masthead-brand" src="{% static 'clubkitlogo.png' %}" alt="Logo" style="height:72px;"></a>
 
           <button class="hamburger hamburger--spring d-md-none" type="button" data-toggle="collapse" data-target="#navbarCollapse">
 		<span class="hamburger-box">
@@ -35,10 +35,10 @@
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav">
               <li><a class="nav-link" href="{% url 'main:our_clubs' %}">Our Clubs</a></li>
-                      <li><a class="nav-link" href="">Packages</a></li>
-                      <li><a class="nav-link" href="">Pricing</a></li>
-                      <li><a class="nav-link" href="">About Us</a></li>
-                      <li><a class="nav-link" href="">Contact Us</a></li>
+                      <li><a class="nav-link" href="{% url 'main:our_packages' %}">Packages</a></li>
+                      <li><a class="nav-link" href="{% url 'main:buy_packages' %}">Buy Now</a></li>
+                      <li><a class="nav-link" href="{% url 'main:about_us' %}">About Us</a></li>
+                      <li><a class="nav-link" href="{% url 'main:contact_us' %}">Contact Us</a></li>
 
           {% if user.is_authenticated %}
             <li><a class="nav-link" href="{% url 'profiles:view_profile' %}">Profile</a></li>
@@ -50,23 +50,17 @@
       </ul>
           </div>
               </div>
-
         </nav>
-
-
-
         </div>
-
-
-
       </header>
 
       <main role="main" class="inner cover" style="margin-top: 16vh;">
         <h1 class="cover-heading bold">ClubKit</h1>
-
-        <p class="lead">ClubKit, innovate your club<br><br>
-        <button type="button" class="btn btn-success mr-2 rounded-pill">More Info</button><button type="button" class="ml-2 btn btn-primary rounded-pill">Register Now</button></p>
-
+        <!--ClubKit, innovate your club-->
+        <p class="lead">Clubs That Strive For Efficiency<br>
+                        ClubKit, innovate your club<br>
+                        Because We Care About Your Volunteers<br><br>
+            <button type="button" class="btn btn-success mr-2 rounded-pill">More Info</button><a href="{% url 'main:register' %}"><button type="button" class="ml-2 btn btn-primary rounded-pill">Register Now</button></a></p>
 
 		<a class="scroll-link" href="#content">
 		<svg class="mouse" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 130" preserveAspectRatio="xMidYmid meet">
@@ -76,15 +70,8 @@
 		</g>
 	    </svg>
 	    </a>
-
-
       </main>
-
-
-
     </div>
-
-
 
 
 </div> <!--##End of large Home Image##-->
@@ -109,21 +96,21 @@
             <li>{{ club.club_name }}</li>
         </a>
       {% endfor %}
---->
-<h5><a class="navbar-link" href="{% url 'main:register' %}">Sign-up For ClubKit</a></h5>
+
+<h5><a class="navbar-link" href="{% url 'main:register' %}">Sign-up For ClubKit</a></h5>--->
 </div>
   </div>
 
 <div class="content container" style="" id="content">
 
-
+    <hr class="featurette-divider">
 
          <div class="row featurette justify-content-between">
           <div class="col-md-7">
-           <h3 class="featurette-heading"><a href="#">Rent-a-Pitch</a></h3>
-            <p class="lead">We rent da pitches</p>
+           <h3 class="featurette-heading"><a href="#">Our Features</a></h3>
+            <p class="lead">We offer a variety of features available to clubs. Tools such as member registrations, pitch booking, training rosters and a club shop are all available thorugh our application</p>
 
-<a class="btn btn-lg btn-coford float-right mb-1 shadow-sm" href="/toolsservices/" role="button">Learn more</a>		 </div>
+<a class="btn btn-primary rounded-pill mb-1 shadow" href="" role="button">Learn more</a>		 </div>
           <div class="col-md-4 my-auto">
          <a href="#"> <img class="featurette-image img-fluid mx-auto rounded" src="https://shortlist.imgix.net/app/uploads/2017/08/24175310/359e08cae257bc28409e81d1c3ecf708-495x330.jpg?w=1200&h=1&fit=max&auto=format%2Ccompress" alt=""></a>
           </div>
@@ -131,26 +118,28 @@
 
         <hr class="featurette-divider">
 
-    <div class="test">
-        <div class="row featurette justify-content-between" id="test">
-          <div class="col-md-7 order-md-2">
-            <h3 class="featurette-heading">Rosters</h3>
-            <p class="lead">We do the rosters</p>
-          </div>
-          <div class="col-md-4 order-md-1">
-            <a href="#"><img class="featurette-image rounded img-fluid mx-auto" src="https://shortlist.imgix.net/app/uploads/2017/08/24175310/359e08cae257bc28409e81d1c3ecf708-495x330.jpg?w=1200&h=1&fit=max&auto=format%2Ccompress" alt=""></a>
+
+        <div class="row featurette justify-content-between">
+          <div class="col-md-7 order-md-2 my-auto">
+           <h3 class="featurette-heading"><a href="#">Our Features</a></h3>
+            <p class="lead">We offer a variety of features available to clubs. Tools such as member registrations, pitch booking, training rosters and a club shop are all available thorugh our application</p>
+
+<a class="btn btn-primary rounded-pill mb-1 shadow" href="" role="button">Learn more</a>		 </div>
+          <div class="col-md-4 order-md-1 my-auto">
+         <a href="#"> <img class="featurette-image img-fluid mx-auto rounded" src="https://shortlist.imgix.net/app/uploads/2017/08/24175310/359e08cae257bc28409e81d1c3ecf708-495x330.jpg?w=1200&h=1&fit=max&auto=format%2Ccompress" alt=""></a>
           </div>
         </div>
-    </div>
+
         <hr class="featurette-divider">
 
         <div class="row featurette justify-content-between">
           <div class="col-md-7">
-            <h3 class="featurette-heading">Shop</h3>
-            <p class="lead">Sell your club gear here</p>
-          </div>
-          <div class="col-md-4">
-            <a href="#"><img class="featurette-image img-fluid mx-auto" src="https://shortlist.imgix.net/app/uploads/2017/08/24175310/359e08cae257bc28409e81d1c3ecf708-495x330.jpg?w=1200&h=1&fit=max&auto=format%2Ccompress" alt=""></a>
+           <h3 class="featurette-heading"><a href="#">Our Features</a></h3>
+            <p class="lead">We offer a variety of features available to clubs. Tools such as member registrations, pitch booking, training rosters and a club shop are all available thorugh our application</p>
+
+<a class="btn btn-primary rounded-pill mb-1 shadow" href="" role="button">Learn more</a>		 </div>
+          <div class="col-md-4 my-auto">
+         <a href="#"> <img class="featurette-image img-fluid mx-auto rounded" src="https://shortlist.imgix.net/app/uploads/2017/08/24175310/359e08cae257bc28409e81d1c3ecf708-495x330.jpg?w=1200&h=1&fit=max&auto=format%2Ccompress" alt=""></a>
           </div>
         </div>
 
@@ -165,16 +154,12 @@
 
       </div><!-- /.container -->
 </div>
-
-
-
 
 <div class="bgimg-2">
   <div class="caption">
     <span class="border" style="background-color:transparent;font-size:35px;color: #f7f7f7;">CLUBKIT</span>
   </div>
 </div>
-
 
 <!-- <div class="bgimg-1 mh-25">
   <div class="caption">
@@ -198,9 +183,9 @@
     <p>Get the latest update from us by subscribing to our newsletter.</p>
 		<form class="form-inline">
   <div class="form-group  mb-2">
-    <input type="email" class="form-control" id="email1" placeholder="name@example.com">
+    <input type="email" class="form-control rounded-pill" id="email1" placeholder="name@example.com">
   </div>
-  <button type="submit" class="btn btn-success mb-2" data-toggle="tooltip" data-placement="top" title="This button will subscribe you to our newsletter">Subscribe</button>
+  <button type="submit" class="btn btn-primary rounded-pill mb-2 ml-2" data-toggle="tooltip" data-placement="top" title="This button will subscribe you to our newsletter">Subscribe</button>
 </form>
       </footer>
 

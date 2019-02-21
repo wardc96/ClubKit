@@ -2,18 +2,26 @@
 {% block content %}
 
 
-<div class="container">
-  <div class="our_clubs">
 
-    <h2>Our Clubs</h2>
-        {% for club in all_clubs %}
-        <a href="{% url 'clubs:club_home_with_pk' pk=club.pk %}">
-            <li>{{ club.club_name }}</li>
-        </a>
-      {% endfor %}
+<div class="card-deck justify-content-between container">
 
-
+    {% for club in all_clubs %}
+    <a href="{% url 'clubs:club_home_with_pk' pk=club.pk %}">
+  <div class="card mx-3 mb-4 shadow">
+    <img src="https://yugov.eu/logo.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{ club.club_name }}</h5>
+      <p class="">{{ club.club_county }}, {{ club.club_country }}</p>
+      <p class="card-text"><small class="text-muted">Joined {{ club.created_date }}</small></p>
+    </div>
   </div>
-  </div>
+    </a>
+
+
+{% endfor %}
+
+</div>
+
+
 
 {% endblock %}

@@ -32,9 +32,9 @@ def edit_club(request):
         form = ClubInfoForm(request.POST, instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('clubs:club_home')
         else:
-            return redirect('/')
+            return redirect('clubs:club_home')
     else:
         form = ClubInfoForm(instance=instance)
         return render(request, 'edit_club.html', {'form': form})
@@ -138,10 +138,12 @@ class PitchInfo(APIView):
     def get(self, request):
 
         form = PitchForm()
+        # club_id = self.kwargs['pk']
         user = ClubInfo.objects.filter(user=request.user).first()
         pitch = Pitch.objects.filter(club_id=user.pk)
         return Response({'form': form,
-                         'pitch': pitch
+                         'pitch': pitch,
+                         # 'club_id': club_id
                          })
 
     def post(self, request):

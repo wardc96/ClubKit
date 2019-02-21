@@ -1,12 +1,17 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from clubkit.main.forms import UserForm, ClubInfoForm
-from clubkit.clubs.models import ClubInfo
+from clubkit.clubs.forms import ClubPackagesForm
+from clubkit.main.models import OurPackages
+from clubkit.clubs.models import ClubInfo, ClubPackages
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
+from rest_framework.renderers import TemplateHTMLRenderer
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 
 class Index(TemplateView):
@@ -79,12 +84,67 @@ def user_login(request):
         return render(request, 'login.html', {})
 
 
-class our_clubs(TemplateView):
+class OurClubs(TemplateView):
     template_name = 'our-clubs.html'
 
     def get(self, request):
         all_clubs = ClubInfo.objects.all()
         args = {'all_clubs': all_clubs}
         return render(request, self.template_name, args)
+
+
+class Packages(TemplateView):
+    template_name = 'our-packages.html'
+
+    def get(self, request):
+        packages = OurPackages.objects.all()
+        args = {'packages': packages}
+        return render(request, self.template_name, args)
+
+
+class PurchasePackages(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'buy_now.html'
+
+    def get(self, request):
+        form = ClubPackagesForm()
+        user = ClubInfo.objects.filter(user=request.user).first()
+        packages = ClubPackages.objects.filter(club_id=user.pk)
+        return Response({'form': form,
+                         'packages': packages,
+                         })
+
+    def post(self, request):
+        form = ClubPackagesForm(data=request.data)
+        user = ClubInfo.objects.filter(user=request.user).first()
+        packages = ClubPackages.objects.filter(club_id=user.pk)
+        if form.is_valid():
+            form.save()
+            return Response({'form': form,
+                             'packages': packages
+                             })
+
+
+def purchase_packages(request):
+    user = ClubInfo.objects.filter(user=request.user).first()
+    instance = ClubPackages.objects.filter(club_id=user.pk).first()
+    if request.method == 'POST':
+        form = ClubPackagesForm(request.POST, instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect('main:buy_packages')
+        else:
+            return redirect('main:buy_packages')
+    else:
+        form = ClubPackagesForm(instance=instance)
+        return render(request, 'buy_now.html', {'form': form})
+
+
+def about_us(request):
+    return render(request, 'about-us.html')
+
+
+def contact_us(request):
+    return render(request, 'contact-us.html')
 
 

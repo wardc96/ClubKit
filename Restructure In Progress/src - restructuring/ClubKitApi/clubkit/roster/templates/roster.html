@@ -1,6 +1,4 @@
 {% extends 'club_main_page.html' %}
-{% load rest_framework %}
-{% load staticfiles %}
 {% block body_block %}
 
   <div class="addroster">
@@ -8,7 +6,7 @@
       <h3>Add Roster To Club.</h3>
 <form action="{% url 'roster:club_roster' %}" method="POST">
           {% csrf_token %}
-         {% render_form serializer %}
+         {{ form.as_p}}
     <input type="submit" name="" value="Add">
 </form>
  {% endif %}
