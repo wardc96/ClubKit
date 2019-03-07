@@ -9,10 +9,72 @@
     <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
       <link rel="stylesheet" href="{% static 'styles.css' %}">
 
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
+      <link rel='stylesheet' href="{% static 'fullcalendar/fullcalendar.css' %}"/>
+  <script src="{% static 'fullcalendar/lib/jquery.min.js' %}"></script>
+  <script src="{% static 'fullcalendar/lib/moment.min.js' %}"></script>
+  <script src="{% static 'fullcalendar/fullcalendar.js' %}"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script>
+$(function() {
+
+// page is now ready, initialize the calendar...
+
+$('#calendar').fullCalendar({
+    height: 650,
+    selectable: true,
+    minTime: '09:00:00',
+    defaultView: 'agendaFourDay',
+    groupByDateAndResource: true,
+    header: {
+      left: 'prev,next',
+      center: 'title',
+      right: 'agendaDay,agendaFourDay'
+    },
+    views: {
+      agendaFourDay: {
+        type: 'agenda',
+        duration: { days: 5 }
+      }
+    },
+
+    events: [ // put the array in the `events` property
+        {
+          title  : 'event1',
+          start  : '2019-24-02'
+        },
+        {
+          title:"Recurring Test",
+          start: '17:00', // a start time (10am in this example)
+          end: '18:00', // an end time (2pm in this example)
+          dow: [ 2, 4 ] // Repeat monday and thursday
+        },
+        {
+          title  : 'event2',
+          start  : '2019-02-24',
+          end    : '2019-02-24'
+        },
+        {
+          title  : 'event3',
+          start  : '2010-01-09T12:30:00',
+        },
+        {% for i in roster %}
+                {
+                    title  : '{{ i.team_id }}',
+                    start  : '{{ i.date|date:"Y-m-d" }}T{{ i.start_time|date:"G:i:s" }}',
+                    end  : '{{ i.date|date:"Y-m-d" }}T{{ i.finish_time|date:"G:i:s" }}',
+
+                },
+        {% endfor %}
+
+      ],
+
+  });
+
+});
+</script>
 
 </head>
   <body>
@@ -76,6 +138,7 @@
     <div class="container">
     {% block body_block %}
     {% endblock %}
+
     </div>
 
 
@@ -102,9 +165,6 @@
       </footer>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
 
 <script>
