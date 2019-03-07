@@ -1,15 +1,149 @@
-{% extends 'club_main_page.html' %}
-{% load rest_framework %}
-{% load staticfiles %}
-{% block body_block %}
+<!DOCTYPE html>
+{% load static %}
 
-<div class="team">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %} ClubKit - Sports Application {% endblock %}</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+      <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+
+      <link rel='stylesheet' href="{% static 'fullcalendar/fullcalendar.css' %}"/>
+  <script src="{% static 'fullcalendar/lib/jquery.min.js' %}"></script>
+  <script src="{% static 'fullcalendar/lib/moment.min.js' %}"></script>
+  <script src="{% static 'fullcalendar/fullcalendar.js' %}"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script>
+$(function() {
+
+// page is now ready, initialize the calendar...
+
+$('#calendar').fullCalendar({
+    height: 650,
+    selectable: true,
+    minTime: '09:00:00',
+    defaultView: 'agendaFourDay',
+    groupByDateAndResource: true,
+    header: {
+      left: 'prev,next',
+      center: 'title',
+      right: 'agendaDay,agendaFourDay'
+    },
+    views: {
+      agendaFourDay: {
+        type: 'agenda',
+        duration: { days: 5 }
+      }
+    },
+    eventRender: function(eventObj, $el) {
+      $el.popover({
+        title: eventObj.title,
+        content: eventObj.description,
+        trigger: 'hover',
+        placement: 'top',
+        container: 'body'
+      });
+    },
+
+    events: [ // put the array in the `events` property
+
+        {
+          title  : 'event2',
+          description : 'Event Description',
+          start  : '2019-03-08',
+          end    : '2019-03-08'
+        },
+        {% for info in bookings %}
+                {
+                    title  : '{{ info.name }}',
+                    description : '{{ info.name }} {{ info.pitch_id }} {{ info.email }} {{ info.mobile }}',
+                    start  : '{{ info.date|date:"Y-m-d" }}T{{ info.start_time|date:"G:i:s" }}',
+                    end  : '{{ info.date|date:"Y-m-d" }}T{{ info.finish_time|date:"G:i:s" }}',
+
+                },
+        {% endfor %}
+
+      ],
+
+  });
+
+});
+</script>
+
+</head>
+  <body>
+
+    <nav class="nav navbar navbar-expand-md bg-clubkit text-white">
+                <div class="container">
+                <a href="{% url 'index' %}"><img class="masthead-brand" src="{% static 'clubkitlogo.png' %}" alt="Logo" style="height:60px;"></a>
+
+                  <button class="hamburger hamburger--spring d-md-none" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+		<span class="hamburger-box">
+		<span class="hamburger-inner"></span>
+		</span>
+		</button>
+
+                      <div class="container">
+
+                  <div class="collapse navbar-collapse  nav-masthead" id="navbarCollapse">
+                    <ul class="navbar-nav nav-masthead">
+                      {# Django Home Link / Profile Link / Club Link / Admin Link / Register Link #}
+            <li><a class="nav-link" href="{% url 'clubs:club_home' %}">Home</a></li>
+            <li><a class="nav-link" href="{% url 'clubs:teams' %}">Team</a></li>
+            <li><a class="nav-link" href="{% url 'clubs:pitches' %}">Pitches</a></li>
+            <li><a class="nav-link" href="{% url 'clubs:memberships' %}">Memberships</a></li>
+            <li><a class="nav-link" href="{% url 'player_register:player_register' %}">Player Register</a></li>
+            <li><a class="nav-link" href="{% url 'roster:club_roster' %}">Roster</a></li>
+            <li><a class="nav-link" href="{% url 'rentapitch:pitch_rental' %}">Rent-a-Pitch</a></li>
+            <li><a class="nav-link" href="{% url 'rentapitch:pitch_bookings' %}">Pitch Bookings</a></li>
+
+    {% if user.is_authenticated %}
+        <li class=" dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Shop
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'shop:club_shop' %}">Club Shop</a>
+          <a class="dropdown-item" href="{% url 'shop:club_shop_products' %}">Shop Products</a>
+          <a class="dropdown-item" href="{% url 'shop:club_shop_categories' %}">Shop Categories</a>
+        </div>
+      </li>
+    {% else %}
+                    <li><a class="nav-link" href="{% url 'shop:club_shop' %}">Club Shop</a></li>
+                         {% endif %}
+           <!--
+            <li><a class="nav-link" href="">Contact Us</a></li>
+
+          {% if user.is_authenticated %}
+            <li><a class="nav-link" href="{% url 'profiles:view_profile' %}">Profile</a></li>
+            <li><a class="nav-link" href="{% url 'main:logout' %}">Logout</a></li>
+          {% else %}
+            <li><a class="nav-link" href="{% url 'main:login' %}">Login</a></li>
+          {% endif %}
+            <li><a class="nav-link" href="{% url 'admin:index' %}">Admin</a></li>--->
+              </ul>
+                  </div>
+                      </div>
+                    </div>
+                </nav>
+
+
+
+    <div class="container">
+        <div id="calendar"></div>
+
     <h3>Booking Details</h3>
-    <p>
+  <div class="row">
+   <div class="col-md-3 border">
+
         {% csrf_token %}
 
         {% for info in bookings %}
-    {% if info.user.club_id  ==  user.club_id %}
+       <ul>
     <li>{{ info.club_id }}</li>
     <li>{{ info.pitch_id }}</li>
     <li>{{ info.rental_cost }}</li>
@@ -21,17 +155,57 @@
     <li>{{ info.finish_time }}</li>
     <li>{{ info.payment_type }}</li>
     <li>{{ info.is_cancelled }}</li>
+   </ul>
+
     <form action="{% url 'rentapitch:cancel_booking' info.pk %}">
     <input type="submit" value="Delete">
 </form>
     <form action="{% url 'rentapitch:edit_booking' info.pk %}">
     <input type="submit" value="Edit">
 </form>
-
-{% endif %}
-    </p>
+{% endfor %}
     </div>
   </div>
-{% endfor %}
-{% endblock %}
+
+    </div>
+
+
+
+
+
+  <!-- FOOTER -->
+
+      <footer class="container">
+        <hr class="featurette-divider">
+        <ul class="float-right list-unstyled">
+        <li><i class="fas fa-address-book"></i> Contact Us: <br><p>Project Test<br>Project Test<br>Dublin 2</p></li>
+    <li><i class="fas fa-envelope"></i> Email: <a href="mailto:"></a></li>
+		<li><i class="fas fa-mobile"></i> Phone:  <a href="tel:">+353 (0)123456</a></li><br>
+        </ul>
+
+        <p> <a href="https://www.agriculture.gov.ie/legalnotices/copyright/">&copy; 2017-2018 PROJECT</a> &middot; Newsletter</p>
+
+
+    <p>Get the latest update from us by subscribing to our newsletter.</p>
+		<form class="form-inline">
+  <div class="form-group  mb-2">
+    <input type="email" class="form-control rounded-pill" id="email1" placeholder="name@example.com">
+  </div>
+  <button type="submit" class="btn btn-primary rounded-pill mb-2 ml-2" data-toggle="tooltip" data-placement="top" title="This button will subscribe you to our newsletter">Subscribe</button>
+</form>
+      </footer>
+
+
+
+
+<script>
+  var $hamburger = $(".hamburger");
+  $hamburger.on("click", function(e) {
+    $hamburger.toggleClass("is-active");
+    // Menu opens throughb data-target tag but adds animation thorugh this function
+  });
+</script>
+
+</body>
+</html>
 

@@ -3,6 +3,28 @@
 {% load staticfiles %}
 {% block body_block %}
 
+
+
+<div class="container">
+    <div class="row">
+
+        {% csrf_token %}
+        {% for info in products %}
+        <div class="col-md-3 mt-2">
+            <div class="card shadow" style="max-width: 100%;">
+  <img src="https://sc02.alicdn.com/kf/HTB1QCCvRpXXXXbRaXXXq6xXFXXXo/new-stock-best-football-jersey-popular-model.jpg_350x350.jpg" class="card-img-top" alt="...">
+  <div class="card-body text-dark">
+    <h5 class="card-title">{{ info.name }}</h5>
+    <p class="card-text text-dark">{{ info.description }}</p>
+      <a href="#" class="btn btn-primary">View</a><p class="float-right">{{ info.price }}</p>
+  </div>
+</div>
+        </div>
+{% endfor %}
+
+    </div>
+</div>
+
 <div class="product">
     <h3>Shop</h3>
     <p>
@@ -17,9 +39,8 @@
     <li>{{ info.size }}</li>
     <li>{{ info.stock }}</li>
     <li>{{ info.available }}</li>
-
+{% endfor %}
     </p>
     </div>
   </div>
-{% endfor %}
 {% endblock %}
