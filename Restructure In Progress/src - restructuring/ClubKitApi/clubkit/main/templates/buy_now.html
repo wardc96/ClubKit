@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+
 <title>Purchase Packages</title>
 
 
@@ -7,9 +8,33 @@
 
 
 <div class="container">
+    <p>Add Packages To {{ user }}</p>
     <form method="post">
         {% csrf_token %}
-         {{ form.as_p}}
+        <ul class="list-unstyled">
+            <li><h5>Player Register Package Status: {{ form.player_register_package}}</h5></li>
+             <li><b>Price:</b> {{ packages.player_register_price}}</li>
+            <li><b>Expiry Date:</b> {{ packages.player_register_expiry}}</li>
+        </ul>
+        <br>
+        <ul class="list-unstyled">
+            <li><h5>Roster Package Status: {{ form.roster_package}}</h5></li>
+             <li><b>Price:</b> {{ packages.roster_price}}</li>
+            <li><b>Expiry Date:</b> {{ packages.roster_expiry}}</li>
+        </ul>
+        <br>
+        <ul class="list-unstyled">
+            <li><h5>Rent-a-Pitch Package Status: {{ form.rent_a_pitch_package}}</h5></li>
+             <li><b>Price:</b> {{ packages.rent_a_pitch_price}}</li>
+            <li><b>Expiry Date:</b> {{ packages.rent_a_pitch_expiry}}</li>
+        </ul>
+        <br>
+        <ul class="list-unstyled">
+            <li><h5>Shop Package Status: {{ form.shop_package}}</h5></li>
+             <li><b>Price:</b> {{ packages.shop_price}}</li>
+            <li><b>Expiry Date:</b> {{ packages.shop_expiry}}</li>
+        </ul>
+        <br>
         <button type="submit">Submit</button>
     </form>
 

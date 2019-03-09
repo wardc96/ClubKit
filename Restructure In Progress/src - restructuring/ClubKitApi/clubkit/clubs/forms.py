@@ -76,7 +76,17 @@ class ClubPackagesForm(forms.ModelForm):
 
     class Meta():
         model = ClubPackages
-        fields = '__all__'
+        fields = ('club_id', 'player_register_package', 'roster_package', 'rent_a_pitch_package', 'shop_package')
 
     def __init__(self, *args, **kwargs):
         super(ClubPackagesForm, self).__init__(*args, **kwargs)
+        # self.fields['player_register_price'].widget.attrs['readonly'] = True
+
+
+
+
+
+
+
+
+

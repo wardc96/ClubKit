@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.db.models.signals import post_save
+from datetime import datetime
 from django.urls import reverse
 # from clubkit.player_register.models import Player
 
@@ -20,6 +22,12 @@ class ClubInfo(models.Model):
     club_country = models.CharField(max_length=30)
     created_date = models.DateTimeField(default=timezone.now)
 
+    def set_default_packages(sender, **kwargs):
+        if kwargs['created']:
+            ClubPackages.objects.create(club_id=kwargs['instance'])
+
+    post_save.connect(set_default_packages, sender=club_name)
+
     def __str__(self):
         return self.club_name
 
@@ -31,18 +39,26 @@ class ClubPackages(models.Model):
         ('0', 'Active'),
         ('1', 'Not Active')
     )
-    player_register_package = models.CharField(max_length=1, choices=PACKAGE_STATUS)
-    player_register_price = models.DecimalField(max_digits=8, decimal_places=2)
+    player_register_package = models.CharField(default='1', max_length=1, choices=PACKAGE_STATUS)
+    player_register_price = models.DecimalField(default=100.00, max_digits=8, decimal_places=2)
     player_register_expiry = models.DateField(default=timezone.now)
-    roster_package = models.CharField(max_length=1, choices=PACKAGE_STATUS)
-    roster_price = models.DecimalField(max_digits=8, decimal_places=2)
+    roster_package = models.CharField(default='1', max_length=1, choices=PACKAGE_STATUS)
+    roster_price = models.DecimalField(default=50.00, max_digits=8, decimal_places=2)
     roster_expiry = models.DateField(default=timezone.now)
-    rent_a_pitch_package = models.CharField(max_length=1, choices=PACKAGE_STATUS)
-    rent_a_pitch_price = models.DecimalField(max_digits=8, decimal_places=2)
+    rent_a_pitch_package = models.CharField(default='1', max_length=1, choices=PACKAGE_STATUS)
+    rent_a_pitch_price = models.DecimalField(default=100.00, max_digits=8, decimal_places=2)
     rent_a_pitch_expiry = models.DateField(default=timezone.now)
-    shop_package = models.CharField(max_length=1, choices=PACKAGE_STATUS)
-    shop_price = models.DecimalField(max_digits=8, decimal_places=2)
+    shop_package = models.CharField(default='1', max_length=1, choices=PACKAGE_STATUS)
+    shop_price = models.DecimalField(default=50.00, max_digits=8, decimal_places=2)
     shop_expiry = models.DateField(default=timezone.now)
+
+'''
+    @property
+    def is_player_register_expired(self):
+        date_time = datetime.now()
+        today = date_time.strftime('%B %d, %Y')
+        return today > self.player_register_expiry
+'''
 
 
 class ClubMemberships(models.Model):

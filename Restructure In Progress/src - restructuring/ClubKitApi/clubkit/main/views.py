@@ -1,5 +1,7 @@
+import timestamp as timestamp
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
+from datetime import datetime
 from clubkit.main.forms import UserForm, ClubInfoForm
 from clubkit.clubs.forms import ClubPackagesForm
 from clubkit.main.models import OurPackages
@@ -126,18 +128,26 @@ class PurchasePackages(APIView):
 
 
 def purchase_packages(request):
+    # date_time = datetime.now()
+    # today = date_time.strftime('%B %d, %Y')
     user = ClubInfo.objects.filter(user=request.user).first()
-    instance = ClubPackages.objects.filter(club_id=user.pk).first()
+    # instance = ClubPackages.objects.filter(club_id=user.pk).first()
+    packages = ClubPackages.objects.filter(club_id=user.pk).first()
     if request.method == 'POST':
-        form = ClubPackagesForm(request.POST, instance=instance)
+        form = ClubPackagesForm(request.POST, instance=packages)
         if form.is_valid():
+            form.club_id = ClubInfo.objects.get(user=request.user)
             form.save()
             return redirect('main:buy_packages')
         else:
             return redirect('main:buy_packages')
     else:
-        form = ClubPackagesForm(instance=instance)
-        return render(request, 'buy_now.html', {'form': form})
+        form = ClubPackagesForm(instance=packages)
+        return render(request, 'buy_now.html', {'form': form,
+                                                'user': user,
+                                                'packages': packages,
+                                                # 'today': today,
+                                                })
 
 
 def about_us(request):
