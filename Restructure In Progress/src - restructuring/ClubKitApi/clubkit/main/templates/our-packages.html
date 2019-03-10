@@ -9,8 +9,9 @@
   <h5>{{ info.title }}</h5>
   <p>Description: {{ info.description }}</p>
   <p>Price:{{ info.price }}</p>
-
+ <form action="{% url 'main:buy_packages' %}">
     <input type="submit" value="Buy Now">
+ </form>
   <br><br><br><br>
  </div>
 {% endfor %}

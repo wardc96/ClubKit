@@ -22,14 +22,16 @@ class ClubInfo(models.Model):
     club_country = models.CharField(max_length=30)
     created_date = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return self.club_name
+
+'''
     def set_default_packages(sender, **kwargs):
         if kwargs['created']:
             ClubPackages.objects.create(club_id=kwargs['instance'])
 
     post_save.connect(set_default_packages, sender=club_name)
-
-    def __str__(self):
-        return self.club_name
+'''
 
 
 class ClubPackages(models.Model):

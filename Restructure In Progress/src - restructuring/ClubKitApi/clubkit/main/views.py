@@ -14,6 +14,9 @@ from django.views.generic import TemplateView
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.db import transaction
+# from django.core.urlresolvers import reverse
+from paypal.standard.forms import PayPalPaymentsForm
 
 
 class Index(TemplateView):
@@ -45,16 +48,21 @@ def register(request):
         user_form = UserForm(data=request.POST)
         profile_form = ClubInfoForm(data=request.POST)
         if user_form.is_valid() and profile_form.is_valid():
-            user = user_form.save()
-            user.set_password(user.password)
-            user.save()
-            profile = profile_form.save(commit=False)
-            profile.user = user
-            if 'profile_pic' in request.FILES:
-                print('found it')
-                profile.profile_pic = request.FILES['profile_pic']
-            profile.save()
-            registered = True
+
+            with transaction.atomic():
+                user = user_form.save()
+                user.set_password(user.password)
+                user.save()
+                profile = profile_form.save(commit=False)
+                profile.user = user
+                if 'profile_pic' in request.FILES:
+                    print('found it')
+                    profile.profile_pic = request.FILES['profile_pic']
+                profile.save()
+                registered = True
+                package = ClubPackages()
+                package.club_id = profile
+                package.save()  # BINGO
         else:
             print(user_form.errors, profile_form.errors)
     else:
@@ -148,6 +156,28 @@ def purchase_packages(request):
                                                 'packages': packages,
                                                 # 'today': today,
                                                 })
+
+
+'''
+def view_that_asks_for_money(request):
+
+    # What you want the button to do.
+    paypal_dict = {
+        "business": "receiver_email@example.com",
+        "amount": "10000000.00",
+        "item_name": "name of the item",
+        "invoice": "unique-invoice-id",
+        "notify_url": request.build_absolute_uri(reverse('paypal-ipn')),
+        "return": request.build_absolute_uri(reverse('your-return-view')),
+        "cancel_return": request.build_absolute_uri(reverse('your-cancel-view')),
+        "custom": "premium_plan",  # Custom command to correlate to some function later (optional)
+    }
+
+    # Create the instance.
+    form = PayPalPaymentsForm(initial=paypal_dict)
+    context = {"form": form}
+    return render(request, "payment.html", context)
+'''
 
 
 def about_us(request):

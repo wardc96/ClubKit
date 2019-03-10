@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import paypalrestsdk
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
     'clubkit.roster',
     'clubkit.rentapitch',
     'clubkit.shop',
+    'paypal.standard.ipn',
 
 ]
 
@@ -119,6 +121,11 @@ REST_FRAMEWORK = {
     )
 }
 
+paypalrestsdk.configure({
+  'mode': 'sandbox', #sandbox or live
+  'client_id': 'YOUR APPLICATION CLIENT ID',
+  'client_secret': 'YOUR APPLICATION CLIENT SECRET' })
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
@@ -132,6 +139,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+PAYPAL_TEST = True
 
 
 # Static files (CSS, JavaScript, Images)
