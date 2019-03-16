@@ -5,8 +5,6 @@ from django.urls import path
 
 # SET THE NAMESPACE!
 app_name = 'clubs'
-# Be careful setting the name to just /login use userlogin instead!
-
 
 urlpatterns = [
     path('', views.club_home, name='club_home'),
@@ -26,8 +24,8 @@ urlpatterns = [
     path('memberships/', views.Memberships.as_view(), name='memberships'),
     path('delete_membership/<int:pk>/', views.delete_membership, name='delete_membership'),
     path('edit_membership/<int:pk>/', views.edit_membership, name='edit_membership'),
-
-    ]
+     ]
+# just /login use userlogin instead!
 
 '''    path('<int:pk>/', include([
         path('home/', views.club_home, name='club_home_with_pk'),

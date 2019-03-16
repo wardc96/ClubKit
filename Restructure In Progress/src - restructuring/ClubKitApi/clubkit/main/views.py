@@ -16,7 +16,6 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.db import transaction
 # from django.core.urlresolvers import reverse
-from paypal.standard.forms import PayPalPaymentsForm
 
 
 class Index(TemplateView):
@@ -62,7 +61,7 @@ def register(request):
                 registered = True
                 package = ClubPackages()
                 package.club_id = profile
-                package.save()  # BINGO
+                package.save()
         else:
             print(user_form.errors, profile_form.errors)
     else:

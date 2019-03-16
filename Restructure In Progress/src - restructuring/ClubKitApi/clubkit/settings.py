@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import paypalrestsdk
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -120,12 +119,6 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     )
 }
-
-paypalrestsdk.configure({
-  'mode': 'sandbox', #sandbox or live
-  'client_id': 'YOUR APPLICATION CLIENT ID',
-  'client_secret': 'YOUR APPLICATION CLIENT SECRET' })
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/

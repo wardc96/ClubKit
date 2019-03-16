@@ -20,7 +20,7 @@
     <li>{{ info.club_country }}</li>
 
     </p>
-    {% if info.user.pk  ==  user.pk %}
+    {% if club_pk  ==  user.pk %}
     <form action="{% url 'clubs:edit_club' %}">
     <input type="submit" value="Edit Club" />
     {% endif %}
@@ -30,12 +30,12 @@
 </div>
 <div class="posts">
     <h3>Club Posts</h3>
-    <p>    {% if posts.club_id == user.club_id %}
+{% if club_pk  ==  user.pk %}
     <form action="{% url 'clubs:club_post' %}">
     <input type="submit" value="Add New Post" />
     </form>
     {% endif %}
-    </p>
+
     <p>
         {% csrf_token %}
         {% for info in club_posts %}
