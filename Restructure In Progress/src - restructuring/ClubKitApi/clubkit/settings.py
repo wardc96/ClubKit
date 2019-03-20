@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'clubkit.roster',
     'clubkit.rentapitch',
     'clubkit.shop',
-    'paypal.standard.ipn',
 
 ]
 
@@ -150,13 +149,9 @@ STATICFILES_DIRS = (
 )
 
 
-'''
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
-
-
-MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-'''
+
 

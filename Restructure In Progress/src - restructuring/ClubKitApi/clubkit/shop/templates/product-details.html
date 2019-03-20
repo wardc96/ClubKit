@@ -1,0 +1,31 @@
+{% extends 'club_main_page.html' %}
+{% load rest_framework %}
+{% load staticfiles %}
+{% block body_block %}
+
+<h1>TEST OF PRODUCT DETAILS PAGE</h1>
+<div class="container">
+
+    <div class="row featurette justify-content-between">
+
+          <div class="col-md-7 my-auto">
+         <a href="#"> <img class="featurette-image img-fluid mx-auto rounded" src="{% if products.image %}{{ products.image.url }}{% else %}{% static 'no-image.png' %}{% endif %}" alt=""></a>
+          </div>
+        <div class="col-md-5 my-auto">
+           <h3 class="featurette-heading mt-0 pb-2">{{ products.name }}</h3>
+            <p class="lead pt-2">{{ products.description }}</p>
+
+<select class="custom-select" id="inputGroupSelect01">
+    <option selected>Choose...</option>
+    <option value="1">XS</option>
+    <option value="2">S</option>
+    <option value="3">M</option>
+    <option value="4">L</option>
+  </select>
+              <p class="my-5"><a class="btn btn-primary rounded-pill mb-1 shadow" href="" role="button">Buy now</a>	<span class="float-right">{{ products.updated }}</span>	</p>
+          </div>
+        </div>
+
+
+	</div>
+{% endblock %}

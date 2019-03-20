@@ -6,7 +6,7 @@
         <h3>Just fill out the form.</h3>
 <form action="{% url 'rentapitch:pitch_rental' %}" method="POST">
           {% csrf_token %}
-        {{ form.as_p}}
+        {{ form.club_id}}
     <input type="submit" name="" value="Add">
 </form>
     </div>

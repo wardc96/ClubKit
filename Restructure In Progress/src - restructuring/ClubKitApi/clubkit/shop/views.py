@@ -113,7 +113,26 @@ def edit_product(request, pk):
         form = ProductForm(instance=instance)
         return render(request, 'edit_products.html', {'form': form,
                                                       'instance': instance})
+'''
 
+class product_detail(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'product-details.html'
+
+    def get(self, request):
+
+        user = ClubInfo.objects.filter(user=request.user).first()
+        products = Product.objects.filter(club_id=user.pk)
+        return Response({'products': products
+                         })
+'''
+
+
+def product_detail(request, id, slug):
+    products = get_object_or_404(Product, id=id, slug=slug, available=True)
+    return render(request,'product-details.html',
+                {'products': products
+                })
 
 
 
