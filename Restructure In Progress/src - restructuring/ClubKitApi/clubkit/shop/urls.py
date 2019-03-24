@@ -16,7 +16,7 @@ urlpatterns = [
     path('club_shop_categories/', views.ClubShopCategories.as_view(), name='club_shop_categories'),
     path('delete_category/<int:pk>/', views.delete_category, name='delete_category'),
     path('edit_category/<int:pk>/', views.edit_category, name='edit_category'),
-    path('<id>/<slug>/', views.product_detail, name='product_detail'),
+    path('<slug>/', views.product_detail, name='product_detail'),
 
 ]
 

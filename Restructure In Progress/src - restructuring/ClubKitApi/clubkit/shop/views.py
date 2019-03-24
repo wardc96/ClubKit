@@ -128,12 +128,11 @@ class product_detail(APIView):
 '''
 
 
-def product_detail(request, id, slug):
-    products = get_object_or_404(Product, id=id, slug=slug, available=True)
+def product_detail(request, slug):
+    products = get_object_or_404(Product, slug=slug, available=True)
     return render(request,'product-details.html',
                 {'products': products
                 })
-
 
 
 
