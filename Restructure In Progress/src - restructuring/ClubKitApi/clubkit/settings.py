@@ -30,7 +30,7 @@ SECRET_KEY = '&mnnv$k)6rnwktsbru3=_adeb#qy@0#060&p$c*0ss34iry&6g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'clubkit.roster',
     'clubkit.rentapitch',
     'clubkit.shop',
-
+    'clubkit.cart',
+    'clubkit.orders',
 ]
 
 MIDDLEWARE = [
@@ -62,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'clubkit.urls'
 
@@ -76,6 +78,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'clubkit.cart.context_processors.cart',
+
             ],
         },
     },
@@ -113,6 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.AllowAny',
@@ -141,6 +146,7 @@ PAYPAL_TEST = True
 
 LOGIN_URL = '/main/login/'
 
+
 STATIC_URL = '/static/'
 
 
@@ -152,6 +158,6 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
+CART_SESSION_ID = 'cart'
 
 

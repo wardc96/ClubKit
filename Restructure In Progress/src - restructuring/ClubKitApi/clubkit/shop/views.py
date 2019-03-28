@@ -7,6 +7,7 @@ from clubkit.clubs.models import ClubInfo
 from clubkit.shop.models import Category, Product
 from clubkit.shop.forms import CategoryForm, ProductForm
 from clubkit.shop.models import Category, Product
+from clubkit.cart.forms import CartAddProductForm
 
 
 class ClubShop(APIView):
@@ -125,7 +126,7 @@ class product_detail(APIView):
         products = Product.objects.filter(club_id=user.pk)
         return Response({'products': products
                          })
-'''
+
 
 
 def product_detail(request, slug):
@@ -139,25 +140,30 @@ def product_detail(request, slug):
 
 
 
-
 '''
+
+
 def product_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
-        products = products.filter(category=category)
-    return render(request, 'products.html', {'category': category,
-                                         'categories': categories,
-                                         'products': products})
+        products = Product.objects.filter(category=category)
+
+    context = {
+        'category': category,
+        'categories': categories,
+        'products': products
+    }
+    return render(request, 'list.html', context)
 
 
 def product_detail(request, id, slug):
     product = get_object_or_404(Product, id=id, slug=slug, available=True)
-    cart_product_form = CartAddProductFrom()
-    return render(request,
-                  'detail.html',
-                  {'product': product,
-                   'cart_product_form': cart_product_form})
-'''
+    cart_product_form = CartAddProductForm()
+    context = {
+        'product': product,
+        'cart_product_form': cart_product_form
+    }
+    return render(request, 'detail.html', context)

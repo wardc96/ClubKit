@@ -24,8 +24,11 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-
     url('admin/', admin.site.urls),
+
+    path('cart/', include('clubkit.cart.urls')),
+    path('orders/', include('clubkit.orders.urls')),
+    url(r'^shop/', include('clubkit.shop.urls'), name='shop'),
     url(r'^$', views.Index.as_view(), name='index'),
     path('', include('clubkit.main.urls'), name=''),
     url(r'^special/', views.special, name='special'),
@@ -33,11 +36,13 @@ urlpatterns = [
     url(r'^club_home/', include('clubkit.clubs.urls'), name='clubs'),
     url(r'^player/', include('clubkit.player_register.urls'), name='player_register'),
     url(r'^roster/', include('clubkit.roster.urls'), name='roster'),
-    url(r'^shop/', include('clubkit.shop.urls'), name='shop'),
     url(r'^rent_a_pitch/', include('clubkit.rentapitch.urls'), name='rentapitch'),
 
 ]
 
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+'''
+  '''

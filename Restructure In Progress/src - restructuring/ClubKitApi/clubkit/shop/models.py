@@ -16,18 +16,11 @@ class Category(models.Model):
         verbose_name = 'category'
         verbose_name_plural = 'categories'
 
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
-        super(Category, self).save(*args, **kwargs)
-
     def __str__(self):
         return self.name
 
-
-'''
     def get_absolute_url(self):
-        return reverse('clubkit:product_list_by_category', args=[self.slug])
-'''
+        return reverse('shop:product_list_by_category', args=[self.slug])
 
 
 class Product(models.Model):
@@ -56,18 +49,9 @@ class Product(models.Model):
         ordering = ('created',)
         index_together = (('id', 'slug'),)
 
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
-        super(Product, self).save(*args, **kwargs)
-
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('shop:product_detail', args=[self.slug])
+        return reverse('shop:product_detail', args=[self.id, self.slug])
 
-'''
-    def get_absolute_url(self):
-        return reverse('clubkit:product_detail', args=[self.id, self.slug])
-
-'''

@@ -27,7 +27,8 @@
 
 <div class="product">
     <h3>Shop</h3>
-    <p>
+
+        <ul>
         {% csrf_token %}
         {% for info in products %}
     <li>{{ info.club_id }}</li>
@@ -40,8 +41,10 @@
     <li>{{ info.stock }}</li>
     <li>{{ info.available }}</li>
     <li><a href="{{ info.get_absolute_url }}">TEST</a></li>
+</ul>
 {% endfor %}
-    </p>
+
     </div>
-  </div>
+
 {% endblock %}
+
