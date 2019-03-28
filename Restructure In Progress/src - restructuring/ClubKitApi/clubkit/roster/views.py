@@ -15,12 +15,13 @@ class ClubRoster(APIView):
     template_name = 'roster.html'
 
     def get(self, request):
-
+        club_pk = request.session.get('pk')
         form = RosterForm()
-        user = ClubInfo.objects.filter(user=request.user).first()
-        roster = RosterId.objects.filter(club_id=user.pk)
+        # user = ClubInfo.objects.filter(user=request.user).first()
+        roster = RosterId.objects.filter(club_id=club_pk)
         return Response({'form': form,
-                         'roster': roster
+                         'roster': roster,
+                         'club_pk': club_pk
                      })
 
     def post(self, request):
