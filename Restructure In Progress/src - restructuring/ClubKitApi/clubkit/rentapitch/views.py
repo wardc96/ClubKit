@@ -33,9 +33,11 @@ class PitchBookings(APIView):
     template_name = 'pitch_bookings.html'
 
     def get(self, request):
-            club = ClubInfo.objects.filter(user=request.user)
-            bookings = RentPitch.objects.filter(club_id=club[0])
+            club_pk = request.session.get('pk')
+            # club = ClubInfo.objects.filter(user=request.user)
+            bookings = RentPitch.objects.filter(club_id=club_pk)
             return Response({'bookings': bookings,
+                             'club_pk': club_pk
                             })
 
 

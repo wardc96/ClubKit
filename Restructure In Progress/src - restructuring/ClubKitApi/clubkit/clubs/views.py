@@ -97,10 +97,11 @@ class TeamInfo(APIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'teams.html'
 
-    def get(self, request,):
+    def get(self, request):
         club_pk = request.session.get('pk')
         form = TeamForm()
         teams = Team.objects.filter(club_id=club_pk)
+
         return Response({'form': form,
                          'teams': teams,
                          'club_pk': club_pk

@@ -14,9 +14,9 @@ class ClubShop(APIView):
     template_name = 'main_shop.html'
 
     def get(self, request):
-
-        user = ClubInfo.objects.filter(user=request.user).first()
-        products = Product.objects.filter(club_id=user.pk)
+        club_pk = request.session.get('pk')
+        # user = ClubInfo.objects.filter(user=request.user).first()
+        products = Product.objects.filter(club_id=club_pk)
         return Response({'products': products
                          })
 
@@ -26,10 +26,10 @@ class ClubShopCategories(APIView):
     template_name = 'categories.html'
 
     def get(self, request):
-
+        club_pk = request.session.get('pk')
         form = CategoryForm()
-        user = ClubInfo.objects.filter(user=request.user).first()
-        category_types = Category.objects.filter(club_id=user.pk)
+        # user = ClubInfo.objects.filter(user=request.user).first()
+        category_types = Category.objects.filter(club_id=club_pk)
         return Response({'form': form,
                          'category_types': category_types
                          })
@@ -73,10 +73,10 @@ class ClubShopProducts(APIView):
     template_name = 'products.html'
 
     def get(self, request):
-
+        club_pk = request.session.get('pk')
         form = ProductForm()
-        user = ClubInfo.objects.filter(user=request.user).first()
-        products = Product.objects.filter(club_id=user.pk)
+        # user = ClubInfo.objects.filter(user=request.user).first()
+        products = Product.objects.filter(club_id=club_pk)
         return Response({'form': form,
                          'products': products
                          })
