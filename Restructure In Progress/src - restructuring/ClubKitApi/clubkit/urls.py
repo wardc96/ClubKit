@@ -34,7 +34,7 @@ urlpatterns = [
     url(r'^special/', views.special, name='special'),
     url(r'^profile/', include('clubkit.profiles.urls'), name='profiles'),
     url(r'^club_home/', include('clubkit.clubs.urls'), name='clubs'),
-    url(r'^player/', include('clubkit.player_register.urls'), name='player_register'),
+    url(r'^player_register/', include('clubkit.player_register.urls'), name='player_register'),
     url(r'^roster/', include('clubkit.roster.urls'), name='roster'),
     url(r'^rent_a_pitch/', include('clubkit.rentapitch.urls'), name='rentapitch'),
 
@@ -44,5 +44,3 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-'''
-  '''

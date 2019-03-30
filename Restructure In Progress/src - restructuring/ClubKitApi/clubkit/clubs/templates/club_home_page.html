@@ -6,10 +6,11 @@
 
 {% block body_block %}
 <div class="container">
+     {% for info in club %}
+    <h1> Welcome to {{ info.club_name }}</h1>
     <h3>Club Details</h3>
     <p>
         {% csrf_token %}
-        {% for info in club %}
     <li>{{ info.club_name }}</li>
     <li><img src="{{ info.club_logo }}" height="50px" width="50px"/></li>
     <li>{{ info.club_address1 }}</li>
@@ -45,7 +46,7 @@
     <li>{{ info.created_date }}</li>
     {% if club_post.club_id == user.club_id %}
     <form action="{% url 'clubs:delete_post' info.pk %}">
-    <input type="submit" value="Delete">
+    <a onclick="return confirm('Are you sure you want to delete this?')"><input type="submit" value="Delete"></a>
 </form>
      <form action="{% url 'clubs:edit_post' info.pk %}">
     <input type="submit" value="Edit">

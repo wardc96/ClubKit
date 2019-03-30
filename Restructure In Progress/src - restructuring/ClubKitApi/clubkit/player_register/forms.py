@@ -15,5 +15,9 @@ class PlayerRegistrationForm(forms.ModelForm):
             'dob': DateInput(attrs={'type': 'date'})
         }
 
+    def __init__(self, *args, **kwargs):
+        super(PlayerRegistrationForm, self).__init__(*args, **kwargs)
+        self.fields['club_id'].widget = forms.HiddenInput()
+
 
 

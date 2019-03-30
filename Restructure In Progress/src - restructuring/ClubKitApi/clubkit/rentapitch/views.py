@@ -14,7 +14,11 @@ class PitchRental(APIView):
     template_name = 'pitch_rental.html'
 
     def get(self, request):
-        form = RentalForm()
+        club_pk = request.session.get('pk')
+        inital_data = {
+            'club_id': club_pk
+        }
+        form = RentalForm(initial=inital_data)
         return Response({'form': form,
                          })
 
@@ -44,7 +48,7 @@ class PitchBookings(APIView):
 def cancel_booking(request, pk):
     rental_id = RentPitch.objects.filter(pk=pk)
     rental_id.delete()
-    return redirect('rentapitch:edit_booking')
+    return redirect('rentapitch:pitch_bookings')
 
 
 def edit_booking(request, pk):

@@ -29,8 +29,10 @@ class TeamForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(TeamForm, self).__init__(*args, **kwargs)
+        self.fields['club_id'].widget = forms.HiddenInput()
         # user = kwargs.pop('user', None)
-        # self.fields['club_id'].queryset = ClubInfo.objects.filter(user=user.pk)
+        # club_info = ClubInfo.objects.filter(user=user)
+        # self.fields['club_id'].queryset = club_info.club_name
 
     def clean_team_name(self):
         team_name = self.cleaned_data['team_name']
@@ -48,6 +50,7 @@ class PitchForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(PitchForm, self).__init__(*args, **kwargs)
+        self.fields['club_id'].widget = forms.HiddenInput()
         # self.fields['club_id'].widget = forms.HiddenInput()
 
 
@@ -60,6 +63,7 @@ class ClubPostForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ClubPostForm, self).__init__(*args, **kwargs)
         self.fields['created_date'].widget = forms.HiddenInput()
+        self.fields['club_id'].widget = forms.HiddenInput()
 
 
 class MembershipsForm(forms.ModelForm):
@@ -70,6 +74,7 @@ class MembershipsForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(MembershipsForm, self).__init__(*args, **kwargs)
+        self.fields['club_id'].widget = forms.HiddenInput()
 
 
 class ClubPackagesForm(forms.ModelForm):

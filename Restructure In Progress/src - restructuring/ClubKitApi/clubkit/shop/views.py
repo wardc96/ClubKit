@@ -144,9 +144,10 @@ def product_detail(request, slug):
 
 
 def product_list(request, category_slug=None):
+    club_pk = request.session.get('pk')
     category = None
-    categories = Category.objects.all()
-    products = Product.objects.filter(available=True)
+    categories = Category.objects.filter(club_id=club_pk)
+    products = Product.objects.filter(available=True, club_id=club_pk)
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         products = Product.objects.filter(category=category)

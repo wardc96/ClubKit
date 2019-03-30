@@ -8,6 +8,6 @@ app_name = 'player_register'
 
 
 urlpatterns = [
-    path('register/', views.RegisterPlayer.as_view(), name='player_register'),
+    path('', views.RegisterPlayer.as_view(), name='player_register'),
 
 ]

@@ -51,8 +51,11 @@ class ClubAddPosts(APIView):
 
     def get(self, request):
         club_pk = request.session.get('pk')
-        form = ClubPostForm()
-        # user = ClubInfo.objects.filter(user=request.user).first()
+        club_info = ClubInfo.objects.filter(user=request.user).first()
+        inital_data = {
+            'club_id': club_info
+        }
+        form = ClubPostForm(initial=inital_data)
         club_post = ClubPosts.objects.filter(club_id=club_pk)
         return Response({'form': form,
                          'club_post': club_post,
@@ -99,7 +102,11 @@ class TeamInfo(APIView):
 
     def get(self, request):
         club_pk = request.session.get('pk')
-        form = TeamForm()
+        club_info = ClubInfo.objects.filter(user=request.user).first()
+        inital_data = {
+            'club_id': club_info
+        }
+        form = TeamForm(initial=inital_data)
         teams = Team.objects.filter(club_id=club_pk)
 
         return Response({'form': form,
@@ -109,14 +116,14 @@ class TeamInfo(APIView):
 
     def post(self, request):
         form = TeamForm(data=request.data)
-        user = ClubInfo.objects.filter(user=request.user).first()
-        teams = Team.objects.filter(club_id=user.pk)
         if form.is_valid():
             form.save()
+            return redirect('clubs:teams')
+            '''
             return Response({'form': form,
                              'teams': teams,
                              })
-
+            '''
 
 def delete_team(request, pk):
     team = Team.objects.filter(pk=pk)
@@ -145,7 +152,11 @@ class PitchInfo(APIView):
 
     def get(self, request):
         club_pk = request.session.get('pk')
-        form = PitchForm()
+        club_info = ClubInfo.objects.filter(user=request.user).first()
+        inital_data = {
+            'club_id': club_info
+        }
+        form = PitchForm(initial=inital_data)
         # club_id = self.kwargs['pk']
         # user = ClubInfo.objects.filter(user=request.user).first()
         pitch = Pitch.objects.filter(club_id=club_pk)
@@ -156,13 +167,9 @@ class PitchInfo(APIView):
 
     def post(self, request):
         form = PitchForm(data=request.data)
-        user = ClubInfo.objects.filter(user=request.user).first()
-        pitch = Pitch.objects.filter(club_id=user.pk)
         if form.is_valid():
             form.save()
-            return Response({'form': form,
-                             'pitch': pitch
-                             })
+            return redirect('clubs:pitches')
 
 
 def delete_pitch(request, pk):
@@ -192,7 +199,11 @@ class Memberships(APIView):
 
     def get(self, request):
         club_pk = request.session.get('pk')
-        form = MembershipsForm()
+        club_info = ClubInfo.objects.filter(user=request.user).first()
+        inital_data = {
+            'club_id': club_info
+        }
+        form = MembershipsForm(initial=inital_data)
         # user = ClubInfo.objects.filter(user=request.user).first()
         memberships = ClubMemberships.objects.filter(club_id=club_pk)
         return Response({'form': form,
@@ -202,15 +213,9 @@ class Memberships(APIView):
 
     def post(self, request):
         form = MembershipsForm(data=request.data)
-        user = ClubInfo.objects.filter(user=request.user).first()
-        new_membership = ClubMemberships.objects.filter(club_id=user.pk)
         if form.is_valid():
             form.save()
             return redirect('clubs:memberships')
-        else:
-            return Response({'form': form,
-                             'new_membership': new_membership
-                             })
 
 
 def delete_membership(request, pk):
