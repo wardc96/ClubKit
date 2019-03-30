@@ -52,6 +52,9 @@ INSTALLED_APPS = [
     'clubkit.shop',
     'clubkit.cart',
     'clubkit.orders',
+    'bootstrap3',
+    'bootstrap4',
+    'bootstrap_datepicker_plus',
 ]
 
 MIDDLEWARE = [
@@ -140,13 +143,15 @@ USE_TZ = True
 PAYPAL_TEST = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}
 
 LOGIN_URL = '/main/login/'
 
-
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/2.1/howto/static-files/
 STATIC_URL = '/static/'
 
 

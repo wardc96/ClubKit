@@ -16,7 +16,11 @@ class ClubRoster(APIView):
 
     def get(self, request):
         club_pk = request.session.get('pk')
-        form = RosterForm()
+        club_info = ClubInfo.objects.filter(user=request.user).first()
+        inital_data = {
+            'club_id': club_info
+        }
+        form = RosterForm(initial=inital_data)
         # user = ClubInfo.objects.filter(user=request.user).first()
         roster = RosterId.objects.filter(club_id=club_pk)
         return Response({'form': form,
@@ -26,13 +30,9 @@ class ClubRoster(APIView):
 
     def post(self, request):
         form = RosterForm(data=request.data)
-        user = ClubInfo.objects.filter(user=request.user).first()
-        roster = RosterId.objects.filter(club_id=user.pk)
         if form.is_valid():
             form.save()
-            return Response({'form': form,
-                             'roster': roster
-                             })
+            return redirect('roster:club_roster')
 
 
 def delete_roster(request, pk):
