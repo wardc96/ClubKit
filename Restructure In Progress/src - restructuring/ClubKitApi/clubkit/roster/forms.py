@@ -3,7 +3,6 @@ from clubkit.roster.models import RosterId
 import datetime
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
-from bootstrap_datepicker_plus import DatePickerInput, TimePickerInput
 
 
 class RosterForm(forms.ModelForm):
@@ -12,11 +11,6 @@ class RosterForm(forms.ModelForm):
         model = RosterId
         fields = ('club_id', 'pitch_id', 'team_id', 'date',
                   'start_time', 'finish_time')
-        widgets = {
-            'date': DatePickerInput(),
-            'start_time': TimePickerInput(),
-            'finish_time': TimePickerInput(),
-        }
 
         def clean_date(self):
             date = self.clean_date['date']

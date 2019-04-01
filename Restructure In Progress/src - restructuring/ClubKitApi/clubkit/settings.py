@@ -52,9 +52,7 @@ INSTALLED_APPS = [
     'clubkit.shop',
     'clubkit.cart',
     'clubkit.orders',
-    'bootstrap3',
-    'bootstrap4',
-    'bootstrap_datepicker_plus',
+
 ]
 
 MIDDLEWARE = [
