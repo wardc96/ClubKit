@@ -101,29 +101,33 @@ class TeamInfo(APIView):
     template_name = 'teams.html'
 
     def get(self, request):
-        club_pk = request.session.get('pk')
-        club_info = ClubInfo.objects.filter(user=request.user).first()
-        inital_data = {
-            'club_id': club_info
-        }
-        form = TeamForm(initial=inital_data)
-        teams = Team.objects.filter(club_id=club_pk)
-
-        return Response({'form': form,
-                         'teams': teams,
-                         'club_pk': club_pk
-                         })
+        if request.user.is_authenticated:
+            club_pk = request.session.get('pk')
+            teams = Team.objects.filter(club_id=club_pk)
+            club_info = ClubInfo.objects.filter(user=request.user).first()
+            inital_data = {
+                'club_id': club_info
+            }
+            form = TeamForm(initial=inital_data)
+            return Response({
+                'form': form,
+                'teams': teams,
+                'club_pk': club_pk
+            })
+        else:
+            club_pk = request.session.get('pk')
+            teams = Team.objects.filter(club_id=club_pk)
+            return Response({
+                             'teams': teams,
+                             'club_pk': club_pk
+                             })
 
     def post(self, request):
         form = TeamForm(data=request.data)
         if form.is_valid():
             form.save()
             return redirect('clubs:teams')
-            '''
-            return Response({'form': form,
-                             'teams': teams,
-                             })
-            '''
+
 
 def delete_team(request, pk):
     team = Team.objects.filter(pk=pk)
@@ -151,19 +155,24 @@ class PitchInfo(APIView):
     template_name = 'pitches.html'
 
     def get(self, request):
-        club_pk = request.session.get('pk')
-        club_info = ClubInfo.objects.filter(user=request.user).first()
-        inital_data = {
-            'club_id': club_info
-        }
-        form = PitchForm(initial=inital_data)
-        # club_id = self.kwargs['pk']
-        # user = ClubInfo.objects.filter(user=request.user).first()
-        pitch = Pitch.objects.filter(club_id=club_pk)
-        return Response({'form': form,
-                         'pitch': pitch,
-                         'club_pk': club_pk
-                         })
+        if request.user.is_authenticated:
+            club_pk = request.session.get('pk')
+            club_info = ClubInfo.objects.filter(user=request.user).first()
+            inital_data = {
+                'club_id': club_info
+            }
+            form = PitchForm(initial=inital_data)
+            pitch = Pitch.objects.filter(club_id=club_pk)
+            return Response({'form': form,
+                             'pitch': pitch,
+                             'club_pk': club_pk
+                             })
+        else:
+            club_pk = request.session.get('pk')
+            pitch = Pitch.objects.filter(club_id=club_pk)
+            return Response({'pitch': pitch,
+                             'club_pk': club_pk
+                             })
 
     def post(self, request):
         form = PitchForm(data=request.data)
@@ -198,18 +207,25 @@ class Memberships(APIView):
     template_name = 'memberships.html'
 
     def get(self, request):
-        club_pk = request.session.get('pk')
-        club_info = ClubInfo.objects.filter(user=request.user).first()
-        inital_data = {
-            'club_id': club_info
-        }
-        form = MembershipsForm(initial=inital_data)
-        # user = ClubInfo.objects.filter(user=request.user).first()
-        memberships = ClubMemberships.objects.filter(club_id=club_pk)
-        return Response({'form': form,
-                         'memberships': memberships,
-                         'club_pk': club_pk
-                         })
+        if request.user.is_authenticated:
+            club_pk = request.session.get('pk')
+            club_info = ClubInfo.objects.filter(user=request.user).first()
+            inital_data = {
+                'club_id': club_info
+            }
+            form = MembershipsForm(initial=inital_data)
+            # user = ClubInfo.objects.filter(user=request.user).first()
+            memberships = ClubMemberships.objects.filter(club_id=club_pk)
+            return Response({'form': form,
+                             'memberships': memberships,
+                             'club_pk': club_pk
+                             })
+        else:
+            club_pk = request.session.get('pk')
+            memberships = ClubMemberships.objects.filter(club_id=club_pk)
+            return Response({'memberships': memberships,
+                             'club_pk': club_pk
+                             })
 
     def post(self, request):
         form = MembershipsForm(data=request.data)

@@ -15,18 +15,25 @@ class ClubRoster(APIView):
     template_name = 'roster.html'
 
     def get(self, request):
-        club_pk = request.session.get('pk')
-        club_info = ClubInfo.objects.filter(user=request.user).first()
-        inital_data = {
-            'club_id': club_info
-        }
-        form = RosterForm(initial=inital_data)
-        # user = ClubInfo.objects.filter(user=request.user).first()
-        roster = RosterId.objects.filter(club_id=club_pk)
-        return Response({'form': form,
-                         'roster': roster,
-                         'club_pk': club_pk
-                     })
+        if request.user.is_authenticated:
+            club_pk = request.session.get('pk')
+            club_info = ClubInfo.objects.filter(user=request.user).first()
+            inital_data = {
+                'club_id': club_info
+            }
+            form = RosterForm(initial=inital_data)
+            # user = ClubInfo.objects.filter(user=request.user).first()
+            roster = RosterId.objects.filter(club_id=club_pk)
+            return Response({'form': form,
+                             'roster': roster,
+                             'club_pk': club_pk
+                         })
+        else:
+            club_pk = request.session.get('pk')
+            roster = RosterId.objects.filter(club_id=club_pk)
+            return Response({'roster': roster,
+                             'club_pk': club_pk
+                         })
 
     def post(self, request):
         form = RosterForm(data=request.data)
@@ -104,3 +111,4 @@ def event(request):
     return render(request, 'roster.html', context)
 
 '''
+

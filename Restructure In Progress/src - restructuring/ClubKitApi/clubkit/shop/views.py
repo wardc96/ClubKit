@@ -107,40 +107,14 @@ def edit_product(request, pk):
         form = ProductForm(request.POST, instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('shop:club_shop_products')
+            return redirect('shop:product_list')
         else:
             return redirect('shop:club_shop_products')
     else:
         form = ProductForm(instance=instance)
         return render(request, 'edit_products.html', {'form': form,
                                                       'instance': instance})
-'''
 
-class product_detail(APIView):
-    renderer_classes = [TemplateHTMLRenderer]
-    template_name = 'product-details.html'
-
-    def get(self, request):
-
-        user = ClubInfo.objects.filter(user=request.user).first()
-        products = Product.objects.filter(club_id=user.pk)
-        return Response({'products': products
-                         })
-
-
-
-def product_detail(request, slug):
-    products = get_object_or_404(Product, slug=slug, available=True)
-    return render(request,'product-details.html',
-                {'products': products
-                })
-
-
-
-
-
-
-'''
 
 
 def product_list(request, category_slug=None):
