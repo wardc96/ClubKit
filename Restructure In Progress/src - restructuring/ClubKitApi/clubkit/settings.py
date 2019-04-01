@@ -52,8 +52,11 @@ INSTALLED_APPS = [
     'clubkit.shop',
     'clubkit.cart',
     'clubkit.orders',
+    'crispy_forms',
 
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
