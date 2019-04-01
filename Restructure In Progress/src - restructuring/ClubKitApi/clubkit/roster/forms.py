@@ -10,7 +10,8 @@ class RosterForm(forms.ModelForm):
     class Meta():
         model = RosterId
         fields = ('club_id', 'pitch_id', 'team_id', 'date',
-                  'start_time', 'finish_time')
+                  'start_time', 'finish_time', 'reoccuring_event')
+
 
         def clean_date(self):
             date = self.clean_date['date']

@@ -144,7 +144,6 @@ USE_TZ = True
 PAYPAL_TEST = True
 
 
-
 BOOTSTRAP4 = {
     'include_jquery': True,
 }

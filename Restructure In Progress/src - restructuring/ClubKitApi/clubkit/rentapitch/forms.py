@@ -5,12 +5,15 @@ import datetime
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
+
+
 class RentalForm(forms.ModelForm):
 
     class Meta():
         model = RentPitch
         fields = ('club_id', 'pitch_id', 'rental_cost', 'name', 'email',
                   'mobile', 'date', 'start_time', 'finish_time', 'payment_type', 'is_cancelled',)
+
 
         def clean_date(self):
             date = self.clean_date['date']

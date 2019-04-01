@@ -116,7 +116,6 @@ def edit_product(request, pk):
                                                       'instance': instance})
 
 
-
 def product_list(request, category_slug=None):
     club_pk = request.session.get('pk')
     category = None

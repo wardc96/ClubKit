@@ -18,6 +18,7 @@ class ClubRoster(APIView):
         if request.user.is_authenticated:
             club_pk = request.session.get('pk')
             club_info = ClubInfo.objects.filter(user=request.user).first()
+            reoccuring_event = RosterId.objects.filter(reoccuring_event=True, club_id=club_pk)
             inital_data = {
                 'club_id': club_info
             }
@@ -26,13 +27,16 @@ class ClubRoster(APIView):
             roster = RosterId.objects.filter(club_id=club_pk)
             return Response({'form': form,
                              'roster': roster,
-                             'club_pk': club_pk
+                             'club_pk': club_pk,
+                             'reoccuring_event': reoccuring_event
                          })
         else:
             club_pk = request.session.get('pk')
             roster = RosterId.objects.filter(club_id=club_pk)
+            reoccuring_event = ClubInfo.objects.filter(reoccuring_event=True, club_id=club_pk)
             return Response({'roster': roster,
-                             'club_pk': club_pk
+                             'club_pk': club_pk,
+                             'reoccuring_event': reoccuring_event
                          })
 
     def post(self, request):
