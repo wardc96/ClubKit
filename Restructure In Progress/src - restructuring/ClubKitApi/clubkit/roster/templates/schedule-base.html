@@ -8,14 +8,84 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
       <link rel="stylesheet" href="{% static 'styles.css' %}">
+      <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
 
 
       <link rel='stylesheet' href="{% static 'fullcalendar/fullcalendar.css' %}"/>
+
   <script src="{% static 'fullcalendar/lib/jquery.min.js' %}"></script>
   <script src="{% static 'fullcalendar/lib/moment.min.js' %}"></script>
   <script src="{% static 'fullcalendar/fullcalendar.js' %}"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker({
+  dateFormat: "yy-mm-dd"
+});
+  } );
+  </script>
+
+<script>
+$(function() {
+
+// page is now ready, initialize the calendar...
+
+$('#calendar').fullCalendar({
+    height: 650,
+    selectable: true,
+    minTime: '09:00:00',
+    defaultView: 'agendaFourDay',
+    groupByDateAndResource: true,
+    header: {
+      left: 'prev,next',
+      center: 'title',
+      right: 'agendaDay,agendaFourDay'
+    },
+    views: {
+      agendaFourDay: {
+        type: 'agenda',
+        duration: { days: 5 }
+      }
+    },
+
+    events: [ // put the array in the `events` property
+        {
+          title  : 'event1',
+          start  : '2019-24-02'
+        },
+       {% for reoccur in reoccuring_event %}
+ {
+        
+          title:'{{ reoccur.team_id }}',
+          start: '{{ reoccur.start_time|date:"G:i:s" }}',
+          end  : '{{ reoccur.finish_time|date:"G:i:s" }}',
+          dow: [ 2, 4 ] // Repeat monday and thursday
+},
+           {% endfor %}
+        
+
+        {% for i in roster %}
+                {
+                    title  : '{{ i.team_id }}',
+                    start  : '{{ i.date|date:"Y-m-d" }}T{{ i.start_time|date:"G:i:s" }}',
+                    end  : '{{ i.date|date:"Y-m-d" }}T{{ i.finish_time|date:"G:i:s" }}',
+
+                },
+        {% endfor %}
+
+      ],
+
+  });
+
+});
+</script>
+
+
 
 </head>
   <body>
@@ -116,6 +186,7 @@
     // Menu opens throughb data-target tag but adds animation thorugh this function
   });
 </script>
+
 
 </body>
 </html>

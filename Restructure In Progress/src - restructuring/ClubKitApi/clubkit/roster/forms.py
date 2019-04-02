@@ -10,8 +10,10 @@ class RosterForm(forms.ModelForm):
     class Meta():
         model = RosterId
         fields = ('club_id', 'pitch_id', 'team_id', 'date',
-                  'start_time', 'finish_time', 'reoccuring_event')
-
+                  'start_time', 'finish_time', 'reoccuring_event',)
+        widgets = {
+            'date': forms.DateInput(attrs={'id': 'datepicker'})
+        }
 
         def clean_date(self):
             date = self.clean_date['date']

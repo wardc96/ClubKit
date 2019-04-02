@@ -11,9 +11,12 @@ class RosterId(models.Model):
     finish_time = models.TimeField(default='')
     reoccuring_event = models.BooleanField(default=False)
 
+
+
+'''
     def __str__(self):
         return "%s %s" % (self.pitch_name, self.team_name)
-
+'''
 
 
 

@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     'clubkit.cart',
     'clubkit.orders',
     'crispy_forms',
+    'paypal.standard.ipn',
+    'clubkit.payment',
 
 ]
 
@@ -164,5 +166,10 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 CART_SESSION_ID = 'cart'
+
+
+#django-paypal settings
+PAYPAL_RECEIVER_EMAIL = 'clubkit@outlook.ie'
+PAYPAL_TEST = True
 
 

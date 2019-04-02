@@ -22,6 +22,7 @@
                 {% endwith %}
             </span>
         </h2>
+            <div class="table-responsive">
             <table class="table">
                 <thead class="bg-light">
                     <tr>
@@ -54,8 +55,8 @@
                             <td>
                                 <a href="{% url 'cart:cart_remove' product.id %}">Remove</a>
                             </td>
-                            <td>kshs. {{ item.price }}</td>
-                            <td>kshs. {{ item.total_price }}</td>
+                            <td>€{{ item.price }}</td>
+                            <td>€{{ item.total_price }}</td>
                         </tr>
                     {% endwith %}
                 {% endfor %}
@@ -66,6 +67,7 @@
                 </tr>
                 </tbody>
             </table>
+            </div>
         <p class="text-right">
             <a href="{% url 'shop:product_list' %}" class="btn btn-default">Continue Shopping</a>
             <a href="{% url 'orders:order_create' %}" class="btn btn-primary">Checkout</a>
