@@ -100,21 +100,37 @@ $('#calendar').fullCalendar({
 		</span>
 		</button>
 
-                      <div class="container">
-
-                  <div class="collapse navbar-collapse  nav-masthead" id="navbarCollapse">
-                    <ul class="navbar-nav nav-masthead">
-                      {# Django Home Link / Profile Link / Club Link / Admin Link / Register Link #}
-            <li><a class="nav-link" href="{% url 'clubs:club_home' %}">Home</a></li>
-            <li><a class="nav-link" href="{% url 'clubs:teams' %}">Team</a></li>
+        <div class="container">
+        <div class="collapse navbar-collapse  nav-masthead" id="navbarCollapse">
+             <ul class="navbar-nav nav-masthead">
+             {# Django Home Link / Profile Link / Club Link / Admin Link / Register Link #}
+           <li><a class="nav-link" href="{% url 'clubs:club_home' %}">Home</a></li>
+            <li><a class="nav-link" href="{% url 'clubs:teams' %}">Teams</a></li>
             <li><a class="nav-link" href="{% url 'clubs:pitches' %}">Pitches</a></li>
-            <li><a class="nav-link" href="{% url 'clubs:memberships' %}">Memberships</a></li>
-            <li><a class="nav-link" href="{% url 'player_register:player_register' %}">Player Register</a></li>
             <li><a class="nav-link" href="{% url 'roster:club_roster' %}">Roster</a></li>
-            <li><a class="nav-link" href="{% url 'rentapitch:pitch_rental' %}">Rent-a-Pitch</a></li>
-            <li><a class="nav-link" href="{% url 'rentapitch:pitch_bookings' %}">Pitch Bookings</a></li>
-
-    {% if user.is_authenticated %}
+             <li class=" dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Member Registration
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'clubs:memberships' %}">Memberships</a>
+          <a class="dropdown-item" href="{% url 'player_register:player_register' %}">Registration</a>
+        </div>
+      </li>
+        {% if club_pk  ==  user.pk %}
+         <li class=" dropdown">
+        <a class="nav-link dropdown-toggle" href="{% url 'clubs:memberships' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Rent-a-Pitch
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'rentapitch:pitch_rental' %}">Rent-a-Pitch</a>
+          <a class="dropdown-item" href="{% url 'rentapitch:pitch_bookings' %}">Pitch Bookings</a>
+        </div>
+      </li>
+      {% else %}
+        <li><a class="nav-link" href="{% url 'rentapitch:pitch_rental' %}">Rent-a-Pitch</a></li>
+           {% endif %}
+    {% if club_pk  ==  user.pk %}
         <li class=" dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Shop

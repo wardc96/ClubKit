@@ -1,0 +1,16 @@
+{% extends 'club_main_page.html' %}
+{% load staticfiles %}
+{% block body_block %}
+
+{% if club_pk  ==  user.pk %}
+  <div class="addteam">
+      <h3>Add Teams To Club.</h3>
+<form action="{% url 'clubs:teams' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+    <input type="submit" name="" value="Add">
+</form>
+{% endif %}
+
+  </div>
+{% endblock %}

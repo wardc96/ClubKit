@@ -22,6 +22,10 @@ class Index(TemplateView):
     template_name = 'index.html'
 
     def get(self, request):
+        try:
+            del request.session['cart']
+        except KeyError:
+            pass
         users = User.objects.all()
         all_clubs = ClubInfo.objects.all()
 
