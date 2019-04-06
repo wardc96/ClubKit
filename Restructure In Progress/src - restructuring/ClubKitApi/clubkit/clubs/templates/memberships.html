@@ -5,29 +5,32 @@
 {% if club_pk  ==  user.pk %}
   <div class="AddMembership">
       <h3>Add Membership To Club.</h3>
-<form action="{% url 'clubs:add_memberships' %}">
-    <input type="submit" name="" value="Add Membership">
-</form>
+        <form action="{% url 'clubs:add_memberships' %}">
+            <input type="submit" name="" value="Add Membership">
+        </form>
 {% endif %}
+  </div>
+
 <div class="memberships">
     <h3>Membership Details</h3>
     <p>
-        {% csrf_token %}
-        {% for info in memberships %}
-    <li>{{ info.club_id }}</li>
-    <li>{{ info.title }}</li>
-    <li>{{ info.price }}</li>
-    <li>{{ info.description }}</li>
-   {% if club_pk  ==  user.pk %}
-<form action="{% url 'clubs:delete_membership' info.pk %}">
-    <a onclick="return confirm('Are you sure you want to delete this?')"><input type="submit" value="Delete"></a>
-</form>
-    <form action="{% url 'clubs:edit_membership' info.pk %}">
-    <input type="submit" value="Edit">
-</form>
-{% endif %}
+            {% csrf_token %}
+            {% for info in memberships %}
+        <li>{{ info.club_id }}</li>
+        <li>{{ info.title }}</li>
+        <li>{{ info.price }}</li>
+        <li>{{ info.description }}</li>
+
+        {% if club_pk  ==  user.pk %}
+        <form action="{% url 'clubs:delete_membership' info.pk %}">
+            <a onclick="return confirm('Are you sure you want to delete this?')"><input type="submit" value="Delete"></a>
+        </form>
+        <form action="{% url 'clubs:edit_membership' info.pk %}">
+            <input type="submit" value="Edit">
+        </form>
+        {% endif %}
+        {% endfor %}
     </p>
-    </div>
-  </div>
-{% endfor %}
+</div>
+
 {% endblock %}

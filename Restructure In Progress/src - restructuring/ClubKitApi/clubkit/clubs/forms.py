@@ -1,5 +1,4 @@
 from django import forms
-from django.contrib.auth.models import User
 from clubkit.clubs.models import ClubInfo, Team, Pitch, ClubPosts, ClubMemberships, ClubPackages
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
@@ -30,9 +29,6 @@ class TeamForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(TeamForm, self).__init__(*args, **kwargs)
         self.fields['club_id'].widget = forms.HiddenInput()
-        # user = kwargs.pop('user', None)
-        # club_info = ClubInfo.objects.filter(user=user)
-        # self.fields['club_id'].queryset = club_info.club_name
 
     def clean_team_name(self):
         team_name = self.cleaned_data['team_name']
@@ -51,7 +47,6 @@ class PitchForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(PitchForm, self).__init__(*args, **kwargs)
         self.fields['club_id'].widget = forms.HiddenInput()
-        # self.fields['club_id'].widget = forms.HiddenInput()
 
 
 class ClubPostForm(forms.ModelForm):
@@ -85,7 +80,7 @@ class ClubPackagesForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ClubPackagesForm, self).__init__(*args, **kwargs)
-        # self.fields['player_register_price'].widget.attrs['readonly'] = True
+
 
 
 

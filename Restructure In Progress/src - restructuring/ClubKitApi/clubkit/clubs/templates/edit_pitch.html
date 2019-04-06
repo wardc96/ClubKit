@@ -1,10 +1,7 @@
 {% extends 'club_main_page.html' %}
-
-{% block head %}
-<title>Edit Pitch</title>
-{% endblock %}
-
 {% block body_block %}
+
+<h3>Edit Pitch Details</h3>
 
 <div class="container">
     <form method="post">
@@ -12,7 +9,5 @@
         {{ form.as_p}}
         <button type="submit">Submit</button>
     </form>
-
 </div>
-
 {% endblock %}

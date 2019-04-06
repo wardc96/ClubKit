@@ -1,18 +1,12 @@
 {% extends 'club_main_page.html' %}
-
-{% block head %}
-<title>Edit Team</title>
-{% endblock %}
-<h3>Edit Team</h3>
 {% block body_block %}
 
+<h3>Edit Team</h3>
 <div class="container">
     <form method="post">
         {% csrf_token %}
         {{ form.as_p}}
         <button type="submit">Submit</button>
     </form>
-
 </div>
-
 {% endblock %}

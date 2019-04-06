@@ -5,9 +5,10 @@
 {% if club_pk  ==  user.pk %}
   <div class="addteam">
       <h3>Add Teams To Club.</h3>
-<form action="{% url 'clubs:add_teams' %}">
-    <input type="submit" name="" value="Add Team">
-</form>
+        <form action="{% url 'clubs:add_teams' %}">
+            <input type="submit" name="" value="Add Team">
+        </form>
+  </div>
 {% endif %}
 <div class="team">
     <h3>Team Details</h3>
@@ -17,16 +18,16 @@
     <li>{{ info.club_id }}</li>
     <li>{{ info.team_name }}</li>
     <li>{{ info.manager_name }}</li>
-{% if club_pk  ==  user.pk %}
-<form action="{% url 'clubs:delete_team' info.pk %}">
-    <a onclick="return confirm('Are you sure you want to delete this?')"><input type="submit" value="Delete"></a>
-</form>
-    <form action="{% url 'clubs:edit_team' info.pk %}">
-    <input type="submit" value="Edit">
-</form>
+    {% if club_pk  ==  user.pk %}
+    <form action="{% url 'clubs:delete_team' info.pk %}">
+        <a onclick="return confirm('Are you sure you want to delete this?')"><input type="submit" value="Delete"></a>
+    </form>
+        <form action="{% url 'clubs:edit_team' info.pk %}">
+        <input type="submit" value="Edit">
+    </form>
 {% endif %}
     </p>
     </div>
-  </div>
+
 {% endfor %}
 {% endblock %}

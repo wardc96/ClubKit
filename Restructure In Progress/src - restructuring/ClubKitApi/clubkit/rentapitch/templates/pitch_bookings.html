@@ -77,81 +77,70 @@ $('#calendar').fullCalendar({
 </head>
   <body>
 
-    <nav class="nav navbar navbar-expand-md bg-clubkit text-white">
-                <div class="container">
-                <a href="{% url 'index' %}"><img class="masthead-brand" src="{% static 'clubkitlogo.png' %}" alt="Logo" style="height:60px;"></a>
+        <nav class="nav navbar navbar-expand-md bg-clubkit text-white">
+        <div class="container">
+            <a href="{% url 'index' %}"><img class="masthead-brand" src="{% static 'clubkitlogo.png' %}" alt="Logo" style="height:60px;"></a>
+            <button class="hamburger hamburger--spring d-md-none" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+            </span>
+            </button>
 
-                  <button class="hamburger hamburger--spring d-md-none" type="button" data-toggle="collapse" data-target="#navbarCollapse">
-		<span class="hamburger-box">
-		<span class="hamburger-inner"></span>
-		</span>
-		</button>
+        <div class="container">
+            <div class="collapse navbar-collapse  nav-masthead" id="navbarCollapse">
+            <ul class="navbar-nav nav-masthead">
 
-                      <div class="container">
-
-                  <div class="collapse navbar-collapse  nav-masthead" id="navbarCollapse">
-                    <ul class="navbar-nav nav-masthead">
-                      {# Django Home Link / Profile Link / Club Link / Admin Link / Register Link #}
-             <li><a class="nav-link" href="{% url 'clubs:club_home' %}">Home</a></li>
+            {# Navbar Links #}
+            <li><a class="nav-link" href="{% url 'clubs:club_home' %}">Home</a></li>
             <li><a class="nav-link" href="{% url 'clubs:teams' %}">Teams</a></li>
             <li><a class="nav-link" href="{% url 'clubs:pitches' %}">Pitches</a></li>
             <li><a class="nav-link" href="{% url 'roster:club_roster' %}">Roster</a></li>
-             <li class=" dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Member Registration
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{% url 'clubs:memberships' %}">Memberships</a>
-          <a class="dropdown-item" href="{% url 'player_register:player_register' %}">Registration</a>
-        </div>
-      </li>
-
-
-        {% if club_pk  ==  user.pk %}
-         <li class=" dropdown">
-        <a class="nav-link dropdown-toggle" href="{% url 'clubs:memberships' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Rent-a-Pitch
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{% url 'rentapitch:pitch_rental' %}">Rent-a-Pitch</a>
-          <a class="dropdown-item" href="{% url 'rentapitch:pitch_bookings' %}">Pitch Bookings</a>
-        </div>
-      </li>
-      {% else %}
-        <li><a class="nav-link" href="{% url 'rentapitch:pitch_rental' %}">Rent-a-Pitch</a></li>
+            <li class=" dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Member Registration
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{% url 'clubs:memberships' %}">Memberships</a>
+                  <a class="dropdown-item" href="{% url 'player_register:player_register' %}">Registration</a>
+                </div>
+            </li>
+            {% if club_pk  ==  user.pk %}
+            <li class=" dropdown">
+                <a class="nav-link dropdown-toggle" href="{% url 'clubs:memberships' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Rent-a-Pitch
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{% url 'rentapitch:pitch_rental' %}">Rent-a-Pitch</a>
+                  <a class="dropdown-item" href="{% url 'rentapitch:pitch_bookings' %}">Pitch Bookings</a>
+                </div>
+            </li>
+            {% else %}
+            <li>
+                <a class="nav-link" href="{% url 'rentapitch:pitch_rental' %}">Rent-a-Pitch</a>
+            </li>
            {% endif %}
 
-    {% if club_pk  ==  user.pk %}
-        <li class=" dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Shop
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{% url 'shop:club_shop' %}">Club Shop</a>
-          <a class="dropdown-item" href="{% url 'shop:club_shop_products' %}">Shop Products</a>
-          <a class="dropdown-item" href="{% url 'shop:club_shop_categories' %}">Shop Categories</a>
+           {% if club_pk  ==  user.pk %}
+           <li class=" dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Shop
+                </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'shop:club_shop' %}">Club Shop</a>
+              <a class="dropdown-item" href="{% url 'shop:club_shop_products' %}">Shop Products</a>
+              <a class="dropdown-item" href="{% url 'shop:club_shop_categories' %}">Shop Categories</a>
+            </div>
+            </li>
+            {% else %}
+            <li>
+                <a class="nav-link" href="{% url 'shop:club_shop' %}">Club Shop</a>
+            </li>
+            {% endif %}
+            </ul>
+            </div>
         </div>
-      </li>
-
-    {% else %}
-                    <li><a class="nav-link" href="{% url 'shop:club_shop' %}">Club Shop</a></li>
-                         {% endif %}
-           <!--
-            <li><a class="nav-link" href="">Contact Us</a></li>
-
-          {% if user.is_authenticated %}
-            <li><a class="nav-link" href="{% url 'profiles:view_profile' %}">Profile</a></li>
-            <li><a class="nav-link" href="{% url 'main:logout' %}">Logout</a></li>
-          {% else %}
-            <li><a class="nav-link" href="{% url 'main:login' %}">Login</a></li>
-          {% endif %}
-            <li><a class="nav-link" href="{% url 'admin:index' %}">Admin</a></li>--->
-              </ul>
-                  </div>
-                      </div>
-                    </div>
-                </nav>
-
+        </div>
+    </nav>
 
 
     <div class="container">

@@ -1,7 +1,5 @@
 from clubkit.clubs import views
-from django.conf.urls import include, url
 from django.urls import path
-
 
 # SET THE NAMESPACE!
 app_name = 'clubs'
@@ -9,8 +7,6 @@ app_name = 'clubs'
 urlpatterns = [
     path('', views.club_home, name='club_home'),
     path('<int:pk>/', views.club_home, name='club_home_with_pk'),
-    # path('<int:pk>/roster/', include('clubkit.roster.urls', namespace='roster_info')),
-    # path('<int:pk>/', include('clubkit.player_register.urls', namespace='player_registration'), name='club_player_register'),
     path('edit_club/', views.edit_club, name='edit_club'),
     path('teams/', views.TeamInfo.as_view(), name='teams'),
     path('add_teams/', views.add_team, name='add_teams'),
@@ -28,12 +24,3 @@ urlpatterns = [
     path('delete_membership/<int:pk>/', views.delete_membership, name='delete_membership'),
     path('edit_membership/<int:pk>/', views.edit_membership, name='edit_membership'),
      ]
-# just /login use userlogin instead!
-
-'''    path('<int:pk>/', include([
-        path('home/', views.club_home, name='club_home_with_pk'),
-        path('teams/', views.TeamInfo.as_view(), name='teams'),
-        # path('pitches/', views.PitchInfo.as_view(), name='pitches'),
-    ])),
-'''
-
