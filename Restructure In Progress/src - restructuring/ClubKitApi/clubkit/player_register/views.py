@@ -17,10 +17,12 @@ class RegisterPlayer(APIView):
         club_memberships = ClubMemberships.objects.filter(club_id=club_info)
         inital_data = {
             'club_id': club_info,
-            'membership_title': club_memberships
+            'membership_title': club_memberships,
+            'club_pk': club_pk
         }
         form = PlayerRegistrationForm(initial=inital_data)
         return Response({'form': form,
+                         'club_pk': club_pk
                          })
 
     def post(self, request):

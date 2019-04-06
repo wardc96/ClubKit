@@ -20,6 +20,7 @@ class PitchRental(APIView):
         }
         form = RentalForm(initial=inital_data)
         return Response({'form': form,
+                         'club_pk': club_pk
                          })
 
     def post(self, request):

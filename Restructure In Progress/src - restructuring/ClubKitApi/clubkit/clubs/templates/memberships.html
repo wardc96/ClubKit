@@ -5,10 +5,8 @@
 {% if club_pk  ==  user.pk %}
   <div class="AddMembership">
       <h3>Add Membership To Club.</h3>
-<form action="{% url 'clubs:memberships' %}" method="POST">
-        {% csrf_token %}
-        {{ form.as_p}}
-    <input type="submit" name="" value="Add">
+<form action="{% url 'clubs:add_memberships' %}">
+    <input type="submit" name="" value="Add Membership">
 </form>
 {% endif %}
 <div class="memberships">
