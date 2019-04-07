@@ -2,45 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db52fa26-b7a5-4dd8-b5c8-7ba962dd3903" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/cart/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/cart/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/clubs/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/clubs/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/clubs/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/clubs/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/main/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/main/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/main/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/main/serializers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/main/templates/about-us.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/main/templates/about-us.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/main/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/main/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/main/templates/buy_now.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/main/templates/buy_now.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/main/templates/contact-us.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/main/templates/contact-us.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/main/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/main/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/main/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/main/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/main/templates/our-clubs.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/main/templates/our-clubs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/main/templates/our-packages.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/main/templates/our-packages.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/main/templates/password_reset_complete.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/main/templates/password_reset_complete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/main/templates/password_reset_confirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/main/templates/password_reset_confirm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/main/templates/password_reset_done.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/main/templates/password_reset_done.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/main/templates/password_reset_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/main/templates/password_reset_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/main/templates/registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/main/templates/registration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/main/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/main/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/main/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/orders/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/orders/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/payment/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/payment/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/player_register/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/player_register/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/player_register/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/player_register/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/player_register/serializers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/player_register/templates/player_registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/player_register/templates/player_registration.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/player_register/templates/player_registration_complete.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/player_register/templates/player_registration_complete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/player_register/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/player_register/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/player_register/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/player_register/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/player_register/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/player_register/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/profiles/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/profiles/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/profiles/serializers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/profiles/templates/change_password.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/profiles/templates/change_password.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/profiles/templates/edit_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/profiles/templates/edit_profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/profiles/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/profiles/templates/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/profiles/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/profiles/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clubkit/shop/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/shop/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clubkit/profiles/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/profiles/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clubkit/rentapitch/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/rentapitch/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clubkit/rentapitch/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/rentapitch/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clubkit/rentapitch/serializers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clubkit/rentapitch/templates/booking_complete.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/rentapitch/templates/booking_complete.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clubkit/rentapitch/templates/edit_booking.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/rentapitch/templates/edit_booking.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clubkit/rentapitch/templates/pitch_bookings.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/rentapitch/templates/pitch_bookings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clubkit/rentapitch/templates/pitch_rental.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/rentapitch/templates/pitch_rental.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clubkit/rentapitch/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/rentapitch/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clubkit/rentapitch/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/rentapitch/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clubkit/roster/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/roster/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clubkit/roster/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/roster/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clubkit/roster/serializers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/clubkit/roster/templates/edit_club_roster.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/roster/templates/edit_club_roster.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clubkit/roster/templates/edit_roster.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/roster/templates/edit_roster.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clubkit/roster/templates/roster.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/roster/templates/roster.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clubkit/roster/templates/roster_saved.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/roster/templates/roster_saved.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clubkit/roster/templates/schedule-base.html" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/roster/templates/schedule-base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clubkit/roster/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/clubkit/roster/urls.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,9 +30,73 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/clubkit/roster/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="434">
+              <caret line="38" column="43" lean-forward="true" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
+              <folding>
+                <element signature="e#0#52#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/clubkit/rentapitch/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
+              <folding>
+                <element signature="e#0#47#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/clubkit/roster/templates/roster.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="697">
+              <caret line="41" column="14" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/clubkit/shop/templates/categories.html">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/clubkit/roster/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/clubkit/roster/forms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-line="26" selection-end-column="59" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/clubkit/clubs/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="89" column="62" lean-forward="true" selection-start-line="89" selection-start-column="62" selection-end-line="89" selection-end-column="62" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -101,7 +145,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/clubkit/payment/views.py" />
         <option value="$PROJECT_DIR$/clubkit/main/templates/about-us.html" />
         <option value="$PROJECT_DIR$/clubkit/main/templates/base.html" />
         <option value="$PROJECT_DIR$/clubkit/main/templates/buy_now.html" />
@@ -148,10 +191,11 @@
         <option value="$PROJECT_DIR$/clubkit/roster/templates/roster_saved.html" />
         <option value="$PROJECT_DIR$/clubkit/roster/templates/schedule-base.html" />
         <option value="$PROJECT_DIR$/clubkit/roster/admin.py" />
-        <option value="$PROJECT_DIR$/clubkit/roster/forms.py" />
         <option value="$PROJECT_DIR$/clubkit/roster/models.py" />
         <option value="$PROJECT_DIR$/clubkit/roster/urls.py" />
+        <option value="$PROJECT_DIR$/clubkit/clubs/models.py" />
         <option value="$PROJECT_DIR$/clubkit/roster/views.py" />
+        <option value="$PROJECT_DIR$/clubkit/roster/forms.py" />
       </list>
     </option>
   </component>
@@ -183,6 +227,18 @@
               <item name="ClubKitApi" type="462c0819:PsiDirectoryNode" />
               <item name="clubkit" type="462c0819:PsiDirectoryNode" />
               <item name="clubs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClubKitApi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClubKitApi" type="462c0819:PsiDirectoryNode" />
+              <item name="clubkit" type="462c0819:PsiDirectoryNode" />
+              <item name="rentapitch" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ClubKitApi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ClubKitApi" type="462c0819:PsiDirectoryNode" />
+              <item name="clubkit" type="462c0819:PsiDirectoryNode" />
+              <item name="roster" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -473,7 +529,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554569643150</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Remove unused code / update comments / fix structure for main, player_registration, profile, rentapitch, roster apps">
+      <created>1554638730529</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1554638730529</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TodoView">
@@ -487,6 +550,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15068494" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -527,7 +591,6 @@
     </layout-to-restore>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Merge branch 'master' of https://gitlab.computing.dcu.ie/boyleg8/2019-ca472-boyleg8&#10;&#10;# Conflicts:&#10;#&#9;Restructure In Progress/src - restructuring/ClubKitApi/db.sqlite3" />
     <MESSAGE value="Merging databases" />
     <MESSAGE value="Delete api added for team / pitch. Work started on update." />
     <MESSAGE value="Delete api added for Roster. Work started on update." />
@@ -552,7 +615,8 @@
     <MESSAGE value="Update navbar structure / Add buttons for admins / Fix cart session key / Add new templates to add teams, pitches, memberships / Fixed products and categories pages" />
     <MESSAGE value="Hide pages and add further restrictions. Fix bases" />
     <MESSAGE value="Remove unused code / update comments / fix structure for clubs app - Note: Needs to be done for other apps" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove unused code / update comments / fix structure for clubs app - Note: Needs to be done for other apps" />
+    <MESSAGE value="Remove unused code / update comments / fix structure for main, player_registration, profile, rentapitch, roster apps" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove unused code / update comments / fix structure for main, player_registration, profile, rentapitch, roster apps" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -804,16 +868,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clubkit/rentapitch/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/clubkit/roster/templates/edit_club_roster.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -832,13 +886,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/clubkit/roster/templates/roster.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="41" column="14" lean-forward="true" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -869,36 +916,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clubkit/roster/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/clubkit/clubs/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="69" selection-start-line="69" selection-end-line="69" selection-end-column="76" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/clubkit/roster/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/clubkit/roster/tests.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -922,16 +939,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clubkit/roster/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1173">
-          <caret line="69" selection-start-line="69" selection-end-line="69" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/clubkit/clubs/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
@@ -943,7 +950,68 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/clubkit/shop/templates/categories.html">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="56" lean-forward="true" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clubkit/roster/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="26" selection-end-column="59" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clubkit/roster/templates/roster.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="41" column="14" selection-start-line="41" selection-start-column="14" selection-end-line="41" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clubkit/clubs/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="89" column="62" lean-forward="true" selection-start-line="89" selection-start-column="62" selection-end-line="89" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clubkit/roster/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="38" column="43" lean-forward="true" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clubkit/rentapitch/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clubkit/roster/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

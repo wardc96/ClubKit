@@ -1,18 +1,12 @@
 {% extends 'schedule-base.html' %}
-
-{% block head %}
-<title>Edit Booking</title>
-{% endblock %}
-<h3>Edit Booking</h3>
 {% block body_block %}
 
+<h3>Edit Booking</h3>
 <div class="container">
     <form method="post">
         {% csrf_token %}
         {{ form.club_id}}
         <button type="submit">Submit</button>
     </form>
-
 </div>
-
 {% endblock %}

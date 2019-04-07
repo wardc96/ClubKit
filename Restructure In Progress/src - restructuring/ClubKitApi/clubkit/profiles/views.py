@@ -4,26 +4,27 @@ from clubkit.profiles.forms import EditProfileForm
 from django.contrib.auth.forms import PasswordChangeForm
 
 
+# Method used to change password
 def change_password(request):
     if request.method == 'POST':
         form = PasswordChangeForm(data=request.POST, user=request.user)
-
         if form.is_valid():
             form.save()
             return redirect('profiles:view_profile')
-
     else:
         form = PasswordChangeForm(user=request.user)
         args = {'form': form}
         return render(request, 'change_password.html', args)
 
 
+# Method used to view profile
 def view_profile(request):
         user = request.user
         args = {'user': user}
         return render(request, 'profile.html', args)
 
 
+# Method used to edit profile
 def edit_profile(request):
     if request.method == 'POST':
         form = EditProfileForm(request.POST, instance=request.user)
@@ -36,23 +37,4 @@ def edit_profile(request):
         args = {'form': form}
         return render(request, 'edit_profile.html', args)
 
-
-'''
-def password_reset(request):
-        email = UserForm.email
-        return render(request, 'password_reset_form.html',
-                      {'email': email})
-
-
-def password_reset_done(request):
-    return render(request, 'password_reset_done.html')
-
-
-def password_reset_confirm(request):
-        return render(request, 'password_reset_confirm.html')
-
-
-def password_reset_complete(request):
-    return render(request, 'password_reset_complete.html')
-'''
 

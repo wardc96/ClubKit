@@ -2,6 +2,7 @@ from django.db import models
 from clubkit.clubs.models import ClubInfo, Pitch
 
 
+# Model to store pitch rental information to be used for rental purposes
 class RentPitch(models.Model):
     club_id = models.ForeignKey(ClubInfo, on_delete=models.CASCADE)
     pitch_id = models.ForeignKey(Pitch, on_delete=models.CASCADE, related_name="pitches")

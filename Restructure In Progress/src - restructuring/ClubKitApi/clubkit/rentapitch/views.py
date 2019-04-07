@@ -1,12 +1,9 @@
-from clubkit.rentapitch.serializers import RentalSerializer
-from clubkit.clubs.models import ClubInfo
 from clubkit.rentapitch.models import RentPitch
 from clubkit.rentapitch.forms import RentalForm
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.shortcuts import render, redirect
-from django.urls import reverse
 
 
 class PitchRental(APIView):

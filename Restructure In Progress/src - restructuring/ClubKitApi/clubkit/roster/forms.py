@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 
+# Form to add/edit club roster
 class RosterForm(forms.ModelForm):
 
     class Meta():
@@ -24,6 +25,12 @@ class RosterForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(RosterForm, self).__init__(*args, **kwargs)
         self.fields['club_id'].widget = forms.HiddenInput()
+
+
+
+
+
+
 
 
 

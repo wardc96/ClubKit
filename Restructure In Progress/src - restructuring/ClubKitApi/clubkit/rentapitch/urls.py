@@ -1,11 +1,7 @@
-from django.conf.urls import url
 from clubkit.rentapitch import views
 from django.urls import path
 
-# SET THE NAMESPACE!
 app_name = 'rentapitch'
-# Be careful setting the name to just /login use userlogin instead!
-
 
 urlpatterns = [
     path('', views.PitchRental.as_view(), name='pitch_rental'),

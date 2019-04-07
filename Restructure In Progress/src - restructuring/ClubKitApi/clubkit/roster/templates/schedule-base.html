@@ -7,90 +7,80 @@
     <title>{% block title %} ClubKit - Sports Application {% endblock %}</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
-      <link rel="stylesheet" href="{% static 'styles.css' %}">
-      <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel='stylesheet' href="{% static 'fullcalendar/fullcalendar.css' %}"/>
+    <script src="{% static 'fullcalendar/lib/jquery.min.js' %}"></script>
+    <script src="{% static 'fullcalendar/lib/moment.min.js' %}"></script>
+    <script src="{% static 'fullcalendar/fullcalendar.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+          $( function() {
+            $( "#datepicker" ).datepicker({
+          dateFormat: "yy-mm-dd"
+        });
+          } );
+    </script>
+    <script>
+    $(function() {
 
+    // page is now ready, initialize the calendar...
 
-      <link rel='stylesheet' href="{% static 'fullcalendar/fullcalendar.css' %}"/>
+    $('#calendar').fullCalendar({
+        height: 650,
+        selectable: true,
+        minTime: '09:00:00',
+        defaultView: 'agendaFourDay',
+        groupByDateAndResource: true,
+        header: {
+          left: 'prev,next',
+          center: 'title',
+          right: 'agendaDay,agendaFourDay'
+        },
+        views: {
+          agendaFourDay: {
+            type: 'agenda',
+            duration: { days: 5 }
+          }
+        },
 
-  <script src="{% static 'fullcalendar/lib/jquery.min.js' %}"></script>
-  <script src="{% static 'fullcalendar/lib/moment.min.js' %}"></script>
-  <script src="{% static 'fullcalendar/fullcalendar.js' %}"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        events: [ // put the array in the `events` property
+            {
+              title  : 'event1',
+              start  : '2019-24-02'
+            },
+           {% for reoccur in reoccuring_event %}
+     {
+            
+              title:'{{ reoccur.team_id }}',
+              start: '{{ reoccur.start_time|date:"G:i:s" }}',
+              end  : '{{ reoccur.finish_time|date:"G:i:s" }}',
+              dow: [ 2, 4 ] // Repeat monday and thursday
+    },
+               {% endfor %}
+            
 
+            {% for i in roster %}
+                    {
+                        title  : '{{ i.team_id }}',
+                        start  : '{{ i.date|date:"Y-m-d" }}T{{ i.start_time|date:"G:i:s" }}',
+                        end  : '{{ i.date|date:"Y-m-d" }}T{{ i.finish_time|date:"G:i:s" }}',
 
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( "#datepicker" ).datepicker({
-  dateFormat: "yy-mm-dd"
-});
-  } );
-  </script>
+                    },
+            {% endfor %}
 
-<script>
-$(function() {
+          ],
 
-// page is now ready, initialize the calendar...
+      });
 
-$('#calendar').fullCalendar({
-    height: 650,
-    selectable: true,
-    minTime: '09:00:00',
-    defaultView: 'agendaFourDay',
-    groupByDateAndResource: true,
-    header: {
-      left: 'prev,next',
-      center: 'title',
-      right: 'agendaDay,agendaFourDay'
-    },
-    views: {
-      agendaFourDay: {
-        type: 'agenda',
-        duration: { days: 5 }
-      }
-    },
-
-    events: [ // put the array in the `events` property
-        {
-          title  : 'event1',
-          start  : '2019-24-02'
-        },
-       {% for reoccur in reoccuring_event %}
- {
-        
-          title:'{{ reoccur.team_id }}',
-          start: '{{ reoccur.start_time|date:"G:i:s" }}',
-          end  : '{{ reoccur.finish_time|date:"G:i:s" }}',
-          dow: [ 2, 4 ] // Repeat monday and thursday
-},
-           {% endfor %}
-        
-
-        {% for i in roster %}
-                {
-                    title  : '{{ i.team_id }}',
-                    start  : '{{ i.date|date:"Y-m-d" }}T{{ i.start_time|date:"G:i:s" }}',
-                    end  : '{{ i.date|date:"Y-m-d" }}T{{ i.finish_time|date:"G:i:s" }}',
-
-                },
-        {% endfor %}
-
-      ],
-
-  });
-
-});
-</script>
-
-
-
+    });
+    </script>
 </head>
   <body>
-
-        <nav class="nav navbar navbar-expand-md bg-clubkit text-white">
+    <nav class="nav navbar navbar-expand-md bg-clubkit text-white">
         <div class="container">
             <a href="{% url 'index' %}"><img class="masthead-brand" src="{% static 'clubkitlogo.png' %}" alt="Logo" style="height:60px;"></a>
             <button class="hamburger hamburger--spring d-md-none" type="button" data-toggle="collapse" data-target="#navbarCollapse">
@@ -101,92 +91,85 @@ $('#calendar').fullCalendar({
 
         <div class="container">
             <div class="collapse navbar-collapse  nav-masthead" id="navbarCollapse">
-            <ul class="navbar-nav nav-masthead">
+                <ul class="navbar-nav nav-masthead">
+                    {# Navbar Links #}
+                    <li><a class="nav-link" href="{% url 'clubs:club_home' %}">Home</a></li>
+                    <li><a class="nav-link" href="{% url 'clubs:teams' %}">Teams</a></li>
+                    <li><a class="nav-link" href="{% url 'clubs:pitches' %}">Pitches</a></li>
+                    <li><a class="nav-link" href="{% url 'roster:club_roster' %}">Roster</a></li>
+                    <li class=" dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Member Registration
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="{% url 'clubs:memberships' %}">Memberships</a>
+                          <a class="dropdown-item" href="{% url 'player_register:player_register' %}">Registration</a>
+                        </div>
+                    </li>
+                    {% if club_pk  ==  user.pk %}
+                    <li class=" dropdown">
+                        <a class="nav-link dropdown-toggle" href="{% url 'clubs:memberships' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Rent-a-Pitch
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="{% url 'rentapitch:pitch_rental' %}">Rent-a-Pitch</a>
+                          <a class="dropdown-item" href="{% url 'rentapitch:pitch_bookings' %}">Pitch Bookings</a>
+                        </div>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a class="nav-link" href="{% url 'rentapitch:pitch_rental' %}">Rent-a-Pitch</a>
+                    </li>
+                   {% endif %}
 
-            {# Navbar Links #}
-            <li><a class="nav-link" href="{% url 'clubs:club_home' %}">Home</a></li>
-            <li><a class="nav-link" href="{% url 'clubs:teams' %}">Teams</a></li>
-            <li><a class="nav-link" href="{% url 'clubs:pitches' %}">Pitches</a></li>
-            <li><a class="nav-link" href="{% url 'roster:club_roster' %}">Roster</a></li>
-            <li class=" dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Member Registration
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{% url 'clubs:memberships' %}">Memberships</a>
-                  <a class="dropdown-item" href="{% url 'player_register:player_register' %}">Registration</a>
-                </div>
-            </li>
-            {% if club_pk  ==  user.pk %}
-            <li class=" dropdown">
-                <a class="nav-link dropdown-toggle" href="{% url 'clubs:memberships' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Rent-a-Pitch
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{% url 'rentapitch:pitch_rental' %}">Rent-a-Pitch</a>
-                  <a class="dropdown-item" href="{% url 'rentapitch:pitch_bookings' %}">Pitch Bookings</a>
-                </div>
-            </li>
-            {% else %}
-            <li>
-                <a class="nav-link" href="{% url 'rentapitch:pitch_rental' %}">Rent-a-Pitch</a>
-            </li>
-           {% endif %}
-
-           {% if club_pk  ==  user.pk %}
-           <li class=" dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Shop
-                </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{% url 'shop:club_shop' %}">Club Shop</a>
-              <a class="dropdown-item" href="{% url 'shop:club_shop_products' %}">Shop Products</a>
-              <a class="dropdown-item" href="{% url 'shop:club_shop_categories' %}">Shop Categories</a>
-            </div>
-            </li>
-            {% else %}
-            <li>
-                <a class="nav-link" href="{% url 'shop:club_shop' %}">Club Shop</a>
-            </li>
-            {% endif %}
-            </ul>
+                   {% if club_pk  ==  user.pk %}
+                   <li class=" dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Shop
+                        </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="{% url 'shop:club_shop' %}">Club Shop</a>
+                      <a class="dropdown-item" href="{% url 'shop:club_shop_products' %}">Shop Products</a>
+                      <a class="dropdown-item" href="{% url 'shop:club_shop_categories' %}">Shop Categories</a>
+                    </div>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a class="nav-link" href="{% url 'shop:club_shop' %}">Club Shop</a>
+                    </li>
+                    {% endif %}
+                </ul>
             </div>
         </div>
         </div>
     </nav>
-
+</body>
 
     <div class="container">
     {% block body_block %}
     {% endblock %}
-
     </div>
 
 
   <!-- FOOTER -->
 
-      <footer class="container">
-        <hr class="featurette-divider">
+  <footer class="container">
+    <hr class="featurette-divider">
         <ul class="float-right list-unstyled">
-        <li><i class="fas fa-address-book"></i> Contact Us: <br><p>Project Test<br>Project Test<br>Dublin 2</p></li>
-    <li><i class="fas fa-envelope"></i> Email: <a href="mailto:"></a></li>
-		<li><i class="fas fa-mobile"></i> Phone:  <a href="tel:">+353 (0)123456</a></li><br>
+            <li><i class="fas fa-address-book"></i> Contact Us: <br><p>Project Test<br>Project Test<br>Dublin 2</p></li>
+            <li><i class="fas fa-envelope"></i> Email: <a href="mailto:"></a></li>
+            <li><i class="fas fa-mobile"></i> Phone:  <a href="tel:">+353 (0)123456</a></li><br>
         </ul>
-
         <p> <a href="https://www.agriculture.gov.ie/legalnotices/copyright/">&copy; 2017-2018 PROJECT</a> &middot; Newsletter</p>
-
-
-    <p>Get the latest update from us by subscribing to our newsletter.</p>
-		<form class="form-inline">
-  <div class="form-group  mb-2">
-    <input type="email" class="form-control rounded-pill" id="email1" placeholder="name@example.com">
-  </div>
-  <button type="submit" class="btn btn-primary rounded-pill mb-2 ml-2" data-toggle="tooltip" data-placement="top" title="This button will subscribe you to our newsletter">Subscribe</button>
-</form>
-      </footer>
-
-
-
+        <p>Get the latest update from us by subscribing to our newsletter.</p>
+        <form class="form-inline">
+            <div class="form-group  mb-2">
+                <input type="email" class="form-control rounded-pill" id="email1" placeholder="name@example.com">
+            </div>
+            <button type="submit" class="btn btn-primary rounded-pill mb-2 ml-2" data-toggle="tooltip" data-placement="top" title="This button will subscribe you to our newsletter">Subscribe</button>
+        </form>
+  </footer>
+</html>
 
 <script>
   var $hamburger = $(".hamburger");
@@ -197,5 +180,3 @@ $('#calendar').fullCalendar({
 </script>
 
 
-</body>
-</html>
