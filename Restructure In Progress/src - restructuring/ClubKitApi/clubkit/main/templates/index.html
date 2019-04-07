@@ -2,66 +2,58 @@
 {% load static %}
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
- <!-- Bootstrap core CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
-
     <!-- Custom styles-->
     <link rel="stylesheet" href="{% static 'styles.css' %}">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-<script src="{% static 'scripts.js' %}"></script>
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="{% static 'scripts.js' %}"></script>
 </head>
+
 <body class="bg-white">
-
-<div class="bgimg-1 text-center">
-  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-      <header class="masthead mb-auto">
+    <div class="bgimg-1 text-center">
+        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
         <div class="inner">
-
-		<a href="#"><img class="masthead-brand img-fluid" src="{% static 'clubkitlogo.png' %}" alt="Logo" style="height:80px;"></a>
-
-          <button class="hamburger hamburger--spring d-md-none" type="button" data-toggle="collapse" data-target="#navbarCollapse">
-		<span class="hamburger-box">
-		<span class="hamburger-inner"></span>
-		</span>
-		</button>
-          <nav class="nav nav-masthead navbar navbar-expand-md">
-              <div class="container">
-
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav">
-              <li><a class="nav-link" href="{% url 'main:our_clubs' %}">Our Clubs</a></li>
-                      <li><a class="nav-link" href="{% url 'main:our_packages' %}">Packages</a></li>
-                      <li><a class="nav-link" href="{% url 'main:buy_packages' %}">Buy Now</a></li>
-                      <li><a class="nav-link" href="{% url 'main:about_us' %}">About Us</a></li>
-                      <li><a class="nav-link" href="{% url 'main:contact_us' %}">Contact Us</a></li>
-
-          {% if user.is_authenticated %}
-            <li><a class="nav-link" href="{% url 'profiles:view_profile' %}">Profile</a></li>
-            <li><a class="nav-link" href="{% url 'main:logout' %}">Logout</a></li>
-          {% else %}
-            <li><a class="nav-link" href="{% url 'main:login' %}">Login</a></li>
-          {% endif %}
-            <li><a class="nav-link" href="{% url 'admin:index' %}">Admin</a></li>
-      </ul>
-          </div>
-              </div>
-        </nav>
+		    <a href="#"><img class="masthead-brand img-fluid" src="{% static 'clubkitlogo.png' %}" alt="Logo" style="height:80px;"></a>
+            <button class="hamburger hamburger--spring d-md-none" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+		    <span class="hamburger-box">
+		    <span class="hamburger-inner"></span>
+		    </span>
+		    </button>
+            <nav class="nav nav-masthead navbar navbar-expand-md">
+                <div class="container">
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav">
+                        <li><a class="nav-link" href="{% url 'main:our_clubs' %}">Our Clubs</a></li>
+                        <li><a class="nav-link" href="{% url 'main:our_packages' %}">Packages</a></li>
+                        <li><a class="nav-link" href="{% url 'main:buy_packages' %}">Buy Now</a></li>
+                        <li><a class="nav-link" href="{% url 'main:about_us' %}">About Us</a></li>
+                        <li><a class="nav-link" href="{% url 'main:contact_us' %}">Contact Us</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a class="nav-link" href="{% url 'profiles:view_profile' %}">Profile</a></li>
+                        <li><a class="nav-link" href="{% url 'main:logout' %}">Logout</a></li>
+                        {% else %}
+                        <li><a class="nav-link" href="{% url 'main:login' %}">Login</a></li>
+                        {% endif %}
+                        <li><a class="nav-link" href="{% url 'admin:index' %}">Admin</a></li>
+                    </ul>
+                </div>
+                </div>
+            </nav>
         </div>
-      </header>
+    </header>
 
       <main role="main" class="inner cover" style="margin-top: 16vh;">
         <h1 class="cover-heading bold">ClubKit</h1>
         <!--ClubKit, innovate your club-->
-        <p class="lead">Clubs That Strive For Efficiency<br>
-                        ClubKit, innovate your club<br>
-                        Because We Care About Your Volunteers<br><br>
+            <p class="lead">Clubs That Strive For Efficiency<br>
+                            ClubKit, innovate your club<br>
+                            Because We Care About Your Volunteers<br><br>
             <button type="button" class="btn btn-success mr-2 rounded-pill">More Info</button><a href="{% url 'main:register' %}"><button type="button" class="ml-2 btn btn-primary rounded-pill">Register Now</button></a></p>
 
 		<a class="scroll-link" href="#content">
@@ -79,98 +71,74 @@
 </div> <!--##End of large Home Image##-->
 
 <div class="content container" style="" id="content">
-
     <hr class="featurette-divider">
-
          <div class="row featurette justify-content-between">
-          <div class="col-md-7">
-           <h3 class="featurette-heading"><a href="#">Our Features</a></h3>
-            <p class="lead">We offer a variety of features available to clubs. Tools such as member registrations, pitch booking, training rosters and a club shop are all available thorugh our application</p>
-
-<a class="btn btn-primary rounded-pill mb-1 shadow" href="" role="button">Learn more</a>		 </div>
-          <div class="col-md-4 my-auto">
-         <a href="#"> <img class="featurette-image img-fluid mx-auto rounded" src="https://shortlist.imgix.net/app/uploads/2017/08/24175310/359e08cae257bc28409e81d1c3ecf708-495x330.jpg?w=1200&h=1&fit=max&auto=format%2Ccompress" alt=""></a>
-          </div>
+             <div class="col-md-7">
+                <h3 class="featurette-heading"><a href="#">Our Features</a></h3>
+                    <p class="lead">We offer a variety of features available to clubs. Tools such as member registrations, pitch booking, training rosters and a club shop are all available thorugh our application</p>
+                    <a class="btn btn-primary rounded-pill mb-1 shadow" href="" role="button">Learn more</a>		 </div>
+             <div class="col-md-4 my-auto">
+                <a href="#"> <img class="featurette-image img-fluid mx-auto rounded" src="https://shortlist.imgix.net/app/uploads/2017/08/24175310/359e08cae257bc28409e81d1c3ecf708-495x330.jpg?w=1200&h=1&fit=max&auto=format%2Ccompress" alt=""></a>
+            </div>
         </div>
-
         <hr class="featurette-divider">
-
-
         <div class="row featurette justify-content-between">
           <div class="col-md-7 order-md-2 my-auto">
-           <h3 class="featurette-heading"><a href="#">Our Features</a></h3>
-            <p class="lead">We offer a variety of features available to clubs. Tools such as member registrations, pitch booking, training rosters and a club shop are all available thorugh our application</p>
-
-<a class="btn btn-primary rounded-pill mb-1 shadow" href="" role="button">Learn more</a>		 </div>
-          <div class="col-md-4 order-md-1 my-auto">
-         <a href="#"> <img class="featurette-image img-fluid mx-auto rounded" src="https://shortlist.imgix.net/app/uploads/2017/08/24175310/359e08cae257bc28409e81d1c3ecf708-495x330.jpg?w=1200&h=1&fit=max&auto=format%2Ccompress" alt=""></a>
+            <h3 class="featurette-heading"><a href="#">Our Features</a></h3>
+                <p class="lead">We offer a variety of features available to clubs. Tools such as member registrations, pitch booking, training rosters and a club shop are all available thorugh our application</p>
+                <a class="btn btn-primary rounded-pill mb-1 shadow" href="" role="button">Learn more</a>
           </div>
+            <div class="col-md-4 order-md-1 my-auto">
+                <a href="#"> <img class="featurette-image img-fluid mx-auto rounded" src="https://shortlist.imgix.net/app/uploads/2017/08/24175310/359e08cae257bc28409e81d1c3ecf708-495x330.jpg?w=1200&h=1&fit=max&auto=format%2Ccompress" alt=""></a>
+            </div>
         </div>
 
         <hr class="featurette-divider">
-
         <div class="row featurette justify-content-between">
-          <div class="col-md-7">
-           <h3 class="featurette-heading"><a href="#">Our Features</a></h3>
-            <p class="lead">We offer a variety of features available to clubs. Tools such as member registrations, pitch booking, training rosters and a club shop are all available thorugh our application</p>
-
-<a class="btn btn-primary rounded-pill mb-1 shadow" href="" role="button">Learn more</a>		 </div>
-          <div class="col-md-4 my-auto">
-         <a href="#"> <img class="featurette-image img-fluid mx-auto rounded" src="https://shortlist.imgix.net/app/uploads/2017/08/24175310/359e08cae257bc28409e81d1c3ecf708-495x330.jpg?w=1200&h=1&fit=max&auto=format%2Ccompress" alt=""></a>
-          </div>
+            <div class="col-md-7">
+                <h3 class="featurette-heading"><a href="#">Our Features</a></h3>
+                    <p class="lead">We offer a variety of features available to clubs. Tools such as member registrations, pitch booking, training rosters and a club shop are all available thorugh our application</p>
+                    <a class="btn btn-primary rounded-pill mb-1 shadow" href="" role="button">Learn more</a>
+            </div>
+            <div class="col-md-4 my-auto">
+                <a href="#"> <img class="featurette-image img-fluid mx-auto rounded" src="https://shortlist.imgix.net/app/uploads/2017/08/24175310/359e08cae257bc28409e81d1c3ecf708-495x330.jpg?w=1200&h=1&fit=max&auto=format%2Ccompress" alt=""></a>
+            </div>
         </div>
+    <hr class="featurette-divider">
+          </div><!-- /.container -->
+    <hr class="featurette-divider">
 
-<hr class="featurette-divider">
-
-      </div><!-- /.container -->
-</div>
-
-
-
-<hr class="featurette-divider">
-
-      </div><!-- /.container -->
-</div>
-
-<div class="bgimg-2">
-  <div class="caption">
-    <span class="border" style="background-color:transparent;font-size:35px;color: #f7f7f7;">CLUBKIT</span>
-  </div>
-</div>
-
-<!-- <div class="bgimg-1 mh-25">
-  <div class="caption">
-    <span class="border">COOL!</span>
-  </div>
-</div> -->
+    <div class="bgimg-2">
+      <div class="caption">
+        <span class="border" style="background-color:transparent;font-size:35px;color: #f7f7f7;">CLUBKIT</span>
+      </div>
+    </div>
+</body>
 
 <!-- FOOTER -->
-
-      <footer class="container">
-        <hr class="featurette-divider">
+  <footer class="container">
+    <hr class="featurette-divider">
         <ul class="float-right list-unstyled">
-        <li><i class="fas fa-address-book"></i> Contact Us: <br><p>Project Test<br>Project Test<br>Dublin 2</p></li>
-    <li><i class="fas fa-envelope"></i> Email: <a href="mailto:"></a></li>
-		<li><i class="fas fa-mobile"></i> Phone:  <a href="tel:">+353 (0)123456</a></li><br>
+            <li><i class="fas fa-address-book"></i> Contact Us: <br><p>Project Test<br>Project Test<br>Dublin 2</p></li>
+            <li><i class="fas fa-envelope"></i> Email: <a href="mailto:"></a></li>
+            <li><i class="fas fa-mobile"></i> Phone:  <a href="tel:">+353 (0)123456</a></li><br>
         </ul>
 
-        <p> <a href="https://www.agriculture.gov.ie/legalnotices/copyright/">&copy; 2017-2018 PROJECT</a> &middot; Newsletter</p>
-
-
-    <p>Get the latest update from us by subscribing to our newsletter.</p>
-		<form class="form-inline">
-  <div class="form-group  mb-2">
-    <input type="email" class="form-control rounded-pill" id="email1" placeholder="name@example.com">
-  </div>
-  <button type="submit" class="btn btn-primary rounded-pill mb-2 ml-2" data-toggle="tooltip" data-placement="top" title="This button will subscribe you to our newsletter">Subscribe</button>
-</form>
-      </footer>
+        <p><a href="https://www.agriculture.gov.ie/legalnotices/copyright/">&copy; 2017-2018 PROJECT</a> &middot; Newsletter</p>
+        <p>Get the latest update from us by subscribing to our newsletter.</p>
+      <form class="form-inline">
+          <div class="form-group  mb-2">
+            <input type="email" class="form-control rounded-pill" id="email1" placeholder="name@example.com">
+          </div>
+          <button type="submit" class="btn btn-primary rounded-pill mb-2 ml-2" data-toggle="tooltip" data-placement="top" title="This button will subscribe you to our newsletter">Subscribe</button>
+      </form>
+  </footer>
+</html>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
 
 <script>
   var $hamburger = $(".hamburger");
@@ -179,6 +147,3 @@
     // Menu opens throughb data-target tag but adds animation thorugh this function
   });
 </script>
-
-</body>
-</html>

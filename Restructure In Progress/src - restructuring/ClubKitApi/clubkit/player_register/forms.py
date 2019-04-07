@@ -3,6 +3,7 @@ from clubkit.player_register.models import Player
 from django.forms.widgets import DateInput
 
 
+# Form to accept details for members to register
 class PlayerRegistrationForm(forms.ModelForm):
 
     class Meta:

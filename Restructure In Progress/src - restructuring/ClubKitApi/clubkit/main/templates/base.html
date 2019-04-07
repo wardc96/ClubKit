@@ -5,50 +5,42 @@
     <meta charset="utf-8">
     <title>{% block title %} ClubKit - Sports Application {% endblock %}</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
-      <link rel="stylesheet" href="{% static 'styles.css' %}">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  </head>
 
-
-
-</head>
   <body>
-
     <nav class="nav navbar navbar-expand-md bg-clubkit text-white border-bottom shadow p-1">
-                <div class="container">
-                <a href="{% url 'index' %}"><img class="masthead-brand" src="{% static 'clubkitlogo.png' %}" alt="Logo" style="height:70px;"></a>
+        <div class="container">
+            <a href="{% url 'index' %}"><img class="masthead-brand" src="{% static 'clubkitlogo.png' %}" alt="Logo" style="height:70px;"></a>
+            <button class="hamburger hamburger--spring d-md-none" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+            </span>
+            </button>
 
-                 <button class="hamburger hamburger--spring d-md-none" type="button" data-toggle="collapse" data-target="#navbarCollapse">
-		<span class="hamburger-box">
-		<span class="hamburger-inner"></span>
-		</span>
-		</button>
-
-                      <div class="container">
-
-                  <div class="collapse navbar-collapse  nav-masthead" id="navbarCollapse">
-                    <ul class="navbar-nav nav-masthead">
+        <div class="container">
+            <div class="collapse navbar-collapse  nav-masthead" id="navbarCollapse">
+                <ul class="navbar-nav nav-masthead">
                       <li><a class="nav-link" href="{% url 'main:our_clubs' %}">Our Clubs</a></li>
                       <li><a class="nav-link" href="{% url 'main:our_packages' %}">Packages</a></li>
                       <li><a class="nav-link" href="{% url 'main:about_us' %}">About Us</a></li>
                       <li><a class="nav-link" href="{% url 'main:contact_us' %}">Contact Us</a></li>
-
-          {% if user.is_authenticated %}
-            <li><a class="nav-link" href="{% url 'profiles:view_profile' %}">Profile</a></li>
-            <li><a class="nav-link" href="{% url 'main:logout' %}">Logout</a></li>
-          {% else %}
-            <li><a class="nav-link" href="{% url 'main:login' %}">Login</a></li>
-          {% endif %}
-            <li><a class="nav-link" href="{% url 'admin:index' %}">Admin</a></li>
+                      {% if user.is_authenticated %}
+                        <li><a class="nav-link" href="{% url 'profiles:view_profile' %}">Profile</a></li>
+                        <li><a class="nav-link" href="{% url 'main:logout' %}">Logout</a></li>
+                      {% else %}
+                        <li><a class="nav-link" href="{% url 'main:login' %}">Login</a></li>
+                      {% endif %}
+                        <li><a class="nav-link" href="{% url 'admin:index' %}">Admin</a></li>
               </ul>
-                  </div>
-                      </div>
-                    </div>
-                </nav>
-
-
+            </div>
+        </div>
+        </div>
+    </nav>
 
     <div class="container mt-3">
     {% block content %}
@@ -58,28 +50,25 @@
   <footer class="container">
         <hr class="featurette-divider">
         <ul class="float-right list-unstyled">
-        <li><i class="fas fa-address-book"></i> Contact Us: <br><p>Project Test<br>Project Test<br>Dublin 2</p></li>
-    <li><i class="fas fa-envelope"></i> Email: <a href="mailto:"></a></li>
-		<li><i class="fas fa-mobile"></i> Phone:  <a href="tel:">+353 (0)123456</a></li><br>
+            <li><i class="fas fa-address-book"></i> Contact Us: <br><p>Project Test<br>Project Test<br>Dublin 2</p></li>
+            <li><i class="fas fa-envelope"></i> Email: <a href="mailto:"></a></li>
+            <li><i class="fas fa-mobile"></i> Phone:  <a href="tel:">+353 (0)123456</a></li><br>
         </ul>
 
         <p> <a href="https://www.agriculture.gov.ie/legalnotices/copyright/">&copy; 2017-2018 PROJECT</a> &middot; Newsletter</p>
 
-
-    <p>Get the latest update from us by subscribing to our newsletter.</p>
+        <p>Get the latest update from us by subscribing to our newsletter.</p>
 		<form class="form-inline">
-  <div class="form-group  mb-2">
-    <input type="email" class="form-control rounded-pill" id="email1" placeholder="name@example.com">
-  </div>
-  <button type="submit" class="btn btn-primary rounded-pill mb-2 ml-2" data-toggle="tooltip" data-placement="top" title="This button will subscribe you to our newsletter">Subscribe</button>
-</form>
+            <div class="form-group  mb-2">
+                <input type="email" class="form-control rounded-pill" id="email1" placeholder="name@example.com">
+            </div>
+            <button type="submit" class="btn btn-primary rounded-pill mb-2 ml-2" data-toggle="tooltip" data-placement="top" title="This button will subscribe you to our newsletter">Subscribe</button>
+        </form>
       </footer>
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
 
 <script>
   var $hamburger = $(".hamburger");

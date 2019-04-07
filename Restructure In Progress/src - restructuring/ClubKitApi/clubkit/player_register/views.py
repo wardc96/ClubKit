@@ -1,16 +1,16 @@
-from clubkit.player_register.serializers import PlayerRegistrationSerializer
 from clubkit.player_register.forms import PlayerRegistrationForm
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from clubkit.clubs.models import ClubInfo, ClubMemberships
-from django.urls import reverse
 
 
+# Class to handle membership registration information
 class RegisterPlayer(APIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'player_registration.html'
 
+    # Get method membership information and registration from
     def get(self, request):
         club_pk = request.session.get('pk')
         club_info = ClubInfo.objects.filter(pk=club_pk).first()
@@ -25,6 +25,7 @@ class RegisterPlayer(APIView):
                          'club_pk': club_pk
                          })
 
+    # Post method to save player registration
     def post(self, request):
         form = PlayerRegistrationForm(data=request.data)
         if form.is_valid():

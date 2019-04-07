@@ -1,7 +1,5 @@
-
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
-from datetime import datetime
 from clubkit.main.forms import UserForm, ClubInfoForm
 from clubkit.clubs.forms import ClubPackagesForm
 from clubkit.main.models import OurPackages
@@ -11,13 +9,10 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
-from rest_framework.renderers import TemplateHTMLRenderer
-from rest_framework.views import APIView
-from rest_framework.response import Response
 from django.db import transaction
-# from django.core.urlresolvers import reverse
 
 
+# Class to handle index page information
 class Index(TemplateView):
     template_name = 'index.html'
 
@@ -45,6 +40,7 @@ def user_logout(request):
     return HttpResponseRedirect(reverse('index'))
 
 
+# Method to display registration form and handle new registered users
 def register(request):
     registered = False
     if request.method == 'POST':
@@ -78,6 +74,7 @@ def register(request):
                    'registered': registered})
 
 
+# Method to handle user log in
 def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -97,52 +94,31 @@ def user_login(request):
         return render(request, 'login.html', {})
 
 
+# Class to display our clubs
 class OurClubs(TemplateView):
     template_name = 'our-clubs.html'
 
+    # Method to retrieve all clubs registered
     def get(self, request):
         all_clubs = ClubInfo.objects.all()
         args = {'all_clubs': all_clubs}
         return render(request, self.template_name, args)
 
 
+# Class to display our packages
 class Packages(TemplateView):
     template_name = 'our-packages.html'
 
+    # Method to retrieve all packages
     def get(self, request):
         packages = OurPackages.objects.all()
         args = {'packages': packages}
         return render(request, self.template_name, args)
 
 
-class PurchasePackages(APIView):
-    renderer_classes = [TemplateHTMLRenderer]
-    template_name = 'buy_now.html'
-
-    def get(self, request):
-        form = ClubPackagesForm()
-        user = ClubInfo.objects.filter(user=request.user).first()
-        packages = ClubPackages.objects.filter(club_id=user.pk)
-        return Response({'form': form,
-                         'packages': packages,
-                         })
-
-    def post(self, request):
-        form = ClubPackagesForm(data=request.data)
-        user = ClubInfo.objects.filter(user=request.user).first()
-        packages = ClubPackages.objects.filter(club_id=user.pk)
-        if form.is_valid():
-            form.save()
-            return Response({'form': form,
-                             'packages': packages
-                             })
-
-
+# Method to get all available packages to purchase
 def purchase_packages(request):
-    # date_time = datetime.now()
-    # today = date_time.strftime('%B %d, %Y')
     user = ClubInfo.objects.filter(user=request.user).first()
-    # instance = ClubPackages.objects.filter(club_id=user.pk).first()
     packages = ClubPackages.objects.filter(club_id=user.pk).first()
     if request.method == 'POST':
         form = ClubPackagesForm(request.POST, instance=packages)
@@ -157,36 +133,15 @@ def purchase_packages(request):
         return render(request, 'buy_now.html', {'form': form,
                                                 'user': user,
                                                 'packages': packages,
-                                                # 'today': today,
                                                 })
 
 
-'''
-def view_that_asks_for_money(request):
-
-    # What you want the button to do.
-    paypal_dict = {
-        "business": "receiver_email@example.com",
-        "amount": "10000000.00",
-        "item_name": "name of the item",
-        "invoice": "unique-invoice-id",
-        "notify_url": request.build_absolute_uri(reverse('paypal-ipn')),
-        "return": request.build_absolute_uri(reverse('your-return-view')),
-        "cancel_return": request.build_absolute_uri(reverse('your-cancel-view')),
-        "custom": "premium_plan",  # Custom command to correlate to some function later (optional)
-    }
-
-    # Create the instance.
-    form = PayPalPaymentsForm(initial=paypal_dict)
-    context = {"form": form}
-    return render(request, "payment.html", context)
-'''
-
-
+# Method to render our about us page
 def about_us(request):
     return render(request, 'about-us.html')
 
 
+# Method to render our contact us page
 def contact_us(request):
     return render(request, 'contact-us.html')
 

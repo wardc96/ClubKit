@@ -1,16 +1,13 @@
 from clubkit.main import views
 from django.urls import path
 from django.contrib.auth import views as auth_views
-from django.conf.urls import url
-from django.views.generic.base import TemplateView
 
-# SET THE NAMESPACE!
 app_name = 'main'
 
 urlpatterns = [
-    url(r'^register/$', views.register, name='register'),
-    url(r'^login/$', views.user_login, name='login'),
-    url(r'^logout/$', views.user_logout, name='logout'),
+    path('register/', views.register, name='register'),
+    path('login/', views.user_login, name='login'),
+    path('logout/', views.user_logout, name='logout'),
     path('our-clubs/', views.OurClubs.as_view(), name='our_clubs'),
     path('our-packages/', views.Packages.as_view(), name='our_packages'),
     path('about-us/', views.about_us, name='about_us'),

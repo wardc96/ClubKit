@@ -18,6 +18,7 @@ def payment_canceled(request):
 
 
 def payment_process(request):
+    club_pk = request.session.get('pk')
     order_id = request.session.get('order_id')
     order = get_object_or_404(Order, id=order_id)
     host = request.get_host()
@@ -34,4 +35,5 @@ def payment_process(request):
     }
     form = PayPalPaymentsForm(initial=paypal_dict)
     return render(request, 'payment/process.html', {'order': order,
-                                                    'form': form})
+                                                    'form': form,
+                                                    'club_pk': club_pk})

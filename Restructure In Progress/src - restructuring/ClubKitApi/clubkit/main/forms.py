@@ -6,6 +6,7 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 
+# Form to obtain user information
 class UserForm(UserCreationForm):
     email = forms.EmailField(required=True)
 
@@ -46,6 +47,7 @@ class UserForm(UserCreationForm):
         return user
 
 
+# Form to obtain club information for new users
 class ClubInfoForm(forms.ModelForm):
     club_address2 = forms.CharField(required=False)
     club_address3 = forms.CharField(required=False)

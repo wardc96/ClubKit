@@ -35,5 +35,7 @@ def order_create(request):
 
             return redirect(reverse('payment:process'))
     else:
+        club_pk = request.session.get('pk')
         form = OrderCreateForm()
-    return render(request, 'orders/order/create.html', {'form': form})
+    return render(request, 'orders/order/create.html', {'form': form,
+                                                        'club_pk': club_pk})

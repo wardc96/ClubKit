@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 
+# Model to store our available packages
 class OurPackages(models.Model):
 
     title = models.CharField(max_length=50)

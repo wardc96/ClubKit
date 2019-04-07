@@ -25,6 +25,8 @@ def cart_remove(request, product_id):
 
 def cart_detail(request):
     cart = Cart(request)
+    club_pk = request.session.get('pk')
     for item in cart:
         item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'], 'update': True})
-    return render(request, 'cart/details.html', {'cart': cart})
+    return render(request, 'cart/details.html', {'cart': cart,
+                                                 'club_pk': club_pk})

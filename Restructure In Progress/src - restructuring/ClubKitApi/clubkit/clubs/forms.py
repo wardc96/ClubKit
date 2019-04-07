@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 
+# Form to update/change club information
 class ClubInfoForm(forms.ModelForm):
     club_address2 = forms.CharField(required=False)
     club_address3 = forms.CharField(required=False)
@@ -20,6 +21,7 @@ class ClubInfoForm(forms.ModelForm):
             return club_name
 
 
+# Form to obtain club team information
 class TeamForm(forms.ModelForm):
 
     class Meta():
@@ -37,6 +39,7 @@ class TeamForm(forms.ModelForm):
         return team_name
 
 
+# Form to obtain club pitch information
 class PitchForm(forms.ModelForm):
 
     class Meta():
@@ -49,6 +52,7 @@ class PitchForm(forms.ModelForm):
         self.fields['club_id'].widget = forms.HiddenInput()
 
 
+# Form to obtain club post information
 class ClubPostForm(forms.ModelForm):
 
     class Meta():
@@ -61,6 +65,7 @@ class ClubPostForm(forms.ModelForm):
         self.fields['club_id'].widget = forms.HiddenInput()
 
 
+# Form to obtain club membership information
 class MembershipsForm(forms.ModelForm):
 
     class Meta():
@@ -72,6 +77,7 @@ class MembershipsForm(forms.ModelForm):
         self.fields['club_id'].widget = forms.HiddenInput()
 
 
+# Form to handle club access to packages
 class ClubPackagesForm(forms.ModelForm):
 
     class Meta():

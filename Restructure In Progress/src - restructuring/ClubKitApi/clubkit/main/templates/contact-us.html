@@ -5,149 +5,122 @@
     <meta charset="utf-8">
     <title>{% block title %} ClubKit - Sports Application {% endblock %}</title>
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
-      <link rel="stylesheet" href="{% static 'styles.css' %}">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
-
-
-</head>
+        <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  </head>
   <body>
-
     <nav class="nav navbar navbar-expand-md bg-clubkit text-white border-bottom shadow p-1">
-                <div class="container">
-                <a href="{% url 'index' %}"><img class="masthead-brand" src="{% static 'clubkitlogo.png' %}" alt="Logo" style="height:60px;"></a>
+        <div class="container">
+            <a href="{% url 'index' %}"><img class="masthead-brand" src="{% static 'clubkitlogo.png' %}" alt="Logo" style="height:60px;"></a>
+            <button class="hamburger hamburger--spring d-md-none" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+		    <span class="hamburger-box">
+		    <span class="hamburger-inner"></span>
+		    </span>
+		    </button>
 
-                 <button class="hamburger hamburger--spring d-md-none" type="button" data-toggle="collapse" data-target="#navbarCollapse">
-		<span class="hamburger-box">
-		<span class="hamburger-inner"></span>
-		</span>
-		</button>
-
-                      <div class="container">
-
-                  <div class="collapse navbar-collapse  nav-masthead" id="navbarCollapse">
-                    <ul class="navbar-nav nav-masthead">
-                      <li><a class="nav-link" href="{% url 'main:our_clubs' %}">Our Clubs</a></li>
-                      <li><a class="nav-link" href="{% url 'main:our_packages' %}">Packages</a></li>
-                      <li><a class="nav-link" href="{% url 'main:buy_packages' %}">Buy Now</a></li>
-                      <li><a class="nav-link" href="{% url 'main:about_us' %}">About Us</a></li>
-                      <li><a class="nav-link" href="{% url 'main:contact_us' %}">Contact Us</a></li>
-
-          {% if user.is_authenticated %}
-            <li><a class="nav-link" href="{% url 'profiles:view_profile' %}">Profile</a></li>
-            <li><a class="nav-link" href="{% url 'main:logout' %}">Logout</a></li>
-          {% else %}
-            <li><a class="nav-link" href="{% url 'main:login' %}">Login</a></li>
-          {% endif %}
-            <li><a class="nav-link" href="{% url 'admin:index' %}">Admin</a></li>
-              </ul>
-                  </div>
-                      </div>
-                    </div>
-                </nav>
-
-
+        <div class="container">
+            <div class="collapse navbar-collapse  nav-masthead" id="navbarCollapse">
+                <ul class="navbar-nav nav-masthead">
+                  <li><a class="nav-link" href="{% url 'main:our_clubs' %}">Our Clubs</a></li>
+                  <li><a class="nav-link" href="{% url 'main:our_packages' %}">Packages</a></li>
+                  <li><a class="nav-link" href="{% url 'main:buy_packages' %}">Buy Now</a></li>
+                  <li><a class="nav-link" href="{% url 'main:about_us' %}">About Us</a></li>
+                  <li><a class="nav-link" href="{% url 'main:contact_us' %}">Contact Us</a></li>
+                  {% if user.is_authenticated %}
+                    <li><a class="nav-link" href="{% url 'profiles:view_profile' %}">Profile</a></li>
+                    <li><a class="nav-link" href="{% url 'main:logout' %}">Logout</a></li>
+                  {% else %}
+                    <li><a class="nav-link" href="{% url 'main:login' %}">Login</a></li>
+                  {% endif %}
+                    <li><a class="nav-link" href="{% url 'admin:index' %}">Admin</a></li>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </nav>
 
     <div class="">
+        <iframe class="shadow-sm" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9518.51293619564!2d-6.263382584047816!3d53.385701008589926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48670e1b2f9d5d03%3A0x12bb45984107c2a8!2sDublin+City+University!5e0!3m2!1sen!2sie!4v1550006460573" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 
-<iframe class="shadow-sm" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9518.51293619564!2d-6.263382584047816!3d53.385701008589926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48670e1b2f9d5d03%3A0x12bb45984107c2a8!2sDublin+City+University!5e0!3m2!1sen!2sie!4v1550006460573" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-
-<div class="container mt-2">
-<h1>Contact Us</h1>
-<div class="row my-2">
- <div class="col-md-6 ">
-
-<div class="row">
-	<div class="col-md-12">
-                    <h3>Our info</h3>
-
+        <div class="container mt-2">
+            <h1>Contact Us</h1>
+            <div class="row my-2">
+                <div class="col-md-6 ">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Our info</h3>
                     <p>Please find relevant contact information below. We have also provided a quick enquiry form for any questions you may have.</p></div>
-            </div>
-					<div class="row">
-                      <div class="col-sm-6">
-                        <h5><i class="fa fa-building"></i> Head Office</h5>
-                        <p>Dublin City University<br>Glasnevin Dublin <br> POSTCODE</p>
-                  </div>
-                  <div class="col-sm-6">
-                    <h5><i class="fa fa-at"></i> Email</h5>
-                    <a href="">clubkit@clubkit.ie</a><br>
-
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <h5><i class="fa fa-building"></i> Head Office</h5>
+                <p>Dublin City University<br>Glasnevin Dublin <br> POSTCODE</p>
+        </div>
+          <div class="col-sm-6">
+            <h5><i class="fa fa-at"></i> Email</h5>
+            <a href="">clubkit@clubkit.ie</a><br>
+          </div>
               </div>
 
               <div class="row">
                 <div class="col-sm-12">
                   <h5><i class="fa fa-mobile"></i> Phone</h5>
                   <p><b>Tel:</b> <a href="">0123456789</a><br>
-
-                </div>
-
-            </div>
-
- </div>
+              </div>
+        </div>
+        </div>
 
  <div class="col-md-6">
- <h3>Enquiry</h3>
+     <h3>Enquiry</h3>
+         <form action="" method="post" name="contact_us"><input id="submitted" name="submitted" type="hidden" value="1" />
+         <div class="form-row">
+         <div class="form-group col-md-6">
+            <label for="name">Full Name</label>
+            <input type="text" class="form-control textinput shadow-sm" id="name" placeholder="Full Name" name="name">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="email_add">Email address</label>
+            <input type="email" class="form-control shadow-sm" id="email_add" placeholder="name@example.com" name="email_add">
+          </div>
+          <div class="form-group col-md-12">
+            <label for="enquiry">Enquiry</label>
+            <textarea class="form-control shadow-sm" id="enquiry" rows="3" name="enquiry"></textarea>
 
- <form action="" method="post" name="contact_us"><input id="submitted" name="submitted" type="hidden" value="1" />
- <div class="form-row">
- <div class="form-group col-md-6">
-    <label for="name">Full Name</label>
-    <input type="text" class="form-control textinput shadow-sm" id="name" placeholder="Full Name" name="name">
-  </div>
-  <div class="form-group col-md-6">
-    <label for="email_add">Email address</label>
-    <input type="email" class="form-control shadow-sm" id="email_add" placeholder="name@example.com" name="email_add">
-  </div>
-  <div class="form-group col-md-12">
-    <label for="enquiry">Enquiry</label>
-    <textarea class="form-control shadow-sm" id="enquiry" rows="3" name="enquiry"></textarea>
-
-  <button title=" Continue " alt="Continue" type="submit" class="btn btn-primary rounded-pill px-4 mt-1">Submit</button>
-  </div></div>
-  </form>
+          <button title=" Continue " alt="Continue" type="submit" class="btn btn-primary rounded-pill px-4 mt-1">Submit</button>
+          </div></div>
+          </form>
  </div>
 
-</div>
-
-
-
-
-
-
-
-
-
     </div>
-
+        </div>
+        </div>
+ </body>
   <footer class="container">
         <hr class="featurette-divider">
-        <ul class="float-right list-unstyled">
-        <li><i class="fas fa-address-book"></i> Contact Us: <br><p>Project Test<br>Project Test<br>Dublin 2</p></li>
-    <li><i class="fas fa-envelope"></i> Email: <a href="mailto:"></a></li>
-		<li><i class="fas fa-mobile"></i> Phone:  <a href="tel:">+353 (0)123456</a></li><br>
-        </ul>
-
-        <p> <a href="https://www.agriculture.gov.ie/legalnotices/copyright/">&copy; 2017-2018 PROJECT</a> &middot; Newsletter</p>
+            <ul class="float-right list-unstyled">
+                <li><i class="fas fa-address-book"></i> Contact Us: <br><p>Project Test<br>Project Test<br>Dublin 2</p></li>
+                <li><i class="fas fa-envelope"></i> Email: <a href="mailto:"></a></li>
+                <li><i class="fas fa-mobile"></i> Phone:  <a href="tel:">+353 (0)123456</a></li><br>
+            </ul>
+            <p> <a href="https://www.agriculture.gov.ie/legalnotices/copyright/">&copy; 2017-2018 PROJECT</a> &middot; Newsletter</p>
 
 
     <p>Get the latest update from us by subscribing to our newsletter.</p>
 		<form class="form-inline">
-  <div class="form-group  mb-2">
-    <input type="email" class="form-control rounded-pill" id="email1" placeholder="name@example.com">
-  </div>
-  <button type="submit" class="btn btn-primary rounded-pill mb-2 ml-2" data-toggle="tooltip" data-placement="top" title="This button will subscribe you to our newsletter">Subscribe</button>
-</form>
-      </footer>
-
+          <div class="form-group  mb-2">
+            <input type="email" class="form-control rounded-pill" id="email1" placeholder="name@example.com">
+          </div>
+            <button type="submit" class="btn btn-primary rounded-pill mb-2 ml-2" data-toggle="tooltip" data-placement="top" title="This button will subscribe you to our newsletter">Subscribe</button>
+        </form>
+  </footer>
+</html>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
 
 <script>
   var $hamburger = $(".hamburger");
@@ -157,5 +130,4 @@
   });
 </script>
 
-  </body>
-</html>
+

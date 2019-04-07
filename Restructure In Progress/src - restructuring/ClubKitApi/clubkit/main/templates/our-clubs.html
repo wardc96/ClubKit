@@ -2,29 +2,20 @@
 {% load static %}
 {% block content %}
 
-
-
 <div class="row">
-
     {% for club in all_clubs %}
-  <div class="col-lg-3 col-md-4 col-sm-6 col-10  mt-4">
-    <a href="{% url 'clubs:club_home_with_pk' pk=club.pk %}">
-  <div class="card shadow">
-    <img src="{% if club.club_logo %}{{ club.club_logo.url }}{% else %}{% static 'no-image.png' %}{% endif %}" class="img-fluid " alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{ club.club_name }}</h5>
-      <p class="">{{ club.club_county }}, {{ club.club_country }}</p>
-      <p class="card-text"><small class="text-muted">Joined {{ club.created_date }}</small></p>
+    <div class="col-lg-3 col-md-4 col-sm-6 col-10  mt-4">
+      <a href="{% url 'clubs:club_home_with_pk' pk=club.pk %}">
+      <div class="card shadow">
+        <img src="{% if club.club_logo %}{{ club.club_logo.url }}{% else %}{% static 'no-image.png' %}{% endif %}" class="img-fluid " alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ club.club_name }}</h5>
+          <p class="">{{ club.club_county }}, {{ club.club_country }}</p>
+          <p class="card-text"><small class="text-muted">Joined {{ club.created_date }}</small></p>
+      </div>
     </div>
-  </div>
     </a>
-</div>
-
-
+  </div>
 {% endfor %}
-
 </div>
-
-
-
 {% endblock %}
