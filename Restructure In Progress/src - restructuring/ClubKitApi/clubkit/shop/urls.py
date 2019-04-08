@@ -11,8 +11,8 @@ app_name = 'shop'
 urlpatterns = [
 
     path('', views.product_list, name='product_list'),
-    path('(<category_slug>[-\w]+)/', views.product_list, name='product_list_by_category'),
-    path('(<id>\d+)/(<slug>[-\w]+)/', views.product_detail, name='product_detail'),
+    path('<category_slug>/', views.product_list, name='product_list_by_category'),
+    path('<id>/<slug>/', views.product_detail, name='product_detail'),
     path('', views.ClubShop.as_view(), name='club_shop'),
     path('club_shop_products/', views.ClubShopProducts.as_view(), name='club_shop_products'),
     # path('add_product/', views.add_product, name='add_product'),
