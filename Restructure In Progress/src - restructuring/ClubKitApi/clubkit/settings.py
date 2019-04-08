@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
-EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 
 
@@ -168,8 +168,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CART_SESSION_ID = 'cart'
 
 
-#django-paypal settings
+# django-paypal settings
+
 PAYPAL_RECEIVER_EMAIL = 'clubkit@outlook.ie'
 PAYPAL_TEST = True
 
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.office365.com'
+EMAIL_HOST_USER = 'clubkit@outlook.ie'
+EMAIL_HOST_PASSWORD = 'Finalyearproject1'
+EMAIL_PORT = 587
 

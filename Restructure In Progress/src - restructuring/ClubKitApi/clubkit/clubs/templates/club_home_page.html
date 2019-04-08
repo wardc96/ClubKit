@@ -1,6 +1,94 @@
 {% extends 'club_main_page.html' %}
 {% block body_block %}
+{% load static %}
 
+<div class="container mt-3">
+    <div class="row justify-content-between">
+        <div class="col-sm-3">
+
+            {% for info in club %}
+        <div class="card shadow-sm" style="width: ">
+  <img src="{% if info.club_logo %}{{ info.club_logo.url }}{% else %}{% static 'no-image.png' %}{% endif %}" class="card-img-top img-fluid " alt="..." ">
+  <div class="card-body">
+    <h5 class="card-title">{{ info.club_name }}</h5>
+    <p class="card-text text-dark">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+  </div>
+</div>
+            <div class="card mt-4 shadow-sm" style="width: ">
+  <div class="card-body">
+    <h5 class="card-title">About</h5>
+    <p class="card-text text-dark">
+        <ul class="list-unstyled">
+      <li>{{ info.club_address1 }}</li>
+        <li>{{ info.club_address2 }}</li>
+        <li>{{ info.club_address3 }}</li>
+        <li>{{ info.club_town }}</li>
+        <li>{{ info.club_county }}</li>
+        <li>{{ info.club_country }}</li>
+
+  </ul>
+    </p>
+
+  </div>
+</div>
+
+
+  {% endfor %}
+
+
+        </div>
+        <div class="col-sm-offset-1 col-sm-6 border rounded shadow-sm bg-white">
+
+            <p>
+        {% csrf_token %}
+
+            <ul class="list-group list-group-flush">
+                <form>
+  <div class="input-group">
+
+   <input type="text" class="form-control" placeholder="Your Message..." aria-label="Club Post" aria-describedby="Club Post">
+  <div class="input-group-prepend">
+
+  </div>
+      <button type="submit" class="btn btn-primary rounded-pill mb-2 ml-2">Post!</button>
+  </div>
+                </form>
+            {% for info in club_posts %}
+            <li class="list-group-item">
+            <div class="row my-1" style="">
+            <div class="col-sm-3">
+                {% for pic in club %}
+                <img src="{% if pic.club_logo %}{{ pic.club_logo.url }}{% else %}{% static 'no-image.png' %}{% endif %}" class="img-fluid rounded-circle" height="60px" width="60px" alt="...">
+                {% endfor %}
+            </div>
+                <div class="col-sm-9">
+            <p class="font-weight-bold">{{ info.title }}</p>
+            <p>{{ info.text }}</p>
+            {% if info.photo %}
+            <img src="{{ info.photo.url }}" height="" width=""/>
+            {% else %} {% endif %}
+                </div>
+            </div>
+            </li>
+            {% endfor %}
+</ul>
+
+
+
+        </div>
+        <div class="col-l-offset-1 col-sm-2 border bg-white">
+            <p>ADS</p>
+
+
+        </div>
+    </div>
+</div>
+<Br>
+<br>
+<br>
+<br>
+<br>
 <div class="container">
      {% for info in club %}
     <h1> Welcome to {{ info.club_name }}</h1>
@@ -53,4 +141,10 @@
     {% endif %}
     {% endfor %}
 </div>
+
+
+
+
+
+
 {% endblock %}
