@@ -14,7 +14,7 @@
   <body>
     <nav class="nav navbar navbar-expand-md bg-clubkit text-white border-bottom shadow p-1">
         <div class="container">
-            <a href="{% url 'index' %}"><img class="masthead-brand" src="{% static 'clubkitlogo.png' %}" alt="Logo" style="height:60px;"></a>
+            <a href="{% url 'index' %}"><img class="masthead-brand" src="{% static 'clubkitlogo.png' %}" alt="Logo" style="height:70px;"></a>
             <button class="hamburger hamburger--spring d-md-none" type="button" data-toggle="collapse" data-target="#navbarCollapse">
 		    <span class="hamburger-box">
 		    <span class="hamburger-inner"></span>
@@ -26,11 +26,9 @@
                 <ul class="navbar-nav nav-masthead">
                   <li><a class="nav-link" href="{% url 'main:our_clubs' %}">Our Clubs</a></li>
                   <li><a class="nav-link" href="{% url 'main:our_packages' %}">Packages</a></li>
-                  <li><a class="nav-link" href="{% url 'main:buy_packages' %}">Buy Now</a></li>
                   <li><a class="nav-link" href="{% url 'main:about_us' %}">About Us</a></li>
                   <li><a class="nav-link" href="{% url 'main:contact_us' %}">Contact Us</a></li>
                   {% if user.is_authenticated %}
-                    <li><a class="nav-link" href="{% url 'profiles:view_profile' %}">Profile</a></li>
                     <li><a class="nav-link" href="{% url 'main:logout' %}">Logout</a></li>
                   {% else %}
                     <li><a class="nav-link" href="{% url 'main:login' %}">Login</a></li>

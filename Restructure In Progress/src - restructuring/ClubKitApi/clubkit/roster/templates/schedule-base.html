@@ -46,6 +46,15 @@
             duration: { days: 5 }
           }
         },
+     eventRender: function(eventObj, $el) {
+          $el.popover({
+            title: eventObj.title,
+            content: eventObj.description,
+            trigger: 'hover',
+            placement: 'top',
+            container: 'body'
+          });
+        },
 
         events: [ // put the array in the `events` property
             {
@@ -56,6 +65,7 @@
      {
             
               title:'{{ reoccur.team_id }}',
+              description:'Description TEST add tag into code',
               start: '{{ reoccur.start_time|date:"G:i:s" }}',
               end  : '{{ reoccur.finish_time|date:"G:i:s" }}',
               dow: [ 2, 4 ] // Repeat monday and thursday

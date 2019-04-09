@@ -57,11 +57,18 @@
             },
             {% for info in bookings %}
                     {
+                    {% if user.is_authenticated %}
+
                         title  : '{{ info.name }}',
                         description : '{{ info.name }} {{ info.pitch_id }} {{ info.email }} {{ info.mobile }}',
                         start  : '{{ info.date|date:"Y-m-d" }}T{{ info.start_time|date:"G:i:s" }}',
                         end  : '{{ info.date|date:"Y-m-d" }}T{{ info.finish_time|date:"G:i:s" }}',
-
+                    {% else %}
+                        title  : 'BOOKED',
+                        description : 'There is already a booking in this slot',
+                        start  : '{{ info.date|date:"Y-m-d" }}T{{ info.start_time|date:"G:i:s" }}',
+                        end  : '{{ info.date|date:"Y-m-d" }}T{{ info.finish_time|date:"G:i:s" }}',
+                    {% endif %}
                     },
             {% endfor %}
 
@@ -139,6 +146,16 @@
 
     <div class="container">
         <div id="calendar"></div>
+        <div class="container">
+    <h1>Book Here</h1>
+    <h3>Just fill out the form.</h3>
+    <form action="{% url 'rentapitch:pitch_rental' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <input type="submit" name="" value="Add">
+    </form>
+</div>
+
         <h3>Booking Details</h3>
         <div class="row">
         <div class="col-md-3 border">

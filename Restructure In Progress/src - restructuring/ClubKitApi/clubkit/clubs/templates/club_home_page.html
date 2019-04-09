@@ -12,6 +12,14 @@
   <div class="card-body">
     <h5 class="card-title">{{ info.club_name }}</h5>
     <p class="card-text text-dark">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <p>
+        {% if club_pk  ==  user.pk %}
+    <form action="{% url 'clubs:edit_club' %}">
+    <input type="submit" class="btn btn-sm btn-primary rounded-pill" value="Edit Club" />
+    {% endif %}
+  </form>
+
+      </p>
 
   </div>
 </div>

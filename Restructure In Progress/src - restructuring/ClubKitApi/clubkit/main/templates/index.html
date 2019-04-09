@@ -32,11 +32,9 @@
                     <ul class="navbar-nav">
                         <li><a class="nav-link" href="{% url 'main:our_clubs' %}">Our Clubs</a></li>
                         <li><a class="nav-link" href="{% url 'main:our_packages' %}">Packages</a></li>
-                        <li><a class="nav-link" href="{% url 'main:buy_packages' %}">Buy Now</a></li>
                         <li><a class="nav-link" href="{% url 'main:about_us' %}">About Us</a></li>
                         <li><a class="nav-link" href="{% url 'main:contact_us' %}">Contact Us</a></li>
                         {% if user.is_authenticated %}
-                        <li><a class="nav-link" href="{% url 'profiles:view_profile' %}">Profile</a></li>
                         <li><a class="nav-link" href="{% url 'main:logout' %}">Logout</a></li>
                         {% else %}
                         <li><a class="nav-link" href="{% url 'main:login' %}">Login</a></li>
@@ -54,7 +52,7 @@
         <br>
             <p class="lead">Clubs That Strive For Efficiency
                 <br><br>
-            <button type="button" class="btn btn-success mr-2 rounded-pill">More Info</button><a href="{% url 'main:register' %}"><button type="button" class="ml-2 btn btn-primary rounded-pill">Register Now</button></a></p>
+            <button type="button" class="btn btn-success mr-2 rounded-pill">More Info</button><a href="{% url 'main:register' %}"><button type="button" class="ml-2 btn btn-primary rounded-pill">Register a Club</button></a></p>
 
 		<a class="scroll-link" href="#content">
 		<svg class="mouse" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 130" preserveAspectRatio="xMidYmid meet">
@@ -77,8 +75,8 @@
                 <h3 class="featurette-heading"><a href="#">Our Features</a></h3>
                     <p class="lead">We offer a variety of features available to clubs. Tools such as member registrations, pitch booking, training rosters and a club shop are all available thorugh our application</p>
                     <a class="btn btn-primary rounded-pill mb-1 shadow" href="" role="button">Learn more</a>		 </div>
-             <div class="col-md-4 my-auto">
-                <a href="#"> <img class="featurette-image img-fluid mx-auto rounded" src="https://shortlist.imgix.net/app/uploads/2017/08/24175310/359e08cae257bc28409e81d1c3ecf708-495x330.jpg?w=1200&h=1&fit=max&auto=format%2Ccompress" alt=""></a>
+             <div class="col-md-5 my-auto">
+                <a href="#"> <img class="featurette-image img-fluid mx-auto rounded shadow" src="https://images.pexels.com/photos/572056/pexels-photo-572056.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=""></a>
             </div>
         </div>
         <hr class="featurette-divider">
@@ -88,8 +86,8 @@
                 <p class="lead">Take the pressure off with our application. Everyday admin tasks are easily done through our advanced online system, meaning less time working and more time for yourself.</p>
                 <a class="btn btn-primary rounded-pill mb-1 shadow" href="" role="button">Learn more</a>
           </div>
-            <div class="col-md-4 order-md-1 my-auto">
-                <a href="#"> <img class="featurette-image img-fluid mx-auto rounded" src="https://shortlist.imgix.net/app/uploads/2017/08/24175310/359e08cae257bc28409e81d1c3ecf708-495x330.jpg?w=1200&h=1&fit=max&auto=format%2Ccompress" alt=""></a>
+            <div class="col-md-5 order-md-1 my-auto">
+                <a href="#"> <img class="featurette-image img-fluid mx-auto rounded shadow" src="https://images.pexels.com/photos/207582/pexels-photo-207582.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=""></a>
             </div>
         </div>
 
@@ -100,13 +98,13 @@
                     <p class="lead">Each one of our features are available as a standalone package or as a whole group, eliminating unneeded costs and tailoring for each individual club.</p>
                     <a class="btn btn-primary rounded-pill mb-1 shadow" href="" role="button">Learn more</a>
             </div>
-            <div class="col-md-4 my-auto">
-                <a href="#"> <img class="featurette-image img-fluid mx-auto rounded" src="https://shortlist.imgix.net/app/uploads/2017/08/24175310/359e08cae257bc28409e81d1c3ecf708-495x330.jpg?w=1200&h=1&fit=max&auto=format%2Ccompress" alt=""></a>
+            <div class="col-md-5 my-auto">
+                <a href="#"> <img class="featurette-image img-fluid mx-auto rounded shadow" src="https://images.pexels.com/photos/1602726/pexels-photo-1602726.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=""></a>
             </div>
         </div>
     <hr class="featurette-divider">
           </div><!-- /.container -->
-    <hr class="featurette-divider">
+
 
     <div class="bgimg-2">
       <div class="caption">
