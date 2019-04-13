@@ -1,8 +1,9 @@
 from django.test import TestCase
+from clubkit.main.forms import UserForm, ClubInfoForm
 # Create your tests here.
 
 
-class MainPageTests(TestCase):
+class MainPageUrlsTests(TestCase):
 
     def test_home_page_status_code(self):
         response = self.client.get('/')
@@ -35,6 +36,26 @@ class MainPageTests(TestCase):
     def test_buy_packages_status_code(self):
             response = self.client.get('/buy-packages/')
             self.assertEquals(response.status_code, 200)
+
+
+class MainPageFormsTests(TestCase):
+
+        def test_valid_user_form(self):
+            form_data = {'club_name': 'UnitTest',
+                         'club_logo': '',
+                         'club_address1': 'UnitTest1',
+                         'club_address2': 'UnitTest2',
+                         'club_address3': 'UnitTest3',
+                         'club_town': 'UnitTest',
+                         'club_county': 'UnitTest',
+                         'club_country': 'UnitTest',
+                         }
+            form = ClubInfoForm(data=form_data)
+            self.assertTrue(form.is_valid())
+
+
+
+
 
 
 
