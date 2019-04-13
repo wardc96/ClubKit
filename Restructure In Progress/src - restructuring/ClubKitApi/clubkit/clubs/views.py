@@ -13,9 +13,9 @@ def club_home(request, pk=None):
         club_pk = request.session.get('pk')
         club = ClubInfo.objects.filter(pk=club_pk)
         club_posts = ClubPosts.objects.filter(club_id=club[0])
-        club_info = ClubInfo.objects.filter(user=request.user).first()
+        # club_info = ClubInfo.objects.filter(user=request.user).first()
         inital_data = {
-            'club_id': club_info
+            'club_id': club
         }
         new_post = ClubPostForm(initial=inital_data)
         if request.method == 'POST':

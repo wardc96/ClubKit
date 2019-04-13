@@ -118,22 +118,25 @@ class Packages(TemplateView):
 
 # Method to get all available packages to purchase
 def purchase_packages(request):
-    user = ClubInfo.objects.filter(user=request.user).first()
-    packages = ClubPackages.objects.filter(club_id=user.pk).first()
-    if request.method == 'POST':
-        form = ClubPackagesForm(request.POST, instance=packages)
-        if form.is_valid():
-            form.club_id = ClubInfo.objects.get(user=request.user)
-            form.save()
-            return redirect('main:buy_packages')
+    if request.user.is_authenticated:
+        user = ClubInfo.objects.filter(user=request.user).first()
+        packages = ClubPackages.objects.filter(club_id=user.pk).first()
+        if request.method == 'POST':
+            form = ClubPackagesForm(request.POST, instance=packages)
+            if form.is_valid():
+                form.club_id = ClubInfo.objects.get(user=request.user)
+                form.save()
+                return redirect('main:buy_packages')
+            else:
+                return redirect('main:buy_packages')
         else:
-            return redirect('main:buy_packages')
+            form = ClubPackagesForm(instance=packages)
+            return render(request, 'buy_now.html', {'form': form,
+                                                    'user': user,
+                                                    'packages': packages,
+                                                    })
     else:
-        form = ClubPackagesForm(instance=packages)
-        return render(request, 'buy_now.html', {'form': form,
-                                                'user': user,
-                                                'packages': packages,
-                                                })
+        return render(request, 'unautorized_user_landing_page.html')
 
 
 # Method to render our about us page
