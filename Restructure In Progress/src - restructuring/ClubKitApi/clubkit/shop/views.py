@@ -9,7 +9,7 @@ from clubkit.shop.forms import CategoryForm, ProductForm
 from clubkit.shop.models import Category, Product
 from clubkit.cart.forms import CartAddProductForm
 
-
+'''
 class ClubShop(APIView):
     renderer_classes = [TemplateHTMLRenderer]
     template_name = 'main_shop.html'
@@ -17,10 +17,12 @@ class ClubShop(APIView):
     def get(self, request):
         club_pk = request.session.get('pk')
         # user = ClubInfo.objects.filter(user=request.user).first()
-        products = Product.objects.filter(club_id=club_pk)
-        return Response({'products': products,
+        # products = Product.objects.filter(club_id=club_pk)
+        return Response({
+            #'products': products,
                          'club_pk': club_pk
                          })
+'''
 
 
 def product_list(request, category_slug=None):
@@ -31,7 +33,6 @@ def product_list(request, category_slug=None):
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         products = Product.objects.filter(category=category)
-
     context = {
         'category': category,
         'categories': categories,
@@ -128,20 +129,6 @@ class ClubShopProducts(APIView):
                              })
 
 
-'''
-def add_product(request):
-    form = ProductForm(data=request.data)
-    user = ClubInfo.objects.filter(user=request.user).first()
-    products = Product.objects.filter(club_id=user.pk)
-    if form.is_valid():
-        form.save()
-        return redirect('shop:add_product')
-    else:
-        return render(request, 'products.html', {'form': form,
-                                                 'products': products})
-'''
-
-
 def delete_product(request, pk):
     product_id = Product.objects.filter(pk=pk)
     product_id.delete()
@@ -162,4 +149,17 @@ def edit_product(request, pk):
         return render(request, 'edit_products.html', {'form': form,
                                                       'instance': instance})
 
+
+'''
+def add_product(request):
+    form = ProductForm(data=request.data)
+    user = ClubInfo.objects.filter(user=request.user).first()
+    products = Product.objects.filter(club_id=user.pk)
+    if form.is_valid():
+        form.save()
+        return redirect('shop:add_product')
+    else:
+        return render(request, 'products.html', {'form': form,
+                                                 'products': products})
+'''
 

@@ -97,6 +97,16 @@
 <br>
 <br>
 <br>
+<h3>Add Post</h3>
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        {{ new_post.as_p}}
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<br>
+<br>
 <div class="container">
      {% for info in club %}
     <h1> Welcome to {{ info.club_name }}</h1>

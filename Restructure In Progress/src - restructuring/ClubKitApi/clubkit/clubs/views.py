@@ -13,10 +13,25 @@ def club_home(request, pk=None):
         club_pk = request.session.get('pk')
         club = ClubInfo.objects.filter(pk=club_pk)
         club_posts = ClubPosts.objects.filter(club_id=club[0])
+        club_info = ClubInfo.objects.filter(user=request.user).first()
+        inital_data = {
+            'club_id': club_info
+        }
+        new_post = ClubPostForm(initial=inital_data)
+        if request.method == 'POST':
+            new_post = ClubPostForm(data=request.POST)
+            if new_post.is_valid():
+                new_post.save()
+                return redirect('clubs:club_home')
+            else:
+                return redirect('clubs:club_home')
+
         args = {'club': club,
                 'club_posts': club_posts,
-                'club_pk': club_pk
+                'club_pk': club_pk,
+                'new_post': new_post
                 }
+
     else:
         club_pk = request.session.get('pk')
         club = ClubInfo.objects.filter(pk=club_pk)

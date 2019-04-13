@@ -1,4 +1,5 @@
 from clubkit.roster.models import RosterId, ClubInfo, Pitch
+from clubkit.clubs.models import Team
 from clubkit.roster.forms import RosterForm
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
@@ -21,6 +22,8 @@ class ClubRoster(APIView):
                 'club_id': club_info,
             }
             form = RosterForm(initial=inital_data)
+            form.fields['pitch_id'].queryset = Pitch.objects.filter(club_id=club_pk)
+            form.fields['team_id'].queryset = Team.objects.filter(club_id=club_pk)
             roster = RosterId.objects.filter(club_id=club_pk)
             return Response({'form': form,
                              'roster': roster,
@@ -30,7 +33,7 @@ class ClubRoster(APIView):
         else:
             club_pk = request.session.get('pk')
             roster = RosterId.objects.filter(club_id=club_pk)
-            reoccuring_event = ClubInfo.objects.filter(reoccuring_event=True, club_id=club_pk)
+            reoccuring_event = RosterId.objects.filter(reoccuring_event=True, club_id=club_pk)
             return Response({'roster': roster,
                              'club_pk': club_pk,
                              'reoccuring_event': reoccuring_event

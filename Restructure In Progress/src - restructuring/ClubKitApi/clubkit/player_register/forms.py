@@ -10,7 +10,7 @@ class PlayerRegistrationForm(forms.ModelForm):
         model = Player
         fields = '__all__'
         labels = {
-            'dob': ('D.O.B'),
+            'dob': 'Date of Birth'
         }
         widgets = {
             'dob': DateInput(attrs={'type': 'date'})

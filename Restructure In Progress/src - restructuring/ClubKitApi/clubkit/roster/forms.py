@@ -1,5 +1,5 @@
 from django import forms
-from clubkit.roster.models import RosterId
+from clubkit.roster.models import RosterId, Pitch
 import datetime
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
@@ -25,6 +25,7 @@ class RosterForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(RosterForm, self).__init__(*args, **kwargs)
         self.fields['club_id'].widget = forms.HiddenInput()
+
 
 
 

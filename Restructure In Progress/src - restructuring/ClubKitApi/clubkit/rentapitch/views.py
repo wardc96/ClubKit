@@ -1,4 +1,5 @@
 from clubkit.rentapitch.models import RentPitch
+from clubkit.clubs.models import Pitch
 from clubkit.rentapitch.forms import RentalForm
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
@@ -16,6 +17,7 @@ class PitchRental(APIView):
             'club_id': club_pk
         }
         form = RentalForm(initial=inital_data)
+        form.fields['pitch_id'].queryset = Pitch.objects.filter(club_id=club_pk)
         return Response({'form': form,
                          'club_pk': club_pk
                          })
