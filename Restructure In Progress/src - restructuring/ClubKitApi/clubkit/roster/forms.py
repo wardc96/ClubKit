@@ -22,6 +22,17 @@ class RosterForm(forms.ModelForm):
                 raise ValidationError(_('Date cannot be in the past.'))
             return date
 
+        '''
+        def clean(self):
+            date = self.cleaned_data.get('date')
+            start_time = self.cleaned_data.get('start_time')
+            finish_time = self.cleaned_data.get('finish_time')
+            between = RosterId.objects.filter(date=date, start_time=start_time, finish_time=finish_time).exists()
+            if between:
+                raise forms.ValidationError("Period already between this dates")
+            super(RosterForm, self).clean()
+        '''
+
     def __init__(self, *args, **kwargs):
         super(RosterForm, self).__init__(*args, **kwargs)
         self.fields['club_id'].widget = forms.HiddenInput()

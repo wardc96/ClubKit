@@ -150,6 +150,7 @@ BOOTSTRAP4 = {
     'include_jquery': True,
 }
 
+
 LOGIN_URL = '/main/login/'
 
 # Static files (CSS, JavaScript, Images)
