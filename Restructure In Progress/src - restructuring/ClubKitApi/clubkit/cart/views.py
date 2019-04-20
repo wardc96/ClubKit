@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
 from clubkit.shop.models import Product
+from clubkit.clubs.models import ClubInfo
 from .cart import Cart
 from .forms import CartAddProductForm
 
@@ -30,3 +31,5 @@ def cart_detail(request):
         item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'], 'update': True})
     return render(request, 'cart/details.html', {'cart': cart,
                                                  'club_pk': club_pk})
+
+
