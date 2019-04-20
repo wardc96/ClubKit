@@ -1,5 +1,5 @@
 from clubkit.rentapitch.models import RentPitch
-from clubkit.clubs.models import Pitch
+from clubkit.clubs.models import Pitch, ClubInfo
 from clubkit.rentapitch.forms import RentalForm
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
@@ -13,22 +13,28 @@ class PitchRental(APIView):
 
     def get(self, request):
         club_pk = request.session.get('pk')
+        club = ClubInfo.objects.filter(pk=club_pk)
         inital_data = {
             'club_id': club_pk
         }
         form = RentalForm(initial=inital_data)
         form.fields['pitch_id'].queryset = Pitch.objects.filter(club_id=club_pk)
         return Response({'form': form,
-                         'club_pk': club_pk
+                         'club_pk': club_pk,
+                         'club': club
                          })
 
     def post(self, request):
+        club_pk = request.session.get('pk')
+        club = ClubInfo.objects.filter(pk=club_pk)
         form = RentalForm(data=request.data)
+        form.fields['pitch_id'].queryset = Pitch.objects.filter(club_id=club_pk)
         if form.is_valid():
             form.save()
-            return Response(template_name='booking_complete.html')
+            return render(request, 'booking_complete.html', {'club': club})
         else:
             return Response({'form': form,
+                             'club': club
                              })
 
 
@@ -37,12 +43,13 @@ class PitchBookings(APIView):
     template_name = 'pitch_bookings.html'
 
     def get(self, request):
-            club_pk = request.session.get('pk')
-            # club = ClubInfo.objects.filter(user=request.user)
-            bookings = RentPitch.objects.filter(club_id=club_pk)
-            return Response({'bookings': bookings,
-                             'club_pk': club_pk
-                            })
+        club_pk = request.session.get('pk')
+        club = ClubInfo.objects.filter(pk=club_pk)
+        bookings = RentPitch.objects.filter(club_id=club_pk)
+        return Response({'bookings': bookings,
+                         'club_pk': club_pk,
+                         'club': club
+                         })
 
 
 def cancel_booking(request, pk):
@@ -52,18 +59,21 @@ def cancel_booking(request, pk):
 
 
 def edit_booking(request, pk):
+    club_pk = request.session.get('pk')
+    club = ClubInfo.objects.filter(pk=club_pk)
     instance = RentPitch.objects.filter(pk=pk).first()
     if request.method == 'POST':
         form = RentalForm(request.POST, instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('clubs:club_home')
+            return redirect('rentapitch:pitch_bookings')
         else:
-            return redirect('clubs:club_home')
+            return redirect('rentapitch:pitch_bookings')
     else:
         form = RentalForm(instance=instance)
         return render(request, 'edit_post.html', {'form': form,
-                                                  'instance': instance})
+                                                  'instance': instance,
+                                                  'club': club})
 
 
 

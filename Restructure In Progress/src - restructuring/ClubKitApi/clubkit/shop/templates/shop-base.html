@@ -16,7 +16,7 @@
 </head>
   <body>
 
-       <nav class="nav navbar navbar-expand-md bg-clubkit text-white">
+    <nav class="nav navbar navbar-expand-md bg-clubkit text-white">
         <div class="container">
             <a href="{% url 'index' %}"><img class="masthead-brand" src="{% static 'clubkitlogo.png' %}" alt="Logo" style="height:60px;"></a>
             <button class="hamburger hamburger--spring d-md-none" type="button" data-toggle="collapse" data-target="#navbarCollapse">
@@ -43,7 +43,8 @@
                   <a class="dropdown-item" href="{% url 'player_register:player_register' %}">Registration</a>
                 </div>
             </li>
-            {% if club_pk  ==  user.pk %}
+            {% for info in club %}
+            {% if info.user.pk  ==  user.pk %}
             <li class=" dropdown">
                 <a class="nav-link dropdown-toggle" href="{% url 'clubs:memberships' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Rent-a-Pitch
@@ -58,8 +59,10 @@
                 <a class="nav-link" href="{% url 'rentapitch:pitch_rental' %}">Rent-a-Pitch</a>
             </li>
            {% endif %}
+           {% endfor %}
 
-           {% if club_pk  ==  user.pk %}
+            {% for info in club %}
+            {% if info.user.pk  ==  user.pk %}
            <li class=" dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Shop
@@ -75,6 +78,14 @@
                 <a class="nav-link" href="{% url 'shop:product_list' %}">Club Shop</a>
             </li>
             {% endif %}
+            {% endfor %}
+             {% for info in club %}
+            {% if info.user.pk  ==  user.pk %}
+            <li>
+               <a class="nav-link" href="{% url 'profiles:view_profile' %}">Profile</a>
+            </li>
+            {% endif %}
+            {% endfor %}
             </ul>
             </div>
         </div>

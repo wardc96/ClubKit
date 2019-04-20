@@ -16,6 +16,7 @@ class ClubRoster(APIView):
     def get(self, request):
         if request.user.is_authenticated:
             club_pk = request.session.get('pk')
+            club = ClubInfo.objects.filter(pk=club_pk)
             club_info = ClubInfo.objects.filter(user=request.user).first()
             reoccuring_event = RosterId.objects.filter(reoccuring_event=True, club_id=club_pk)
             inital_data = {
@@ -28,15 +29,18 @@ class ClubRoster(APIView):
             return Response({'form': form,
                              'roster': roster,
                              'club_pk': club_pk,
-                             'reoccuring_event': reoccuring_event
+                             'reoccuring_event': reoccuring_event,
+                             'club': club
                              })
         else:
             club_pk = request.session.get('pk')
+            club = ClubInfo.objects.filter(pk=club_pk)
             roster = RosterId.objects.filter(club_id=club_pk)
             reoccuring_event = RosterId.objects.filter(reoccuring_event=True, club_id=club_pk)
             return Response({'roster': roster,
                              'club_pk': club_pk,
-                             'reoccuring_event': reoccuring_event
+                             'reoccuring_event': reoccuring_event,
+                             'club': club
                              })
 
     # Post method to add roster information
@@ -56,6 +60,8 @@ def delete_roster(request, pk):
 
 # Method to edit roster information
 def edit_roster(request, pk):
+    club_pk = request.session.get('pk')
+    club = ClubInfo.objects.filter(pk=club_pk)
     instance = RosterId.objects.filter(pk=pk).first()
     if request.method == 'POST':
         form = RosterForm(request.POST, instance=instance)
@@ -67,5 +73,5 @@ def edit_roster(request, pk):
     else:
         form = RosterForm(instance=instance)
         return render(request, 'edit_roster.html', {'form': form,
-
+                                                    'club': club,
                                                     'instance': instance})

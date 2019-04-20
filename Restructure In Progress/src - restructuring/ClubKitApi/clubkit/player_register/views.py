@@ -13,6 +13,7 @@ class RegisterPlayer(APIView):
     # Get method membership information and registration from
     def get(self, request):
         club_pk = request.session.get('pk')
+        club = ClubInfo.objects.filter(pk=club_pk)
         club_info = ClubInfo.objects.filter(pk=club_pk).first()
         club_memberships = ClubMemberships.objects.filter(club_id=club_info)
         inital_data = {
@@ -23,7 +24,8 @@ class RegisterPlayer(APIView):
         form = PlayerRegistrationForm(initial=inital_data)
         form.fields['membership_title'].queryset = ClubMemberships.objects.filter(club_id=club_pk)
         return Response({'form': form,
-                         'club_pk': club_pk
+                         'club_pk': club_pk,
+                         'club': club
                          })
 
     # Post method to save player registration

@@ -2,7 +2,8 @@
 {% load staticfiles %}
 {% block body_block %}
 
-{% if club_pk  ==  user.pk %}
+{% for info in club %}
+{% if info.user.pk  ==  user.pk %}
   <div class="AddMembership">
       <h3>Add Membership To Club.</h3>
 <form action="{% url 'clubs:memberships' %}" method="POST">
@@ -11,4 +12,5 @@
     <input type="submit" name="" value="Add">
 </form>
 {% endif %}
+      {% endfor %}
 {% endblock %}

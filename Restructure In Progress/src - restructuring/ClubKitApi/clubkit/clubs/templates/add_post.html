@@ -1,5 +1,8 @@
 {% extends 'club_main_page.html' %}
 {% block body_block %}
+
+{% for info in club %}
+{% if info.user.pk  ==  user.pk %}
 <h3>Add Post</h3>
 <div class="container">
     <form method="post">
@@ -7,5 +10,7 @@
         {{ form.as_p}}
         <button type="submit">Submit</button>
     </form>
+    {% endif %}
+      {% endfor %}
 </div>
 {% endblock %}

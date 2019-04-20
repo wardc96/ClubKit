@@ -45,6 +45,8 @@ def club_home(request, pk=None):
 
 # Method to allow club owners edit their details
 def edit_club(request):
+    club_pk = request.session.get('pk')
+    club = ClubInfo.objects.filter(pk=club_pk)
     instance = ClubInfo.objects.filter(user=request.user).first()
     if request.method == 'POST':
         form = ClubInfoForm(request.POST, instance=instance)
@@ -55,7 +57,9 @@ def edit_club(request):
             return redirect('clubs:club_home')
     else:
         form = ClubInfoForm(instance=instance)
-        return render(request, 'edit_club.html', {'form': form})
+        return render(request, 'edit_club.html', {'form': form,
+                                                  'club': club
+                                                  })
 
 
 # Class to handle club posts
@@ -66,6 +70,7 @@ class ClubAddPosts(APIView):
     # Get method to display club posts on home page
     def get(self, request):
         club_pk = request.session.get('pk')
+        club = ClubInfo.objects.filter(pk=club_pk)
         club_info = ClubInfo.objects.filter(user=request.user).first()
         inital_data = {
             'club_id': club_info
@@ -74,11 +79,14 @@ class ClubAddPosts(APIView):
         club_post = ClubPosts.objects.filter(club_id=club_pk)
         return Response({'form': form,
                          'club_post': club_post,
-                         'club_pk': club_pk
+                         'club_pk': club_pk,
+                         'club': club
                          })
 
     # Post method for publishing new club posts
     def post(self, request):
+        club_pk = request.session.get('pk')
+        club = ClubInfo.objects.filter(pk=club_pk)
         form = ClubPostForm(data=request.data)
         user = ClubInfo.objects.filter(user=request.user).first()
         new_post = ClubPosts.objects.filter(club_id=user.pk)
@@ -87,7 +95,8 @@ class ClubAddPosts(APIView):
             return redirect('clubs:club_home')
         else:
             return Response({'form': form,
-                             'new_post': new_post
+                             'new_post': new_post,
+                             'club': club
                              })
 
 
@@ -100,6 +109,8 @@ def delete_post(request, pk):
 
 # Method to edit club posts using pk
 def edit_post(request, pk):
+    club_pk = request.session.get('pk')
+    club = ClubInfo.objects.filter(pk=club_pk)
     instance = ClubPosts.objects.filter(pk=pk).first()
     if request.method == 'POST':
         form = ClubPostForm(request.POST, instance=instance)
@@ -111,7 +122,8 @@ def edit_post(request, pk):
     else:
         form = ClubPostForm(instance=instance)
         return render(request, 'edit_post.html', {'form': form,
-                                                  'instance': instance})
+                                                  'instance': instance,
+                                                  'club': club})
 
 
 # Class to handle team information
@@ -123,6 +135,7 @@ class TeamInfo(APIView):
     def get(self, request):
         if request.user.is_authenticated:
             club_pk = request.session.get('pk')
+            club = ClubInfo.objects.filter(pk=club_pk)
             teams = Team.objects.filter(club_id=club_pk)
             club_info = ClubInfo.objects.filter(user=request.user).first()
             inital_data = {
@@ -132,14 +145,17 @@ class TeamInfo(APIView):
             return Response({
                 'form': form,
                 'teams': teams,
-                'club_pk': club_pk
+                'club_pk': club_pk,
+                'club': club
             })
         else:
             club_pk = request.session.get('pk')
+            club = ClubInfo.objects.filter(pk=club_pk)
             teams = Team.objects.filter(club_id=club_pk)
             return Response({
                              'teams': teams,
-                             'club_pk': club_pk
+                             'club_pk': club_pk,
+                             'club': club
                              })
 
     # Post method to post new team to club
@@ -154,6 +170,7 @@ class TeamInfo(APIView):
 def add_team(request):
     if request.user.is_authenticated:
         club_pk = request.session.get('pk')
+        club = ClubInfo.objects.filter(pk=club_pk)
         teams = Team.objects.filter(club_id=club_pk)
         club_info = ClubInfo.objects.filter(user=request.user).first()
         inital_data = {
@@ -162,7 +179,8 @@ def add_team(request):
         form = TeamForm(initial=inital_data)
         return render(request, 'add_teams.html', {'form': form,
                                                   'teams': teams,
-                                                  'club_pk': club_pk})
+                                                  'club_pk': club_pk,
+                                                  'club': club})
     else:
         return redirect('clubs:add_teams')
 
@@ -176,6 +194,8 @@ def delete_team(request, pk):
 
 # Method to edit team using pk
 def edit_team(request, pk):
+    club_pk = request.session.get('pk')
+    club = ClubInfo.objects.filter(pk=club_pk)
     instance = Team.objects.filter(pk=pk).first()
     if request.method == 'POST':
         form = TeamForm(request.POST, instance=instance)
@@ -187,7 +207,8 @@ def edit_team(request, pk):
     else:
         form = TeamForm(instance=instance)
         return render(request, 'edit_team.html', {'form': form,
-                                                  'instance': instance})
+                                                  'instance': instance,
+                                                  'club': club})
 
 
 # Class to handle pitch information
@@ -199,6 +220,7 @@ class PitchInfo(APIView):
     def get(self, request):
         if request.user.is_authenticated:
             club_pk = request.session.get('pk')
+            club = ClubInfo.objects.filter(pk=club_pk)
             club_info = ClubInfo.objects.filter(user=request.user).first()
             inital_data = {
                 'club_id': club_info
@@ -207,13 +229,16 @@ class PitchInfo(APIView):
             pitch = Pitch.objects.filter(club_id=club_pk)
             return Response({'form': form,
                              'pitch': pitch,
-                             'club_pk': club_pk
+                             'club_pk': club_pk,
+                             'club': club
                              })
         else:
             club_pk = request.session.get('pk')
+            club = ClubInfo.objects.filter(pk=club_pk)
             pitch = Pitch.objects.filter(club_id=club_pk)
             return Response({'pitch': pitch,
-                             'club_pk': club_pk
+                             'club_pk': club_pk,
+                             'club': club
                              })
 
     # Post method to post new pitch to club
@@ -228,6 +253,7 @@ class PitchInfo(APIView):
 def add_pitches(request):
     if request.user.is_authenticated:
         club_pk = request.session.get('pk')
+        club = ClubInfo.objects.filter(pk=club_pk)
         pitch = Pitch.objects.filter(club_id=club_pk)
         club_info = ClubInfo.objects.filter(user=request.user).first()
         inital_data = {
@@ -236,7 +262,8 @@ def add_pitches(request):
         form = PitchForm(initial=inital_data)
         return render(request, 'add_pitches.html', {'form': form,
                                                     'pitch': pitch,
-                                                    'club_pk': club_pk})
+                                                    'club_pk': club_pk,
+                                                    'club': club})
     else:
         return redirect('clubs:add_pitches')
 
@@ -250,6 +277,8 @@ def delete_pitch(request, pk):
 
 # Method to edit pitch using pk
 def edit_pitch(request, pk):
+    club_pk = request.session.get('pk')
+    club = ClubInfo.objects.filter(pk=club_pk)
     instance = Pitch.objects.filter(pk=pk).first()
     if request.method == 'POST':
         form = PitchForm(request.POST, instance=instance)
@@ -261,7 +290,8 @@ def edit_pitch(request, pk):
     else:
         form = PitchForm(instance=instance)
         return render(request, 'edit_pitch.html', {'form': form,
-                                                   'instance': instance})
+                                                   'instance': instance,
+                                                   'club': club})
 
 
 # Class to handle membership information
@@ -273,6 +303,7 @@ class Memberships(APIView):
     def get(self, request):
         if request.user.is_authenticated:
             club_pk = request.session.get('pk')
+            club = ClubInfo.objects.filter(pk=club_pk)
             club_info = ClubInfo.objects.filter(user=request.user).first()
             inital_data = {
                 'club_id': club_info
@@ -282,13 +313,16 @@ class Memberships(APIView):
             memberships = ClubMemberships.objects.filter(club_id=club_pk)
             return Response({'form': form,
                              'memberships': memberships,
-                             'club_pk': club_pk
+                             'club_pk': club_pk,
+                             'club': club
                              })
         else:
             club_pk = request.session.get('pk')
+            club = ClubInfo.objects.filter(pk=club_pk)
             memberships = ClubMemberships.objects.filter(club_id=club_pk)
             return Response({'memberships': memberships,
-                             'club_pk': club_pk
+                             'club_pk': club_pk,
+                             'club': club
                              })
 
     # Post method to post new membership to club
@@ -303,6 +337,7 @@ class Memberships(APIView):
 def add_memberships(request):
     if request.user.is_authenticated:
         club_pk = request.session.get('pk')
+        club = ClubInfo.objects.filter(pk=club_pk)
         membership = ClubMemberships.objects.filter(club_id=club_pk)
         club_info = ClubInfo.objects.filter(user=request.user).first()
         inital_data = {
@@ -311,7 +346,8 @@ def add_memberships(request):
         form = MembershipsForm(initial=inital_data)
         return render(request, 'add_memberships.html', {'form': form,
                                                         'membership': membership,
-                                                        'club_pk': club_pk})
+                                                        'club_pk': club_pk,
+                                                        'club': club})
     else:
         return redirect('clubs:add_membership')
 
@@ -325,6 +361,8 @@ def delete_membership(request, pk):
 
 # Method to edit membership using pk
 def edit_membership(request, pk):
+    club_pk = request.session.get('pk')
+    club = ClubInfo.objects.filter(pk=club_pk)
     instance = ClubMemberships.objects.filter(pk=pk).first()
     if request.method == 'POST':
         form = MembershipsForm(request.POST, instance=instance)
@@ -336,6 +374,7 @@ def edit_membership(request, pk):
     else:
         form = MembershipsForm(instance=instance)
         return render(request, 'edit_membership.html', {'form': form,
-                                                        'instance': instance})
+                                                        'instance': instance,
+                                                        'club': club})
 
 

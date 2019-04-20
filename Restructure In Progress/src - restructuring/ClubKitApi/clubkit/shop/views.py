@@ -27,6 +27,7 @@ class ClubShop(APIView):
 
 def product_list(request, category_slug=None):
     club_pk = request.session.get('pk')
+    club = ClubInfo.objects.filter(pk=club_pk)
     category = None
     categories = Category.objects.filter(club_id=club_pk)
     products = Product.objects.filter(available=True, club_id=club_pk)
@@ -37,19 +38,22 @@ def product_list(request, category_slug=None):
         'category': category,
         'categories': categories,
         'products': products,
-        'club_pk': club_pk
+        'club_pk': club_pk,
+        'club': club
     }
     return render(request, 'list.html', context)
 
 
 def product_detail(request, id, slug):
     club_pk = request.session.get('pk')
+    club = ClubInfo.objects.filter(pk=club_pk)
     product = get_object_or_404(Product, id=id, slug=slug, available=True)
     cart_product_form = CartAddProductForm()
     context = {
         'product': product,
         'cart_product_form': cart_product_form,
-        'club_pk': club_pk
+        'club_pk': club_pk,
+        'club': club
     }
     return render(request, 'detail.html', context)
 
@@ -60,12 +64,14 @@ class ClubShopCategories(APIView):
 
     def get(self, request):
         club_pk = request.session.get('pk')
+        club = ClubInfo.objects.filter(pk=club_pk)
         form = CategoryForm()
         # user = ClubInfo.objects.filter(user=request.user).first()
         category_types = Category.objects.filter(club_id=club_pk)
         return Response({'form': form,
                          'category_types': category_types,
-                         'club_pk': club_pk
+                         'club_pk': club_pk,
+                         'club': club
                          })
 
     def post(self, request):
@@ -88,6 +94,8 @@ def delete_category(request, pk):
 
 
 def edit_category(request, pk):
+    club_pk = request.session.get('pk')
+    club = ClubInfo.objects.filter(pk=club_pk)
     instance = Category.objects.filter(pk=pk).first()
     if request.method == 'POST':
         form = CategoryForm(request.POST, instance=instance)
@@ -99,7 +107,9 @@ def edit_category(request, pk):
     else:
         form = CategoryForm(instance=instance)
         return render(request, 'edit_category.html', {'form': form,
-                                                      'instance': instance})
+                                                      'instance': instance,
+                                                      'club': club
+                                                      })
 
 
 class ClubShopProducts(APIView):
@@ -108,12 +118,14 @@ class ClubShopProducts(APIView):
 
     def get(self, request):
         club_pk = request.session.get('pk')
+        club = ClubInfo.objects.filter(pk=club_pk)
         form = ProductForm()
         # user = ClubInfo.objects.filter(user=request.user).first()
         products = Product.objects.filter(club_id=club_pk)
         return Response({'form': form,
                          'products': products,
-                         'club_pk': club_pk
+                         'club_pk': club_pk,
+                         'club': club
                          })
 
     def post(self, request):
@@ -136,6 +148,8 @@ def delete_product(request, pk):
 
 
 def edit_product(request, pk):
+    club_pk = request.session.get('pk')
+    club = ClubInfo.objects.filter(pk=club_pk)
     instance = Product.objects.filter(pk=pk).first()
     if request.method == 'POST':
         form = ProductForm(request.POST, instance=instance)
@@ -147,7 +161,9 @@ def edit_product(request, pk):
     else:
         form = ProductForm(instance=instance)
         return render(request, 'edit_products.html', {'form': form,
-                                                      'instance': instance})
+                                                      'instance': instance,
+                                                      'club': club
+                                                      })
 
 
 '''

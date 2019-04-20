@@ -80,7 +80,7 @@
     </script>
 </head>
   <body>
-    <nav class="nav navbar navbar-expand-md bg-clubkit text-white">
+        <nav class="nav navbar navbar-expand-md bg-clubkit text-white">
         <div class="container">
             <a href="{% url 'index' %}"><img class="masthead-brand" src="{% static 'clubkitlogo.png' %}" alt="Logo" style="height:60px;"></a>
             <button class="hamburger hamburger--spring d-md-none" type="button" data-toggle="collapse" data-target="#navbarCollapse">
@@ -91,54 +91,67 @@
 
         <div class="container">
             <div class="collapse navbar-collapse  nav-masthead" id="navbarCollapse">
-                <ul class="navbar-nav nav-masthead">
-                    {# Navbar Links #}
-                    <li><a class="nav-link" href="{% url 'clubs:club_home' %}">Home</a></li>
-                    <li><a class="nav-link" href="{% url 'clubs:teams' %}">Teams</a></li>
-                    <li><a class="nav-link" href="{% url 'clubs:pitches' %}">Pitches</a></li>
-                    <li><a class="nav-link" href="{% url 'roster:club_roster' %}">Roster</a></li>
-                    <li class=" dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Member Registration
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="{% url 'clubs:memberships' %}">Memberships</a>
-                          <a class="dropdown-item" href="{% url 'player_register:player_register' %}">Registration</a>
-                        </div>
-                    </li>
-                    {% if club_pk  ==  user.pk %}
-                    <li class=" dropdown">
-                        <a class="nav-link dropdown-toggle" href="{% url 'clubs:memberships' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Rent-a-Pitch
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="{% url 'rentapitch:pitch_rental' %}">Rent-a-Pitch</a>
-                          <a class="dropdown-item" href="{% url 'rentapitch:pitch_bookings' %}">Pitch Bookings</a>
-                        </div>
-                    </li>
-                    {% else %}
-                    <li>
-                        <a class="nav-link" href="{% url 'rentapitch:pitch_rental' %}">Rent-a-Pitch</a>
-                    </li>
-                   {% endif %}
+            <ul class="navbar-nav nav-masthead">
 
-                   {% if club_pk  ==  user.pk %}
-                   <li class=" dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Shop
-                        </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="{% url 'shop:product_list' %}">Club Shop</a>
-                      <a class="dropdown-item" href="{% url 'shop:club_shop_products' %}">Shop Products</a>
-                      <a class="dropdown-item" href="{% url 'shop:club_shop_categories' %}">Shop Categories</a>
-                    </div>
-                    </li>
-                    {% else %}
-                    <li>
-                        <a class="nav-link" href="{% url 'shop:product_list' %}">Club Shop</a>
-                    </li>
-                    {% endif %}
-                </ul>
+            {# Navbar Links #}
+            <li><a class="nav-link" href="{% url 'clubs:club_home' %}">Home</a></li>
+            <li><a class="nav-link" href="{% url 'clubs:teams' %}">Teams</a></li>
+            <li><a class="nav-link" href="{% url 'clubs:pitches' %}">Pitches</a></li>
+            <li><a class="nav-link" href="{% url 'roster:club_roster' %}">Roster</a></li>
+            <li class=" dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Member Registration
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{% url 'clubs:memberships' %}">Memberships</a>
+                  <a class="dropdown-item" href="{% url 'player_register:player_register' %}">Registration</a>
+                </div>
+            </li>
+            {% for info in club %}
+            {% if info.user.pk  ==  user.pk %}
+            <li class=" dropdown">
+                <a class="nav-link dropdown-toggle" href="{% url 'clubs:memberships' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Rent-a-Pitch
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{% url 'rentapitch:pitch_rental' %}">Rent-a-Pitch</a>
+                  <a class="dropdown-item" href="{% url 'rentapitch:pitch_bookings' %}">Pitch Bookings</a>
+                </div>
+            </li>
+            {% else %}
+            <li>
+                <a class="nav-link" href="{% url 'rentapitch:pitch_rental' %}">Rent-a-Pitch</a>
+            </li>
+           {% endif %}
+           {% endfor %}
+
+           {% for info in club %}
+           {% if info.user.pk  ==  user.pk %}
+           <li class=" dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Shop
+                </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{% url 'shop:product_list' %}">Club Shop</a>
+              <a class="dropdown-item" href="{% url 'shop:club_shop_products' %}">Shop Products</a>
+              <a class="dropdown-item" href="{% url 'shop:club_shop_categories' %}">Shop Categories</a>
+            </div>
+            </li>
+            {% else %}
+            <li>
+                <a class="nav-link" href="{% url 'shop:product_list' %}">Club Shop</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+
+             {% for info in club %}
+           {% if info.user.pk  ==  user.pk %}
+            <li>
+               <a class="nav-link" href="{% url 'profiles:view_profile' %}">Profile</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+            </ul>
             </div>
         </div>
         </div>
@@ -174,13 +187,16 @@
             <li>{{ info.payment_type }}</li>
             <li>{{ info.is_cancelled }}</li>
         </ul>
-
+    {% for id in club %}
+    {% if id.user.pk  ==  user.pk %}
     <form action="{% url 'rentapitch:cancel_booking' info.pk %}">
         <a onclick="return confirm('Are you sure you want to delete this?')">  <input type="submit" value="Delete"></a>
     </form>
     <form action="{% url 'rentapitch:edit_booking' info.pk %}">
         <input type="submit" value="Edit">
     </form>
+    {% endif %}
+    {% endfor %}
     {% endfor %}
     </div>
     </div>
