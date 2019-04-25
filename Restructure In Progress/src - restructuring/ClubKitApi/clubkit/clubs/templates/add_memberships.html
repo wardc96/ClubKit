@@ -1,15 +1,16 @@
 {% extends 'club_main_page.html' %}
+{% load crispy_forms_tags %}
 {% load staticfiles %}
 {% block body_block %}
 
 {% for info in club %}
 {% if info.user.pk  ==  user.pk %}
-  <div class="AddMembership">
+  <div class="AddMembership mt-4">
       <h3>Add Membership To Club.</h3>
 <form action="{% url 'clubs:memberships' %}" method="POST">
         {% csrf_token %}
-        {{ form.as_p}}
-    <input type="submit" name="" value="Add">
+        {{ form|crispy }}
+    <input type="submit" name="" value="Add" class="btn btn-primary rounded-pill">
 </form>
 {% endif %}
       {% endfor %}

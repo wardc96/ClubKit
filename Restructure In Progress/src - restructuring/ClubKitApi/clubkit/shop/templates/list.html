@@ -13,12 +13,12 @@
 
 
 <h4>Categories</h4>
-            <ul class="list-group list-group-flush list-unstyled">
-              <li><a class="list-group-item" href="{% url 'shop:product_list' %}">All</a></li>
+            <ul class="list-group list-group-flush list-unstyled bg-light">
+              <li><a class="list-group-item bg-light" href="{% url 'shop:product_list' %}">All</a></li>
             {% for c in categories %}
 
               <li>
-                  <a class="list-group-item" href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+                  <a class="list-group-item bg-light" href="{{ c.get_absolute_url }}">{{ c.name }}</a>
               </li>
             {% endfor %}
             </ul>

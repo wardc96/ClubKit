@@ -2,38 +2,56 @@
 {% load staticfiles %}
 {% block body_block %}
 
-{% for info in club %}
+<div class="memberships mt-4">
+    <h2>Memberships We Offer</h2>
+    <p>These are the memberships we offer at this club. We offer secure online payment for each membership to ensure all players are payed up correctly for their team. Click 'Register Now' on the membership you wish to choose to be brought to the registration page.</p>
+<p>
+    {% for info in club %}
 {% if info.user.pk  ==  user.pk %}
-  <div class="AddMembership">
-      <h3>Add Membership To Club.</h3>
         <form action="{% url 'clubs:add_memberships' %}">
-            <input type="submit" name="" value="Add Membership">
+            <input type="submit" name="" value="Add Membership To Club" class="btn btn-sm btn-primary rounded-pill">
         </form>
 {% endif %}
-  </div>
- {% endfor %}
-<div class="memberships">
-    <h3>Membership Details</h3>
-    <p>
-            {% csrf_token %}
+    {% endfor %}
+</p>
+    <div class="row mt-2">
+              {% csrf_token %}
             {% for info in memberships %}
-        <li>{{ info.club_id }}</li>
-        <li>{{ info.title }}</li>
-        <li>{{ info.price }}</li>
-        <li>{{ info.description }}</li>
+  <div class="col-sm-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">{{ info.title }}
+    {% for info in club %}
+{% if info.user.pk  ==  user.pk %}
+            <div class="dropdown float-right">
+  <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  </button>
 
-        {% for id in club %}
-        {% if id.user.pk  ==  user.pk %}
-        <form action="{% url 'clubs:delete_membership' info.pk %}">
-            <a onclick="return confirm('Are you sure you want to delete this?')"><input type="submit" value="Delete"></a>
-        </form>
-        <form action="{% url 'clubs:edit_membership' info.pk %}">
-            <input type="submit" value="Edit">
-        </form>
-        {% endif %}
-        {% endfor %}
-      {% endfor %}
-    </p>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+   <form action="{% url 'clubs:delete_membership' info.pk %}">
+            <a onclick="return confirm('Are you sure you want to delete this?')"><input type="submit" value="Delete" class="dropdown-item"></a>
+   </form>
+    <form action="{% url 'clubs:edit_membership' info.pk %}">
+            <input type="submit" value="Edit" class="dropdown-item">
+    </form>
+  </div>
 </div>
+            {% endif %}
+    {% endfor %}
+        </h5>
+        <p class="card-tex">{{ info.description }}</p>
+          <p>€{{ info.price }} <a href="#" class="btn btn-sm btn-primary rounded-pill float-right">Register Now!</a></p>
+      </div>
+    </div>
+  </div>
+         {% endfor %}
+</div>
+
+
+
+</div>
+
+
 
 {% endblock %}

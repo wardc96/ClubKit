@@ -79,7 +79,7 @@
     });
     </script>
 </head>
-  <body>
+  <body class="bg-light">
         <nav class="nav navbar navbar-expand-md bg-clubkit text-white">
         <div class="container">
             <a href="{% url 'index' %}"><img class="masthead-brand" src="{% static 'clubkitlogo.png' %}" alt="Logo" style="height:60px;"></a>
@@ -157,35 +157,36 @@
         </div>
     </nav>
 
-    <div class="container">
-        <div id="calendar"></div>
-        <div class="container">
-    <h1>Book Here</h1>
-    <h3>Just fill out the form.</h3>
-    <form action="{% url 'rentapitch:pitch_rental' %}" method="POST">
+    <div class="container mt-4">
+        <h1>Rent-a-Pitch</h1>
+        <p>See our calender below for available slots and follow the link below to book your on slot on one of our pitches!</p>
+        <form action="{% url 'rentapitch:pitch_rental' %}" method="POST">
         {% csrf_token %}
         {{ form.as_p}}
-        <input type="submit" name="" value="Add">
+        <input type="submit" name="" value="Book Now!" class="btn btn-primary rounded-pill">
     </form>
-</div>
+
+
+        <div id="calendar" class="my-4"></div>
+
 
         <h3>Booking Details</h3>
         <div class="row">
-        <div class="col-md-3 border">
+        <div class="col-md-3">
         {% csrf_token %}
         {% for info in bookings %}
-        <ul>
-            <li>{{ info.club_id }}</li>
-            <li>{{ info.pitch_id }}</li>
-            <li>{{ info.rental_cost }}</li>
-            <li>{{ info.name }}</li>
-            <li>{{ info.email }}</li>
-            <li>{{ info.mobile }}</li>
-            <li>{{ info.date }}</li>
-            <li>{{ info.start_time }}</li>
-            <li>{{ info.finish_time }}</li>
-            <li>{{ info.payment_type }}</li>
-            <li>{{ info.is_cancelled }}</li>
+        <ul class="list-group">
+            <li class="list-group-item">{{ info.club_id }}</li>
+            <li class="list-group-item">{{ info.pitch_id }}</li>
+            <li class="list-group-item">{{ info.rental_cost }}</li>
+            <li class="list-group-item">{{ info.name }}</li>
+            <li class="list-group-item">{{ info.email }}</li>
+            <li class="list-group-item">{{ info.mobile }}</li>
+            <li class="list-group-item">{{ info.date }}</li>
+            <li class="list-group-item">{{ info.start_time }}</li>
+            <li class="list-group-item">{{ info.finish_time }}</li>
+            <li class="list-group-item">{{ info.payment_type }}</li>
+            <li class="list-group-item">{{ info.is_cancelled }}</li>
         </ul>
     {% for id in club %}
     {% if id.user.pk  ==  user.pk %}

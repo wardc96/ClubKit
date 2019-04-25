@@ -2,7 +2,6 @@ from django import forms
 from clubkit.clubs.models import ClubInfo, Team, Pitch, ClubPosts, ClubMemberships, ClubPackages
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
-from sorl.thumbnail import ImageField, get_thumbnail
 
 
 # Form to update/change club information

@@ -1,38 +1,46 @@
 {% extends 'schedule-base.html' %}
+{% load crispy_forms_tags %}
 {% block body_block %}
 
-<div class="container mt-3">
-    <div id='calendar'></div>
-        <br>
-        <br>
-        <br>
-    <div class="addroster">
+<h1 class="mt-2">Training Roster</h1>
+    <div id='calendar' class="my-4"></div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
      {% if club_pk  ==  user.pk %}
-        <h3>Add Roster To Club.</h3>
+<div class="addroster mt-3">
+        <h3>Add A Team To The Roster</h3>
             <form action="{% url 'roster:club_roster' %}" method="POST">
                       {% csrf_token %}
-                     {{ form.as_p}}
-                <input type="submit" name="" value="Add">
+                     {{ form|crispy }}
+                <input type="submit" name="" value="Add" class="btn btn-primary rounded-pill">
             </form>
     {% endif %}
+</div>
+    </div>
+        <div class="col-md-6">
 <div class="roster">
     <h3>Roster Details</h3>
-        <p>
-            {% csrf_token %}
+     {% csrf_token %}
             {% for id in roster %}
-            <li>{{ id.club_id }}</li>
-            <li>{{ id.pitch_id }}</li>
-            <li>{{ id.team_id }}</li>
-            <li>{{ id.date }}</li>
-            <li>{{ id.start_time }}</li>
-            <li>{{ id.finish_time }}</li>
+    <ul class="list-group">
+            <li class="list-group-item">{{ id.club_id }}</li>
+            <li class="list-group-item">{{ id.pitch_id }}</li>
+            <li class="list-group-item">{{ id.team_id }}</li>
+            <li class="list-group-item">{{ id.date }}, {{ id.start_time }} - {{ id.finish_time }}</li>
+    </ul>
            {% if club_pk  ==  user.pk %}
-        <form action="{% url 'roster:delete_roster' id.pk %}">
-            <a onclick="return confirm('Are you sure you want to delete this?')"><input type="submit" value="Delete"></a>
+    <ul class="list-inline">
+       <li class="list-inline-item"> <form action="{% url 'roster:delete_roster' id.pk %}">
+            <a onclick="return confirm('Are you sure you want to delete this?')"><input type="submit" value="Delete"  class="btn btn-primary rounded-pill"></a>
         </form>
-        <form action="{% url 'roster:edit_roster' id.pk %}">
-            <input type="submit" value="Edit">
+       </li>
+
+       <li class="list-inline-item"> <form action="{% url 'roster:edit_roster' id.pk %}">
+         <input type="submit" value="Edit"  class="btn btn-primary rounded-pill">
         </form>
+       </li>
+    </ul>
         {% endif %}
         {% endfor %}
         </p>

@@ -65,7 +65,7 @@
      {
             
               title:'{{ reoccur.team_id }}',
-              description:'Description TEST add tag into code',
+              description:'{{ reoccur.team_id }}, {{ reoccur.pitch_id }}, {{ reoccur.start_time|date:"G:i" }} - {{ reoccur.finish_time|date:"G:i" }} ',
               start: '{{ reoccur.start_time|date:"G:i:s" }}',
               end  : '{{ reoccur.finish_time|date:"G:i:s" }}',
               dow: [ 2, 4 ] // Repeat monday and thursday
@@ -89,7 +89,7 @@
     });
     </script>
 </head>
-  <body>
+  <body class="bg-light">
     <nav class="nav navbar navbar-expand-md bg-clubkit text-white">
         <div class="container">
             <a href="{% url 'index' %}"><img class="masthead-brand" src="{% static 'clubkitlogo.png' %}" alt="Logo" style="height:60px;"></a>

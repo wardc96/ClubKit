@@ -1,11 +1,12 @@
 {% extends 'schedule-base.html' %}
+{% load crispy_forms_tags %}
 {% block body_block %}
 
 <h3>Edit Booking</h3>
 <div class="container">
     <form method="post">
         {% csrf_token %}
-        {{ form.club_id}}
+        {{ form|crispy }}
         <button type="submit">Submit</button>
     </form>
 </div>
