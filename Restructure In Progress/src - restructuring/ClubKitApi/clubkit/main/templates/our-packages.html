@@ -1,17 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 
-<H3> Our Packages</H3>
-<br><br><br><br>
-    {% for info in packages %}
-    <div class="card my-4 p-4 shadow">
-      <h5>{{ info.title }}</h5>
-          <p>Description: {{ info.description }}</p>
-          <p>Price:{{ info.price }}</p>
-         <form action="{% url 'main:buy_packages' %}">
-            <input type="submit" value="Buy Now">
-         </form>
-  <br><br><br><br>
- </div>
-{% endfor %}
+<h3> Our Packages</h3>
+<hr>
+    <div class="row mt-2">
+              {% csrf_token %}
+            {% for info in packages %}
+  <div class="col-sm-6">
+    <div class="card shadow-sm mb-3">
+      <div class="card-body">
+        <h5 class="card-title">{{ info.title }}</h5>
+        <p class="card-tex">{{ info.description }}</p>
+          <p>€{{ info.price }} <form action="{% url 'main:buy_packages' %}">
+            <input type="submit" value="Buy Now" class="btn btn-sm btn-primary rounded-pill float-right">
+         </form></p>
+      </div>
+    </div>
+  </div>
+         {% endfor %}
+</div>
+
 {% endblock %}
