@@ -52,16 +52,14 @@
         {% csrf_token %}
 
             <ul class="list-group list-group-flush">
-                <form>
-  <div class="input-group">
+           {% for info in club %}
+      {% if info.user.pk  ==  user.pk %}
+    <form action="{% url 'clubs:club_post' %}">
+        <input type="submit" value="Add New Post" class="btn btn-primary rounded-pill  mb-2"/>
+    </form>
+    {% endif %}
+                {% endfor %}
 
-   <input type="text" class="form-control" placeholder="Your Message..." aria-label="Club Post" aria-describedby="Club Post">
-  <div class="input-group-prepend">
-
-  </div>
-      <button type="submit" class="btn btn-primary rounded-pill mb-2 ml-2">Post!</button>
-  </div>
-                </form>
             {% for info in club_posts %}
             <li class="list-group-item">
             <div class="row my-1" style="">
@@ -72,6 +70,23 @@
             </div>
                 <div class="col-sm-9">
             <p class="font-weight-bold">{{ info.title }}</p>
+
+  <i class="fas fa-angle-down float-right" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  </i>
+
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+   <form action="{% url 'clubs:delete_post' info.pk %}">
+            <a onclick="return confirm('Are you sure you want to delete this?')"><input type="submit" value="Delete" class="dropdown-item"></a>
+        </form>
+    <form action="{% url 'clubs:edit_post' info.pk %}">
+            <input type="submit" value="Edit" class="dropdown-item">
+        </form>
+  </div>
+
+
+
             <p>{{ info.text }}</p>
             {% if info.photo %}
             <img src="{{ info.photo.url }}" height="" width=""/>
