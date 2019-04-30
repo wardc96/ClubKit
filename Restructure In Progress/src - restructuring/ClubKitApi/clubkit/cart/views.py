@@ -35,16 +35,16 @@ def cart_detail(request):
 
 
 @require_POST
-def cart_add_package(request, package_id):
+def cart_add_package(request, product_id):
     cart = CartPackage(request)
-    package = get_object_or_404(Packages, id=package_id)
-    cart.add(package=package)
+    product = get_object_or_404(Packages, id=product_id)
+    cart.add(product=product)
     return redirect('cart:cart_detail_package')
 
 
-def cart_remove_package(request, package_id):
+def cart_remove_package(request, product_id):
     cart = CartPackage(request)
-    package = get_object_or_404(Packages, id=package_id)
+    product = get_object_or_404(Packages, id=product_id)
     cart.remove(package)
     return redirect('cart:cart_add_package')
 

@@ -62,27 +62,27 @@ class CartPackage(object):
             cart = self.session[settings.CART_PACKAGE_SESSION_ID] = {}
         self.cart = cart
 
-    def add(self, package):
-        package_id = str(package.id)
-        if package_id not in self.cart:
-            self.cart[package_id] = {'price': str(package.price)}
+    def add(self, product):
+        product_id = str(product.id)
+        if product_id not in self.cart:
+            self.cart[product_id] = {'price': str(product.price)}
         self.save()
 
     def save(self):
         self.session[settings.CART_PACKAGE_SESSION_ID] = self.cart
         self.session.modified = True
 
-    def remove(self, package):
-        package_id = str(package.id)
-        if package_id in self.cart:
-            del self.cart[package_id]
+    def remove(self, product):
+        product_id = str(product.id)
+        if product_id in self.cart:
+            del self.cart[product_id]
             self.save()
 
     def __iter__(self):
-        package_ids = self.cart.keys()
-        packages = Packages.objects.filter(id__in=package_ids)
-        for package in packages:
-            self.cart[str(package.id)]['package'] = package
+        product_ids = self.cart.keys()
+        products = Packages.objects.filter(id__in=product_ids)
+        for product in products:
+            self.cart[str(product.id)]['product'] = product
 
         for item in self.cart.values():
             item['price'] = (item['price'])
