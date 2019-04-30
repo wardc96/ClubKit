@@ -5,6 +5,7 @@
 <h1 class="mt-2">Training Roster</h1>
 <hr>
     <div id='calendar' class="my-4"></div>
+<hr>
 
 <div class="row mt-4">
     <div class="col-md-6">
@@ -20,29 +21,35 @@
 </div>
     </div>
         <div class="col-md-6">
-<div class="roster">
+<div class="roster mt-3">
     <h3>Roster Details</h3>
      {% csrf_token %}
             {% for id in roster %}
     <ul class="list-group">
-            <li class="list-group-item">{{ id.club_id }}</li>
+            <li class="list-group-item">{{ id.club_id }}
+                {% if club_pk  ==  user.pk %}
+            <div class="dropown float-right">
+  <i class="dropdown-togge fas fa-angle-down" type="buttn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  </i>
+
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+   <form action="{% url 'roster:delete_roster' id.pk %}">
+            <a onclick="return confirm('Are you sure you want to delete this?')"><input type="submit" value="Delete"  class="dropdown-item"></a>
+        </form>
+    <form action="{% url 'roster:edit_roster' id.pk %}">
+         <input type="submit" value="Edit"  class="dropdown-item">
+        </form>
+  </div>
+</div>
+{% endif %}
+            </li>
             <li class="list-group-item">{{ id.pitch_id }}</li>
             <li class="list-group-item">{{ id.team_id }}</li>
             <li class="list-group-item">{{ id.date }}, {{ id.start_time }} - {{ id.finish_time }}</li>
     </ul>
-           {% if club_pk  ==  user.pk %}
-    <ul class="list-inline">
-       <li class="list-inline-item"> <form action="{% url 'roster:delete_roster' id.pk %}">
-            <a onclick="return confirm('Are you sure you want to delete this?')"><input type="submit" value="Delete"  class="btn btn-primary rounded-pill"></a>
-        </form>
-       </li>
 
-       <li class="list-inline-item"> <form action="{% url 'roster:edit_roster' id.pk %}">
-         <input type="submit" value="Edit"  class="btn btn-primary rounded-pill">
-        </form>
-       </li>
-    </ul>
-        {% endif %}
         {% endfor %}
         </p>
     </div>

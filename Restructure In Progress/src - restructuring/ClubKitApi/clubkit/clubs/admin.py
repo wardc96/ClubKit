@@ -1,5 +1,5 @@
 from django.contrib import admin
-from clubkit.clubs.models import ClubInfo, Team, Pitch, ClubPosts, ClubPackages, ClubMemberships
+from clubkit.clubs.models import ClubInfo, Team, Pitch, ClubPosts, ClubPackages, ClubMemberships, Packages
 
 
 # Register your models here.
@@ -9,3 +9,4 @@ admin.site.register(Pitch)
 admin.site.register(ClubPosts)
 admin.site.register(ClubPackages)
 admin.site.register(ClubMemberships)
+admin.site.register(Packages)

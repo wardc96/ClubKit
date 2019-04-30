@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from clubkit.clubs.forms import ClubInfoForm, TeamForm, PitchForm, ClubPostForm, MembershipsForm
-from clubkit.clubs.models import ClubInfo, Team, Pitch, ClubPosts, ClubMemberships
+from clubkit.clubs.models import ClubInfo, Team, Pitch, ClubPosts, ClubMemberships, Packages
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from clubkit.cart.forms import CartAddProductForm
 
 
 # Method to render club home page using pk to create session key
@@ -377,4 +378,29 @@ def edit_membership(request, pk):
                                                         'instance': instance,
                                                         'club': club})
 
+
+def package_list(request):
+    club_pk = request.session.get('pk')
+    club = ClubInfo.objects.filter(pk=club_pk)
+    products = Packages.objects.filter(paid=False)
+    context = {
+        'products': products,
+        'club_pk': club_pk,
+        'club': club
+    }
+    return render(request, 'package-list.html', context)
+
+
+def package_detail(request, id, slug):
+    club_pk = request.session.get('pk')
+    club = ClubInfo.objects.filter(pk=club_pk)
+    product = get_object_or_404(Packages, id=id, slug=slug, paid=False)
+    cart_product_form = CartAddProductForm()
+    context = {
+        'product': product,
+        'cart_product_form': cart_product_form,
+        'club_pk': club_pk,
+        'club': club
+    }
+    return render(request, 'package-detail.html', context)
 

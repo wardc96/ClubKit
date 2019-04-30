@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
 from clubkit.shop.models import Product
 from clubkit.clubs.models import ClubInfo
-from .cart import Cart
+from .cart import Cart, CartPackage
 from .forms import CartAddProductForm
+from clubkit.clubs.models import Packages
 
 
 @require_POST
@@ -31,5 +32,26 @@ def cart_detail(request):
         item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'], 'update': True})
     return render(request, 'cart/details.html', {'cart': cart,
                                                  'club_pk': club_pk})
+
+
+@require_POST
+def cart_add_package(request, package_id):
+    cart = CartPackage(request)
+    package = get_object_or_404(Packages, id=package_id)
+    cart.add(package=package)
+    return redirect('cart:cart_detail_package')
+
+
+def cart_remove_package(request, package_id):
+    cart = CartPackage(request)
+    package = get_object_or_404(Packages, id=package_id)
+    cart.remove(package)
+    return redirect('cart:cart_add_package')
+
+
+def cart_detail_package(request):
+    cart = CartPackage(request)
+    return render(request, 'cart/package-details.html', {'cart': cart,
+                                                 })
 
 

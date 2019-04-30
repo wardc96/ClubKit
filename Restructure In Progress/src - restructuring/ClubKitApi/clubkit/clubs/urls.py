@@ -23,4 +23,7 @@ urlpatterns = [
     path('add_memberships/', views.add_memberships, name='add_memberships'),
     path('delete_membership/<int:pk>/', views.delete_membership, name='delete_membership'),
     path('edit_membership/<int:pk>/', views.edit_membership, name='edit_membership'),
+    path('packages/', views.package_list, name='product_list'),
+    path('packages/<category_slug>/', views.package_list, name='product_list_by_category'),
+    path('packages/<id>/<slug>/', views.package_detail, name='product_detail'),
      ]
