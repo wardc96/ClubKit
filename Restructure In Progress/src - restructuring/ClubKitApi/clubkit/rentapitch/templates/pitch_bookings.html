@@ -49,12 +49,6 @@
 
         events: [ // put the array in the `events` property
 
-            {
-              title  : 'event2',
-              description : 'Event Description',
-              start  : '2019-03-08',
-              end    : '2019-03-08'
-            },
             {% for info in bookings %}
                     {
                     {% if user.is_authenticated %}
