@@ -58,18 +58,14 @@
         },
 
         events: [ // put the array in the `events` property
-            {
-              title  : 'event1',
-              start  : '2019-24-02'
-            },
+
            {% for reoccur in reoccuring_event %}
      {
-            
               title:'{{ reoccur.team_id }}',
               description:'{{ reoccur.team_id }}, {{ reoccur.pitch_id }}, {{ reoccur.start_time|date:"G:i" }} - {{ reoccur.finish_time|date:"G:i" }} ',
               start: '{{ reoccur.start_time|date:"G:i:s" }}',
               end  : '{{ reoccur.finish_time|date:"G:i:s" }}',
-              dow: [ 2, 4 ] // Repeat monday and thursday
+              dow: [ {{ reoccur.reoccuring_day }} ] // Repeat monday and thursday
     },
                {% endfor %}
             
@@ -77,11 +73,14 @@
             {% for i in roster %}
                     {
                         title  : '{{ i.team_id }}',
+                        description : '{{ i.team_id }}, {{ i.pitch_id }}, {{ i.start_time|date:"G:i" }} - {{ i.finish_time|date:"G:i" }} ',
                         start  : '{{ i.date|date:"Y-m-d" }}T{{ i.start_time|date:"G:i:s" }}',
                         end  : '{{ i.date|date:"Y-m-d" }}T{{ i.finish_time|date:"G:i:s" }}',
 
                     },
             {% endfor %}
+
+
 
           ],
 

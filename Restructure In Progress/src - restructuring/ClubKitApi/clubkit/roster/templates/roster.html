@@ -14,7 +14,19 @@
         <h3>Add A Team To The Roster</h3>
             <form action="{% url 'roster:club_roster' %}" method="POST">
                       {% csrf_token %}
-                     {{ form|crispy }}
+                {{ form.pitch_id|as_crispy_field }}
+                {{ form.team_id|as_crispy_field }}
+                     {{ form.date|as_crispy_field }}
+                {{ form.start_time|as_crispy_field }}
+                {{ form.finish_time|as_crispy_field }}
+
+
+            {{ form.reoccuring_event|as_crispy_field }}
+
+
+                    {{ form.reoccuring_day|as_crispy_field }}
+
+
                 <input type="submit" name="" value="Add" class="btn btn-primary rounded-pill">
             </form>
     {% endif %}
@@ -48,6 +60,7 @@
             <li class="list-group-item">{{ id.pitch_id }}</li>
             <li class="list-group-item">{{ id.team_id }}</li>
             <li class="list-group-item">{{ id.date }}, {{ id.start_time }} - {{ id.finish_time }}</li>
+            <li class="list-group-item">{{ id.day }}</li>
     </ul>
 
         {% endfor %}

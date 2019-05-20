@@ -7,7 +7,7 @@
     <div class="col-lg-3 col-md-4 col-sm-6 col-12  mt-4">
       <a href="{% url 'clubs:club_home_with_pk' pk=club.pk %}">
       <div class="card shadow-sm hvr-float-shadow">
-        <img src="{% if club.club_logo %}{{ club.club_logo.url }}{% else %}{% static 'no-image.png' %}{% endif %}" class="img-fluid " alt="...">
+        <img src="{% if club.club_logo %}{{ club.club_logo.url }}{% else %}{% static 'no-image.png' %}{% endif %}" class="img-fluid card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{ club.club_name }}</h5>
           <p class="">{{ club.club_county }}, {{ club.club_country }}</p>
