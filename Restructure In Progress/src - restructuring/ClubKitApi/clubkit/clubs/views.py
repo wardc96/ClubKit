@@ -382,15 +382,16 @@ def edit_membership(request, pk):
 def package_list(request):
     club_pk = request.session.get('pk')
     club = ClubInfo.objects.filter(pk=club_pk)
-    products = Packages.objects.filter(paid=False)
+    packages = Packages.objects.filter(paid=False)
     context = {
-        'products': products,
+        'packages': packages,
         'club_pk': club_pk,
         'club': club
     }
     return render(request, 'package-list.html', context)
 
 
+'''
 def package_detail(request, id, slug):
     club_pk = request.session.get('pk')
     club = ClubInfo.objects.filter(pk=club_pk)
@@ -403,4 +404,4 @@ def package_detail(request, id, slug):
         'club': club
     }
     return render(request, 'package-detail.html', context)
-
+'''

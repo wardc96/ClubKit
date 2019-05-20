@@ -99,6 +99,11 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="{% url 'clubs:memberships' %}">Memberships</a>
                   <a class="dropdown-item" href="{% url 'player_register:player_register' %}">Registration</a>
+                    {% for info in club %}
+                    {% if info.user.pk  ==  user.pk %}
+                          <a class="dropdown-item" href="{% url 'player_register:members' %}">Members</a>
+                    {% endif %}
+                    {% endfor %}
                 </div>
             </li>
             {% for info in club %}

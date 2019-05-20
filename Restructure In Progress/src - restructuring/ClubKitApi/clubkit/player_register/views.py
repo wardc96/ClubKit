@@ -3,6 +3,8 @@ from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from clubkit.clubs.models import ClubInfo, ClubMemberships
+from clubkit.player_register.models import Player
+from django.shortcuts import render, redirect
 
 
 # Class to handle membership registration information
@@ -34,3 +36,59 @@ class RegisterPlayer(APIView):
         if form.is_valid():
             form.save()
             return Response(template_name='player_registration_complete.html')
+
+
+# Class to handle membership registration information
+class Members(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'members.html'
+
+    # Get method membership information and registration from
+    def get(self, request):
+        club_pk = request.session.get('pk')
+        club = ClubInfo.objects.filter(pk=club_pk)
+        club_info = ClubInfo.objects.filter(pk=club_pk).first()
+        inital_data = {
+            'club_id': club_info,
+        }
+        form = PlayerRegistrationForm(initial=inital_data)
+        form.fields['membership_title'].queryset = ClubMemberships.objects.filter(club_id=club_pk)
+        members = Player.objects.filter(club_id=club_info)
+        return Response({'club_pk': club_pk,
+                         'club': club,
+                         'members': members,
+                         'form': form
+                         })
+
+    # Post method to add roster information
+    def post(self, request):
+        form = PlayerRegistrationForm(data=request.data)
+        if form.is_valid():
+            form.save()
+            return redirect('player_register:members')
+
+
+# Method to delete member
+def delete_member(request, pk):
+    member = Player.objects.filter(pk=pk)
+    member.delete()
+    return redirect('player_register:members')
+
+
+# Method to edit roster information
+def edit_member(request, pk):
+    club_pk = request.session.get('pk')
+    club = ClubInfo.objects.filter(pk=club_pk)
+    instance = Player.objects.filter(pk=pk).first()
+    if request.method == 'POST':
+        form = PlayerRegistrationForm(request.POST, instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect('player_register:members')
+        else:
+            return redirect('player_register:members')
+    else:
+        form = PlayerRegistrationForm(instance=instance)
+        return render(request, 'edit_member.html', {'form': form,
+                                                    'club': club,
+                                                    'instance': instance})

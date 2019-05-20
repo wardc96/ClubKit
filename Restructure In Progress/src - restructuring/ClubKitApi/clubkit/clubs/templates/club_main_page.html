@@ -9,16 +9,22 @@
           <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
           <link rel="stylesheet" href="{% static 'styles.css' %}">
           <link rel='stylesheet' href="{% static 'fullcalendar/fullcalendar.css' %}"/>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
           <script src="{% static 'fullcalendar/lib/jquery.min.js' %}"></script>
           <script src="{% static 'fullcalendar/lib/moment.min.js' %}"></script>
           <script src="{% static 'fullcalendar/fullcalendar.js' %}"></script>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
           <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+          <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
           <script>
               $( function() {
                 $( "#datepicker" ).datepicker({
-              dateFormat: "yy-mm-dd"
+                dateFormat: "yy-mm-dd",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "1930:2019"
+
             });
               } );
           </script>
@@ -51,6 +57,11 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="{% url 'clubs:memberships' %}">Memberships</a>
                   <a class="dropdown-item" href="{% url 'player_register:player_register' %}">Registration</a>
+            {% for info in club %}
+            {% if info.user.pk  ==  user.pk %}
+                  <a class="dropdown-item" href="{% url 'player_register:members' %}">Members</a>
+            {% endif %}
+            {% endfor %}
                 </div>
             </li>
             {% for info in club %}

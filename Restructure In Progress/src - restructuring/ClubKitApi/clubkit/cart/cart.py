@@ -55,6 +55,7 @@ class Cart(object):
 
 
 class CartPackage(object):
+
     def __init__(self, request):
         self.session = request.session
         cart = self.session.get(settings.CART_PACKAGE_SESSION_ID)
@@ -80,9 +81,9 @@ class CartPackage(object):
 
     def __iter__(self):
         product_ids = self.cart.keys()
-        products = Packages.objects.filter(id__in=product_ids)
-        for product in products:
-            self.cart[str(product.id)]['product'] = product
+        packages = Packages.objects.filter(id__in=product_ids)
+        for package in packages:
+            self.cart[str(package.id)]['name'] = package
 
         for item in self.cart.values():
             item['price'] = (item['price'])

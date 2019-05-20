@@ -45,13 +45,13 @@ def cart_add_package(request, product_id):
 def cart_remove_package(request, product_id):
     cart = CartPackage(request)
     product = get_object_or_404(Packages, id=product_id)
-    cart.remove(package)
+    cart.remove(product)
     return redirect('cart:cart_add_package')
 
 
 def cart_detail_package(request):
     cart = CartPackage(request)
-    return render(request, 'cart/package-details.html', {'cart': cart,
-                                                 })
+    return render(request, 'club/package-detail.html', {'cart': cart,
+                                                         })
 
 

@@ -13,7 +13,7 @@ class PlayerRegistrationForm(forms.ModelForm):
             'dob': 'Date of Birth'
         }
         widgets = {
-            'dob': DateInput(attrs={'type': 'date'})
+            'dob': forms.DateInput(attrs={'id': 'datepicker'})
         }
 
     def __init__(self, *args, **kwargs):
