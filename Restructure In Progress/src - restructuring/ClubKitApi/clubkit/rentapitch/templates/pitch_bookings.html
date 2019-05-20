@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link rel='stylesheet' href="{% static 'fullcalendar/fullcalendar.css' %}"/>
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <script src="{% static 'fullcalendar/lib/jquery.min.js' %}"></script>
     <script src="{% static 'fullcalendar/lib/moment.min.js' %}"></script>
     <script src="{% static 'fullcalendar/fullcalendar.js' %}"></script>
@@ -175,28 +176,30 @@
         {% csrf_token %}
         {% for info in bookings %}
         <ul class="list-group">
-            <li class="list-group-item">{{ info.club_id }}</li>
-            <li class="list-group-item">{{ info.pitch_id }}</li>
-            <li class="list-group-item">{{ info.rental_cost }}</li>
-            <li class="list-group-item">{{ info.name }}</li>
-            <li class="list-group-item">{{ info.email }}</li>
-            <li class="list-group-item">{{ info.mobile }}</li>
-            <li class="list-group-item">{{ info.date }}</li>
-            <li class="list-group-item">{{ info.start_time }}</li>
-            <li class="list-group-item">{{ info.finish_time }}</li>
-            <li class="list-group-item">{{ info.payment_type }}</li>
-            <li class="list-group-item">{{ info.is_cancelled }}</li>
-        </ul>
-    {% for id in club %}
-    {% if id.user.pk  ==  user.pk %}
-    <form action="{% url 'rentapitch:cancel_booking' info.pk %}">
-        <a onclick="return confirm('Are you sure you want to delete this?')">  <input type="submit" value="Delete"></a>
-    </form>
+            <li class="list-group-item">{{ info.club_id }}  {% if club_pk  ==  user.pk %}
+            <div class="dropown float-right">
+  <i class="dropdown-togge fas fa-angle-down" type="buttn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  </i>
+
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+   <form action="{% url 'rentapitch:cancel_booking' info.pk %}">
+            <a onclick="return confirm('Are you sure you want to delete this?')"><input type="submit" value="Delete"  class="dropdown-item"></a>
+        </form>
     <form action="{% url 'rentapitch:edit_booking' info.pk %}">
-        <input type="submit" value="Edit">
-    </form>
-    {% endif %}
-    {% endfor %}
+         <input type="submit" value="Edit"  class="dropdown-item">
+        </form>
+  </div>
+</div>
+{% endif %}</li>
+            <li class="list-group-item">{{ info.pitch_id }}</li>
+            <li class="list-group-item">€{{ info.rental_cost }}</li>
+            <li class="list-group-item">{{ info.name }} - {{ info.email }}</li>
+            <li class="list-group-item">{{ info.mobile }}</li>
+            <li class="list-group-item">{{ info.date }} {{ info.start_time }} - {{ info.finish_time }}</li>
+        </ul>
+
     {% endfor %}
     </div>
     </div>

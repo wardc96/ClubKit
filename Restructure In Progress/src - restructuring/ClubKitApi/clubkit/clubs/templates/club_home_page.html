@@ -60,7 +60,7 @@
     {% endif %}
                 {% endfor %}
 
-            {% for info in club_posts %}
+            {% for info in club_posts reversed %}
             <li class="list-group-item">
             <div class="row my-1" style="">
             <div class="col-sm-3">
@@ -84,7 +84,7 @@
 
             <p>{{ info.text }}</p>
             {% if info.photo %}
-            <img src="{{ info.photo.url }}" height="" width=""/>
+            <img src="{{ info.photo.url }}" class="img-fluid" height="" width=""/>
             {% else %} {% endif %}
                 </div>
             </div>

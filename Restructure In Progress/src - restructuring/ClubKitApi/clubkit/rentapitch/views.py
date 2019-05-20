@@ -71,7 +71,7 @@ def edit_booking(request, pk):
             return redirect('rentapitch:pitch_bookings')
     else:
         form = RentalForm(instance=instance)
-        return render(request, 'edit_post.html', {'form': form,
+        return render(request, 'edit_booking.html', {'form': form,
                                                   'instance': instance,
                                                   'club': club})
 
