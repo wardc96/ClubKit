@@ -12,7 +12,7 @@ class ProductForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ProductForm, self).__init__(*args, **kwargs)
-        # self.fields['club_id'].widget = forms.HiddenInput()
+        self.fields['club_id'].widget = forms.HiddenInput()
 
 
 class CategoryForm(forms.ModelForm):
@@ -23,4 +23,4 @@ class CategoryForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(CategoryForm, self).__init__(*args, **kwargs)
-        # self.fields['club_id'].widget = forms.HiddenInput()
+        self.fields['club_id'].widget = forms.HiddenInput()

@@ -1,18 +1,20 @@
 {% extends 'club_main_page.html' %}
+{% load crispy_forms_tags %}
 
 {% block head %}
 <title>Edit Product</title>
 {% endblock %}
 <h3>Edit Product</h3>
 {% block body_block %}
-
+<div class="row">
+    <div class="col-md-6">
 <div class="container">
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p}}
+        {{ form|crispy }}
         <button type="submit">Submit</button>
     </form>
-
 </div>
-
+</div>
+</div>
 {% endblock %}

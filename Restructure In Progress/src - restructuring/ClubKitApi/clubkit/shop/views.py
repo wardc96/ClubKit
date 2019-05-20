@@ -65,7 +65,11 @@ class ClubShopCategories(APIView):
     def get(self, request):
         club_pk = request.session.get('pk')
         club = ClubInfo.objects.filter(pk=club_pk)
-        form = CategoryForm()
+        club_info = ClubInfo.objects.filter(user=request.user).first()
+        inital_data = {
+            'club_id': club_info,
+        }
+        form = CategoryForm(initial=inital_data)
         # user = ClubInfo.objects.filter(user=request.user).first()
         category_types = Category.objects.filter(club_id=club_pk)
         return Response({'form': form,
@@ -83,7 +87,7 @@ class ClubShopCategories(APIView):
             return redirect('shop:club_shop_categories')
         else:
             return Response({'form': form,
-                             'category_types': category_types
+                             'category_types': category_types,
                              })
 
 
@@ -119,7 +123,12 @@ class ClubShopProducts(APIView):
     def get(self, request):
         club_pk = request.session.get('pk')
         club = ClubInfo.objects.filter(pk=club_pk)
-        form = ProductForm()
+        club_info = ClubInfo.objects.filter(user=request.user).first()
+        inital_data = {
+            'club_id': club_info,
+        }
+        form = ProductForm(initial=inital_data)
+        form.fields['category'].queryset = Category.objects.filter(club_id=club_pk)
         # user = ClubInfo.objects.filter(user=request.user).first()
         products = Product.objects.filter(club_id=club_pk)
         return Response({'form': form,
@@ -155,16 +164,36 @@ def edit_product(request, pk):
         form = ProductForm(request.POST, instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('shop:product_list')
+            return redirect('shop:club_shop_products')
         else:
             return redirect('shop:club_shop_products')
     else:
         form = ProductForm(instance=instance)
+        form.fields['category'].queryset = Category.objects.filter(club_id=club_pk)
         return render(request, 'edit_products.html', {'form': form,
                                                       'instance': instance,
                                                       'club': club
                                                       })
 
+
+
+def edit_category(request, pk):
+    club_pk = request.session.get('pk')
+    club = ClubInfo.objects.filter(pk=club_pk)
+    instance = Category.objects.filter(pk=pk).first()
+    if request.method == 'POST':
+        form = CategoryForm(request.POST, instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect('shop:club_shop_categories')
+        else:
+            return redirect('shop:club_shop_categories')
+    else:
+        form = CategoryForm(instance=instance)
+        return render(request, 'edit_category.html', {'form': form,
+                                                      'instance': instance,
+                                                      'club': club
+                                                      })
 
 '''
 def add_product(request):

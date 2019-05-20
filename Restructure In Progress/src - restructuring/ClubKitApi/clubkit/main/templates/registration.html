@@ -1,21 +1,36 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
+
 {% block content %}
-  <div class="container">
-    <div class="registration">
+<div class="row justify-content-between">
+
+
       {% if registered %}
         <h1>Thank you for registering!</h1>
       {% else %}
+        <div class="col-md-6">
         <h1>Register Here</h1>
             <h3>Just fill out the form.</h3>
                 <form enctype="multipart/form-data" method="POST">
                           {% csrf_token %}
                     <h4>Personal Details </h4>
-                          {{ user_form.as_p }}
+                          {{ user_form|crispy }}
                     <h4>Club Details</h4>
-                          {{ profile_form.as_p }}
-                          <input type="submit" name="" value="Register">
+                          {{ profile_form|crispy }}
+                          <input type="submit" class='btn btn-primary rounded-pill' name="" value="Register">
                 </form>
       {% endif %}
+        </div>
+ <div class="col-md-5 mt-5 float-right">
+     <div class="card mt-4 sticky-top shadow" style="sticky-top:top: 2.5em;">
+      <p class="card-body pt-0">
+        <h5 class="card-title text-center pt-0">Already Have An Account?</h5>
+          <p class="text-center"> <a href="#" class="btn btn-primary btn-lg rounded-pill">Sign-In</a></p>
+      </div>
     </div>
-  </div>
+
+
+ </div>
+
+</div>
 {% endblock %}
