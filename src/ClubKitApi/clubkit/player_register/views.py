@@ -18,13 +18,18 @@ class RegisterPlayer(APIView):
         club = ClubInfo.objects.filter(pk=club_pk)
         club_info = ClubInfo.objects.filter(pk=club_pk).first()
         club_memberships = ClubMemberships.objects.filter(club_id=club_info)
+        # membership_id = ClubMemberships.objects.filter(title=club_memberships)
+        # price = ClubMemberships.objects.filter(title=membership_id).values('price')
         inital_data = {
             'club_id': club_info,
             'membership_title': club_memberships,
-            'club_pk': club_pk
+            'club_pk': club_pk,
+            # 'price': price
         }
         form = PlayerRegistrationForm(initial=inital_data)
+        # membership_id = form.fields['membership_title']
         form.fields['membership_title'].queryset = ClubMemberships.objects.filter(club_id=club_pk)
+        # form.fields['price'].queryset = ClubMemberships.objects.numberfilter(title=membership_id).values('price')
         return Response({'form': form,
                          'club_pk': club_pk,
                          'club': club

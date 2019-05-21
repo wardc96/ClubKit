@@ -1,0 +1,29 @@
+{% extends 'club_main_page.html' %}
+{% load staticfiles %}
+{% block body_block %}
+
+
+<div class="container">
+<div class="row">
+
+{% csrf_token %}
+        {% for details in order %}
+             {% for item in items %}
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12  mt-4">
+
+    <p class="card-text text-dark">
+        <ul class="list-unstyled">
+      <li><b>First Name:</b> {{ details.first_name }}</li>
+      <li><b>Last Name:</b> {{ details.last_name }}</li>
+        <li><b>Product:</b> {{ item.product }}</li>
+
+  </ul>
+  </div>
+</div>
+</div>
+
+{% endfor %}
+{% endfor %}
+</div>
+</div>
+{% endblock %}

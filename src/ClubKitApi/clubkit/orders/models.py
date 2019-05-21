@@ -1,8 +1,10 @@
 from django.db import models
 from clubkit.shop.models import Product
+from clubkit.clubs.models import ClubInfo
 
 
 class Order(models.Model):
+    club_id = models.ForeignKey(ClubInfo, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=60)
     last_name = models.CharField(max_length=60)
     email = models.EmailField()

@@ -72,8 +72,8 @@ def edit_booking(request, pk):
     else:
         form = RentalForm(instance=instance)
         return render(request, 'edit_booking.html', {'form': form,
-                                                  'instance': instance,
-                                                  'club': club})
+                                                     'instance': instance,
+                                                     'club': club})
 
 
 

@@ -4,6 +4,11 @@ from .models import OrderItem
 from .forms import OrderCreateForm
 from .tasks import order_created
 from clubkit.cart.cart import Cart
+from clubkit.clubs.models import Pitch, ClubInfo
+from rest_framework.renderers import TemplateHTMLRenderer
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from django.shortcuts import render, redirect
 from clubkit.clubs.models import ClubInfo
 
 
@@ -37,10 +42,13 @@ def order_create(request):
             return redirect(reverse('payment:process'))
     else:
         club_pk = request.session.get('pk')
+        inital_data = {
+            'club_id': club_pk
+        }
+        form = OrderCreateForm(initial=inital_data)
         club = ClubInfo.objects.filter(pk=club_pk)
         form = OrderCreateForm()
     return render(request, 'orders/order/create.html', {'form': form,
-                                                        'club': club,
                                                         })
 
 
@@ -74,7 +82,26 @@ def order_create_package(request):
             return redirect(reverse('payment:process'))
     else:
         club_pk = request.session.get('pk')
-        form = OrderCreateForm()
+        inital_data = {
+            'club_id': club_pk
+        }
+        form = OrderCreateForm(initial=inital_data)
     return render(request, 'orders/order/package-create.html', {'form': form,
                                                         })
+
+
+class ClubOrders(APIView):
+    renderer_classes = [TemplateHTMLRenderer]
+    template_name = 'orders/order/club-orders.html'
+
+    def get(self, request):
+        club_pk = request.session.get('pk')
+        club = ClubInfo.objects.filter(pk=club_pk)
+        order = Order.objects.filter(club_id=club_pk)
+        items = OrderItem.objects.get(order=order)
+        return Response({'order': order,
+                         'club_pk': club_pk,
+                         'club': club,
+                         'items': items
+                         })
 
