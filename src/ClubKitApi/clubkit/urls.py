@@ -13,35 +13,37 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.conf.urls import include, url
 from django.contrib import admin
 from django.urls import path
-from clubkit.api import views
-from django.contrib.auth import views as auth_views
+from clubkit.main import views
+from django.conf import settings
+from django.conf.urls.static import static
+from clubkit import main
+from django.conf.urls.static import static
 
 
-# router = routers.DefaultRouter()
-# router.register(r'users', views.UserViewSet)
 
-# Wire up our API using automatic URL routing.
-# Additionally, we include login URLs for the browsable API.
 urlpatterns = [
+    url('admin/', admin.site.urls),
 
-    path('admin/', admin.site.urls),
+    path('cart/', include('clubkit.cart.urls')),
+    path('orders/', include('clubkit.orders.urls')),
+    url(r'^paypal/', include('paypal.standard.ipn.urls')),
+    url(r'^payment/', include('clubkit.payment.urls', namespace='payment')),
+    url(r'^shop/', include('clubkit.shop.urls'), name='shop'),
     url(r'^$', views.Index.as_view(), name='index'),
+    path('', include('clubkit.main.urls'), name=''),
     url(r'^special/', views.special, name='special'),
-    url(r'^account/', include('clubkit.api.urls')),
-    path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
-    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
-    path('password_reset/confirm/<uidb64>/<token>/',
-         auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
-    path('password_reset/complete/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+    url(r'^profile/', include('clubkit.profiles.urls'), name='profiles'),
+    url(r'^club_home/', include('clubkit.clubs.urls'), name='clubs'),
+    url(r'^member/', include('clubkit.player_register.urls'), name='player_register'),
+    url(r'^roster/', include('clubkit.roster.urls'), name='roster'),
+    url(r'^rent_a_pitch/', include('clubkit.rentapitch.urls'), name='rentapitch'),
+
 ]
-'''
-Because we're using viewsets instead of views, we can automatically generate the URL conf for our API, 
-by simply registering the viewsets with a router class.
-Again, if we need more control over the API URLs we can simply drop down to using regular class-based views, 
-and writing the URL conf explicitly.
-Finally, we're including default login and logout views for use with the browsable API. That's optional,
-but useful if your API requires authentication and you want to use the browsable API.
-'''
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

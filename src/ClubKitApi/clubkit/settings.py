@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 MEDIA_DIR = os.path.join(BASE_DIR, 'media')
-EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 
 
@@ -30,7 +30,7 @@ SECRET_KEY = '&mnnv$k)6rnwktsbru3=_adeb#qy@0#060&p$c*0ss34iry&6g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -43,8 +43,22 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'clubkit.api',
+    'clubkit.main',
+    'clubkit.profiles',
+    'clubkit.clubs',
+    'clubkit.player_register',
+    'clubkit.roster',
+    'clubkit.rentapitch',
+    'clubkit.shop',
+    'clubkit.cart',
+    'clubkit.orders',
+    'crispy_forms',
+    'paypal.standard.ipn',
+    'clubkit.payment',
+
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -55,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'clubkit.urls'
 
@@ -69,6 +84,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'clubkit.cart.context_processors.cart',
+
             ],
         },
     },
@@ -106,12 +123,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.AllowAny',
     )
 }
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
@@ -126,19 +143,42 @@ USE_L10N = True
 
 USE_TZ = True
 
+PAYPAL_TEST = True
+
+
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}
+
+
+LOGIN_URL = '/main/login/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
-
-
-LOGIN_URL = '/api/user_login/'
-
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [STATIC_DIR, ]
 
-MEDIA_ROOT = MEDIA_DIR
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+CART_SESSION_ID = 'cart'
+CART_PACKAGE_SESSION_ID = 'package'
 
 
+# django-paypal settings
 
+PAYPAL_RECEIVER_EMAIL = 'clubkit@outlook.ie'
+PAYPAL_TEST = True
+
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.office365.com'
+EMAIL_HOST_USER = 'clubkit@outlook.ie'
+EMAIL_HOST_PASSWORD = 'Finalyearproject1'
+EMAIL_PORT = 587
 
