@@ -26,6 +26,13 @@ body {
   background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("cover1.jpg");
 } **/
 
+
+.test {
+  height: 20vw;
+  object-fit: cover;
+  }
+
+
 .reveal-if-active {
   opacity: 0;
   max-height: 0;

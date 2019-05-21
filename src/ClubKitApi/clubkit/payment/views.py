@@ -4,21 +4,29 @@ from django.urls import reverse
 from django.shortcuts import render, get_object_or_404
 from paypal.standard.forms import PayPalPaymentsForm
 from clubkit.orders.models import Order
+from clubkit.clubs.models import ClubInfo
 from django.views.decorators.csrf import csrf_exempt
 
 
 @csrf_exempt
 def payment_done(request):
-    return render(request, 'payment/done.html')
+    club_pk = request.session.get('pk')
+    club = ClubInfo.objects.filter(pk=club_pk)
+    return render(request, 'payment/done.html', {'club': club,
+                                                 })
 
 
 @csrf_exempt
 def payment_canceled(request):
-    return render(request, 'payment/canceled.html')
+    club_pk = request.session.get('pk')
+    club = ClubInfo.objects.filter(pk=club_pk)
+    return render(request, 'payment/canceled.html', {'club': club,
+                                                     })
 
 
 def payment_process(request):
     club_pk = request.session.get('pk')
+    club = ClubInfo.objects.filter(pk=club_pk)
     order_id = request.session.get('order_id')
     order = get_object_or_404(Order, id=order_id)
     host = request.get_host()
@@ -37,4 +45,5 @@ def payment_process(request):
     form = PayPalPaymentsForm(initial=paypal_dict)
     return render(request, 'payment/process.html', {'order': order,
                                                     'form': form,
-                                                    'club_pk': club_pk})
+                                                    'club_pk': club_pk,
+                                                    'club': club})

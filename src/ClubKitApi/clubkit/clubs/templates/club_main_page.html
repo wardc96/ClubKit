@@ -17,7 +17,27 @@
           <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
           <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-          <script>
+        <style>
+         @media only screen and (min-width: 577px) {
+            .test {
+              height: 20vw;
+  object-fit: cover;
+  }
+  }
+
+        @media only screen and (max-width: 576px) {
+          .test {
+  width: 100%;
+
+  height: 80vw;
+  object-fit: cover;
+
+}
+}
+
+        </style>
+
+        <script>
               $( function() {
                 $( "#datepicker" ).datepicker({
                 dateFormat: "yy-mm-dd",
@@ -64,8 +84,6 @@
             {% endfor %}
                 </div>
             </li>
-            {% for info in club %}
-            {% if info.user.pk  ==  user.pk %}
             <li class=" dropdown">
                 <a class="nav-link dropdown-toggle" href="{% url 'clubs:memberships' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Rent-a-Pitch
@@ -75,12 +93,7 @@
                   <a class="dropdown-item" href="{% url 'rentapitch:pitch_bookings' %}">Pitch Bookings</a>
                 </div>
             </li>
-            {% else %}
-            <li>
-                <a class="nav-link" href="{% url 'rentapitch:pitch_rental' %}">Rent-a-Pitch</a>
-            </li>
-           {% endif %}
-           {% endfor %}
+
 
             {% for info in club %}
             {% if info.user.pk  ==  user.pk %}
@@ -97,13 +110,6 @@
             {% else %}
             <li>
                 <a class="nav-link" href="{% url 'shop:product_list' %}">Club Shop</a>
-            </li>
-            {% endif %}
-            {% endfor %}
-             {% for info in club %}
-            {% if info.user.pk  ==  user.pk %}
-            <li>
-               <a class="nav-link" href="{% url 'profiles:view_profile' %}">Profile</a>
             </li>
             {% endif %}
             {% endfor %}

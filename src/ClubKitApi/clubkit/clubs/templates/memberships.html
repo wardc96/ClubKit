@@ -42,7 +42,7 @@
     {% endfor %}
         </h5>
         <p class="card-tex">{{ detail.description }}</p>
-          <p>€{{ detail.price }} <a href="#" class="btn btn-sm btn-primary rounded-pill float-right">Register Now!</a></p>
+          <p>€{{ detail.price }} <a href="{% url 'player_register:player_register' %}" class="btn btn-sm btn-primary rounded-pill float-right">Register Now!</a></p>
       </div>
     </div>
   </div>

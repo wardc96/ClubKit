@@ -4,20 +4,37 @@
 {% load staticfiles %}
 {% block body_block %}
 
-<div class="container mt-4">
-    <div class="registration">
-      {% if registered %}
-        <h1>Thank you for registering!</h1>
-      {% else %}
+<div class="container">
+    <div class="row s rounded-lg">
+<div class="col-md-6   p-4  border-right rounded-lg">
         <h1>Register Here</h1>
         <h3>Just fill out the form.</h3>
-        <p>Choose which membership you wish to purchase, fil out the form and you will be brought to the payment screen.</p>
+        <p>Choose which membership you wish to purchase, fill out the form and you will be brought to the payment screen.</p>
             <form action="{% url 'player_register:player_register' %}" method="POST">
                   {% csrf_token %}
                     {{ form|crispy }}
-                <input type="submit" name="" value="Register">
+                <input type="submit" name="" value="Register" class="btn btn-primary rounded-pill">
             </form>
-      {% endif %}
+
+    </div>
+        <div class="col-md-6 text-center  ">
+                        <p class="font-weight-bold mt-5" style="font-size:2rem;">
+                Register for your club to begin playing straight away!
+
+
+            </p>
+            <hr>
+
+            <p class="mt-5 text-center">
+<img src="https://images.pexels.com/photos/2072899/pexels-photo-2072899.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="test  rounded-circle" height="300px" width="300px">
+            </p>
+            <p class="mt-3 text-center">
+<img src="https://images.pexels.com/photos/262524/pexels-photo-262524.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="test rounded-circle mt-5" height="300px" width="300px">
+
+            </p>
+
+
+</div>
     </div>
 </div>
 {% endblock %}

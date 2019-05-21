@@ -10,6 +10,7 @@ class ClubInfo(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     club_name = models.CharField(max_length=50, default='', unique=True)
+    description = models.CharField(max_length=100)
     club_logo = models.ImageField(upload_to='profile_pics', blank=True)
     club_address1 = models.CharField(max_length=30)
     club_address2 = models.CharField(max_length=30, default='')
@@ -60,6 +61,7 @@ class ClubMemberships(models.Model):
 class Team(models.Model):
 
     club_id = models.ForeignKey(ClubInfo, on_delete=models.CASCADE)
+    photo = models.ImageField(upload_to='team_pics', blank=True)
     team_name = models.CharField(max_length=30)
     manager_name = models.CharField(max_length=20)
 
@@ -71,6 +73,7 @@ class Team(models.Model):
 class Pitch(models.Model):
     club_id = models.ForeignKey(ClubInfo, on_delete=models.CASCADE, related_name="pitches")
     pitch_name = models.CharField(max_length=30)
+    photo = models.ImageField(upload_to='pitch_pics', blank=True)
     PITCH_SIZES = (
         ('S', 'Small'),
         ('M', 'Medium'),
@@ -100,7 +103,7 @@ class Pitch(models.Model):
 class ClubPosts(models.Model):
     club_id = models.ForeignKey(ClubInfo, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
-    photo = models.ImageField(upload_to='club_post_pics', blank=True, null=True)
+    photo = models.ImageField(upload_to='club_post_pics', blank=True)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
 

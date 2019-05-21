@@ -5,13 +5,18 @@
 
 {% for info in club %}
 {% if info.user.pk  ==  user.pk %}
-  <div class="AddMembership mt-4">
+  <div class="container mt-4">
+      <div class="row">
+          <div class="col-md-6">
       <h3>Add Membership To Club.</h3>
 <form action="{% url 'clubs:memberships' %}" method="POST">
         {% csrf_token %}
         {{ form|crispy }}
     <input type="submit" name="" value="Add" class="btn btn-primary rounded-pill">
 </form>
+          </div>
+      </div>
+      </div>
 {% endif %}
       {% endfor %}
 {% endblock %}

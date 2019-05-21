@@ -4,6 +4,7 @@ from .models import OrderItem
 from .forms import OrderCreateForm
 from .tasks import order_created
 from clubkit.cart.cart import Cart
+from clubkit.clubs.models import ClubInfo
 
 
 def order_create(request):
@@ -36,8 +37,10 @@ def order_create(request):
             return redirect(reverse('payment:process'))
     else:
         club_pk = request.session.get('pk')
+        club = ClubInfo.objects.filter(pk=club_pk)
         form = OrderCreateForm()
     return render(request, 'orders/order/create.html', {'form': form,
+                                                        'club': club,
                                                         })
 
 

@@ -11,7 +11,7 @@ class ClubInfoForm(forms.ModelForm):
 
     class Meta():
         model = ClubInfo
-        fields = ('club_name', 'club_logo', 'club_address1', 'club_address2',
+        fields = ('club_name', 'club_logo', 'description', 'club_address1', 'club_address2',
                   'club_address3', 'club_town', 'club_county', 'club_country',)
 
         def clean_club_name(self):
@@ -44,7 +44,7 @@ class PitchForm(forms.ModelForm):
 
     class Meta():
         model = Pitch
-        fields = ('club_id', 'pitch_name', 'pitch_size', 'pitch_type', 'open_time',
+        fields = ('club_id', 'pitch_name', 'photo', 'pitch_size', 'pitch_type', 'open_time',
                   'close_time', 'rental', 'rental_price', 'max_people')
 
     def __init__(self, *args, **kwargs):

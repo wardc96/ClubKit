@@ -6,7 +6,6 @@
 
 {% block content %}
 
-<h1>TEST OF PRODUCT DETAILS PAGE</h1>
 <div class="container">
 
     <div class="row featurette justify-content-between">
@@ -15,7 +14,7 @@
          <a href="#"> <img class="featurette-image img-fluid mx-auto rounded" src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'no-image.png' %}{% endif %}" alt=""></a>
           </div>
         <div class="col-md-5 my-auto">
-           <h3 class="featurette-heading mt-0 pb-2">{{ product.name }}</h3>
+           <h3 class="featurette-heading text-dark mt-0 pb-2">{{ product.name }}</h3>
             <p class="lead pt-2">{{ product.description }}</p>
 
 <select class="custom-select" id="inputGroupSelect01">

@@ -1,18 +1,15 @@
 {% extends 'club_main_page.html' %}
+{% load crispy_forms_tags %}
 {% block body_block %}
 
 <div class="container">
     <form method="post">
         {% csrf_token %}
-        <ul style="list-style: none;">
-           <li>Email: {{ form.email}}</li>
-           <li>First Name: {{ form.first_name}}</li>
-           <li>Last Name: {{ form.last_name}}</li>
-        </ul>
-        <button type="submit">Submit</button>
+       {{ form|crispy }}
+        <button type="submit" class="btn btn-primary rounded-pill">Submit</button>
     </form>
     <form action="{% url 'profiles:change_password' %}">
-        <input type="submit" value="Change Password" />
+        <input type="submit" value="Change Password"  class="btn btn-primary rounded-pill mt-2"/>
     </form>
 </div>
 {% endblock %}

@@ -88,17 +88,18 @@ class ClubAddPosts(APIView):
     def post(self, request):
         club_pk = request.session.get('pk')
         club = ClubInfo.objects.filter(pk=club_pk)
-        form = ClubPostForm(data=request.data)
-        user = ClubInfo.objects.filter(user=request.user).first()
-        new_post = ClubPosts.objects.filter(club_id=user.pk)
-        if form.is_valid():
-            form.save()
-            return redirect('clubs:club_home')
-        else:
-            return Response({'form': form,
-                             'new_post': new_post,
-                             'club': club
-                             })
+        if request.method == 'POST':
+            form = ClubPostForm(request.POST, request.FILES)
+            user = ClubInfo.objects.filter(user=request.user).first()
+            new_post = ClubPosts.objects.filter(club_id=user.pk)
+            if form.is_valid():
+                form.save()
+                return redirect('clubs:club_home')
+            else:
+                return Response({'form': form,
+                               'new_post': new_post,
+                                 'club': club
+                                 })
 
 
 # Method to delete club posts using pk

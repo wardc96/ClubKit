@@ -1,12 +1,14 @@
 {% extends 'club_main_page.html' %}
+{% load crispy_forms_tags %}
 {% block body_block %}
 
-<h3>Edit Team</h3>
-<div class="container">
+
+<div class="container mt-3">
+    <h3>Edit Team</h3>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p}}
-        <button type="submit">Submit</button>
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary rounded-pill">Submit</button>
     </form>
 </div>
 {% endblock %}
