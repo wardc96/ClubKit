@@ -158,9 +158,10 @@
 {% if info.user.pk  ==  user.pk %}
         <h3>Booking Details</h3>
         <div class="row">
-        <div class="col-md-3">
-        {% csrf_token %}
+            {% csrf_token %}
         {% for info in bookings %}
+        <div class="col-md-3">
+
         <ul class="list-group">
             <li class="list-group-item">{{ info.club_id }}  {% if club_pk  ==  user.pk %}
             <div class="dropown float-right">
@@ -180,14 +181,14 @@
 </div>
 {% endif %}</li>
             <li class="list-group-item">{{ info.pitch_id }}</li>
-            <li class="list-group-item">€{{ info.rental_cost }}</li>
             <li class="list-group-item">{{ info.name }} - {{ info.email }}</li>
             <li class="list-group-item">{{ info.mobile }}</li>
             <li class="list-group-item">{{ info.date }} {{ info.start_time }} - {{ info.finish_time }}</li>
         </ul>
 
-    {% endfor %}
+
     </div>
+            {% endfor %}
     </div>
   </div>
 {% endif %}

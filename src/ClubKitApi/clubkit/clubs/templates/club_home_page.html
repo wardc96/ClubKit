@@ -72,7 +72,10 @@
                 <img src="{% if pic.club_logo %}{{ pic.club_logo.url }}{% else %}{% static 'no-image.png' %}{% endif %}" class="img-fluid rounded-circle" height="60px" width="60px" alt="...">
                 {% endfor %}
             </div>
-                <div class="col-sm-9"> <i class="fas fa-angle-down float-right" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="col-sm-9">
+                    {% for i in club %}
+      {% if i.user.pk  ==  user.pk %}
+                    <i class="fas fa-angle-down float-right" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   </i>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
@@ -83,7 +86,8 @@
             <input type="submit" value="Edit" class="dropdown-item">
         </form>
   </div>
-
+{% endif %}
+                    {% endfor %}
             <p class="font-weight-bold">{{ info.title }}</p>
 
             <p>{{ info.text }}</p>

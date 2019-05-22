@@ -34,8 +34,8 @@
     {% for product in products %}
             <div class="col-lg-4 col-md-6 mt-4">
             <div class="card shadow" style="max-width: 100%;max-height:95%;">
-  <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'no-image.png' %}{% endif %}" class="card-img-top img-fluid" alt="..." style="max-height:px">
-  <div class="card-body text-dark">
+  <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'no-image.png' %}{% endif %}" class="card-img-top img-fluid" alt="..." style="max-width:350px">
+  <div class="card-body text-dark pb-4">
     <h5 class="card-title">{{ info.name }}</h5>
     <p class="card-text text-dark">{{ product.description }}</p>
       <a href="{{ product.get_absolute_url }}" class="btn btn-primary rounded-pill">View</a><p class="float-right">€{{ product.price }}</p>
