@@ -26,4 +26,8 @@ class RentalForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(RentalForm, self).__init__(*args, **kwargs)
         self.fields['club_id'].widget = forms.HiddenInput()
+        self.fields['rental_cost'].widget = forms.HiddenInput()
+        self.fields['payment_type'].widget = forms.HiddenInput()
+        self.fields['is_cancelled'].widget = forms.HiddenInput()
+
 

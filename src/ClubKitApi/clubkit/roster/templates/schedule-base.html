@@ -148,7 +148,7 @@ $(document).ready(function(){
             {% endfor %}
                 </div>
             </li>
-           <li class=" dropdown">
+            <li class=" dropdown">
                 <a class="nav-link dropdown-toggle" href="{% url 'clubs:memberships' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Rent-a-Pitch
                 </a>
@@ -157,6 +157,7 @@ $(document).ready(function(){
                   <a class="dropdown-item" href="{% url 'rentapitch:pitch_bookings' %}">Pitch Bookings</a>
                 </div>
             </li>
+
 
             {% for info in club %}
             {% if info.user.pk  ==  user.pk %}
@@ -168,6 +169,7 @@ $(document).ready(function(){
               <a class="dropdown-item" href="{% url 'shop:product_list' %}">Club Shop</a>
               <a class="dropdown-item" href="{% url 'shop:club_shop_products' %}">Shop Products</a>
               <a class="dropdown-item" href="{% url 'shop:club_shop_categories' %}">Shop Categories</a>
+              <a class="dropdown-item" href="{% url 'orders:orders' %}">Club Orders</a>
             </div>
             </li>
             {% else %}
@@ -181,6 +183,7 @@ $(document).ready(function(){
         </div>
         </div>
     </nav>
+
 </body>
 
     <div class="container">

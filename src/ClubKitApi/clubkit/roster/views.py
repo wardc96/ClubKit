@@ -73,6 +73,8 @@ def edit_roster(request, pk):
             return redirect('roster:club_roster')
     else:
         form = RosterForm(instance=instance)
+        form.fields['pitch_id'].queryset = Pitch.objects.filter(club_id=club_pk)
+        form.fields['team_id'].queryset = Team.objects.filter(club_id=club_pk)
         return render(request, 'edit_roster.html', {'form': form,
                                                     'club': club,
                                                     'instance': instance})
