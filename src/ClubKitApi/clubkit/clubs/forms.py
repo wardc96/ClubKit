@@ -26,7 +26,7 @@ class TeamForm(forms.ModelForm):
 
     class Meta():
         model = Team
-        fields = ('club_id', 'team_name', 'manager_name')
+        fields = ('club_id', 'team_name', 'manager_name', 'photo')
 
     def __init__(self, *args, **kwargs):
         super(TeamForm, self).__init__(*args, **kwargs)

@@ -5,6 +5,7 @@ from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from clubkit.cart.forms import CartAddProductForm
+from django.db import transaction
 
 
 # Method to render club home page using pk to create session key
@@ -50,7 +51,7 @@ def edit_club(request):
     club = ClubInfo.objects.filter(pk=club_pk)
     instance = ClubInfo.objects.filter(user=request.user).first()
     if request.method == 'POST':
-        form = ClubInfoForm(request.POST, instance=instance)
+        form = ClubInfoForm(request.POST, request.FILES, instance=instance)
         if form.is_valid():
             form.save()
             return redirect('clubs:club_home')
@@ -93,11 +94,14 @@ class ClubAddPosts(APIView):
             user = ClubInfo.objects.filter(user=request.user).first()
             new_post = ClubPosts.objects.filter(club_id=user.pk)
             if form.is_valid():
-                form.save()
-                return redirect('clubs:club_home')
+                with transaction.atomic():
+                    if 'photo' in request.FILES:
+                        form.photo = request.FILES['photo']
+                    form.save()
+                    return redirect('clubs:club_home')
             else:
                 return Response({'form': form,
-                               'new_post': new_post,
+                                 'new_post': new_post,
                                  'club': club
                                  })
 
@@ -115,7 +119,7 @@ def edit_post(request, pk):
     club = ClubInfo.objects.filter(pk=club_pk)
     instance = ClubPosts.objects.filter(pk=pk).first()
     if request.method == 'POST':
-        form = ClubPostForm(request.POST, instance=instance)
+        form = ClubPostForm(request.POST, request.FILES, instance=instance)
         if form.is_valid():
             form.save()
             return redirect('clubs:club_home')
@@ -162,10 +166,13 @@ class TeamInfo(APIView):
 
     # Post method to post new team to club
     def post(self, request):
-        form = TeamForm(data=request.data)
-        if form.is_valid():
-            form.save()
-            return redirect('clubs:add_teams')
+        if request.method == 'POST':
+            form = TeamForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                return redirect('clubs:teams')
+            else:
+                return redirect('clubs:teams')
 
 
 # Method to render form to add new teams to club
@@ -200,7 +207,7 @@ def edit_team(request, pk):
     club = ClubInfo.objects.filter(pk=club_pk)
     instance = Team.objects.filter(pk=pk).first()
     if request.method == 'POST':
-        form = TeamForm(request.POST, instance=instance)
+        form = TeamForm(request.POST, request.FILES, instance=instance)
         if form.is_valid():
             form.save()
             return redirect('clubs:teams')
@@ -245,10 +252,13 @@ class PitchInfo(APIView):
 
     # Post method to post new pitch to club
     def post(self, request):
-        form = PitchForm(data=request.data)
-        if form.is_valid():
-            form.save()
-            return redirect('clubs:pitches')
+        if request.method == 'POST':
+            form = PitchForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                return redirect('clubs:pitches')
+            else:
+                return redirect('clubs:pitches')
 
 
 # Method to render form to add new pitches to club
@@ -283,7 +293,7 @@ def edit_pitch(request, pk):
     club = ClubInfo.objects.filter(pk=club_pk)
     instance = Pitch.objects.filter(pk=pk).first()
     if request.method == 'POST':
-        form = PitchForm(request.POST, instance=instance)
+        form = PitchForm(request.POST, request.FILES, instance=instance)
         if form.is_valid():
             form.save()
             return redirect('clubs:pitches')

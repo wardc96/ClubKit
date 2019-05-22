@@ -7,7 +7,7 @@
 {% if info.user.pk  ==  user.pk %}
   <div class="addteam">
       <h3>Add Teams To Club.</h3>
-        <form action="{% url 'clubs:teams' %}" method="POST">
+        <form action="{% url 'clubs:teams' %}" enctype="multipart/form-data" method="POST">
                 {% csrf_token %}
                 {{ form|crispy }}
             <input type="submit" name="" value="Add">

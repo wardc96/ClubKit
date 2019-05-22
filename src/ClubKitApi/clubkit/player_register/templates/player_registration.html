@@ -10,7 +10,7 @@
         <h1>Register Here</h1>
         <h3>Just fill out the form.</h3>
         <p>Choose which membership you wish to purchase, fill out the form and you will be brought to the payment screen.</p>
-            <form action="{% url 'player_register:player_register' %}" method="POST">
+            <form action="{% url 'player_register:player_register' %}" method="POST" id="personForm" data-cities-url="{% url 'player_register:ajax_load_price' %}" novalidate>
                   {% csrf_token %}
                     {{ form|crispy }}
                 <input type="submit" name="" value="Register" class="btn btn-primary rounded-pill">

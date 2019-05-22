@@ -45,7 +45,7 @@ def register(request):
     registered = False
     if request.method == 'POST':
         user_form = UserForm(data=request.POST)
-        profile_form = ClubInfoForm(data=request.POST)
+        profile_form = ClubInfoForm(request.POST, request.FILES)
         if user_form.is_valid() and profile_form.is_valid():
 
             with transaction.atomic():

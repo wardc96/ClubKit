@@ -43,6 +43,12 @@ class RegisterPlayer(APIView):
             return Response(template_name='player_registration_complete.html')
 
 
+def load_price(request):
+    membership = request.GET.get('membership_title')
+    price = ClubMemberships.objects.filter(title=membership).values('price')
+    return render(request, 'load_price_value.html', {'price': price})
+
+
 # Class to handle membership registration information
 class Members(APIView):
     renderer_classes = [TemplateHTMLRenderer]
