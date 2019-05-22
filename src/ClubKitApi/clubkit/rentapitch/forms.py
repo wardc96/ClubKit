@@ -12,7 +12,9 @@ class RentalForm(forms.ModelForm):
         fields = ('club_id', 'pitch_id', 'rental_cost', 'name', 'email',
                   'mobile', 'date', 'start_time', 'finish_time', 'payment_type', 'is_cancelled',)
         widgets = {
-            'date': forms.DateInput(attrs={'id': 'datepicker'})
+            'date': forms.DateInput(attrs={'id': 'datepicker'}),
+            'start_time': forms.DateInput(attrs={'class': 'timepicker'}),
+            'finish_time': forms.DateInput(attrs={'class': 'timepicker'})
         }
 
         def clean_date(self):
