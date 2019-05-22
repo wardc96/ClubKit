@@ -14,18 +14,7 @@
         <h3>Add A Team To The Roster</h3>
             <form action="{% url 'roster:club_roster' %}" method="POST">
                       {% csrf_token %}
-                {{ form.pitch_id|as_crispy_field }}
-                {{ form.team_id|as_crispy_field }}
-                     {{ form.date|as_crispy_field }}
-                {{ form.start_time|as_crispy_field }}
-                {{ form.finish_time|as_crispy_field }}
-
-
-            {{ form.reoccuring_event|as_crispy_field }}
-
-
-                    {{ form.reoccuring_day|as_crispy_field }}
-
+                {{ form|crispy }}
 
                 <input type="submit" name="" value="Add" class="btn btn-primary rounded-pill">
             </form>
@@ -57,10 +46,10 @@
 </div>
 {% endif %}
             </li>
-            <li class="list-group-item">{{ id.pitch_id }}</li>
-            <li class="list-group-item">{{ id.team_id }}</li>
-            <li class="list-group-item">{{ id.date }}, {{ id.start_time }} - {{ id.finish_time }}</li>
-            <li class="list-group-item">{{ id.day }}</li>
+        <li class="list-group-item"><b>Pitch:</b> {{ id.pitch_id }}</li>
+            <li class="list-group-item"><b>Team:</b> {{ id.team_id }}</li>
+            <li class="list-group-item"><b>Date:</b> {{ id.date }}, {{ id.start_time }} - {{ id.finish_time }}</li>
+            <li class="list-group-item"><b>Repeat Every:</b> {{ id.get_reoccuring_day_display }}</li>
     </ul>
 
         {% endfor %}

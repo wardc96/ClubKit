@@ -4,29 +4,37 @@
 
 
 <div class="container">
+    <h1>Your Orders</h1>
 <div class="row">
 
+
 {% csrf_token %}
-{% for details in order %}
-    <div class="col-lg-3 col-md-4 col-sm-6 col-12  mt-2">
-    <p class="card-text text-dark">
-        <ul class="list-unstyled">
-      <li><b>Order Id:</b> {{ details.pk }}</li>
-      <li><b>First Name:</b> {{ details.first_name }}</li>
-      <li><b>Last Name:</b> {{ details.last_name }}</li>
-      <li><b>Email:</b> {{ details.email }}</li>
-      <li><b>Address:</b> {{ details.address }}</li>
-      <li><b>PostCode:</b> {{ details.postal_code }}</li>
-      <li><b>City:</b> {{ details.city }}</li>
-      <li><b>Created:</b> {{ details.created }}</li>
+
+    {% for details in order %}
+    <div class="col-lg-4 col-md-6 col-sm-12 col-12  mt-4">
+      <div class="card shadow-sm hvr-float-shadow w-100">
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+      <li class="list-group-item"><b>Order Id:</b> {{ details.pk }}</li>
+      <li class="list-group-item"><b>First Name:</b> {{ details.first_name }}</li>
+      <li class="list-group-item"><b>Last Name:</b> {{ details.last_name }}</li>
+      <li class="list-group-item"><b>Email:</b> {{ details.email }}</li>
+      <li class="list-group-item"><b>Address:</b> {{ details.address }}</li>
+      <li class="list-group-item"><b>PostCode:</b> {{ details.postal_code }}</li>
+      <li class="list-group-item"><b>City:</b> {{ details.city }}</li>
+      <li class="list-group-item"><b>Created:</b> {{ details.created }}</li>
       <form action="{% url 'orders:view_order' details.pk %}">
-        <input type="submit" value="View Order"  class="dropdown-item">
+        <input type="submit" value="View Order"  class="btn btn-primary rounded-pill mt-2">
      </form>
 
   </ul>
+
+
+      </div>
+    </div>
+    </a>
   </div>
 {% endfor %}
-
 </div>
 </div>
 {% endblock %}

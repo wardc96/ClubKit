@@ -17,6 +17,10 @@ class RosterForm(forms.ModelForm):
             'start_time': forms.DateInput(attrs={'class': 'timepicker'}),
             'finish_time': forms.DateInput(attrs={'class': 'timepicker'})
         }
+        labels = {
+            'reoccuring_event': 'Repeat every week?',
+            'reoccuring_day': 'Which day?'
+        }
 
         def clean_date(self):
             date = self.clean_date['date']

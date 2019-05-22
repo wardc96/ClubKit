@@ -27,5 +27,3 @@ class RentalForm(forms.ModelForm):
         super(RentalForm, self).__init__(*args, **kwargs)
         self.fields['club_id'].widget = forms.HiddenInput()
 
-
-

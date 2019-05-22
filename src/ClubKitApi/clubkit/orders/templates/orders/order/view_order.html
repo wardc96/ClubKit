@@ -1,15 +1,32 @@
+
 {% extends 'club_main_page.html' %}
-{% load crispy_forms_tags %}
+{% load staticfiles %}
 {% block body_block %}
 
+
 <div class="container mt-3">
-    <h3>Order {{ order_id }}</h3>
-    {% for id in order_id %}
-    <li>{{ id.product }}</li>
-    <li>{{ id.price }}</li>
-    <li>{{ id.quantity }}</li>
-    {% endfor %}
+    <h1>Order: {% for i in order_id %}
+    {{ i }}
+    {% endfor %}</h1>
+<div class="row">
 
 
+{% csrf_token %}
+
+    {% for item in order_id %}
+    <div class="col-lg-4 col-md-6 col-sm-12 col-12  mt-4">
+      <div class="card shadow-sm hvr-float-shadow w-100">
+      <div class="card-body">
+        <ul class="list-group list-group-flush p-0">
+      <li class="list-group-item"><b>Item:</b> {{ item.product }}</li>
+      <li class="list-group-item"><b>Price:</b> {{ item.price }}</li>
+      <li class="list-group-item"><b>Quantity:</b> {{ item.quantity }}</li>
+  </ul>
+      </div>
+    </div>
+    </a>
+  </div>
+{% endfor %}
+</div>
 </div>
 {% endblock %}
