@@ -18,7 +18,7 @@ class PitchRental(APIView):
             'club_id': club_pk
         }
         form = RentalForm(initial=inital_data)
-        form.fields['pitch_id'].queryset = Pitch.objects.filter(club_id=club_pk)
+        form.fields['pitch_id'].queryset = Pitch.objects.filter(club_id=club_pk, rental=1)
         return Response({'form': form,
                          'club_pk': club_pk,
                          'club': club
@@ -28,7 +28,7 @@ class PitchRental(APIView):
         club_pk = request.session.get('pk')
         club = ClubInfo.objects.filter(pk=club_pk)
         form = RentalForm(data=request.data)
-        form.fields['pitch_id'].queryset = Pitch.objects.filter(club_id=club_pk)
+        form.fields['pitch_id'].queryset = Pitch.objects.filter(club_id=club_pk, rental=1)
         if form.is_valid():
             form.save()
             return render(request, 'booking_complete.html', {'club': club})

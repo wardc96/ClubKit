@@ -37,10 +37,13 @@ class RegisterPlayer(APIView):
 
     # Post method to save player registration
     def post(self, request):
+        club_pk = request.session.get('pk')
+        club = ClubInfo.objects.filter(pk=club_pk)
         form = PlayerRegistrationForm(data=request.data)
         if form.is_valid():
             form.save()
-            return Response(template_name='player_registration_complete.html')
+            return render(request, 'player_registration_complete.html', {'club': club,
+                                                                         'club_pk': club_pk})
 
 
 def load_price(request):

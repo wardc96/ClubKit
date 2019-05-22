@@ -11,7 +11,7 @@ class PlayerRegistrationForm(forms.ModelForm):
         model = Player
         fields = '__all__'
         labels = {
-            'dob': 'Date of Birth'
+            'dob': 'Date of Birth (yyyy-mm-dd)'
         }
         widgets = {
             'dob': forms.DateInput(attrs={'id': 'datepicker'})

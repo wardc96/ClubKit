@@ -15,19 +15,19 @@
             </form>
 
 </div>
-    </div>
-        <div class="col-md-6">
+</div>
+
+<div class="col-md-5">
 <div class="roster mt-3">
     <h3>Member Details</h3>
+    <br>
      {% csrf_token %}
             {% for mem in members %}
     <ul class="list-group">
-            <li class="list-group-item">{{ mem.club_id }}
-            <div class="dropown float-right">
-  <i class="dropdown-togge fas fa-angle-down" type="buttn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <li class="list-group-item"><b>Name:</b> {{ mem.first_name }} {{ mem.last_name }}
+        <div class="dropown float-right">
+  <i class="dropdown-togge fas fa-angle-down"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   </i>
-
-
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
    <form action="{% url 'player_register:delete_member' mem.pk %}">
@@ -37,29 +37,28 @@
          <input type="submit" value="Edit"  class="dropdown-item">
         </form>
   </div>
-</div>
+        </div>
+    </li>
+        <a href="#collapse{{ mem.pk }}" class="btn btn-secondary btn-sm" data-toggle="collapse" >Expand</a>
+            <div id="collapse{{ mem.pk }}" class="collapse">
+            <li class="list-group-item"><b>Membership Type:</b> {{ mem.membership_title }}</li>
+                <li class="list-group-item"><b>Date of Birth:</b> {{ mem.dob }}</li>
+                <li class="list-group-item"><b>Email:</b> {{ mem.email }}</li>
+                <li class="list-group-item"><b>Phone:</b> {{ mem.phone }}</li>
+                <li class="list-group-item"><b>Mobile:</b> {{ mem.mobile }}</li>
+                <li class="list-group-item"><b>Emergency Contact:</b> {{ mem.emergency_contact_name }}</li>
+                <li class="list-group-item"><b>Emergency Contact No:</b>{{ mem.emergency_contact_mobile }}</li>
+                <li class="list-group-item"><b>Address:</b>{{ mem.address1 }}, {{ mem.address2 }}, {{ mem.address3 }},
+                                            {{ mem.town }}, {{ mem.county }}, {{ mem.country }} </li>
 
-            </li>
-            <li class="list-group-item">{{ mem.membership_title }}</li>
-            <li class="list-group-item">{{ mem.first_name }}</li>
-            <li class="list-group-item">{{ mem.last_name }}</li>
-            <li class="list-group-item">{{ mem.dob }}</li>
-            <li class="list-group-item">{{ mem.email }}</li>
-            <li class="list-group-item">{{ mem.phone }}</li>
-            <li class="list-group-item">{{ mem.mobile }}</li>
-            <li class="list-group-item">{{ mem.emergency_contact_name }}</li>
-            <li class="list-group-item">{{ mem.emergency_contact_mobile }}</li>
-            <li class="list-group-item">{{ mem.address1 }}</li>
-            <li class="list-group-item">{{ mem.address2 }}</li>
-            <li class="list-group-item">{{ mem.address3 }}</li>
-            <li class="list-group-item">{{ mem.town }}</li>
-            <li class="list-group-item">{{ mem.county }}</li>
-            <li class="list-group-item">{{ mem.country }}</li>
+        <br>
+            </div>
+        <br>
     </ul>
+      {% endfor %}
 
-        {% endfor %}
-        </p>
-    </div>
 </div>
-</div>
+
 {% endblock %}
+</div>
+</div>

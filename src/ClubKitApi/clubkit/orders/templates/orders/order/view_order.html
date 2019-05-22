@@ -1,0 +1,15 @@
+{% extends 'club_main_page.html' %}
+{% load crispy_forms_tags %}
+{% block body_block %}
+
+<div class="container mt-3">
+    <h3>Order {{ order_id }}</h3>
+    {% for id in order_id %}
+    <li>{{ id.product }}</li>
+    <li>{{ id.price }}</li>
+    <li>{{ id.quantity }}</li>
+    {% endfor %}
+
+
+</div>
+{% endblock %}

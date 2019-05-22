@@ -8,20 +8,7 @@
 {% block content %}
     <div class="container">
         <div class="row" style="margin-top: 6%">
-        <h2>Your Shopping Cart
-            <span class="badge pull-right">
-                {% with totail_items=cart|length %}
-                    {% if cart|length > 0 %}
-                        My Shopping Order:
-                        <a href="" style="color: #ffffff">
-                            {{ totail_items }} item {{ totail_items|pluralize }}, Kshs. {{ cart.get_total_price }}
-                        </a>
-                        {% else %}
-                        Your cart is empty.
-                    {% endif %}
-                {% endwith %}
-            </span>
-        </h2>
+        <h2>Your Shopping Cart</h2>
             <div class="table-responsive">
             <table class="table">
                 <thead class="bg-light">
@@ -69,7 +56,7 @@
             </table>
             </div>
         <p class="text-right">
-            <a href="{% url 'shop:product_list' %}" class="btn btn-default">Continue Shopping</a>
+            <a href="{% url 'shop:product_list' %}" class="btn btn-secondary">Continue Shopping</a>
             <a href="{% url 'orders:order_create' %}" class="btn btn-primary">Checkout</a>
         </p>
         </div>

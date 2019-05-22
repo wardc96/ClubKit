@@ -26,6 +26,7 @@ def cart_remove(request, product_id):
 
 
 def cart_detail(request):
+    hidecart = False
     cart = Cart(request)
     club_pk = request.session.get('pk')
     club = ClubInfo.objects.filter(pk=club_pk)
@@ -33,7 +34,8 @@ def cart_detail(request):
         item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'], 'update': True})
     return render(request, 'cart/details.html', {'cart': cart,
                                                  'club_pk': club_pk,
-                                                 'club': club})
+                                                 'club': club,
+                                                 'hidecart': hidecart})
 
 
 @require_POST
@@ -52,8 +54,9 @@ def cart_remove_package(request, product_id):
 
 
 def cart_detail_package(request):
+    hidecart = False
     cart = CartPackage(request)
     return render(request, 'club/package-detail.html', {'cart': cart,
-                                                         })
+                                                        'hidecart': hidecart})
 
 

@@ -26,6 +26,7 @@ class ClubShop(APIView):
 
 
 def product_list(request, category_slug=None):
+    hidecart = False
     club_pk = request.session.get('pk')
     club = ClubInfo.objects.filter(pk=club_pk)
     category = None
@@ -39,12 +40,14 @@ def product_list(request, category_slug=None):
         'categories': categories,
         'products': products,
         'club_pk': club_pk,
-        'club': club
+        'club': club,
+        'hidecart': hidecart
     }
     return render(request, 'list.html', context)
 
 
 def product_detail(request, id, slug):
+    hidecart = False
     club_pk = request.session.get('pk')
     club = ClubInfo.objects.filter(pk=club_pk)
     product = get_object_or_404(Product, id=id, slug=slug, available=True)
@@ -53,7 +56,8 @@ def product_detail(request, id, slug):
         'product': product,
         'cart_product_form': cart_product_form,
         'club_pk': club_pk,
-        'club': club
+        'club': club,
+        'hidecart': hidecart
     }
     return render(request, 'detail.html', context)
 
