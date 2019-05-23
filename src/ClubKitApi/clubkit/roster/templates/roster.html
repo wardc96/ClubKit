@@ -21,13 +21,11 @@
     {% endif %}
 </div>
     </div>
-
+        <div class="col-md-6">
+<div class="roster mt-3">
     <h3>Roster Details</h3>
-
      {% csrf_token %}
             {% for id in roster %}
-                <div class="col-md-5">
-<div class="roster mt-3">
     <ul class="list-group">
             <li class="list-group-item">{{ id.club_id }}
                 {% if club_pk  ==  user.pk %}
@@ -54,11 +52,9 @@
             <li class="list-group-item"><b>Repeat Every:</b> {{ id.get_reoccuring_day_display }}</li>
     </ul>
 
-
+        {% endfor %}
         </p>
     </div>
 </div>
-    {% endfor %}
 </div>
-
 {% endblock %}
