@@ -39,19 +39,26 @@ class RegisterPlayer(APIView):
     # Post method to save player registration
     def post(self, request):
         club_pk = request.session.get('pk')
-        membership_price = request.GET.get('membership_price')
-        price = ClubMemberships.objects.filter(price=membership_price).first()
+        # membership_price = request.GET.get('membership_price')
+        # price = ClubMemberships.objects.filter(price=membership_price).first()
         # membership_price = request.GET.get('membership_price')
         club = ClubInfo.objects.filter(pk=club_pk)
         form = PlayerRegistrationForm(data=request.data)
+        # membership = ClubMemberships.objects.filter(membership_title=form.membership_title)
         if form.is_valid():
             form.save()
             return render(request, 'player_registration_complete.html', {'club': club,
                                                                          'club_pk': club_pk,
-                                                                         'membership_price': membership_price,
-                                                                         'price': price
+                                                                         # 'membership': membership,
+                                                                         # 'price': price,
+                                                                         'form': form
                                                                          })
 
+
+def ajax_load_price(request):
+    membership = request.GET.get('membership_title')
+    mem_id = ClubMemberships.objects.filter(pk=membership)
+    return render(request, 'load_price_value.html', {'mem_id': mem_id})
 
 # Class to handle membership registration information
 class Members(APIView):
@@ -109,10 +116,7 @@ def edit_member(request, pk):
                                                     'instance': instance})
 
 
-def ajax_load_price(request):
-    membership = request.GET.get('membership_title')
-    mem_id = ClubMemberships.objects.filter(pk=membership)
-    return render(request, 'load_price_value.html', {'mem_id': mem_id})
+
 
 '''
 def ajax_set_price(request):
