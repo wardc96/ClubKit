@@ -4,7 +4,7 @@
 
 
 <div class="container">
-    <h1>Your Orders</h1>
+    <h1>Completed Orders</h1>
 <div class="row">
 
 
@@ -23,13 +23,13 @@
       <li class="list-group-item"><b>PostCode:</b> {{ details.postal_code }}</li>
       <li class="list-group-item"><b>City:</b> {{ details.city }}</li>
       <li class="list-group-item"><b>Created:</b> {{ details.created }}</li>
-      <li class="list-group-item"><b>Created:</b> {{ details.complete }}</li>
+      <li class="list-group-item"><b>Complete:</b> {{ details.complete }}</li>
 
       <form class="text-center" action="{% url 'orders:view_order' details.pk %}">
         <input type="submit" value="View Order"  class="btn btn-primary rounded-pill mt-3">
      </form>
-      <form action="{% url 'orders:complete-order' details.pk %}">
-        <input type="submit" value="Complete Order"  class="btn btn-success rounded-pill mt-3">
+      <form action="{% url 'orders:uncomplete-order' details.pk %}">
+        <input type="submit" value="Un-Complete Order"  class="btn btn-danger rounded-pill mt-3">
      </form>
 
   </ul>

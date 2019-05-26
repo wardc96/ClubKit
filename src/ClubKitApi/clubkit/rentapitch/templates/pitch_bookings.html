@@ -75,7 +75,7 @@
     </script>
 </head>
   <body class="bg-light">
-        <nav class="nav navbar navbar-expand-md bg-clubkit text-white">
+           <nav class="nav navbar navbar-expand-md bg-clubkit text-white">
         <div class="container">
             <a href="{% url 'index' %}"><img class="masthead-brand" src="{% static 'clubkitlogo.png' %}" alt="Logo" style="height:60px;"></a>
             <button class="hamburger hamburger--spring d-md-none" type="button" data-toggle="collapse" data-target="#navbarCollapse">
@@ -100,14 +100,13 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="{% url 'clubs:memberships' %}">Memberships</a>
                   <a class="dropdown-item" href="{% url 'player_register:player_register' %}">Registration</a>
-                    {% for info in club %}
-                    {% if info.user.pk  ==  user.pk %}
-                          <a class="dropdown-item" href="{% url 'player_register:members' %}">Members</a>
-                    {% endif %}
-                    {% endfor %}
+            {% for info in club %}
+            {% if info.user.pk  ==  user.pk %}
+                  <a class="dropdown-item" href="{% url 'player_register:members' %}">Members</a>
+            {% endif %}
+            {% endfor %}
                 </div>
             </li>
-
             <li class=" dropdown">
                 <a class="nav-link dropdown-toggle" href="{% url 'clubs:memberships' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Rent-a-Pitch
@@ -119,8 +118,8 @@
             </li>
 
 
-           {% for info in club %}
-           {% if info.user.pk  ==  user.pk %}
+            {% for info in club %}
+            {% if info.user.pk  ==  user.pk %}
            <li class=" dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Shop
@@ -129,6 +128,8 @@
               <a class="dropdown-item" href="{% url 'shop:product_list' %}">Club Shop</a>
               <a class="dropdown-item" href="{% url 'shop:club_shop_products' %}">Shop Products</a>
               <a class="dropdown-item" href="{% url 'shop:club_shop_categories' %}">Shop Categories</a>
+              <a class="dropdown-item" href="{% url 'orders:orders' %}">Outstanding Orders</a>
+              <a class="dropdown-item" href="{% url 'orders:completed-orders' %}">Completed Orders</a>
             </div>
             </li>
             {% else %}

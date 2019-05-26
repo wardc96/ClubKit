@@ -28,6 +28,7 @@ class PlayerRegistrationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(PlayerRegistrationForm, self).__init__(*args, **kwargs)
         self.fields['club_id'].widget = forms.HiddenInput()
+        # self.fields['price'].widget = forms.HiddenInput()
         # self.fields['price'].queryset = ClubMemberships.objects.none()
 
 

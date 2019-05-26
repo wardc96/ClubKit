@@ -4,9 +4,16 @@
 
 {% block content %}
 
+
     <div class="container">
 
+        <H1>..{{ request.session.membership_price }}..</H1>
 
+        <H1>..{{ membership_price }}..</H1>
+        <h2> {% for id in price %}
+                {{ id.price }}
+            {% endfor %}
+        </h2>
 
     <h1>Pay using PayPal</h1><form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
     <input type="hidden" name="cmd" value="_xclick" id="id_cmd">

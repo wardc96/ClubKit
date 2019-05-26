@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from clubkit.clubs.models import ClubInfo, ClubMemberships
 from clubkit.player_register.models import Player
 from django.shortcuts import render, redirect
+from django.http import JsonResponse
 
 
 # Class to handle membership registration information
@@ -15,11 +16,10 @@ class RegisterPlayer(APIView):
     # Get method membership information and registration from
     def get(self, request):
         club_pk = request.session.get('pk')
+        membership_price = request.session.get('membership_price')
         club = ClubInfo.objects.filter(pk=club_pk)
         club_info = ClubInfo.objects.filter(pk=club_pk).first()
         club_memberships = ClubMemberships.objects.filter(club_id=club_info)
-        # membership_id = ClubMemberships.objects.filter(title=club_memberships)
-        # price = ClubMemberships.objects.filter(title=membership_id).values('price')
         inital_data = {
             'club_id': club_info,
             'membership_title': club_memberships,
@@ -32,24 +32,25 @@ class RegisterPlayer(APIView):
         # form.fields['price'].queryset = ClubMemberships.objects.numberfilter(title=membership_id).values('price')
         return Response({'form': form,
                          'club_pk': club_pk,
-                         'club': club
+                         'club': club,
+                         'membership_price': membership_price
                          })
 
     # Post method to save player registration
     def post(self, request):
         club_pk = request.session.get('pk')
+        membership_price = request.GET.get('membership_price')
+        price = ClubMemberships.objects.filter(price=membership_price).first()
+        # membership_price = request.GET.get('membership_price')
         club = ClubInfo.objects.filter(pk=club_pk)
         form = PlayerRegistrationForm(data=request.data)
         if form.is_valid():
             form.save()
             return render(request, 'player_registration_complete.html', {'club': club,
-                                                                         'club_pk': club_pk})
-
-
-def load_price(request):
-    membership = request.GET.get('membership_title')
-    price = ClubMemberships.objects.filter(title=membership).values('price')
-    return render(request, 'load_price_value.html', {'price': price})
+                                                                         'club_pk': club_pk,
+                                                                         'membership_price': membership_price,
+                                                                         'price': price
+                                                                         })
 
 
 # Class to handle membership registration information
@@ -71,7 +72,7 @@ class Members(APIView):
         return Response({'club_pk': club_pk,
                          'club': club,
                          'members': members,
-                         'form': form
+                         'form': form,
                          })
 
     # Post method to add roster information
@@ -106,3 +107,17 @@ def edit_member(request, pk):
         return render(request, 'edit_member.html', {'form': form,
                                                     'club': club,
                                                     'instance': instance})
+
+
+def ajax_load_price(request):
+    membership = request.GET.get('membership_title')
+    mem_id = ClubMemberships.objects.filter(pk=membership)
+    return render(request, 'load_price_value.html', {'mem_id': mem_id})
+
+'''
+def ajax_set_price(request):
+    membership_price = request.GET.get('membership_price')
+    request.session['membership_price'] = membership_price
+    # price = ClubMemberships.objects.filter(pk=membership).values('price')
+    return membership_price
+'''

@@ -10,13 +10,52 @@
         <h1>Register Here</h1>
         <h3>Just fill out the form.</h3>
         <p>Choose which membership you wish to purchase, fill out the form and you will be brought to the payment screen.</p>
-            <form action="{% url 'player_register:player_register' %}" method="POST" id="personForm" data-cities-url="{% url 'player_register:ajax_load_price' %}" novalidate>
-                  {% csrf_token %}
-                    {{ form|crispy }}
+            <form action="{% url 'player_register:player_register' %}" method="POST" id="regForm" data-member-url="{% url 'player_register:ajax_load_price' %}" novalidate>
+
+               {% csrf_token %}
+               {{ form|crispy }}
+
                 <input type="submit" name="" value="Register" class="btn btn-primary rounded-pill">
             </form>
+            <form  id="priceForm">
+                <div id="id_price"></div>
+            </form>
 
-    </div>
+ <h1>Pay using PayPal</h1><form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+    <input type="hidden" name="cmd" value="_xclick" id="id_cmd">
+        <input type="hidden" name="charset" value="utf-8" id="id_charset">
+        <input type="hidden" name="currency_code" value="EUR" id="id_currency_code">
+        <input type="hidden" name="no_shipping" value="1" id="id_no_shipping">
+        <input type="hidden" name="business" value="clubkit@outlook.ie" id="id_business">
+        <input type="hidden" name="amount" value="0" id="id_amount">
+        <input type="hidden" name="notify_url" value="http://127.0.0.1:8000/paypal/" id="id_notify_url">
+        <input type="hidden" name="cancel_return" value="http://127.0.0.1:8000/payment/cancelled/" id="id_cancel_return">
+        <input type="hidden" name="return" value="http://127.0.0.1:8000/payment/done/" id="id_return">
+    <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="Buy it Now">
+</form>
+</div>
+
+<script>
+    $("#id_membership_title").change(function () {
+      var url = $("#regForm").attr("data-member-url");  // get the url of the `load_price` view
+      var membership_title = $(this).val();  // get the selected membership ID from the HTML input
+
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/player-register/ajax-load-price)
+        data: {
+          'membership_title': membership_title       // add the mem id to the GET parameters
+        },
+        success: function (data) { // `data` is the return of the `load_price` view function
+          $("#id_amount").html(data);// replace the contents of the price input with the data that came from the server
+          $("#id_price").html(data);
+        }
+      });
+          price = document.getElementById("id_amount");
+          price.setAttribute("value", $("id_amount"));
+    });
+ </script>
+
+
         <div class="col-md-6 text-center  ">
                         <p class="font-weight-bold mt-5" style="font-size:2rem;">
                 Register for your club to begin playing straight away!

@@ -107,7 +107,7 @@ class ClubOrders(APIView):
     def get(self, request):
         club_pk = request.session.get('pk')
         club = ClubInfo.objects.filter(pk=club_pk)
-        order = Order.objects.filter(club_id=club_pk)
+        order = Order.objects.filter(club_id=club_pk, complete=False)
         # items = OrderItem.objects.filter(order__in=order)
         return Response({'order': order,
                          'club_pk': club_pk,
@@ -124,3 +124,31 @@ def view_order(request, pk):
                                                             'club': club})
 
 
+def complete_order(request, pk):
+    club_pk = request.session.get('pk')
+    club = ClubInfo.objects.filter(pk=club_pk)
+    order = Order.objects.filter(club_id=club_pk, complete=False)
+    order_id = Order.objects.filter(pk=pk)
+    order_id.update(complete=True)
+    return render(request, 'orders/order/club-orders.html', {'order': order,
+                                                             'club': club})
+
+
+def completed_orders(request):
+    club_pk = request.session.get('pk')
+    club = ClubInfo.objects.filter(pk=club_pk)
+    order = Order.objects.filter(club_id=club_pk, complete=True)
+    return render(request, 'orders/order/complete_orders.html',
+                  {'order': order,
+                   'club_pk': club_pk,
+                   'club': club})
+
+
+def uncomplete_order(request, pk):
+    club_pk = request.session.get('pk')
+    club = ClubInfo.objects.filter(pk=club_pk)
+    order = Order.objects.filter(club_id=club_pk, complete=True)
+    order_id = Order.objects.filter(pk=pk)
+    order_id.update(complete=False)
+    return render(request, 'orders/order/complete_orders.html', {'order': order,
+                                                                 'club': club})

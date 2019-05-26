@@ -28,7 +28,7 @@ urlpatterns = [
     url('admin/', admin.site.urls),
 
     path('cart/', include('clubkit.cart.urls')),
-    path('orders/', include('clubkit.orders.urls')),
+    path('orders/', include('clubkit.orders.urls', namespace='orders')),
     url(r'^paypal/', include('paypal.standard.ipn.urls')),
     url(r'^payment/', include('clubkit.payment.urls', namespace='payment')),
     url(r'^shop/', include('clubkit.shop.urls'), name='shop'),
