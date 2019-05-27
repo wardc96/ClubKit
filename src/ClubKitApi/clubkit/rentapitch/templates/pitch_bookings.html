@@ -161,7 +161,7 @@
         <div class="row">
             {% csrf_token %}
         {% for info in bookings %}
-        <div class="col-md-3">
+        <div class="col-md-3 my-2">
 
         <ul class="list-group">
             <li class="list-group-item">{{ info.club_id }}  {% if club_pk  ==  user.pk %}

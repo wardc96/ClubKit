@@ -22,11 +22,11 @@
 </div>
     </div>
         <div class="col-md-6">
-<div class="roster mt-3">
+<div class="roster ">
     <h3>Roster Details</h3>
      {% csrf_token %}
             {% for id in roster %}
-    <ul class="list-group">
+    <ul class="list-group mx-2">
             <li class="list-group-item">{{ id.club_id }}
                 {% if club_pk  ==  user.pk %}
             <div class="dropown float-right">
