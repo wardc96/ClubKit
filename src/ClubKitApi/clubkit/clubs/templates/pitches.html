@@ -3,13 +3,17 @@
 {% load staticfiles %}
 {% block body_block %}
 
+<br>
 {% for info in club %}
 {% if info.user.pk  ==  user.pk %}
   <div class="container mt-3">
       <h3>Add Pitches To Club.</h3>
-        <form action="{% url 'clubs:add_pitches' %}" >
-            <input type="submit" name="" class='btn btn-primary rounded-pill' value="Add Pitches">
-        </form>
+        <div style="width:200px;">
+            <form action="{% url 'clubs:add_pitches' %}" >
+               <button class="btn btn-primary rounded-pill" type="submit" value="Add New Post"> <i class="fas fa-pen"></i> Add New Pitch</button>
+            </form>
+            <br>
+        </div>
   </div>
 {% endif %}
  {% endfor %}
@@ -23,8 +27,25 @@
     <div class="col-lg-6 col-md-6 col-sm-12 col-12  mt-4">
 <div class="card" style="width: rem;">
   <img src="{% if info.photo %}{{ info.photo.url }}{% else %}{% static 'no-image.png' %}{% endif %}" class="card-img-top img-fluid" alt="..." style="  object-fit: cover; height:20vw;">
-  <div class="card-body">
+
+    <div class="card-body">
     <p class="card-text text-dark">
+              {% if club_pk  ==  user.pk %}
+            <div class="dropown float-right">
+  <i class="fas fa-edit" type="buttn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  </i>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+   <form action="{% url 'clubs:delete_pitch' info.pk %}">
+            <a onclick="return confirm('Are you sure you want to delete this?')"><input type="submit" value="Delete"  class="dropdown-item"></a>
+        </form>
+    <form action="{% url 'clubs:edit_pitch' info.pk %}">
+         <input type="submit" value="Edit"  class="dropdown-item">
+        </form>
+  </div>
+</div>
+            {% endif %}
       <div class="row">
       <div class="col-md-5">
       <ul class="list-unstyled">
@@ -38,30 +59,15 @@
       <li><b>Open Time:</b> {{ info.open_time }}</li>
       <li><b>Close Time:</b> {{ info.close_time }}</li>
               {% if info.rental == "1" %}
-            <b><li>{{ info.get_rental_display }}:</li></b>
-            {{ info.rental_price }}
+            <b><li>{{ info.get_rental_display }}: </b>{{ info.rental_price }}</li>
+
+              {% else %}
+            <b><li>{{ info.get_rental_display }}</li></b>
               {% endif %}
+
   </ul>
       </div>
   </div>
-
-      {% if club_pk  ==  user.pk %}
-            <div class="dropown float-right">
-  <i class="dropdown-togge fas fa-angle-down" type="buttn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  </i>
-
-
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-
-   <form action="{% url 'clubs:delete_pitch' info.pk %}">
-            <a onclick="return confirm('Are you sure you want to delete this?')"><input type="submit" value="Delete"  class="dropdown-item"></a>
-        </form>
-    <form action="{% url 'clubs:edit_pitch' info.pk %}">
-         <input type="submit" value="Edit"  class="dropdown-item">
-        </form>
-  </div>
-</div>
-            {% endif %}
 
   </div>
 </div>

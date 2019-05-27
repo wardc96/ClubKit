@@ -8,7 +8,7 @@
 
             {% for info in club %}
         <div class="card shadow-sm" style="width: ">
-  <img src="{% if info.club_logo %}{{ info.club_logo.url }}{% else %}{% static 'no-image.png' %}{% endif %}" class="test img-fluid " alt="..." ">
+  <img src="{% if info.club_logo %}{{ info.club_logo.url }}{% else %}{% static 'no-image.png' %}{% endif %}" class="test img-fluid " alt="...">
   <div class="card-body">
     <h5 class="card-title">{{ info.club_name }}</h5>
     <p class="card-text text-dark">{{ info.description }}</p>
@@ -58,9 +58,12 @@
             <ul class="list-group list-group-flush">
            {% for info in club %}
       {% if info.user.pk  ==  user.pk %}
-    <form action="{% url 'clubs:club_post' %}">
-        <input type="submit" value="Add New Post" class="btn btn-primary rounded-pill  mb-2"/>
-    </form>
+                <div style="width:200px;">
+                    <form action="{% url 'clubs:club_post' %}" >
+                       <button class="btn btn-primary rounded-pill" type="submit" value="Add New Post"> <i class="fas fa-pen"></i> Add New Post</button>
+                    </form>
+                    <br>
+                </div>
     {% endif %}
                 {% endfor %}
 
@@ -75,7 +78,7 @@
                 <div class="col-sm-9">
                     {% for i in club %}
       {% if i.user.pk  ==  user.pk %}
-                    <i class="fas fa-angle-down float-right" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-edit float-right" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   </i>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
@@ -88,12 +91,15 @@
   </div>
 {% endif %}
                     {% endfor %}
+            <div>
             <p class="font-weight-bold">{{ info.title }}</p>
-
+            </div>
             <p>{{ info.text }}</p>
             {% if info.photo %}
             <img src="{{ info.photo.url }}" class="img-fluid" height="" width=""/>
+
             {% else %} {% endif %}
+        <p style="text-align:right"><small>{{ info.created_date }}</small></p>
                 </div>
             </div>
             </li>

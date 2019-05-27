@@ -25,12 +25,17 @@
 <div class="roster ">
     <h3>Roster Details</h3>
      {% csrf_token %}
-            {% for id in roster %}
+            {% for id in roster reversed %}
     <ul class="list-group mx-2">
-            <li class="list-group-item">{{ id.club_id }}
+            <li class="list-group-item"><b>Pitch:</b> {{ id.pitch_id }}
+            <br> <b>Team:</b> {{ id.team_id }}
+            <br> <b>Date:</b> {{ id.date }}, {{ id.start_time }} - {{ id.finish_time }}
+            <br> <b>Repeat Every:</b> {{ id.get_reoccuring_day_display }}
+
                 {% if club_pk  ==  user.pk %}
+
             <div class="dropown float-right">
-  <i class="dropdown-togge fas fa-angle-down" type="buttn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <i class="fas fa-edit" type="buttn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   </i>
 
 
@@ -42,14 +47,15 @@
     <form action="{% url 'roster:edit_roster' id.pk %}">
          <input type="submit" value="Edit"  class="dropdown-item">
         </form>
+
   </div>
+
 </div>
 {% endif %}
             </li>
-        <li class="list-group-item"><b>Pitch:</b> {{ id.pitch_id }}</li>
-            <li class="list-group-item"><b>Team:</b> {{ id.team_id }}</li>
-            <li class="list-group-item"><b>Date:</b> {{ id.date }}, {{ id.start_time }} - {{ id.finish_time }}</li>
-            <li class="list-group-item"><b>Repeat Every:</b> {{ id.get_reoccuring_day_display }}</li>
+
+        </li>
+
     </ul>
 
         {% endfor %}

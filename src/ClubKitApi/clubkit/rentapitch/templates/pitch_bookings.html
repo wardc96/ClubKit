@@ -155,18 +155,24 @@
 
 
         <div id="calendar" class="my-4"></div>
-{% for info in club %}
+{% for info in club reversed %}
 {% if info.user.pk  ==  user.pk %}
         <h3>Booking Details</h3>
         <div class="row">
             {% csrf_token %}
         {% for info in bookings %}
-        <div class="col-md-3 my-2">
+        <div class="col-md-4 my-4">
 
         <ul class="list-group">
-            <li class="list-group-item">{{ info.club_id }}  {% if club_pk  ==  user.pk %}
+            <li class="list-group-item">
+            <b>Pitch:</b> {{ info.pitch_id }} <br>
+            <b>Name: </b> {{ info.name }} <br>
+            <b>Email: </b> {{ info.email }} <br>
+            <b>Mobile: </b> {{ info.mobile }} <br>
+            <b> Date: </b>{{ info.date }} {{ info.start_time }} - {{ info.finish_time }}<br>
+                {% if club_pk  ==  user.pk %}
             <div class="dropown float-right">
-  <i class="dropdown-togge fas fa-angle-down" type="buttn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <i class="fas fa-edit" type="buttn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   </i>
 
 
@@ -181,10 +187,7 @@
   </div>
 </div>
 {% endif %}</li>
-            <li class="list-group-item">{{ info.pitch_id }}</li>
-            <li class="list-group-item">{{ info.name }} - {{ info.email }}</li>
-            <li class="list-group-item">{{ info.mobile }}</li>
-            <li class="list-group-item">{{ info.date }} {{ info.start_time }} - {{ info.finish_time }}</li>
+
         </ul>
 
 

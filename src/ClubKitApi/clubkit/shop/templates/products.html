@@ -26,11 +26,11 @@
      {% csrf_token %}
             {% for detail in products %}
     <ul class="list-group my-2">
-            <li class="list-group-item">{{ detail.club_id }}
+            <li class="list-group-item">{{ detail.name }}
                         {% for info in club %}
  {% if info.user.pk  ==  user.pk %}
             <div class="dropown float-right">
-  <i class="dropdown-togge fas fa-angle-down" type="buttn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <i class="fas fa-edit" type="buttn" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   </i>
 
 
@@ -47,12 +47,16 @@
 {% endif %}
                 {% endfor %}
             </li>
-        <li class="list-group-item"><b>Category:</b> {{ detail.category }}</li>
-        <li class="list-group-item"><b>Name:</b> {{ detail.name }}</li>
-        <li class="list-group-item"><b>Description:</b> {{ detail.description }}</li>
-        <li class="list-group-item"><b>Price:</b> €{{ detail.price }}</li>
-        <li class="list-group-item"><b>Size:</b> {{ detail.size }}</li>
-        <li class="list-group-item"><b>Stock:</b> {{ detail.stock }}</li>
+                <a href="#collapse{{ mem.pk }}" class="btn btn-secondary btn-sm" data-toggle="collapse" >Expand</a>
+            <div id="collapse{{ mem.pk }}" class="collapse">
+            <li class="list-group-item"><b>Category:</b> {{ detail.category }}</li>
+                <li class="list-group-item"><b>Name:</b> {{ detail.name }}</li>
+                <li class="list-group-item"><b>Description:</b> {{ detail.description }}</li>
+                <li class="list-group-item"><b>Price:</b> €{{ detail.price }}</li>
+                <li class="list-group-item"><b>Size:</b> {{ detail.size }}</li>
+                <li class="list-group-item"><b>Stock:</b> {{ detail.stock }}</li>
+
+
     </ul>
 
         {% endfor %}
