@@ -6,6 +6,8 @@ from django.forms.widgets import DateInput
 
 # Form to accept details for members to register
 class PlayerRegistrationForm(forms.ModelForm):
+    address2 = forms.CharField(required=False)
+    address3 = forms.CharField(required=False)
 
     class Meta:
         model = Player

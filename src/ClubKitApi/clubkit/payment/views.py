@@ -41,7 +41,7 @@ def payment_process(request):
     # club_paypal = request.session.get('paypal_email')
 
     paypal_dict = {
-        'business': settings.PAYPAL_RECEIVER_EMAIL,
+        'business': '',
         'amount': '%.2f' % order.get_total_cost().quantize(Decimal('.01')),
         'item_name': 'Order {}'.format(order.id),
         'invoice': str(order.id),

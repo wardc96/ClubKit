@@ -9,6 +9,7 @@ urlpatterns = [
     path('edit_member/<int:pk>/', views.edit_member, name='edit_member'),
     path('registration/', views.RegisterPlayer.as_view(), name='player_register'),
     path('ajax/load-price/', views.ajax_load_price, name='ajax_load_price'),
+    path('ajax/load-paypal-email/', views.ajax_load_paypal_email, name='ajax_load_paypal_email'),
     # path('ajax/set-price/', views.ajax_set_price, name='ajax_set_price'),
 
 

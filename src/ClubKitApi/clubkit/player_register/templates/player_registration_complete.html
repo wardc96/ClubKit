@@ -14,6 +14,13 @@
 
                 <input type="submit" name="" value="Register" class="btn btn-primary rounded-pill">
             </form>
+            <form id="clubIdForm" data-club-url="{% url 'player_register:ajax_load_paypal_email' %}" novalidate>
+
+               {% csrf_token %}
+               {{ form.club_id }}
+
+                <input type="submit" name="" value="Register" class="btn btn-primary rounded-pill">
+            </form>
 
 
  <h1>Pay using PayPal</h1><form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
@@ -50,6 +57,30 @@
     });
 
     document.getElementById("regForm").style.display="none";
+ </script>
+
+
+<script>
+    $("#id_club_id").val(function () {
+      var url = $("#clubIdForm").attr("data-club-url");  // get the url of the `load_price` view
+      var club_id = $(this).val();  // get the selected membership ID from the HTML input
+
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/player-register/ajax-load-price)
+        data: {
+          'club_id': club_id       // add the mem id to the GET parameters
+        },
+        success: function (data) { // `data` is the return of the `load_price` view function
+          $("#id_business").val(data);// replace the contents of the price input with the data that came from the server
+
+        }
+      });
+          businessEmail = document.getElementById("id_business");
+          businessEmail.setAttribute("value", $("id_business"));
+    });
+
+    document.getElementById("clubIdForm").style.display="none";
+
  </script>
 
 

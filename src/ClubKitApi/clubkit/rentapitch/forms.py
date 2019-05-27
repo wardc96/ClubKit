@@ -9,8 +9,8 @@ from django.utils.translation import gettext_lazy as _
 class RentalForm(forms.ModelForm):
     class Meta():
         model = RentPitch
-        fields = ('club_id', 'pitch_id', 'rental_cost', 'name', 'email',
-                  'mobile', 'date', 'start_time', 'finish_time', 'payment_type', 'is_cancelled',)
+        fields = ('club_id', 'pitch_id', 'name', 'email',
+                  'mobile', 'date', 'start_time', 'finish_time')
         widgets = {
             'date': forms.DateInput(attrs={'id': 'datepicker'}),
             'start_time': forms.DateInput(attrs={'class': 'timepicker'}),
@@ -26,8 +26,6 @@ class RentalForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(RentalForm, self).__init__(*args, **kwargs)
         self.fields['club_id'].widget = forms.HiddenInput()
-        self.fields['rental_cost'].widget = forms.HiddenInput()
-        self.fields['payment_type'].widget = forms.HiddenInput()
-        self.fields['is_cancelled'].widget = forms.HiddenInput()
+
 
 

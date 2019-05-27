@@ -9,10 +9,31 @@
 <div class="col-md-6   p-4  border-right rounded-lg">
         <h1>Book Here</h1>
     <h3>Just fill out the form.</h3>
-    <form action="{% url 'rentapitch:pitch_rental' %}" method="POST">
+    <form action="{% url 'rentapitch:pitch_rental' %}" method="POST" id="regForm" data-rental-url="{% url 'rentapitch:ajax_load_rental_price' %}" novalidate>
         {% csrf_token %}
         {{ form|crispy }}
                 <input type="submit" name="" value="Add" class="btn btn-primary rounded-pill">
+            <br>
+           <b>Total Cost:</b> <div id="id_price"></div>
+
+      <script>
+    $("#id_pitch_id").change(function () {
+      var url = $("#regForm").attr("data-rental-url");  // get the url of the `load_price` view
+      var pitch_name = $(this).val();  // get the selected membership ID from the HTML input
+
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/player-register/ajax-load-price)
+        data: {
+          'pitch_name': pitch_name       // add the mem id to the GET parameters
+        },
+        success: function (data) { // `data` is the return of the `load_price` view function
+          // replace the contents of the price input with the data that came from the server
+          $("#id_price").html(data);
+        }
+      });
+
+    });
+ </script>
             </form>
 
     </div>
@@ -32,7 +53,6 @@
 
             </p>
             <hr>
-
 </div>
     </div>
 </div>

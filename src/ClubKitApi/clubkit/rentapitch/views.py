@@ -31,11 +31,18 @@ class PitchRental(APIView):
         form.fields['pitch_id'].queryset = Pitch.objects.filter(club_id=club_pk, rental=1)
         if form.is_valid():
             form.save()
-            return render(request, 'booking_complete.html', {'club': club})
+            return render(request, 'booking_complete.html', {'club': club,
+                                                             'form': form})
         else:
             return Response({'form': form,
                              'club': club
                              })
+
+
+def load_pitch_price(request):
+    pitch_name = request.GET.get('pitch_name')
+    pitch_id = Pitch.objects.filter(pk=pitch_name)
+    return render(request, 'load_pitch_price_value.html', {'pitch_id': pitch_id})
 
 
 class PitchBookings(APIView):

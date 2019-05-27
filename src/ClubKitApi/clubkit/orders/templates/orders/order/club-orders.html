@@ -1,7 +1,7 @@
 {% extends 'club_main_page.html' %}
 {% load staticfiles %}
 {% block body_block %}
-
+<br>
 
 <div class="container">
     <h1>Your Orders</h1>
@@ -23,14 +23,20 @@
       <li class="list-group-item"><b>PostCode:</b> {{ details.postal_code }}</li>
       <li class="list-group-item"><b>City:</b> {{ details.city }}</li>
       <li class="list-group-item"><b>Created:</b> {{ details.created }}</li>
-      <li class="list-group-item"><b>Created:</b> {{ details.complete }}</li>
 
-      <form class="text-center" action="{% url 'orders:view_order' details.pk %}">
-        <input type="submit" value="View Order"  class="btn btn-primary rounded-pill mt-3">
-     </form>
-      <form action="{% url 'orders:complete-order' details.pk %}">
-        <input type="submit" value="Complete Order"  class="btn btn-success rounded-pill mt-3">
-     </form>
+
+   <div style="width:380px;">
+    <div style="float: left; width: 130px">
+        <form action="{% url 'orders:view_order' details.pk %}">
+            <input type="submit" value="View Order" class="btn btn-primary rounded-pill mt-3">
+        </form>
+    </div>
+    <div style="float: right; width: 225px">
+        <form action="{% url 'orders:complete-order' details.pk %}">
+             <input type="submit" value="Complete Order" class="btn btn-success rounded-pill mt-3">
+        </form>
+    </div>
+</div>
 
   </ul>
 

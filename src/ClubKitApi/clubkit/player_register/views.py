@@ -60,6 +60,13 @@ def ajax_load_price(request):
     mem_id = ClubMemberships.objects.filter(pk=membership)
     return render(request, 'load_price_value.html', {'mem_id': mem_id})
 
+
+def ajax_load_paypal_email(request):
+    club_id = request.GET.get('club_id')
+    club_info = ClubInfo.objects.filter(pk=club_id)
+    return render(request, 'load_paypal_email.html', {'club_info': club_info})
+
+
 # Class to handle membership registration information
 class Members(APIView):
     renderer_classes = [TemplateHTMLRenderer]

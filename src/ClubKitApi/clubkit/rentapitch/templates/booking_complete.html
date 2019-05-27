@@ -1,25 +1,86 @@
-{% extends 'schedule-base.html' %}
-{% block body_block %}
+{% extends 'shop-base.html' %}
+{% load staticfiles %}
+{% block title %} Pay using PayPal{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
 
+<br><br>
     <div class="container">
 
+            <form method="POST" id="regForm" data-rental-url="{% url 'rentapitch:ajax_load_rental_price' %}" novalidate>
+
+               {% csrf_token %}
+               {{ form|crispy }}
+
+                <input type="submit" name="" value="Register" class="btn btn-primary rounded-pill">
+            </form>
+         <form id="clubIdForm" data-club-url="{% url 'player_register:ajax_load_paypal_email' %}" novalidate>
+
+               {% csrf_token %}
+               {{ form.club_id }}
+
+                <input type="submit" name="" value="Register" class="btn btn-primary rounded-pill">
+            </form>
 
 
-    <h1>Pay using PayPal</h1><form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+ <h1>Pay using PayPal</h1><form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
     <input type="hidden" name="cmd" value="_xclick" id="id_cmd">
         <input type="hidden" name="charset" value="utf-8" id="id_charset">
         <input type="hidden" name="currency_code" value="EUR" id="id_currency_code">
         <input type="hidden" name="no_shipping" value="1" id="id_no_shipping">
         <input type="hidden" name="business" value="clubkit@outlook.ie" id="id_business">
-        <input type="hidden" name="amount" value="30" id="id_amount">
-        <input type="hidden" name="item_name" value="Order" id="id_item_name">
-        <input type="hidden" name="invoice" value="0" id="id_invoice">
+        <input type="hidden" name="amount" value="0" id="id_amount">
         <input type="hidden" name="notify_url" value="http://127.0.0.1:8000/paypal/" id="id_notify_url">
         <input type="hidden" name="cancel_return" value="http://127.0.0.1:8000/payment/cancelled/" id="id_cancel_return">
         <input type="hidden" name="return" value="http://127.0.0.1:8000/payment/done/" id="id_return">
     <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="Buy it Now">
 </form>
+</div>
 
+<script>
+    $("#id_pitch_id").val(function () {
+      var url = $("#regForm").attr("data-rental-url");  // get the url of the `load_price` view
+      var pitch_name = $(this).val();  // get the selected membership ID from the HTML input
+
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/player-register/ajax-load-price)
+        data: {
+          'pitch_name': pitch_name       // add the mem id to the GET parameters
+        },
+        success: function (data) { // `data` is the return of the `load_price` view function
+          $("#id_amount").val(data);// replace the contents of the price input with the data that came from the server
+          $("#id_price").html(data);
+        }
+      });
+          price = document.getElementById("id_amount");
+          price.setAttribute("value", $("id_amount"));
+    });
+          document.getElementById("regForm").style.display="none";
+
+ </script>
+
+<script>
+    $("#id_club_id").val(function () {
+      var url = $("#clubIdForm").attr("data-club-url");  // get the url of the `load_price` view
+      var club_id = $(this).val();  // get the selected membership ID from the HTML input
+
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/player-register/ajax-load-price)
+        data: {
+          'club_id': club_id       // add the mem id to the GET parameters
+        },
+        success: function (data) { // `data` is the return of the `load_price` view function
+          $("#id_business").val(data);// replace the contents of the price input with the data that came from the server
+
+        }
+      });
+          businessEmail = document.getElementById("id_business");
+          businessEmail.setAttribute("value", $("id_business"));
+    });
+
+    document.getElementById("clubIdForm").style.display="none";
+
+ </script>
 
 </div>
 {% endblock %}

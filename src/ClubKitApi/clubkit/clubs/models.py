@@ -18,6 +18,7 @@ class ClubInfo(models.Model):
     club_town = models.CharField(max_length=30)
     club_county = models.CharField(max_length=30)
     club_country = models.CharField(max_length=30)
+    paypal_id = models.CharField(max_length=30)
     created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

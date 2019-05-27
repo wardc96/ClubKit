@@ -55,7 +55,10 @@ class ClubInfoForm(forms.ModelForm):
     class Meta():
         model = ClubInfo
         fields = ('club_name', 'club_logo', 'club_address1', 'club_address2',
-                  'club_address3', 'club_town', 'club_county', 'club_country',)
+                  'club_address3', 'club_town', 'club_county', 'club_country', 'paypal_id')
+        labels = {
+            'paypal_id': 'Paypal Email - required to receive payments'
+        }
 
         def clean_club_name(self):
             club_name = self.cleaned_data['club_name']
