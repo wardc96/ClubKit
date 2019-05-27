@@ -37,7 +37,10 @@
           <ul class="list-unstyled">
       <li><b>Open Time:</b> {{ info.open_time }}</li>
       <li><b>Close Time:</b> {{ info.close_time }}</li>
-            <li>{{ info.get_rental_display }}</li>
+              {% if info.rental == "1" %}
+            <b><li>{{ info.get_rental_display }}:</li></b>
+            {{ info.rental_price }}
+              {% endif %}
   </ul>
       </div>
   </div>

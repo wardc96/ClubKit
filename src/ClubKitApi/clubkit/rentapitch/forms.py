@@ -13,8 +13,8 @@ class RentalForm(forms.ModelForm):
                   'mobile', 'date', 'start_time', 'finish_time')
         widgets = {
             'date': forms.DateInput(attrs={'id': 'datepicker'}),
-            'start_time': forms.DateInput(attrs={'class': 'timepicker'}),
-            'finish_time': forms.DateInput(attrs={'class': 'timepicker'})
+            'start_time': forms.TimeInput(attrs={'class': 'timepicker'}),
+            'finish_time': forms.TimeInput(attrs={'class': 'timepicker'})
         }
 
         def clean_date(self):

@@ -39,7 +39,7 @@ def edit_profile(request):
         form = EditProfileForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect('profiles:view_profile')
+            return redirect('clubs:club_home')
 
     else:
         form = EditProfileForm(instance=request.user)

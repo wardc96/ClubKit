@@ -20,6 +20,7 @@ class ClubRoster(APIView):
             club = ClubInfo.objects.filter(pk=club_pk)
             club_info = ClubInfo.objects.filter(user=request.user).first()
             reoccuring_event = RosterId.objects.filter(reoccuring_event=True, club_id=club_pk)
+            one_time_event = RosterId.objects.filter(reoccuring_event=False, club_id=club_pk)
             inital_data = {
                 'club_id': club_info,
             }
@@ -31,6 +32,7 @@ class ClubRoster(APIView):
                              'roster': roster,
                              'club_pk': club_pk,
                              'reoccuring_event': reoccuring_event,
+                             'one_time_event': one_time_event,
                              'club': club
                              })
         else:
@@ -38,9 +40,11 @@ class ClubRoster(APIView):
             club = ClubInfo.objects.filter(pk=club_pk)
             roster = RosterId.objects.filter(club_id=club_pk)
             reoccuring_event = RosterId.objects.filter(reoccuring_event=True, club_id=club_pk)
+            one_time_event = RosterId.objects.filter(reoccuring_event=False, club_id=club_pk)
             return Response({'roster': roster,
                              'club_pk': club_pk,
                              'reoccuring_event': reoccuring_event,
+                             'one_time_event': one_time_event,
                              'club': club
                              })
 
