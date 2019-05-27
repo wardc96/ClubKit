@@ -96,7 +96,7 @@ $(document).ready(function(){
                {% endfor %}
             
 
-            {% for i in roser %}
+            {% for i in one_time_event %}
                     {
                         title  : '{{ i.team_id }}',
                         description : '{{ i.team_id }}, {{ i.pitch_id }}, {{ i.start_time|date:"G:i" }} - {{ i.finish_time|date:"G:i" }} ',
