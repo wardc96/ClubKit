@@ -47,8 +47,8 @@
 {% endif %}
                 {% endfor %}
             </li>
-                <a href="#collapse{{ mem.pk }}" class="btn btn-secondary btn-sm" data-toggle="collapse" >Expand</a>
-            <div id="collapse{{ mem.pk }}" class="collapse">
+                <a href="#collapse{{ detail.pk }}" class="btn btn-secondary btn-sm" data-toggle="collapse" >Expand</a>
+            <div id="collapse{{ detail.pk }}" class="collapse">
             <li class="list-group-item"><b>Category:</b> {{ detail.category }}</li>
                 <li class="list-group-item"><b>Name:</b> {{ detail.name }}</li>
                 <li class="list-group-item"><b>Description:</b> {{ detail.description }}</li>
