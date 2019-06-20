@@ -8,4 +8,6 @@ Gavin Boyle - https://blogs.computing.dcu.ie/wordpress/boyleg8/
 
 Conor Ward - https://blogs.computing.dcu.ie/wordpress/wardc27/
 
+# Screen-Shots
+To view screen shots of prototype application go to the images folder
 
